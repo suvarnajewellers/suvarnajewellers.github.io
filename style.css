@@ -940,3 +940,16 @@ img{
     font-size:14px;
 
 }
+/* Logo Style */
+
+.logo-img{
+
+    width:160px;
+
+    height:auto;
+
+    display:block;
+
+    margin:auto;
+
+}
