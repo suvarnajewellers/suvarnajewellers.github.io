@@ -134,130 +134,28 @@ img{
 
 }
 
-/* Premium Luxury Hero */
-
-.hero{
-
-    min-height:85vh;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    text-align:center;
-
-    padding:80px 20px;
-
-    background:
-    linear-gradient(
-        rgba(26,0,13,0.78),
-        rgba(43,0,21,0.92)
-    ),
-    url("hero.jpg");
-
-    background-size:cover;
-    background-position:center;
-
-}
-
-
-.hero-content{
-
-    max-width:900px;
-
-}
-
-
-.small-title{
-
-    color:#d4af37;
-
-    letter-spacing:5px;
-
-    font-size:14px;
-
-    font-weight:bold;
-
-}
-
-
-.hero h2{
-
-    color:#ffffff;
-
-    font-size:52px;
-
-    line-height:1.2;
-
-    margin:25px 0;
-
-    text-shadow:0 0 20px rgba(212,175,55,0.4);
-
-}
-
-
-.hero p{
-
-    color:#f5e6b8;
-
-    font-size:20px;
-
-}
-
-
-.hero-btn,
-.catalogue-btn{
-
-    display:inline-block;
-
-    margin-top:30px;
-
-    padding:15px 35px;
-
-    border-radius:40px;
-
-}
-
-
-.hero-btn{
-
-    background:#d4af37;
-
-    color:#2b0015;
-
-}
-
-
-.catalogue-btn{
-
-    border:1px solid #d4af37;
-
-    color:#d4af37;
-
-}
 /* =========================
    Premium Hero Section
 ========================= */
 
 .hero{
 
-    min-height:80vh;
-
+    min-height:650px;
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
     text-align:center;
-
-    padding:80px 20px;
+    padding:40px 8%;
 
     background:
     linear-gradient(
-    rgba(43,0,21,0.85),
-    rgba(26,0,13,0.95)
-    );
+        rgba(20,0,10,0.75),
+        rgba(20,0,10,0.75)
+    ),
+    url("hero.jpg");
+
+    background-size:cover;
+    background-position:center;
 
 }
 
