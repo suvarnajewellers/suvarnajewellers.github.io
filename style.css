@@ -762,3 +762,127 @@ img{
     }
 
 }
+/* =========================
+   Premium Contact Section
+========================= */
+
+.contact{
+
+    padding:90px 8%;
+
+    text-align:center;
+
+    background:#1a000d;
+
+}
+
+
+.contact .small-title{
+
+    color:#d4af37;
+
+    letter-spacing:4px;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+}
+
+
+.contact h2{
+
+    color:#ffffff;
+
+    font-size:42px;
+
+    margin:20px 0 45px;
+
+}
+
+
+.contact-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:25px;
+
+}
+
+
+.contact-box{
+
+    background:#2b0015;
+
+    border:1px solid #d4af37;
+
+    border-radius:20px;
+
+    padding:30px 20px;
+
+}
+
+
+.contact-box h3{
+
+    color:#d4af37;
+
+    font-size:22px;
+
+    margin-bottom:15px;
+
+}
+
+
+.contact-box p{
+
+    color:#f5e6b8;
+
+    line-height:1.6;
+
+}
+
+
+.contact-box a{
+
+    display:inline-block;
+
+    margin-top:15px;
+
+    background:#d4af37;
+
+    color:#2b0015;
+
+    padding:10px 25px;
+
+    border-radius:30px;
+
+    font-weight:bold;
+
+}
+
+
+/* Mobile */
+
+@media(max-width:900px){
+
+    .contact-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+
+@media(max-width:600px){
+
+    .contact-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
