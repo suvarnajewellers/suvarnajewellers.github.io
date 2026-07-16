@@ -657,3 +657,108 @@ img{
     }
 
 }
+/* =========================
+   Manufacturing Section
+========================= */
+
+.manufacturing{
+
+    padding:90px 8%;
+
+    text-align:center;
+
+    background:#2b0015;
+
+}
+
+
+.manufacturing .small-title{
+
+    color:#d4af37;
+
+    letter-spacing:4px;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+}
+
+
+.manufacturing h2{
+
+    color:#ffffff;
+
+    font-size:42px;
+
+    margin:20px 0 45px;
+
+}
+
+
+.manufacturing-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:30px;
+
+}
+
+
+.manufacturing-card{
+
+    background:#1a000d;
+
+    border:1px solid #d4af37;
+
+    padding:40px 25px;
+
+    border-radius:20px;
+
+    transition:0.3s;
+
+}
+
+
+.manufacturing-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 10px 30px rgba(212,175,55,0.25);
+
+}
+
+
+.manufacturing-card h3{
+
+    color:#d4af37;
+
+    font-size:24px;
+
+    margin-bottom:15px;
+
+}
+
+
+.manufacturing-card p{
+
+    color:#f5e6b8;
+
+    line-height:1.7;
+
+}
+
+
+/* Mobile */
+
+@media(max-width:800px){
+
+    .manufacturing-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
