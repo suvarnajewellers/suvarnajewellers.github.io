@@ -140,3 +140,89 @@ footer {
     }
 
     }
+/* =========================
+   Premium Navigation
+========================= */
+
+.navbar{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 18px 8%;
+    background: rgba(26,0,13,0.95);
+    backdrop-filter: blur(10px);
+
+    border-bottom: 1px solid #d4af37;
+}
+
+.logo{
+    color: #d4af37;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.nav-links{
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a{
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover{
+    color: #d4af37;
+}
+
+.nav-btn{
+    background: #d4af37;
+    color: #2b0015;
+    padding: 12px 22px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.nav-btn:hover{
+    background: #f0c95d;
+}
+
+/* Mobile Responsive */
+
+@media (max-width: 768px){
+
+    .navbar{
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .nav-links{
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+
+    .logo{
+        font-size: 20px;
+    }
+
+    .nav-btn{
+        width: 100%;
+        text-align: center;
+    }
+
+}
