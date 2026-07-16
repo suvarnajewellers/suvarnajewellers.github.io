@@ -557,3 +557,103 @@ img{
     }
 
 }
+/* =========================
+   Premium About Section
+========================= */
+
+.about{
+
+    padding:90px 8%;
+
+    background:#1a000d;
+
+}
+
+
+.about-content{
+
+    max-width:900px;
+
+    margin:auto;
+
+    text-align:center;
+
+}
+
+
+.about .small-title{
+
+    color:#d4af37;
+
+    letter-spacing:4px;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+}
+
+
+.about h2{
+
+    color:#ffffff;
+
+    font-size:42px;
+
+    margin:20px 0;
+
+}
+
+
+.about p{
+
+    color:#f5e6b8;
+
+    font-size:18px;
+
+    line-height:1.8;
+
+    margin-bottom:20px;
+
+}
+
+
+.about-points{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+    margin-top:35px;
+
+}
+
+
+.about-points span{
+
+    border:1px solid #d4af37;
+
+    padding:12px 20px;
+
+    border-radius:30px;
+
+    color:#d4af37;
+
+}
+
+
+/* Mobile */
+
+@media(max-width:600px){
+
+    .about h2{
+
+        font-size:32px;
+
+    }
+
+}
