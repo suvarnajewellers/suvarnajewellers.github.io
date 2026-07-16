@@ -441,3 +441,119 @@ img{
     }
 
 }
+/* =========================
+   Premium Collections
+========================= */
+
+.collections{
+
+    padding:80px 8%;
+
+    text-align:center;
+
+    background:#2b0015;
+
+}
+
+
+.collections h2{
+
+    color:#d4af37;
+
+    font-size:40px;
+
+    margin-bottom:15px;
+
+}
+
+
+.section-subtitle{
+
+    color:#f5e6b8;
+
+    font-size:18px;
+
+    margin-bottom:45px;
+
+}
+
+
+.collection-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(5,1fr);
+
+    gap:25px;
+
+}
+
+
+.card{
+
+    background:#1a000d;
+
+    border:1px solid #d4af37;
+
+    border-radius:20px;
+
+    padding:35px 20px;
+
+    transition:0.3s;
+
+}
+
+
+.card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 10px 30px rgba(212,175,55,0.25);
+
+}
+
+
+.card h3{
+
+    color:#d4af37;
+
+    font-size:22px;
+
+    margin-bottom:15px;
+
+}
+
+
+.card p{
+
+    color:#f5e6b8;
+
+    font-size:15px;
+
+}
+
+
+/* Tablet */
+
+@media(max-width:1000px){
+
+    .collection-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+
+/* Mobile */
+
+@media(max-width:600px){
+
+    .collection-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
