@@ -982,3 +982,7 @@ img{
     }
 
 }
+.collection-link{
+    text-decoration:none;
+    color:inherit;
+}
