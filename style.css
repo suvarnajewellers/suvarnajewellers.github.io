@@ -913,3 +913,38 @@ img{
     margin:auto;
 
 }
+/* Floating WhatsApp */
+
+.floating-whatsapp{
+
+    position:fixed;
+
+    right:20px;
+
+    bottom:20px;
+
+    background:#25D366;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    padding:14px 22px;
+
+    border-radius:50px;
+
+    font-weight:bold;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.30);
+
+    z-index:99999;
+
+    transition:.3s;
+
+}
+
+.floating-whatsapp:hover{
+
+    transform:scale(1.08);
+
+}
