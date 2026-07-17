@@ -64,7 +64,7 @@ img{
 
 }
 
-/* Navigation */
+/* Premium Glass Navigation */
 
 .navbar{
 
@@ -80,11 +80,17 @@ img{
 
     padding:18px 8%;
 
-    background:#220011;
+    background:rgba(20,0,10,0.82);
 
-    border-bottom:1px solid #d4af37;
+    backdrop-filter:blur(12px);
 
-    z-index:999;
+    -webkit-backdrop-filter:blur(12px);
+
+    border-bottom:1px solid rgba(212,175,55,0.25);
+
+    box-shadow:0 8px 25px rgba(0,0,0,0.25);
+
+    z-index:9999;
 
 }
 
