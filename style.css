@@ -1039,3 +1039,39 @@ img{
         gap:15px;
     }
 }
+/* ===== Premium Footer ===== */
+
+.footer{
+    background:#111;
+    color:#fff;
+    text-align:center;
+    padding:60px 20px;
+    margin-top:60px;
+    border-top:2px solid #d4af37;
+}
+
+.footer h2{
+    color:#d4af37;
+    margin-bottom:15px;
+    letter-spacing:2px;
+}
+
+.footer p{
+    margin:10px 0;
+    color:#ddd;
+}
+
+.footer-links{
+    margin:25px 0;
+}
+
+.footer-links a{
+    color:#d4af37;
+    text-decoration:none;
+    margin:0 15px;
+    transition:.3s;
+}
+
+.footer-links a:hover{
+    color:#ffffff;
+}
