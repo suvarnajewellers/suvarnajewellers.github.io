@@ -1104,3 +1104,28 @@ img{
     font-size:45px;
     cursor:pointer;
 }
+.image-popup{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.95);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:99999;
+}
+
+.popup-image{
+    max-width:95%;
+    max-height:90%;
+    object-fit:contain;
+    touch-action:pinch-zoom;
+}
+
+.close-popup{
+    position:absolute;
+    top:20px;
+    right:30px;
+    color:white;
+    font-size:45px;
+    cursor:pointer;
+}
