@@ -913,38 +913,72 @@ img{
     margin:auto;
 
 }
-/* Floating WhatsApp */
+/* Premium Floating WhatsApp */
 
 .floating-whatsapp{
 
     position:fixed;
 
-    right:20px;
+    right:25px;
 
-    bottom:20px;
+    bottom:25px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:65px;
+
+    height:65px;
 
     background:#25D366;
 
-    color:#fff;
+    color:#ffffff;
 
     text-decoration:none;
 
-    padding:14px 22px;
+    border-radius:50%;
 
-    border-radius:50px;
+    font-size:18px;
 
-    font-weight:bold;
+    font-weight:700;
 
-    box-shadow:0 8px 25px rgba(0,0,0,.30);
+    box-shadow:0 10px 30px rgba(37,211,102,.45);
 
-    z-index:99999;
+    animation:whatsappPulse 2s infinite;
 
     transition:.3s;
+
+    z-index:99999;
 
 }
 
 .floating-whatsapp:hover{
 
-    transform:scale(1.08);
+    transform:scale(1.1);
+
+}
+
+@keyframes whatsappPulse{
+
+    0%{
+
+        box-shadow:0 0 0 0 rgba(37,211,102,.6);
+
+    }
+
+    70%{
+
+        box-shadow:0 0 0 18px rgba(37,211,102,0);
+
+    }
+
+    100%{
+
+        box-shadow:0 0 0 0 rgba(37,211,102,0);
+
+    }
 
 }
