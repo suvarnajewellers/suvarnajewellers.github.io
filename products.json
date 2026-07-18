@@ -8,5 +8,15 @@
     "size": "7 Inch",
     "image": "gold/gold-jewellery-1.jpg",
     "description": "Premium handcrafted jewellery by SUVARNA JEWELLERS."
+  },
+  {
+    "id": "SJ-1002",
+    "name": "Premium Gold Bracelet",
+    "metal": "22K Gold",
+    "grossWeight": "18.250 gm",
+    "netWeight": "17.900 gm",
+    "size": "7 Inch",
+    "image": "gold/gold-jewellery-2.jpg",
+    "description": "Luxury handcrafted gold bracelet."
   }
 ]
