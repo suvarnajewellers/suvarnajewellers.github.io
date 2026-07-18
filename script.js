@@ -78,6 +78,7 @@ if (product.category === "gold") {
 }
 
 document.getElementById("product-category").textContent = categoryName;
+    document.getElementById("breadcrumb-category").textContent = categoryName;
     document.getElementById("product-code").textContent = product.id;
     document.getElementById("product-metal").textContent = product.metal;
     document.getElementById("product-gross").textContent = product.grossWeight;
