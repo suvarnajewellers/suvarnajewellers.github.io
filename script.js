@@ -32,3 +32,21 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+// ===== Product Thumbnail Gallery =====
+
+const mainImage = document.getElementById("main-image");
+const thumbnails = document.querySelectorAll(".thumb");
+
+thumbnails.forEach((thumb) => {
+
+    thumb.addEventListener("click", function () {
+
+        mainImage.src = this.src;
+
+        thumbnails.forEach(t => t.classList.remove("active"));
+
+        this.classList.add("active");
+
+    });
+
+});
