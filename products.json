@@ -7,18 +7,62 @@
     "grossWeight": "15.410 gm",
     "netWeight": "14.830 gm",
     "size": "7 Inch",
-    "image": "gold/pendant-1.jpg",
-    "description": "Premium handcrafted jewellery by SUVARNA JEWELLERS."
+    "image": "gold/gold-jewellery-1.jpg",
+    "description": "Premium handcrafted Gold Jewellery by SUVARNA JEWELLERS."
   },
   {
-  "id": "B001",
-  "name": "Bracelet Collection",
-  "category": "bracelets",
-  "metal": "22K Gold",
-  "grossWeight": "18.250 gm",
-  "netWeight": "17.900 gm",
-  "size": "7 Inch",
-  "image": "gold/rudraksha-bracelet-1.jpg",
-  "description": "Premium handcrafted Rudraksha Bracelet by SUVARNA JEWELLERS."
+    "id": "G002",
+    "category": "gold",
+    "name": "Gold Jewellery",
+    "metal": "22K Gold",
+    "grossWeight": "18.250 gm",
+    "netWeight": "17.900 gm",
+    "size": "7 Inch",
+    "image": "gold/gold-jewellery-2.jpg",
+    "description": "Premium handcrafted Gold Jewellery by SUVARNA JEWELLERS."
+  },
+  {
+    "id": "S001",
+    "category": "silver",
+    "name": "Silver Jewellery",
+    "metal": "925 Silver",
+    "grossWeight": "",
+    "netWeight": "",
+    "size": "",
+    "image": "silver/silver-jewellery-1.jpg",
+    "description": "Premium handcrafted Silver Jewellery by SUVARNA JEWELLERS."
+  },
+  {
+    "id": "RM001",
+    "category": "rudraksha-mala",
+    "name": "Rudraksha Mala",
+    "metal": "22K Gold",
+    "grossWeight": "",
+    "netWeight": "",
+    "size": "",
+    "image": "rudraksha-mala/rudraksha-mala-1.jpg",
+    "description": "Premium handcrafted Rudraksha Mala by SUVARNA JEWELLERS."
+  },
+  {
+    "id": "P001",
+    "category": "pendants",
+    "name": "Pendant Collection",
+    "metal": "22K Gold",
+    "grossWeight": "",
+    "netWeight": "",
+    "size": "",
+    "image": "pendants/pendant-1.jpg",
+    "description": "Premium handcrafted Pendant by SUVARNA JEWELLERS."
+  },
+  {
+    "id": "B001",
+    "category": "bracelets",
+    "name": "Bracelet Collection",
+    "metal": "22K Gold",
+    "grossWeight": "",
+    "netWeight": "",
+    "size": "7 Inch",
+    "image": "bracelets/bracelet-1.jpg",
+    "description": "Premium handcrafted Bracelet by SUVARNA JEWELLERS."
   }
 ]
