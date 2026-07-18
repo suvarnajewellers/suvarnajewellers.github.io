@@ -56,7 +56,11 @@ fetch("products.json")
 .then(response => response.json())
 .then(products => {
 
-    const product = products[0];
+    const params = new URLSearchParams(window.location.search);
+
+const productId = params.get("id") || "SJ-1001";
+
+const product = products.find(p => p.id === productId);
 
     document.getElementById("product-name").textContent = product.name;
     document.getElementById("product-code").textContent = product.id;
