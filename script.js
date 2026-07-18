@@ -50,3 +50,22 @@ thumbnails.forEach((thumb) => {
     });
 
 });
+// ===== Dynamic Product Loader =====
+
+fetch("products.json")
+.then(response => response.json())
+.then(products => {
+
+    const product = products[0];
+
+    document.getElementById("product-name").textContent = product.name;
+    document.getElementById("product-code").textContent = product.id;
+    document.getElementById("product-metal").textContent = product.metal;
+    document.getElementById("product-gross").textContent = product.grossWeight;
+    document.getElementById("product-net").textContent = product.netWeight;
+    document.getElementById("product-size").textContent = product.size;
+    document.getElementById("product-description").textContent = product.description;
+
+    document.getElementById("main-image").src = product.image;
+
+});
