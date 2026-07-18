@@ -1295,3 +1295,47 @@ text-align:center;
     border-color:#d4af37;
     box-shadow:0 0 15px rgba(212,175,55,.35);
 }
+/* ===== Related Products ===== */
+
+.related-products{
+    padding:80px 8%;
+    text-align:center;
+}
+
+.related-products h2{
+    color:#d4af37;
+    font-size:32px;
+    margin-bottom:40px;
+}
+
+.related-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.related-grid .card{
+    background:#1a000d;
+    border:1px solid rgba(212,175,55,.3);
+    border-radius:20px;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.related-grid .card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 35px rgba(212,175,55,.25);
+}
+
+.related-grid .card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+    display:block;
+}
+
+.related-grid .card h3{
+    padding:18px;
+    color:#d4af37;
+    font-size:20px;
+}
