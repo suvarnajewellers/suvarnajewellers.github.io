@@ -58,7 +58,7 @@ fetch("products.json")
 
     const params = new URLSearchParams(window.location.search);
 
-const productId = params.get("id") || "SJ-1001";
+const productId = params.get("id") || "G001";
 
 const product = products.find(p => p.id === productId);
 
