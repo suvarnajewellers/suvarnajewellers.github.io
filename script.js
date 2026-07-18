@@ -63,6 +63,7 @@ const productId = params.get("id") || "SJ-1001";
 const product = products.find(p => p.id === productId);
 
     document.getElementById("product-name").textContent = product.name;
+    document.getElementById("product-category").textContent = product.category;
     document.getElementById("product-code").textContent = product.id;
     document.getElementById("product-metal").textContent = product.metal;
     document.getElementById("product-gross").textContent = product.grossWeight;
