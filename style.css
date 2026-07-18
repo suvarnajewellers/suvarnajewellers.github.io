@@ -460,6 +460,10 @@ img{
     padding:35px 20px;
 
     transition:0.3s;
+   
+   overflow:hidden;
+   
+cursor:pointer;
 
 }
 
@@ -468,7 +472,7 @@ img{
 
     transform:translateY(-10px);
 
-    box-shadow:0 10px 30px rgba(212,175,55,0.25);
+   );
 
 }
 
@@ -1147,4 +1151,15 @@ img{
     background:#f4d46b;
     transform:translateY(-3px);
     box-shadow:0 10px 25px rgba(212,175,55,0.35);
+   }
+.card img{
+
+    transition:transform 0.4s ease;
+
+}
+
+.card:hover img{
+
+    transform:scale(1.08);
+
    }
