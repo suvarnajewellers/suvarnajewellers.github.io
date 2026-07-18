@@ -1,63 +1,33 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    const images = document.querySelectorAll(".gallery img");
+    const galleryImages = document.querySelectorAll(".gallery-img");
 
-    images.forEach(img => {
-        img.addEventListener("click", function () {
-            alert("Full Screen Gallery આગળના સ્ટેપમાં ઉમેરશું.");
+    galleryImages.forEach(function(img){
+
+        img.addEventListener("click", function(){
+
+            const popup = document.createElement("div");
+            popup.className = "image-popup";
+
+            popup.innerHTML = `
+                <span class="close-popup">&times;</span>
+                <img src="${this.src}" class="popup-image" alt="">
+            `;
+
+            document.body.appendChild(popup);
+
+            popup.addEventListener("click", function(e){
+
+                if(
+                    e.target.classList.contains("close-popup") ||
+                    e.target === popup
+                ){
+                    popup.remove();
+                }
+
+            });
+
         });
-    });
-
-});
-// Full Screen Gallery
-
-document.addEventListener("DOMContentLoaded", function(){
-
-const galleryImages = document.querySelectorAll(".gallery-img");
-
-galleryImages.forEach(img => {
-
-    img.onclick = function(){
-
-        let popup = document.createElement("div");
-
-        popup.className = "image-popup";
-
-        popup.innerHTML = `
-            <span class="close-popup">&times;</span>
-            <img src="${this.src}" class="popup-image">
-        `;
-
-        document.body.appendChild(popup);
-
-        popup.querySelector(".close-popup").onclick = function(){
-            popup.remove();
-        };
-
-    };
-
-});
-
-});
-
-galleryImages.forEach(image => {
-
-    image.addEventListener("click", function(){
-
-        const popup = document.createElement("div");
-
-        popup.className = "image-popup";
-
-        popup.innerHTML = `
-            <span class="close-popup">&times;</span>
-            <img src="${this.src}">
-        `;
-
-        document.body.appendChild(popup);
-
-        document.querySelector(".close-popup").onclick = function(){
-            popup.remove();
-        };
 
     });
 
