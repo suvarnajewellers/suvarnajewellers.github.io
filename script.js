@@ -63,7 +63,21 @@ const productId = params.get("id") || "SJ-1001";
 const product = products.find(p => p.id === productId);
 
     document.getElementById("product-name").textContent = product.name;
-    document.getElementById("product-category").textContent = product.category;
+    let categoryName = "";
+
+if (product.category === "gold") {
+    categoryName = "Gold Jewellery";
+} else if (product.category === "silver") {
+    categoryName = "Silver Jewellery";
+} else if (product.category === "rudraksha-mala") {
+    categoryName = "Rudraksha Mala";
+} else if (product.category === "pendants") {
+    categoryName = "Pendant Collection";
+} else if (product.category === "bracelets") {
+    categoryName = "Bracelet Collection";
+}
+
+document.getElementById("product-category").textContent = categoryName;
     document.getElementById("product-code").textContent = product.id;
     document.getElementById("product-metal").textContent = product.metal;
     document.getElementById("product-gross").textContent = product.grossWeight;
