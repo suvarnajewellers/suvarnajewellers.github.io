@@ -1339,3 +1339,24 @@ text-align:center;
     color:#d4af37;
     font-size:20px;
 }
+.premium-badge{
+
+    display:inline-block;
+
+    background:#d4af37;
+
+    color:#1a000d;
+
+    padding:8px 18px;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+    margin-bottom:15px;
+
+}
