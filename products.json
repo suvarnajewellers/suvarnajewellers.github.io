@@ -1,1 +1,12 @@
-
+[
+  {
+    "id": "SJ-1001",
+    "name": "Premium Gold Pendant",
+    "metal": "22K Gold",
+    "grossWeight": "15.410 gm",
+    "netWeight": "14.830 gm",
+    "size": "7 Inch",
+    "image": "gold/gold-jewellery-1.jpg",
+    "description": "Premium handcrafted jewellery by SUVARNA JEWELLERS."
+  }
+]
