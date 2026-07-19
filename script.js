@@ -1,10 +1,33 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    const galleryImages = document.querySelectorAll(".gallery-img");
+document.addEventListener("click", function(e){
 
-    galleryImages.forEach(function(img){
+    if(e.target.classList.contains("gallery-img")){
 
-        img.addEventListener("click", function(){
+        const popup = document.createElement("div");
+        popup.className = "image-popup";
+
+        popup.innerHTML = `
+            <span class="close-popup">&times;</span>
+            <img src="${e.target.src}" class="popup-image">
+        `;
+
+        document.body.appendChild(popup);
+
+        popup.addEventListener("click", function(event){
+
+            if(
+                event.target.classList.contains("close-popup") ||
+                event.target === popup
+            ){
+                popup.remove();
+            }
+
+        });
+
+    }
+
+});
 
             const popup = document.createElement("div");
             popup.className = "image-popup";
