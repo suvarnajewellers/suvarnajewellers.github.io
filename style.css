@@ -1421,5 +1421,38 @@ text-align:center;
     }
 
 }
+/* ===== Mobile Bottom Bar ===== */
 
+.mobile-bottom-bar{
+    position:fixed;
+    left:0;
+    bottom:0;
+    width:100%;
+    display:flex;
+    z-index:9998;
+}
+
+.mobile-bottom-bar a{
+    flex:1;
+    text-align:center;
+    padding:14px;
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+    font-size:16px;
+}
+
+.call-btn{
+    background:#1f1f1f;
+}
+
+.wa-btn{
+    background:#25D366;
+}
+
+@media (min-width:768px){
+    .mobile-bottom-bar{
+        display:none;
+    }
+}
 }
