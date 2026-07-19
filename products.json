@@ -186,17 +186,127 @@
   "image": "rudraksha-mala/rudraksha-mala-11.jpg",
   "description": "Premium handcrafted Rudraksha Mala by SUVARNA JEWELLERS."
 },
-  {
-    "id": "P001",
-    "category": "pendants",
-    "name": "Pendant Collection",
-    "metal": "22K Gold",
-    "grossWeight": "",
-    "netWeight": "",
-    "size": "",
-    "image": "pendants/pendant-1.jpg",
-    "description": "Premium handcrafted Pendant by SUVARNA JEWELLERS."
-  },
+{
+  "id": "P001",
+  "category": "pendants",
+  "name": "Pendant",
+  "metal": "22K Gold",
+  "grossWeight": "",
+  "netWeight": "",
+  "size": "",
+  "image": "pendants/pendant-1.jpg",
+  "description": "Premium handcrafted Pendant by SUVARNA JEWELLERS."
+},
+{
+  "id": "P002",
+  "category": "pendants",
+  "name": "Pendant",
+  "metal": "22K Gold",
+  "grossWeight": "",
+  "netWeight": "",
+  "size": "",
+  "image": "pendants/pendant-2.jpg",
+  "description": "Premium handcrafted Pendant by SUVARNA JEWELLERS."
+},
+{
+  "id": "P003",
+  "category": "pendants",
+  "name": "Pendant",
+  "metal": "22K Gold",
+  "grossWeight": "",
+  "netWeight": "",
+  "size": "",
+  "image": "pendants/pendant-3.jpg",
+  "description": "Premium handcrafted Pendant by SUVARNA JEWELLERS."
+},
+{
+  "id": "P004",
+  "category": "pendants",
+  "name": "Pendant",
+  "metal": "22K Gold",
+  "grossWeight": "",
+  "netWeight": "",
+  "size": "",
+  "image": "pendants/pendant-4.jpg",
+  "description": "Premium handcrafted Pendant by SUVARNA JEWELLERS."
+},
+{
+  "id": "P005",
+  "category": "pendants",
+  "name": "Pendant",
+  "metal": "22K Gold",
+  "grossWeight": "",
+  "netWeight": "",
+  "size": "",
+  "image": "pendants/pendant-5.jpg",
+  "description": "Premium handcrafted Pendant by SUVARNA JEWELLERS."
+},
+{
+  "id": "P006",
+  "category": "pendants",
+  "name": "Pendant",
+  "metal": "22K Gold",
+  "grossWeight": "",
+  "netWeight": "",
+  "size": "",
+  "image": "pendants/pendant-6.jpg",
+  "description": "Premium handcrafted Pendant by SUVARNA JEWELLERS."
+},
+{
+  "id": "P007",
+  "category": "pendants",
+  "name": "Pendant",
+  "metal": "22K Gold",
+  "grossWeight": "",
+  "netWeight": "",
+  "size": "",
+  "image": "pendants/pendant-7.jpg",
+  "description": "Premium handcrafted Pendant by SUVARNA JEWELLERS."
+},
+{
+  "id": "P008",
+  "category": "pendants",
+  "name": "Pendant",
+  "metal": "22K Gold",
+  "grossWeight": "",
+  "netWeight": "",
+  "size": "",
+  "image": "pendants/pendant-8.jpg",
+  "description": "Premium handcrafted Pendant by SUVARNA JEWELLERS."
+},
+{
+  "id": "P009",
+  "category": "pendants",
+  "name": "Pendant",
+  "metal": "22K Gold",
+  "grossWeight": "",
+  "netWeight": "",
+  "size": "",
+  "image": "pendants/pendant-9.jpg",
+  "description": "Premium handcrafted Pendant by SUVARNA JEWELLERS."
+},
+{
+  "id": "P010",
+  "category": "pendants",
+  "name": "Pendant",
+  "metal": "22K Gold",
+  "grossWeight": "",
+  "netWeight": "",
+  "size": "",
+  "image": "pendants/pendant-10.jpg",
+  "description": "Premium handcrafted Pendant by SUVARNA JEWELLERS."
+},
+{
+  "id": "P011",
+  "category": "pendants",
+  "name": "Pendant",
+  "metal": "22K Gold",
+  "grossWeight": "",
+  "netWeight": "",
+  "size": "",
+  "image": "pendants/pendant-11.jpg",
+  "description": "Premium handcrafted Pendant by SUVARNA JEWELLERS."
+},
 {
   "id": "RB001",
   "category": "rudraksha-bracelet",
