@@ -197,15 +197,26 @@
     "image": "pendants/pendant-1.jpg",
     "description": "Premium handcrafted Pendant by SUVARNA JEWELLERS."
   },
-  {
-    "id": "B001",
-    "category": "bracelets",
-    "name": "Bracelet Collection",
-    "metal": "22K Gold",
-    "grossWeight": "",
-    "netWeight": "",
-    "size": "7 Inch",
-    "image": "bracelets/bracelet-1.jpg",
-    "description": "Premium handcrafted Bracelet by SUVARNA JEWELLERS."
-  }
+{
+  "id": "RB001",
+  "category": "rudraksha-bracelet",
+  "name": "Rudraksha Bracelet",
+  "metal": "22K Gold",
+  "grossWeight": "",
+  "netWeight": "",
+  "size": "",
+  "image": "rudraksha-bracelet/rudraksha-bracelet-1.jpg",
+  "description": "Premium handcrafted Rudraksha Bracelet by SUVARNA JEWELLERS."
+},
+{
+  "id": "RB002",
+  "category": "rudraksha-bracelet",
+  "name": "Rudraksha Bracelet",
+  "metal": "22K Gold",
+  "grossWeight": "",
+  "netWeight": "",
+  "size": "",
+  "image": "rudraksha-bracelet/rudraksha-bracelet-2.jpg",
+  "description": "Premium handcrafted Rudraksha Bracelet by SUVARNA JEWELLERS."
+}
 ]
