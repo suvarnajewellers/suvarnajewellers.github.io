@@ -1,36 +1,68 @@
-[
-  {
+[{
     "id": "G001",
     "category": "gold",
-    "name": "Gold Jewellery",
+    "name": "Gold Mala",
     "metal": "22K Gold",
-    "grossWeight": "15.410 gm",
-    "netWeight": "14.830 gm",
-    "size": "7 Inch",
+    "grossWeight": "",
+    "netWeight": "",
+    "size": "",
     "image": "gold/gold-jewellery-1.jpg",
-    "description": "Premium handcrafted Gold Jewellery by SUVARNA JEWELLERS."
+    "description": "Premium handcrafted Gold Mala by SUVARNA JEWELLERS."
   },
   {
     "id": "G002",
     "category": "gold",
-    "name": "Gold Jewellery",
+    "name": "Gold Mala",
     "metal": "22K Gold",
-    "grossWeight": "18.250 gm",
-    "netWeight": "17.900 gm",
-    "size": "7 Inch",
+    "grossWeight": "",
+    "netWeight": "",
+    "size": "",
     "image": "gold/gold-jewellery-2.jpg",
-    "description": "Premium handcrafted Gold Jewellery by SUVARNA JEWELLERS."
+    "description": "Premium handcrafted Gold Mala by SUVARNA JEWELLERS."
   },
   {
     "id": "S001",
     "category": "silver",
-    "name": "Silver Jewellery",
+    "name": "Silver Bracelet",
     "metal": "925 Silver",
     "grossWeight": "",
     "netWeight": "",
     "size": "",
     "image": "silver/silver-jewellery-1.jpg",
-    "description": "Premium handcrafted Silver Jewellery by SUVARNA JEWELLERS."
+    "description": "Premium handcrafted Silver Bracelet by SUVARNA JEWELLERS."
+  },
+  {
+    "id": "S002",
+    "category": "silver",
+    "name": "Silver Bracelet",
+    "metal": "925 Silver",
+    "grossWeight": "",
+    "netWeight": "",
+    "size": "",
+    "image": "silver/silver-jewellery-2.jpg",
+    "description": "Premium handcrafted Silver Bracelet by SUVARNA JEWELLERS."
+  },
+  {
+    "id": "S003",
+    "category": "silver",
+    "name": "Silver Pendant",
+    "metal": "925 Silver",
+    "grossWeight": "",
+    "netWeight": "",
+    "size": "",
+    "image": "silver/silver-jewellery-3.jpg",
+    "description": "Premium handcrafted Silver Pendant by SUVARNA JEWELLERS."
+  },
+  {
+    "id": "S004",
+    "category": "silver",
+    "name": "Silver Bracelet",
+    "metal": "925 Silver",
+    "grossWeight": "",
+    "netWeight": "",
+    "size": "",
+    "image": "silver/silver-jewellery-4.jpg",
+    "description": "Premium handcrafted Silver Bracelet by SUVARNA JEWELLERS."
   },
   {
     "id": "RM001",
