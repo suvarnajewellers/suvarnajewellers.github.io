@@ -1374,3 +1374,25 @@ text-align:center;
 .breadcrumb span{
     margin:0 5px;
 }
+/* Floating WhatsApp */
+
+.floating-whatsapp{
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 65px;
+    height: 65px;
+    z-index: 9999;
+}
+
+.floating-whatsapp img{
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    box-shadow:0 8px 25px rgba(0,0,0,.25);
+    transition:.3s;
+}
+
+.floating-whatsapp img:hover{
+    transform:scale(1.1);
+       }
