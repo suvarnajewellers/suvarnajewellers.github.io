@@ -1456,3 +1456,26 @@ text-align:center;
     }
 }
 }
+/* Scroll To Top */
+
+#scrollTopBtn{
+    display:none;
+    position:fixed;
+    bottom:95px;
+    right:20px;
+    width:50px;
+    height:50px;
+    border:none;
+    border-radius:50%;
+    background:#d4af37;
+    color:#fff;
+    font-size:24px;
+    cursor:pointer;
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+    z-index:9998;
+    transition:.3s;
+}
+
+#scrollTopBtn:hover{
+    transform:scale(1.1);
+   }
