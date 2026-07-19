@@ -89,3 +89,64 @@ document.getElementById("product-category").textContent = categoryName;
     document.getElementById("main-image").src = product.image;
 
 });
+// ===== Dynamic Collection Loader =====
+
+const productGrid = document.getElementById("product-grid");
+
+if (productGrid) {
+
+    fetch("products.json")
+    .then(response => response.json())
+    .then(products => {
+
+        const page = window.location.pathname;
+
+        let currentCategory = "";
+
+        if (page.includes("gold-jewellery")) {
+            currentCategory = "gold";
+        }
+
+        if (page.includes("silver-jewellery")) {
+            currentCategory = "silver";
+        }
+
+        if (page.includes("rudraksha-mala")) {
+            currentCategory = "rudraksha-mala";
+        }
+
+        if (page.includes("pendant")) {
+            currentCategory = "pendants";
+        }
+
+        if (page.includes("bracelet")) {
+            currentCategory = "bracelets";
+        }
+
+        const filteredProducts = products.filter(product =>
+            product.category === currentCategory
+        );
+
+        filteredProducts.forEach(product => {
+
+            productGrid.innerHTML += `
+
+            <div class="card">
+
+                <a href="product.html?id=${product.id}">
+
+                    <img src="${product.image}" alt="${product.name}" class="gallery-img">
+
+                </a>
+
+                <h3>${product.name}</h3>
+
+            </div>
+
+            `;
+
+        });
+
+    });
+
+}
