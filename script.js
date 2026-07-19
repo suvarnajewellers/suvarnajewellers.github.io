@@ -141,6 +141,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if(mainImg) mainImg.src = product.image;
 
+        // ===== WhatsApp Enquiry =====
+
+const whatsappBtn = document.getElementById("whatsapp-btn");
+
+if (whatsappBtn) {
+
+    const phone = "917777991118";
+
+    const message =
+`Hello SUVARNA JEWELLERS,
+
+I am interested in this product.
+
+Product Name: ${product.name}
+Product Code: ${product.id}
+Metal: ${product.metal}
+Gross Weight: ${product.grossWeight}
+Net Weight: ${product.netWeight}
+
+Please share more details.`;
+
+    whatsappBtn.href =
+        `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+    }
+
 
 
     });
