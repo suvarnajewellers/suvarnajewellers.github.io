@@ -548,5 +548,38 @@
   "size": "",
   "image": "rudraksha-bracelet/rudraksha-bracelet-22.jpg",
   "description": "Premium handcrafted Rudraksha Bracelet by SUVARNA JEWELLERS."
-    }
+    },
+    {
+  "id": "TM001",
+  "category": "tulsi-mala",
+  "name": "Tulsi Mala",
+  "metal": "22K Gold",
+  "grossWeight": "",
+  "netWeight": "",
+  "size": "",
+  "image": "tulsi-mala/tulsi-mala-1.jpg",
+  "description": "Premium handcrafted Tulsi Mala by SUVARNA JEWELLERS."
+},
+{
+  "id": "TM002",
+  "category": "tulsi-mala",
+  "name": "Tulsi Mala",
+  "metal": "22K Gold",
+  "grossWeight": "",
+  "netWeight": "",
+  "size": "",
+  "image": "tulsi-mala/tulsi-mala-2.jpg",
+  "description": "Premium handcrafted Tulsi Mala by SUVARNA JEWELLERS."
+},
+{
+  "id": "TM003",
+  "category": "tulsi-mala",
+  "name": "Tulsi Mala",
+  "metal": "22K Gold",
+  "grossWeight": "",
+  "netWeight": "",
+  "size": "",
+  "image": "tulsi-mala/tulsi-mala-3.jpg",
+  "description": "Premium handcrafted Tulsi Mala by SUVARNA JEWELLERS."
+}
 ]
