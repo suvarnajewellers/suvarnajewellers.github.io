@@ -357,3 +357,535 @@ img{
     color:#f5e6b8;
 
 }
+/* ================= ABOUT ================= */
+
+.about{
+
+    padding:90px 8%;
+    background:#120007;
+    text-align:center;
+
+}
+
+
+.about h2{
+
+    font-size:42px;
+    margin:20px 0;
+    color:#fff;
+
+}
+
+
+.about p{
+
+    max-width:900px;
+    margin:15px auto;
+    color:#f5e6b8;
+    font-size:18px;
+
+}
+
+
+.about-points{
+
+    margin-top:35px;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+
+}
+
+
+.about-points span{
+
+    border:1px solid #d4af37;
+    padding:10px 20px;
+    border-radius:30px;
+    color:#d4af37;
+
+}
+
+
+
+/* ================= MANUFACTURING ================= */
+
+
+.manufacturing{
+
+    padding:90px 8%;
+    text-align:center;
+
+}
+
+
+.manufacturing h2{
+
+    font-size:42px;
+    margin:20px 0 40px;
+
+}
+
+
+.manufacturing-grid{
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+
+}
+
+
+.manufacturing-card{
+
+    background:#120007;
+    border:1px solid #d4af37;
+    padding:35px 20px;
+    border-radius:20px;
+
+}
+
+
+.manufacturing-card h3{
+
+    color:#d4af37;
+    margin-bottom:15px;
+
+}
+
+
+.manufacturing-card p{
+
+    color:#f5e6b8;
+
+}
+
+
+
+/* ================= CONTACT ================= */
+
+
+.contact{
+
+    padding:90px 8%;
+    background:#120007;
+    text-align:center;
+
+}
+
+
+.contact h2{
+
+    color:#fff;
+    font-size:42px;
+    margin:20px 0 40px;
+
+}
+
+
+.contact-grid{
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+
+}
+
+
+.contact-box{
+
+    background:#21000f;
+    border:1px solid #d4af37;
+    padding:30px 20px;
+    border-radius:20px;
+
+}
+
+
+.contact-box h3{
+
+    color:#d4af37;
+
+}
+
+
+.contact-box p{
+
+    color:#f5e6b8;
+    margin:15px 0;
+
+}
+
+
+.contact-box a{
+
+    display:inline-block;
+    background:#d4af37;
+    color:#21000f;
+    padding:10px 25px;
+    border-radius:30px;
+    font-weight:bold;
+
+}
+
+
+
+/* ================= FOOTER ================= */
+
+
+.footer{
+
+    background:#080004;
+    text-align:center;
+    padding:60px 20px;
+    border-top:1px solid #d4af37;
+
+}
+
+
+.footer h2{
+
+    color:#d4af37;
+    letter-spacing:3px;
+
+}
+
+
+.footer p{
+
+    color:#f5e6b8;
+    margin:10px;
+
+}
+
+
+.footer-copy{
+
+    margin-top:25px;
+    color:#d4af37;
+
+}
+
+
+
+/* ================= FLOATING WHATSAPP ================= */
+
+
+.floating-whatsapp{
+
+    position:fixed;
+
+    right:20px;
+    bottom:20px;
+
+    width:60px;
+    height:60px;
+
+    background:#25D366;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    z-index:9999;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+
+    animation:whatsappPulse 2s infinite;
+
+}
+
+
+.floating-whatsapp svg{
+
+    width:32px;
+    fill:white;
+
+}
+
+
+@keyframes whatsappPulse{
+
+    50%{
+
+        transform:scale(1.08);
+
+    }
+
+}
+
+
+
+/* ================= MOBILE BOTTOM BAR ================= */
+
+
+.mobile-bottom-bar{
+
+    position:fixed;
+    bottom:0;
+    left:0;
+
+    width:100%;
+
+    display:flex;
+
+    z-index:9998;
+
+}
+
+
+.mobile-bottom-bar a{
+
+    flex:1;
+    padding:14px;
+
+    text-align:center;
+
+    color:white;
+
+    font-weight:bold;
+
+}
+
+
+.call-btn{
+
+    background:#222;
+
+}
+
+
+.wa-btn{
+
+    background:#25D366;
+
+}
+
+
+@media(min-width:768px){
+
+.mobile-bottom-bar{
+
+display:none;
+
+}
+
+}
+
+
+
+/* ================= SCROLL BUTTON ================= */
+
+
+#scrollTopBtn{
+
+    display:none;
+
+    position:fixed;
+
+    right:20px;
+    bottom:90px;
+
+    width:50px;
+    height:50px;
+
+    border-radius:50%;
+
+    border:none;
+
+    background:#d4af37;
+
+    color:#21000f;
+
+    font-size:25px;
+
+    cursor:pointer;
+
+}
+
+
+
+/* ================= IMAGE POPUP ================= */
+
+
+.image-popup{
+
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.95);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    z-index:99999;
+
+}
+
+
+.popup-image{
+
+    max-width:90%;
+    max-height:90%;
+
+}
+
+
+.close-popup{
+
+    position:absolute;
+
+    top:20px;
+    right:30px;
+
+    color:white;
+
+    font-size:45px;
+
+}
+
+
+
+/* ================= PRODUCT PAGE ================= */
+
+
+.product-page{
+
+    width:90%;
+    margin:50px auto;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:50px;
+
+}
+
+
+.product-image img{
+
+    width:100%;
+
+    border-radius:20px;
+
+    border:2px solid #d4af37;
+
+}
+
+
+.product-details h1{
+
+    color:#d4af37;
+    font-size:38px;
+
+}
+
+
+.product-details p{
+
+    color:#f5e6b8;
+    font-size:18px;
+
+}
+
+
+
+/* ================= RESPONSIVE ================= */
+
+
+@media(max-width:1000px){
+
+.collection-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.trust-bar,
+.contact-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+
+@media(max-width:768px){
+
+.navbar{
+
+flex-direction:row;
+
+}
+
+
+.menu-toggle{
+
+display:block;
+
+}
+
+
+.nav-links{
+
+display:none;
+
+position:absolute;
+
+top:70px;
+
+left:0;
+
+width:100%;
+
+background:#120007;
+
+flex-direction:column;
+
+text-align:center;
+
+padding:20px;
+
+}
+
+
+.nav-links.active{
+
+display:flex;
+
+}
+
+
+.hero h2{
+
+font-size:32px;
+
+}
+
+
+.collection-grid,
+.trust-bar,
+.contact-grid,
+.manufacturing-grid,
+.product-page{
+
+grid-template-columns:1fr;
+
+}
+
+
+.about h2,
+.contact h2,
+.manufacturing h2{
+
+font-size:32px;
+
+}
+
+   }
