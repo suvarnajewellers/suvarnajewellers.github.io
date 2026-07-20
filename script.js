@@ -1,250 +1,182 @@
-document.addEventListener("DOMContentLoaded", function(){
+/* =====================================
+   SUVARNA JEWELLERS V5
+   SCRIPT JS
+===================================== */
 
 
-/* ================= MOBILE MENU ================= */
+/* =========================
+   MOBILE MENU
+========================= */
+
 
 const menuToggle = document.getElementById("menu-toggle");
+
 const navLinks = document.querySelector(".nav-links");
 
 
 if(menuToggle && navLinks){
 
+
     menuToggle.addEventListener("click", function(){
+
 
         navLinks.classList.toggle("active");
 
+
     });
+
 
 }
 
 
 
-/* ================= SCROLL TOP ================= */
+/* Close Menu After Click */
+
+
+document.querySelectorAll(".nav-links a")
+.forEach(function(link){
+
+
+    link.addEventListener("click", function(){
+
+
+        if(navLinks){
+
+            navLinks.classList.remove("active");
+
+        }
+
+
+    });
+
+
+});
+
+
+
+/* =========================
+   SCROLL TOP BUTTON
+========================= */
+
 
 const scrollBtn = document.getElementById("scrollTopBtn");
 
 
-if(scrollBtn){
 
 window.addEventListener("scroll", function(){
 
-    if(window.scrollY > 300){
 
-        scrollBtn.style.display="block";
+    if(window.scrollY > 400){
 
-    }else{
 
-        scrollBtn.style.display="none";
+        if(scrollBtn){
+
+            scrollBtn.style.display="block";
+
+        }
+
 
     }
 
+    else{
+
+
+        if(scrollBtn){
+
+            scrollBtn.style.display="none";
+
+        }
+
+
+    }
+
+
 });
 
 
-scrollBtn.addEventListener("click", function(){
 
-    window.scrollTo({
+if(scrollBtn){
 
-        top:0,
-        behavior:"smooth"
+
+    scrollBtn.addEventListener("click", function(){
+
+
+        window.scrollTo({
+
+            top:0,
+
+            behavior:"smooth"
+
+        });
+
 
     });
 
-});
-
 
 }
 
 
 
-/* ================= IMAGE POPUP ================= */
+/* =========================
+   SMOOTH ANCHOR SCROLL
+========================= */
 
 
-document.addEventListener("click", function(e){
+document.querySelectorAll('a[href^="#"]')
+.forEach(function(anchor){
 
 
-if(e.target.classList.contains("gallery-img")){
+    anchor.addEventListener("click", function(e){
 
 
-let popup=document.createElement("div");
-
-popup.className="image-popup";
-
-
-popup.innerHTML=`
-
-<span class="close-popup">
-×
-</span>
-
-<img src="${e.target.src}" class="popup-image">
-
-`;
+        const target =
+        document.querySelector(
+        this.getAttribute("href")
+        );
 
 
-document.body.appendChild(popup);
+        if(target){
 
 
-
-popup.addEventListener("click",function(event){
-
-
-if(
-event.target.classList.contains("close-popup") ||
-event.target===popup
-){
-
-popup.remove();
-
-}
+            e.preventDefault();
 
 
-});
+            target.scrollIntoView({
+
+                behavior:"smooth"
+
+            });
 
 
-}
+        }
 
+
+    });
 
 
 });
 
 
 
+/* =========================
+   YEAR AUTO UPDATE
+========================= */
 
 
-/* ================= PRODUCT IMAGE THUMB ================= */
+const yearElement =
+document.querySelector(".footer-copy");
 
 
-const mainImage=document.getElementById("main-image");
+if(yearElement){
 
-const thumbs=document.querySelectorAll(".thumb");
 
+    const year =
+    new Date().getFullYear();
 
-thumbs.forEach(function(thumb){
 
-
-thumb.addEventListener("click",function(){
-
-
-if(mainImage){
-
-mainImage.src=this.src;
-
-}
-
-
-thumbs.forEach(function(t){
-
-t.classList.remove("active");
-
-});
-
-
-this.classList.add("active");
-
-
-});
-
-
-});
-
-
-
-
-
-/* ================= PRODUCT DATA LOADER ================= */
-
-
-const productGrid=document.getElementById("product-grid");
-
-
-if(productGrid){
-
-
-fetch("products.json")
-
-.then(res=>res.json())
-
-.then(products=>{
-
-
-let page=window.location.pathname;
-
-
-let category="";
-
-
-if(page.includes("gold")){
-
-category="gold";
-
-}
-
-else if(page.includes("silver")){
-
-category="silver";
-
-}
-
-else if(page.includes("rudraksha-mala")){
-
-category="rudraksha-mala";
-
-}
-
-else if(page.includes("pendant")){
-
-category="pendants";
-
-}
-
-else if(page.includes("bracelet")){
-
-category="bracelets";
-
-}
-
-
-
-let filtered=products.filter(item=>item.category===category);
-
-
-
-filtered.forEach(product=>{
-
-
-productGrid.innerHTML += `
-
-<div class="card">
-
-
-<a href="product.html?id=${product.id}">
-
-
-<img src="${product.image}"
-alt="${product.name}"
-class="gallery-img">
-
-
-</a>
-
-
-<h3>${product.name}</h3>
-
-
-</div>
-
-`;
-
-
-});
-
-
-});
+    yearElement.innerHTML =
+    "© " + year +
+    " SUVARNA JEWELLERS. All Rights Reserved.";
 
 
 }
-
-
-
-});
