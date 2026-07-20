@@ -1,585 +1,482 @@
 [
-    {
-    "id": "G001",
-    "category": "gold",
-    "name": "Gold Mala",
-    "metal": "22K Gold",
-    "grossWeight": "",
-    "netWeight": "",
-    "size": "",
-    "image": "gold/gold-jewellery-1.jpg",
-    "description": "Premium handcrafted Gold Mala by SUVARNA JEWELLERS."
-  },
   {
-    "id": "G002",
-    "category": "gold",
-    "name": "Gold Mala",
-    "metal": "22K Gold",
-    "grossWeight": "",
-    "netWeight": "",
-    "size": "",
-    "image": "gold/gold-jewellery-2.jpg",
-    "description": "Premium handcrafted Gold Mala by SUVARNA JEWELLERS."
+    "id": 1,
+    "category": "Gold Jewellery",
+    "name": "Premium Gold Jewellery Collection",
+    "image": "gold-jewellery-1.jpg",
+    "description": "Elegant gold jewellery crafted with premium finishing and timeless design.",
+    "whatsapp": "https://wa.me/917777991118"
   },
+
   {
-    "id": "S001",
-    "category": "silver",
-    "name": "Silver Bracelet",
-    "metal": "925 Silver",
-    "grossWeight": "",
-    "netWeight": "",
-    "size": "",
-    "image": "silver/silver-jewellery-1.jpg",
-    "description": "Premium handcrafted Silver Bracelet by SUVARNA JEWELLERS."
+    "id": 2,
+    "category": "Gold Jewellery",
+    "name": "Luxury Gold Design",
+    "image": "gold-jewellery-2.jpg",
+    "description": "Premium gold jewellery design for special occasions.",
+    "whatsapp": "https://wa.me/917777991118"
   },
+
+
   {
-    "id": "S002",
-    "category": "silver",
-    "name": "Silver Bracelet",
-    "metal": "925 Silver",
-    "grossWeight": "",
-    "netWeight": "",
-    "size": "",
-    "image": "silver/silver-jewellery-2.jpg",
-    "description": "Premium handcrafted Silver Bracelet by SUVARNA JEWELLERS."
+    "id": 3,
+    "category": "Silver Jewellery",
+    "name": "Premium Silver Jewellery",
+    "image": "silver-jewellery-1.jpg",
+    "description": "Beautiful silver jewellery with elegant craftsmanship.",
+    "whatsapp": "https://wa.me/917777991118"
   },
+
+
   {
-    "id": "S003",
-    "category": "silver",
-    "name": "Silver Pendant",
-    "metal": "925 Silver",
-    "grossWeight": "",
-    "netWeight": "",
-    "size": "",
-    "image": "silver/silver-jewellery-3.jpg",
-    "description": "Premium handcrafted Silver Pendant by SUVARNA JEWELLERS."
+    "id": 4,
+    "category": "Silver Jewellery",
+    "name": "Designer Silver Collection",
+    "image": "silver-jewellery-2.jpg",
+    "description": "Stylish silver jewellery collection.",
+    "whatsapp": "https://wa.me/917777991118"
   },
+
+
   {
-    "id": "S004",
-    "category": "silver",
-    "name": "Silver Bracelet",
-    "metal": "925 Silver",
-    "grossWeight": "",
-    "netWeight": "",
-    "size": "",
-    "image": "silver/silver-jewellery-4.jpg",
-    "description": "Premium handcrafted Silver Bracelet by SUVARNA JEWELLERS."
+    "id": 5,
+    "category": "Rudraksha Mala",
+    "name": "Premium Rudraksha Mala",
+    "image": "rudraksha-mala-1.jpg",
+    "description": "Original Rudraksha mala collection with premium quality.",
+    "whatsapp": "https://wa.me/917777991118"
   },
+
+
   {
-    "id": "RM001",
-    "category": "rudraksha-mala",
-    "name": "Rudraksha Mala",
-    "metal": "22K Gold",
-    "grossWeight": "",
-    "netWeight": "",
-    "size": "",
-    "image": "rudraksha-mala/rudraksha-mala-1.jpg",
-    "description": "Premium handcrafted Rudraksha Mala by SUVARNA JEWELLERS."
+    "id": 6,
+    "category": "Tulsi Mala",
+    "name": "Premium Tulsi Mala",
+    "image": "tulsi-mala-1.jpg",
+    "description": "Sacred Tulsi mala designed with purity and elegance.",
+    "whatsapp": "https://wa.me/917777991118"
   },
+
   {
-  "id": "RM002",
-  "category": "rudraksha-mala",
-  "name": "Rudraksha Mala",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "rudraksha-mala/rudraksha-mala-2.jpg",
-  "description": "Premium handcrafted Rudraksha Mala by SUVARNA JEWELLERS."
-},
-{
-  "id": "RM003",
-  "category": "rudraksha-mala",
-  "name": "Rudraksha Mala",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "rudraksha-mala/rudraksha-mala-3.jpg",
-  "description": "Premium handcrafted Rudraksha Mala by SUVARNA JEWELLERS."
-},
-{
-  "id": "RM004",
-  "category": "rudraksha-mala",
-  "name": "Rudraksha Mala",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "rudraksha-mala/rudraksha-mala-4.jpg",
-  "description": "Premium handcrafted Rudraksha Mala by SUVARNA JEWELLERS."
-},
-{
-  "id": "RM005",
-  "category": "rudraksha-mala",
-  "name": "Rudraksha Mala",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "rudraksha-mala/rudraksha-mala-5.jpg",
-  "description": "Premium handcrafted Rudraksha Mala by SUVARNA JEWELLERS."
-},
-{
-  "id": "RM006",
-  "category": "rudraksha-mala",
-  "name": "Rudraksha Mala",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "rudraksha-mala/rudraksha-mala-6.jpg",
-  "description": "Premium handcrafted Rudraksha Mala by SUVARNA JEWELLERS."
-},
-{
-  "id": "RM007",
-  "category": "rudraksha-mala",
-  "name": "Rudraksha Mala",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "rudraksha-mala/rudraksha-mala-7.jpg",
-  "description": "Premium handcrafted Rudraksha Mala by SUVARNA JEWELLERS."
-},
-{
-  "id": "RM008",
-  "category": "rudraksha-mala",
-  "name": "Rudraksha Mala",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "rudraksha-mala/rudraksha-mala-8.jpg",
-  "description": "Premium handcrafted Rudraksha Mala by SUVARNA JEWELLERS."
-},
-{
-  "id": "RM009",
-  "category": "rudraksha-mala",
-  "name": "Rudraksha Mala",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "rudraksha-mala/rudraksha-mala-9.jpg",
-  "description": "Premium handcrafted Rudraksha Mala by SUVARNA JEWELLERS."
-},
-{
-  "id": "RM010",
-  "category": "rudraksha-mala",
-  "name": "Rudraksha Mala",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "rudraksha-mala/rudraksha-mala-10.jpg",
-  "description": "Premium handcrafted Rudraksha Mala by SUVARNA JEWELLERS."
-},
-{
-  "id": "RM011",
-  "category": "rudraksha-mala",
-  "name": "Rudraksha Mala",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "rudraksha-mala/rudraksha-mala-11.jpg",
-  "description": "Premium handcrafted Rudraksha Mala by SUVARNA JEWELLERS."
-},
-{
-  "id": "P001",
-  "category": "pendants",
-  "name": "Pendant",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "pendants/pendant-1.jpg",
-  "description": "Premium handcrafted Pendant by SUVARNA JEWELLERS."
-},
-{
-  "id": "P002",
-  "category": "pendants",
-  "name": "Pendant",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "pendants/pendant-2.jpg",
-  "description": "Premium handcrafted Pendant by SUVARNA JEWELLERS."
-},
-{
-  "id": "P003",
-  "category": "pendants",
-  "name": "Pendant",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "pendants/pendant-3.jpg",
-  "description": "Premium handcrafted Pendant by SUVARNA JEWELLERS."
-},
-{
-  "id": "P004",
-  "category": "pendants",
-  "name": "Pendant",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "pendants/pendant-4.jpg",
-  "description": "Premium handcrafted Pendant by SUVARNA JEWELLERS."
-},
-{
-  "id": "P005",
-  "category": "pendants",
-  "name": "Pendant",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "pendants/pendant-5.jpg",
-  "description": "Premium handcrafted Pendant by SUVARNA JEWELLERS."
-},
-{
-  "id": "P006",
-  "category": "pendants",
-  "name": "Pendant",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "pendants/pendant-6.jpg",
-  "description": "Premium handcrafted Pendant by SUVARNA JEWELLERS."
-},
-{
-  "id": "P007",
-  "category": "pendants",
-  "name": "Pendant",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "pendants/pendant-7.jpg",
-  "description": "Premium handcrafted Pendant by SUVARNA JEWELLERS."
-},
-{
-  "id": "P008",
-  "category": "pendants",
-  "name": "Pendant",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "pendants/pendant-8.jpg",
-  "description": "Premium handcrafted Pendant by SUVARNA JEWELLERS."
-},
-{
-  "id": "P009",
-  "category": "pendants",
-  "name": "Pendant",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "pendants/pendant-9.jpg",
-  "description": "Premium handcrafted Pendant by SUVARNA JEWELLERS."
-},
-{
-  "id": "P010",
-  "category": "pendants",
-  "name": "Pendant",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "pendants/pendant-10.jpg",
-  "description": "Premium handcrafted Pendant by SUVARNA JEWELLERS."
-},
-{
-  "id": "P011",
-  "category": "pendants",
-  "name": "Pendant",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "pendants/pendant-11.jpg",
-  "description": "Premium handcrafted Pendant by SUVARNA JEWELLERS."
-},
-{
-  "id": "RB001",
-  "category": "rudraksha-bracelet",
-  "name": "Rudraksha Bracelet",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "rudraksha-bracelet/rudraksha-bracelet-1.jpg",
-  "description": "Premium handcrafted Rudraksha Bracelet by SUVARNA JEWELLERS."
-},
-{
-  "id": "RB002",
-  "category": "rudraksha-bracelet",
-  "name": "Rudraksha Bracelet",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "rudraksha-bracelet/rudraksha-bracelet-2.jpg",
-  "description": "Premium handcrafted Rudraksha Bracelet by SUVARNA JEWELLERS."
-},
-    {
-  "id": "RB003",
-  "category": "rudraksha-bracelet",
-  "name": "Rudraksha Bracelet",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "rudraksha-bracelet/rudraksha-bracelet-3.jpg",
-  "description": "Premium handcrafted Rudraksha Bracelet by SUVARNA JEWELLERS."
-},
-{
-  "id": "RB004",
-  "category": "rudraksha-bracelet",
-  "name": "Rudraksha Bracelet",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "rudraksha-bracelet/rudraksha-bracelet-4.jpg",
-  "description": "Premium handcrafted Rudraksha Bracelet by SUVARNA JEWELLERS."
-},
-{
-  "id": "RB005",
-  "category": "rudraksha-bracelet",
-  "name": "Rudraksha Bracelet",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "rudraksha-bracelet/rudraksha-bracelet-5.jpg",
-  "description": "Premium handcrafted Rudraksha Bracelet by SUVARNA JEWELLERS."
-},
-{
-  "id": "RB006",
-  "category": "rudraksha-bracelet",
-  "name": "Rudraksha Bracelet",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "rudraksha-bracelet/rudraksha-bracelet-6.jpg",
-  "description": "Premium handcrafted Rudraksha Bracelet by SUVARNA JEWELLERS."
-},
-{
-  "id": "RB007",
-  "category": "rudraksha-bracelet",
-  "name": "Rudraksha Bracelet",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "rudraksha-bracelet/rudraksha-bracelet-7.jpg",
-  "description": "Premium handcrafted Rudraksha Bracelet by SUVARNA JEWELLERS."
-},
-    {
-  "id": "RB008",
-  "category": "rudraksha-bracelet",
-  "name": "Rudraksha Bracelet",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "rudraksha-bracelet/rudraksha-bracelet-8.jpg",
-  "description": "Premium handcrafted Rudraksha Bracelet by SUVARNA JEWELLERS."
-},
-{
-  "id": "RB009",
-  "category": "rudraksha-bracelet",
-  "name": "Rudraksha Bracelet",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "rudraksha-bracelet/rudraksha-bracelet-9.jpg",
-  "description": "Premium handcrafted Rudraksha Bracelet by SUVARNA JEWELLERS."
-},
-{
-  "id": "RB010",
-  "category": "rudraksha-bracelet",
-  "name": "Rudraksha Bracelet",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "rudraksha-bracelet/rudraksha-bracelet-10.jpg",
-  "description": "Premium handcrafted Rudraksha Bracelet by SUVARNA JEWELLERS."
-},
-{
-  "id": "RB011",
-  "category": "rudraksha-bracelet",
-  "name": "Rudraksha Bracelet",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "rudraksha-bracelet/rudraksha-bracelet-11.jpg",
-  "description": "Premium handcrafted Rudraksha Bracelet by SUVARNA JEWELLERS."
-},
-{
-  "id": "RB012",
-  "category": "rudraksha-bracelet",
-  "name": "Rudraksha Bracelet",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "rudraksha-bracelet/rudraksha-bracelet-12.jpg",
-  "description": "Premium handcrafted Rudraksha Bracelet by SUVARNA JEWELLERS."
-},
-{
-  "id": "RB013",
-  "category": "rudraksha-bracelet",
-  "name": "Rudraksha Bracelet",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "rudraksha-bracelet/rudraksha-bracelet-13.jpg",
-  "description": "Premium handcrafted Rudraksha Bracelet by SUVARNA JEWELLERS."
-},
-{
-  "id": "RB014",
-  "category": "rudraksha-bracelet",
-  "name": "Rudraksha Bracelet",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "rudraksha-bracelet/rudraksha-bracelet-14.jpg",
-  "description": "Premium handcrafted Rudraksha Bracelet by SUVARNA JEWELLERS."
-},
-{
-  "id": "RB015",
-  "category": "rudraksha-bracelet",
-  "name": "Rudraksha Bracelet",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "rudraksha-bracelet/rudraksha-bracelet-15.jpg",
-  "description": "Premium handcrafted Rudraksha Bracelet by SUVARNA JEWELLERS."
-},
-{
-  "id": "RB016",
-  "category": "rudraksha-bracelet",
-  "name": "Rudraksha Bracelet",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "rudraksha-bracelet/rudraksha-bracelet-16.jpg",
-  "description": "Premium handcrafted Rudraksha Bracelet by SUVARNA JEWELLERS."
-},
-{
-  "id": "RB017",
-  "category": "rudraksha-bracelet",
-  "name": "Rudraksha Bracelet",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "rudraksha-bracelet/rudraksha-bracelet-17.jpg",
-  "description": "Premium handcrafted Rudraksha Bracelet by SUVARNA JEWELLERS."
-},
-{
-  "id": "RB018",
-  "category": "rudraksha-bracelet",
-  "name": "Rudraksha Bracelet",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "rudraksha-bracelet/rudraksha-bracelet-18.jpg",
-  "description": "Premium handcrafted Rudraksha Bracelet by SUVARNA JEWELLERS."
-},
-{
-  "id": "RB019",
-  "category": "rudraksha-bracelet",
-  "name": "Rudraksha Bracelet",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "rudraksha-bracelet/rudraksha-bracelet-19.jpg",
-  "description": "Premium handcrafted Rudraksha Bracelet by SUVARNA JEWELLERS."
-},
-{
-  "id": "RB020",
-  "category": "rudraksha-bracelet",
-  "name": "Rudraksha Bracelet",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "rudraksha-bracelet/rudraksha-bracelet-20.jpg",
-  "description": "Premium handcrafted Rudraksha Bracelet by SUVARNA JEWELLERS."
-},
-{
-  "id": "RB021",
-  "category": "rudraksha-bracelet",
-  "name": "Rudraksha Bracelet",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "rudraksha-bracelet/rudraksha-bracelet-21.jpg",
-  "description": "Premium handcrafted Rudraksha Bracelet by SUVARNA JEWELLERS."
-},
-{
-  "id": "RB022",
-  "category": "rudraksha-bracelet",
-  "name": "Rudraksha Bracelet",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "rudraksha-bracelet/rudraksha-bracelet-22.jpg",
-  "description": "Premium handcrafted Rudraksha Bracelet by SUVARNA JEWELLERS."
-    },
-    {
-  "id": "TM001",
-  "category": "tulsi-mala",
-  "name": "Tulsi Mala",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "tulsi-mala/tulsi-mala-1.jpg",
-  "description": "Premium handcrafted Tulsi Mala by SUVARNA JEWELLERS."
-},
-{
-  "id": "TM002",
-  "category": "tulsi-mala",
-  "name": "Tulsi Mala",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "tulsi-mala/tulsi-mala-2.jpg",
-  "description": "Premium handcrafted Tulsi Mala by SUVARNA JEWELLERS."
-},
-{
-  "id": "TM003",
-  "category": "tulsi-mala",
-  "name": "Tulsi Mala",
-  "metal": "22K Gold",
-  "grossWeight": "",
-  "netWeight": "",
-  "size": "",
-  "image": "tulsi-mala/tulsi-mala-3.jpg",
-  "description": "Premium handcrafted Tulsi Mala by SUVARNA JEWELLERS."
-}
-]
+    "id": 7,
+    "category": "Rudraksha Bracelet",
+    "name": "Premium Rudraksha Bracelet",
+    "image": "rudraksha-bracelet-1.jpg",
+    "description": "Premium Rudraksha bracelet collection with elegant finishing.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 8,
+    "category": "Rudraksha Bracelet",
+    "name": "Designer Rudraksha Bracelet",
+    "image": "rudraksha-bracelet-2.jpg",
+    "description": "Stylish Rudraksha bracelet designed for spiritual elegance.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 9,
+    "category": "Pendant Collection",
+    "name": "Premium Pendant Collection",
+    "image": "pendant-1.jpg",
+    "description": "Luxury pendant designs crafted with premium quality.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 10,
+    "category": "Pendant Collection",
+    "name": "Designer Pendant",
+    "image": "pendant-2.jpg",
+    "description": "Elegant pendant collection for modern jewellery lovers.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 11,
+    "category": "Rudraksha Mala",
+    "name": "Premium Rudraksha Mala Design",
+    "image": "rudraksha-mala-2.jpg",
+    "description": "Beautiful Rudraksha mala collection with premium beads.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 12,
+    "category": "Tulsi Mala",
+    "name": "Designer Tulsi Mala",
+    "image": "tulsi-mala-2.jpg",
+    "description": "Traditional Tulsi mala with premium craftsmanship.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 13,
+    "category": "Gold Jewellery",
+    "name": "Classic Gold Jewellery Design",
+    "image": "gold-jewellery-3.jpg",
+    "description": "Classic gold jewellery design with premium finishing.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 14,
+    "category": "Gold Jewellery",
+    "name": "Royal Gold Collection",
+    "image": "gold-jewellery-4.jpg",
+    "description": "Royal style gold jewellery crafted for premium customers.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 15,
+    "category": "Gold Jewellery",
+    "name": "Elegant Gold Ornament",
+    "image": "gold-jewellery-5.jpg",
+    "description": "Elegant gold ornament with beautiful craftsmanship.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 16,
+    "category": "Gold Jewellery",
+    "name": "Premium Gold Collection",
+    "image": "gold-jewellery-6.jpg",
+    "description": "Premium manufacturer collection from Suvarna Jewellers.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 17,
+    "category": "Silver Jewellery",
+    "name": "Designer Silver Ornament",
+    "image": "silver-jewellery-3.jpg",
+    "description": "Designer silver jewellery with modern finishing.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 18,
+    "category": "Silver Jewellery",
+    "name": "Premium Silver Collection",
+    "image": "silver-jewellery-4.jpg",
+    "description": "Premium silver jewellery collection for retailers and customers.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 19,
+    "category": "Bracelet Collection",
+    "name": "Premium Bracelet Design",
+    "image": "bracelet-1.jpg",
+    "description": "Elegant bracelet collection with premium craftsmanship.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 20,
+    "category": "Bracelet Collection",
+    "name": "Luxury Bracelet Collection",
+    "image": "bracelet-2.jpg",
+    "description": "Modern luxury bracelets designed with style and elegance.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 21,
+    "category": "Pendant Collection",
+    "name": "Royal Pendant Design",
+    "image": "pendant-3.jpg",
+    "description": "Premium pendant designs for special occasions.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 22,
+    "category": "Pendant Collection",
+    "name": "Elegant Pendant Collection",
+    "image": "pendant-4.jpg",
+    "description": "Beautiful pendant collection with premium finishing.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 23,
+    "category": "Rudraksha Mala",
+    "name": "Designer Rudraksha Mala",
+    "image": "rudraksha-mala-3.jpg",
+    "description": "Premium Rudraksha mala collection with traditional value.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 24,
+    "category": "Tulsi Mala",
+    "name": "Premium Tulsi Mala Collection",
+    "image": "tulsi-mala-3.jpg",
+    "description": "Pure Tulsi mala collection with elegant design.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 25,
+    "category": "Gold Jewellery",
+    "name": "Traditional Gold Design",
+    "image": "gold-jewellery-7.jpg",
+    "description": "Traditional gold jewellery design with premium craftsmanship.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 26,
+    "category": "Gold Jewellery",
+    "name": "Modern Gold Collection",
+    "image": "gold-jewellery-8.jpg",
+    "description": "Modern gold jewellery collection with elegant style.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 27,
+    "category": "Silver Jewellery",
+    "name": "Classic Silver Design",
+    "image": "silver-jewellery-5.jpg",
+    "description": "Classic silver jewellery designed with quality finishing.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 28,
+    "category": "Silver Jewellery",
+    "name": "Premium Silver Ornament",
+    "image": "silver-jewellery-6.jpg",
+    "description": "Premium silver ornament collection.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 29,
+    "category": "Bracelet Collection",
+    "name": "Designer Bracelet",
+    "image": "bracelet-3.jpg",
+    "description": "Designer bracelet collection with premium look.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 30,
+    "category": "Bracelet Collection",
+    "name": "Royal Bracelet Design",
+    "image": "bracelet-4.jpg",
+    "description": "Royal bracelet design crafted for elegance.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 31,
+    "category": "Pendant Collection",
+    "name": "Premium Gold Pendant",
+    "image": "pendant-5.jpg",
+    "description": "Premium pendant design with elegant finishing.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 32,
+    "category": "Pendant Collection",
+    "name": "Designer Pendant Collection",
+    "image": "pendant-6.jpg",
+    "description": "Stylish pendant collection for premium jewellery lovers.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 33,
+    "category": "Rudraksha Mala",
+    "name": "Original Rudraksha Mala",
+    "image": "rudraksha-mala-4.jpg",
+    "description": "Premium Rudraksha mala collection with spiritual elegance.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 34,
+    "category": "Rudraksha Mala",
+    "name": "Luxury Rudraksha Mala",
+    "image": "rudraksha-mala-5.jpg",
+    "description": "Beautiful Rudraksha mala designed with premium quality beads.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 35,
+    "category": "Tulsi Mala",
+    "name": "Pure Tulsi Mala",
+    "image": "tulsi-mala-4.jpg",
+    "description": "Traditional Tulsi mala with premium craftsmanship.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 36,
+    "category": "Bracelet Collection",
+    "name": "Premium Rudraksha Bracelet",
+    "image": "rudraksha-bracelet-3.jpg",
+    "description": "Elegant Rudraksha bracelet collection.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 37,
+    "category": "Gold Jewellery",
+    "name": "Luxury Gold Jewellery",
+    "image": "gold-jewellery-9.jpg",
+    "description": "Luxury gold jewellery collection with premium finishing.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 38,
+    "category": "Gold Jewellery",
+    "name": "Exclusive Gold Design",
+    "image": "gold-jewellery-10.jpg",
+    "description": "Exclusive gold designs crafted with modern elegance.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 39,
+    "category": "Silver Jewellery",
+    "name": "Elegant Silver Collection",
+    "image": "silver-jewellery-7.jpg",
+    "description": "Elegant silver jewellery collection with fine craftsmanship.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 40,
+    "category": "Silver Jewellery",
+    "name": "Designer Silver Jewellery",
+    "image": "silver-jewellery-8.jpg",
+    "description": "Premium designer silver jewellery for every occasion.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 41,
+    "category": "Pendant Collection",
+    "name": "Royal Pendant Design",
+    "image": "pendant-7.jpg",
+    "description": "Royal pendant design with premium quality.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 42,
+    "category": "Bracelet Collection",
+    "name": "Luxury Bracelet Design",
+    "image": "bracelet-5.jpg",
+    "description": "Luxury bracelet collection with stylish finishing.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 43,
+    "category": "Rudraksha Mala",
+    "name": "Premium Rudraksha Collection",
+    "image": "rudraksha-mala-6.jpg",
+    "description": "Premium Rudraksha mala collection with traditional elegance.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 44,
+    "category": "Rudraksha Mala",
+    "name": "Designer Rudraksha Mala",
+    "image": "rudraksha-mala-7.jpg",
+    "description": "Designer Rudraksha mala crafted with quality beads.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 45,
+    "category": "Tulsi Mala",
+    "name": "Premium Tulsi Collection",
+    "image": "tulsi-mala-5.jpg",
+    "description": "Pure Tulsi mala collection with elegant finishing.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 46,
+    "category": "Pendant Collection",
+    "name": "Premium Designer Pendant",
+    "image": "pendant-8.jpg",
+    "description": "Premium designer pendant collection.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 47,
+    "category": "Bracelet Collection",
+    "name": "Premium Bracelet Collection",
+    "image": "bracelet-6.jpg",
+    "description": "Stylish premium bracelet collection.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 48,
+    "category": "Bracelet Collection",
+    "name": "Exclusive Bracelet Design",
+    "image": "bracelet-7.jpg",
+    "description": "Exclusive bracelet design with luxury finishing.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 49,
+    "category": "Gold Jewellery",
+    "name": "Exclusive Gold Collection",
+    "image": "gold-jewellery-11.jpg",
+    "description": "Exclusive gold jewellery collection with premium craftsmanship.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 50,
+    "category": "Silver Jewellery",
+    "name": "Luxury Silver Collection",
+    "image": "silver-jewellery-9.jpg",
+    "description": "Luxury silver jewellery collection designed with elegance.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 51,
+    "category": "Rudraksha Bracelet",
+    "name": "Premium Rudraksha Bracelet Collection",
+    "image": "rudraksha-bracelet-4.jpg",
+    "description": "Premium Rudraksha bracelet collection with spiritual elegance.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 52,
+    "category": "Tulsi Mala",
+    "name": "Exclusive Tulsi Mala",
+    "image": "tulsi-mala-6.jpg",
+    "description": "Exclusive Tulsi mala collection with pure traditional value.",
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
+  {
+    "id": 53,
+    "category": "Pendant Collection",
+    "name": "Premium Pendant Final Collection",
+    "image": "pendant-9.jpg",
+    "description": "Premium pendant collection by Suvarna Jewellers.",
+    "whatsapp": "https://wa.me/917777991118"
+  }
+    ]
