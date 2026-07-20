@@ -6,62 +6,255 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Gold Jewellery | Suvarna Jewellers</title>
+<title>Gold Jewellery | SUVARNA JEWELLERS</title>
+
+<meta name="description"
+content="Premium Gold Jewellery Collection by SUVARNA JEWELLERS">
+
+<meta name="keywords"
+content="Gold Jewellery, Suvarna Jewellers, Gold Manufacturer, Surat">
 
 <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="gallery.css">
 
 </head>
 
 <body>
 
+<!-- HEADER -->
+
+<header class="top-header">
+
+<img src="Logo.png"
+alt="SUVARNA JEWELLERS"
+class="logo-img">
+
+<p class="tagline">
+Trusted Since 2003
+</p>
+
+</header>
+
+<!-- NAVBAR -->
+
 <nav class="navbar">
 
-    <div class="logo">
-        SUVARNA JEWELLERS
-    </div>
+<div class="logo">
+
+<a href="index.html">
+
+SUVARNA JEWELLERS
+
+</a>
+
+</div>
+
+<div class="menu-toggle" id="menu-toggle">
+
+☰
+
+</div>
+
+<ul class="nav-links">
+
+<li><a href="index.html">Home</a></li>
+
+<li><a href="gold-jewellery.html" class="active">
+Gold
+</a></li>
+
+<li><a href="silver-jewellery.html">
+Silver
+</a></li>
+
+<li><a href="rudraksha-mala.html">
+Rudraksha
+</a></li>
+
+<li><a href="tulsi-mala.html">
+Tulsi
+</a></li>
+
+<li><a href="pendant-collection.html">
+Pendant
+</a></li>
+
+<li><a href="bracelet-collection.html">
+Bracelet
+</a></li>
+
+</ul>
 
 </nav>
 
-<section class="about">
+<!-- HERO -->
 
-    <p class="small-title">
-        PREMIUM COLLECTION
-    </p>
+<section class="hero small-hero">
 
-    <h2>
-        Gold Jewellery
-    </h2>
+<div class="hero-content">
 
-    <p>
-        Explore our exclusive Gold Jewellery Collection,
-        crafted with premium quality and elegant finishing.
-    </p>
+<span class="premium-badge">
+
+PREMIUM COLLECTION
+
+</span>
+
+<h1>
+
+Gold Jewellery
+
+</h1>
+
+<p class="hero-description">
+
+Discover premium handcrafted gold jewellery
+manufactured by SUVARNA JEWELLERS with
+excellent finishing and timeless elegance.
+
+</p>
+
+</div>
 
 </section>
 
-    <section class="collections">
+<!-- PRODUCTS -->
 
-    <div id="product-grid" class="collection-grid">
+<section class="collections">
 
-    </div>
+<div class="section-title">
+
+<span class="small-title">
+
+OUR COLLECTION
+
+</span>
+
+<h2>
+
+Premium Gold Jewellery
+
+</h2>
+
+<p>
+
+Choose from our exclusive collection of
+premium gold jewellery.
+
+</p>
+
+</div>
+
+<div
+id="products-grid"
+class="collection-grid">
+
+</div>
 
     </section>
-    
-    <section style="text-align:center; padding:60px 20px;">
+    <!-- WHATSAPP CTA -->
 
-    <a href="https://wa.me/917777991118" class="gallery-btn">
-        WhatsApp Enquiry
+<section class="cta-section">
+
+    <h2>Looking for Premium Gold Jewellery?</h2>
+
+    <p>
+        Contact SUVARNA JEWELLERS directly on WhatsApp for pricing,
+        catalogue and bulk enquiries.
+    </p>
+
+    <a href="https://wa.me/917777991118"
+       target="_blank"
+       class="hero-btn">
+
+       WhatsApp Enquiry
+
     </a>
 
-    <br><br>
+</section>
 
-    <a href="index.html" class="gallery-btn">
-        ← Back to Collections
-    </a>
+<!-- FOOTER -->
 
-    </section>
+<footer class="footer">
+
+    <img src="Logo.png"
+         alt="SUVARNA JEWELLERS"
+         class="logo-img">
+
+    <h2>SUVARNA JEWELLERS</h2>
+
+    <p>Trusted Since 2003</p>
+
+    <p>
+        Premium Gold • Silver • Rudraksha • Tulsi Jewellery Manufacturer
+    </p>
+
+    <p class="footer-copy">
+        © 2026 SUVARNA JEWELLERS. All Rights Reserved.
+    </p>
+
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+
+<a href="https://wa.me/917777991118"
+   target="_blank"
+   class="floating-whatsapp"
+   aria-label="WhatsApp">
+
+💬
+
+</a>
+
+<script>
+
+fetch("products.json")
+
+.then(response => response.json())
+
+.then(products => {
+
+const grid = document.getElementById("products-grid");
+
+const goldProducts = products.filter(
+
+item => item.category === "Gold Jewellery"
+
+);
+
+goldProducts.forEach(product => {
+
+grid.innerHTML += `
+
+<a href="product.html?id=${product.id}"
+class="collection-link">
+
+<div class="card">
+
+<img src="${product.image}"
+alt="${product.name}">
+
+<h3>${product.name}</h3>
+
+<p>${product.description}</p>
+
+</div>
+
+</a>
+
+`;
+
+});
+
+})
+
+.catch(error => {
+
+console.error(error);
+
+});
+
+</script>
+
 <script src="script.js"></script>
-    
+
 </body>
-</html>     
+</html>
