@@ -6,64 +6,231 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pendant Collection | Suvarna Jewellers</title>
+<title>Pendant Collection | SUVARNA JEWELLERS</title>
+
+<meta name="description"
+content="Premium Pendant Collection by SUVARNA JEWELLERS">
+
+<meta name="keywords"
+content="Pendant Collection, Gold Pendant, Silver Pendant, Suvarna Jewellers, Surat">
 
 <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="gallery.css">
 
 </head>
 
 <body>
 
+<header class="top-header">
+
+<img src="Logo.png"
+alt="SUVARNA JEWELLERS"
+class="logo-img">
+
+<p class="tagline">
+Trusted Since 2003
+</p>
+
+</header>
+
 <nav class="navbar">
 
-    <div class="logo">
-        SUVARNA JEWELLERS
-    </div>
+<div class="logo">
+
+<a href="index.html">
+
+SUVARNA JEWELLERS
+
+</a>
+
+</div>
+
+<div class="menu-toggle" id="menu-toggle">
+
+☰
+
+</div>
+
+<ul class="nav-links">
+
+<li><a href="index.html">Home</a></li>
+
+<li><a href="gold-jewellery.html">Gold</a></li>
+
+<li><a href="silver-jewellery.html">Silver</a></li>
+
+<li><a href="rudraksha-mala.html">Rudraksh</a></li>
+
+<li><a href="tulsi-mala.html">Tulsi</a></li>
+
+<li><a href="pendant-collection.html" class="active">Pendant</a></li>
+
+<li><a href="bracelet-collection.html">Bracelet</a></li>
+
+</ul>
 
 </nav>
 
-<section class="about">
+<section class="hero small-hero">
 
-    <p class="small-title">
-        PREMIUM COLLECTION
-    </p>
+<div class="hero-content">
 
-    <h2>
-        Pendant Collection
-    </h2>
+<span class="premium-badge">
 
-    <p>
-        Explore our exclusive Pendant Collection,
-        crafted with premium quality and elegant finishing.
-    </p>
+PREMIUM COLLECTION
+
+</span>
+
+<h1>
+
+Pendant Collection
+
+</h1>
+
+<p class="hero-description">
+
+Explore our exclusive handcrafted pendant collection with premium quality and elegant finishing.
+
+</p>
+
+</div>
 
 </section>
 
-    <section class="collections">
+<section class="collections">
 
-    <div id="product-grid" class="collection-grid">
+<div class="section-title">
 
-    </div>
+<span class="small-title">
 
-</section>
-    
-    <section style="text-align:center; padding:60px 20px;">
+OUR COLLECTION
 
-    <a href="https://wa.me/917777991118" class="gallery-btn">
-        WhatsApp Enquiry
-    </a>
+</span>
 
-    <br><br>
+<h2>
 
-    <a href="index.html" class="gallery-btn">
-        ← Back to Collections
-    </a>
+Premium Pendant Collection
+
+</h2>
+
+<p>
+
+Browse our premium pendant collection manufactured by SUVARNA JEWELLERS.
+
+</p>
+
+</div>
+
+<div id="products-grid" class="collection-grid">
+
+</div>
 
     </section>
+    <!-- WHATSAPP CTA -->
+
+<section class="cta-section">
+
+    <h2>Looking for Premium Pendants?</h2>
+
+    <p>
+        Contact SUVARNA JEWELLERS directly on WhatsApp for pricing,
+        product catalogue and bulk enquiries.
+    </p>
+
+    <a href="https://wa.me/917777991118"
+       target="_blank"
+       class="hero-btn">
+
+        WhatsApp Enquiry
+
+    </a>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+    <img src="Logo.png"
+         alt="SUVARNA JEWELLERS"
+         class="logo-img">
+
+    <h2>SUVARNA JEWELLERS</h2>
+
+    <p>Trusted Since 2003</p>
+
+    <p>
+        Premium Gold • Silver • Rudraksh • Tulsi Jewellery Manufacturer
+    </p>
+
+    <p class="footer-copy">
+        © 2026 SUVARNA JEWELLERS. All Rights Reserved.
+    </p>
+
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+
+<a href="https://wa.me/917777991118"
+   class="floating-whatsapp"
+   target="_blank"
+   aria-label="Chat on WhatsApp">
+
+💬
+
+</a>
+
+<script>
+
+fetch("products.json")
+
+.then(response => response.json())
+
+.then(products => {
+
+const grid = document.getElementById("products-grid");
+
+const pendantProducts = products.filter(
+
+item => item.category === "Pendant Collection"
+
+);
+
+pendantProducts.forEach(product => {
+
+grid.innerHTML += `
+
+<a href="product.html?id=${product.id}"
+class="collection-link">
+
+<div class="card">
+
+<img src="${product.image}"
+alt="${product.name}">
+
+<h3>${product.name}</h3>
+
+<p>${product.description}</p>
+
+</div>
+
+</a>
+
+`;
+
+});
+
+})
+
+.catch(error => {
+
+console.error("Error loading products:", error);
+
+});
+
+</script>
+
+<script src="script.js"></script>
 
 </body>
 
-    </html>     
-
-
+    </html>
