@@ -7,7 +7,6 @@
     "description": "Elegant gold jewellery crafted with premium finishing and timeless design.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 2,
     "category": "Gold Jewellery",
@@ -16,8 +15,6 @@
     "description": "Premium gold jewellery design for special occasions.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
-
   {
     "id": 3,
     "category": "Silver Jewellery",
@@ -26,8 +23,6 @@
     "description": "Beautiful silver jewellery with elegant craftsmanship.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
-
   {
     "id": 4,
     "category": "Silver Jewellery",
@@ -36,8 +31,6 @@
     "description": "Stylish silver jewellery collection.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
-
   {
     "id": 5,
     "category": "Rudraksha Mala",
@@ -46,8 +39,6 @@
     "description": "Original Rudraksha mala collection with premium quality.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
-
   {
     "id": 6,
     "category": "Tulsi Mala",
@@ -56,116 +47,103 @@
     "description": "Sacred Tulsi mala designed with purity and elegance.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 7,
     "category": "Rudraksha Bracelet",
     "name": "Premium Rudraksha Bracelet",
     "image": "rudraksha-bracelet-1.jpg",
-    "description": "Premium Rudraksha bracelet collection with elegant finishing.",
+    "description": "Premium Rudraksha bracelet collection.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 8,
     "category": "Rudraksha Bracelet",
     "name": "Designer Rudraksha Bracelet",
     "image": "rudraksha-bracelet-2.jpg",
-    "description": "Stylish Rudraksha bracelet designed for spiritual elegance.",
+    "description": "Designer Rudraksha bracelet.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 9,
     "category": "Pendant Collection",
     "name": "Premium Pendant Collection",
     "image": "pendant-1.jpg",
-    "description": "Luxury pendant designs crafted with premium quality.",
+    "description": "Luxury pendant collection.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 10,
     "category": "Pendant Collection",
     "name": "Designer Pendant",
     "image": "pendant-2.jpg",
-    "description": "Elegant pendant collection for modern jewellery lovers.",
+    "description": "Elegant pendant collection.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 11,
     "category": "Rudraksha Mala",
     "name": "Premium Rudraksha Mala Design",
     "image": "rudraksha-mala-2.jpg",
-    "description": "Beautiful Rudraksha mala collection with premium beads.",
+    "description": "Premium Rudraksha mala.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 12,
     "category": "Tulsi Mala",
     "name": "Designer Tulsi Mala",
     "image": "tulsi-mala-2.jpg",
-    "description": "Traditional Tulsi mala with premium craftsmanship.",
+    "description": "Traditional Tulsi mala.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 13,
     "category": "Gold Jewellery",
     "name": "Classic Gold Jewellery Design",
     "image": "gold-jewellery-3.jpg",
-    "description": "Classic gold jewellery design with premium finishing.",
+    "description": "Classic gold jewellery.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 14,
     "category": "Gold Jewellery",
     "name": "Royal Gold Collection",
     "image": "gold-jewellery-4.jpg",
-    "description": "Royal style gold jewellery crafted for premium customers.",
+    "description": "Royal gold jewellery.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 15,
     "category": "Gold Jewellery",
     "name": "Elegant Gold Ornament",
     "image": "gold-jewellery-5.jpg",
-    "description": "Elegant gold ornament with beautiful craftsmanship.",
+    "description": "Elegant gold ornament.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 16,
     "category": "Gold Jewellery",
     "name": "Premium Gold Collection",
     "image": "gold-jewellery-6.jpg",
-    "description": "Premium manufacturer collection from Suvarna Jewellers.",
+    "description": "Premium gold collection.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 17,
     "category": "Silver Jewellery",
     "name": "Designer Silver Ornament",
     "image": "silver-jewellery-3.jpg",
-    "description": "Designer silver jewellery with modern finishing.",
+    "description": "Designer silver ornament.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 18,
     "category": "Silver Jewellery",
     "name": "Premium Silver Collection",
     "image": "silver-jewellery-4.jpg",
-    "description": "Premium silver jewellery collection for retailers and customers.",
+    "description": "Premium silver collection.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
-  {
+    {
     "id": 19,
     "category": "Bracelet Collection",
     "name": "Premium Bracelet Design",
@@ -173,7 +151,6 @@
     "description": "Elegant bracelet collection with premium craftsmanship.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 20,
     "category": "Bracelet Collection",
@@ -182,7 +159,6 @@
     "description": "Modern luxury bracelets designed with style and elegance.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 21,
     "category": "Pendant Collection",
@@ -191,7 +167,6 @@
     "description": "Premium pendant designs for special occasions.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 22,
     "category": "Pendant Collection",
@@ -200,7 +175,6 @@
     "description": "Beautiful pendant collection with premium finishing.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 23,
     "category": "Rudraksha Mala",
@@ -209,7 +183,6 @@
     "description": "Premium Rudraksha mala collection with traditional value.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 24,
     "category": "Tulsi Mala",
@@ -218,7 +191,6 @@
     "description": "Pure Tulsi mala collection with elegant design.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 25,
     "category": "Gold Jewellery",
@@ -227,7 +199,6 @@
     "description": "Traditional gold jewellery design with premium craftsmanship.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 26,
     "category": "Gold Jewellery",
@@ -236,7 +207,6 @@
     "description": "Modern gold jewellery collection with elegant style.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 27,
     "category": "Silver Jewellery",
@@ -245,7 +215,6 @@
     "description": "Classic silver jewellery designed with quality finishing.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 28,
     "category": "Silver Jewellery",
@@ -254,7 +223,6 @@
     "description": "Premium silver ornament collection.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 29,
     "category": "Bracelet Collection",
@@ -263,7 +231,6 @@
     "description": "Designer bracelet collection with premium look.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 30,
     "category": "Bracelet Collection",
@@ -272,7 +239,6 @@
     "description": "Royal bracelet design crafted for elegance.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 31,
     "category": "Pendant Collection",
@@ -281,7 +247,6 @@
     "description": "Premium pendant design with elegant finishing.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 32,
     "category": "Pendant Collection",
@@ -290,7 +255,6 @@
     "description": "Stylish pendant collection for premium jewellery lovers.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 33,
     "category": "Rudraksha Mala",
@@ -299,7 +263,6 @@
     "description": "Premium Rudraksha mala collection with spiritual elegance.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 34,
     "category": "Rudraksha Mala",
@@ -308,7 +271,6 @@
     "description": "Beautiful Rudraksha mala designed with premium quality beads.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 35,
     "category": "Tulsi Mala",
@@ -317,17 +279,15 @@
     "description": "Traditional Tulsi mala with premium craftsmanship.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 36,
-    "category": "Bracelet Collection",
+    "category": "Rudraksha Bracelet",
     "name": "Premium Rudraksha Bracelet",
     "image": "rudraksha-bracelet-3.jpg",
     "description": "Elegant Rudraksha bracelet collection.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
-  {
+    {
     "id": 37,
     "category": "Gold Jewellery",
     "name": "Luxury Gold Jewellery",
@@ -335,7 +295,6 @@
     "description": "Luxury gold jewellery collection with premium finishing.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 38,
     "category": "Gold Jewellery",
@@ -344,7 +303,6 @@
     "description": "Exclusive gold designs crafted with modern elegance.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 39,
     "category": "Silver Jewellery",
@@ -353,43 +311,38 @@
     "description": "Elegant silver jewellery collection with fine craftsmanship.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 40,
     "category": "Silver Jewellery",
     "name": "Designer Silver Jewellery",
     "image": "silver-jewellery-8.jpg",
-    "description": "Premium designer silver jewellery for every occasion.",
+    "description": "Premium designer silver jewellery.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 41,
     "category": "Pendant Collection",
     "name": "Royal Pendant Design",
     "image": "pendant-7.jpg",
-    "description": "Royal pendant design with premium quality.",
+    "description": "Royal pendant collection.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 42,
     "category": "Bracelet Collection",
     "name": "Luxury Bracelet Design",
     "image": "bracelet-5.jpg",
-    "description": "Luxury bracelet collection with stylish finishing.",
+    "description": "Luxury bracelet collection.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 43,
     "category": "Rudraksha Mala",
     "name": "Premium Rudraksha Collection",
     "image": "rudraksha-mala-6.jpg",
-    "description": "Premium Rudraksha mala collection with traditional elegance.",
+    "description": "Premium Rudraksha mala collection.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 44,
     "category": "Rudraksha Mala",
@@ -398,16 +351,14 @@
     "description": "Designer Rudraksha mala crafted with quality beads.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 45,
     "category": "Tulsi Mala",
     "name": "Premium Tulsi Collection",
     "image": "tulsi-mala-5.jpg",
-    "description": "Pure Tulsi mala collection with elegant finishing.",
+    "description": "Pure Tulsi mala collection.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 46,
     "category": "Pendant Collection",
@@ -416,67 +367,60 @@
     "description": "Premium designer pendant collection.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 47,
     "category": "Bracelet Collection",
     "name": "Premium Bracelet Collection",
     "image": "bracelet-6.jpg",
-    "description": "Stylish premium bracelet collection.",
+    "description": "Premium bracelet collection.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 48,
     "category": "Bracelet Collection",
     "name": "Exclusive Bracelet Design",
     "image": "bracelet-7.jpg",
-    "description": "Exclusive bracelet design with luxury finishing.",
+    "description": "Exclusive bracelet design.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 49,
     "category": "Gold Jewellery",
     "name": "Exclusive Gold Collection",
     "image": "gold-jewellery-11.jpg",
-    "description": "Exclusive gold jewellery collection with premium craftsmanship.",
+    "description": "Exclusive gold jewellery collection.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 50,
     "category": "Silver Jewellery",
     "name": "Luxury Silver Collection",
     "image": "silver-jewellery-9.jpg",
-    "description": "Luxury silver jewellery collection designed with elegance.",
+    "description": "Luxury silver jewellery collection.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 51,
     "category": "Rudraksha Bracelet",
     "name": "Premium Rudraksha Bracelet Collection",
     "image": "rudraksha-bracelet-4.jpg",
-    "description": "Premium Rudraksha bracelet collection with spiritual elegance.",
+    "description": "Premium Rudraksha bracelet collection.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 52,
     "category": "Tulsi Mala",
     "name": "Exclusive Tulsi Mala",
     "image": "tulsi-mala-6.jpg",
-    "description": "Exclusive Tulsi mala collection with pure traditional value.",
+    "description": "Exclusive Tulsi mala collection.",
     "whatsapp": "https://wa.me/917777991118"
   },
-
   {
     "id": 53,
     "category": "Pendant Collection",
     "name": "Premium Pendant Final Collection",
     "image": "pendant-9.jpg",
-    "description": "Premium pendant collection by Suvarna Jewellers.",
+    "description": "Premium pendant collection by SUVARNA JEWELLERS.",
     "whatsapp": "https://wa.me/917777991118"
   }
     ]
