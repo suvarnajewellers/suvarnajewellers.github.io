@@ -3,8 +3,8 @@ backend:
   repo: suvarnajewellers/suvarnajewellers.github.io
   branch: main
 
-media_folder: ""
-public_folder: "/"
+media_folder: "images/products"
+public_folder: "/images/products"
 
 collections:
   - name: "products"
@@ -14,5 +14,42 @@ collections:
         label: "Products"
         name: "products"
         format: "json"
+
         fields:
-          - {label: "Products", name: "products", widget: "list"}
+          - label: "Products"
+            name: "products"
+            widget: "list"
+
+            fields:
+
+              - label: "Product ID"
+                name: "id"
+                widget: "number"
+
+              - label: "Category"
+                name: "category"
+                widget: "select"
+                options:
+                  - Gold Jewellery
+                  - Silver Jewellery
+                  - Rudraksha Mala
+                  - Rudraksha Bracelet
+                  - Pendant Collection
+                  - Tulsi Mala
+                  - Bracelet Collection
+
+              - label: "Product Name"
+                name: "name"
+                widget: "string"
+
+              - label: "Product Image"
+                name: "image"
+                widget: "image"
+
+              - label: "Description"
+                name: "description"
+                widget: "text"
+
+              - label: "WhatsApp"
+                name: "whatsapp"
+                widget: "string"
