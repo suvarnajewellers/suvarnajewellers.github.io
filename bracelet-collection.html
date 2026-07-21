@@ -120,7 +120,7 @@ Browse our exclusive bracelet collection manufactured by SUVARNA JEWELLERS.
 
 </div>
 
-<div id="products-grid" class="collection-grid">
+<div id="product-grid" class="collection-grid">
 
 </div>
 
@@ -187,13 +187,13 @@ fetch("products.json")
 
 .then(products => {
 
-const grid = document.getElementById("products-grid");
+const grid = document.getElementById("product-grid");
 
 const braceletProducts = products.filter(
 
 item =>
 item.category === "Bracelet Collection" ||
-item.category === "Rudraksh Bracelet"
+item.category === "Rudraksha Bracelet"
 
 );
 
