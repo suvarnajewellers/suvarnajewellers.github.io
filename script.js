@@ -276,3 +276,14 @@ window.addEventListener("scroll", () => {
     progressBar.style.width = progress + "%";
 
 });
+const heroVideo = document.getElementById("heroVideo");
+const heroImage = document.getElementById("heroImage");
+
+if (heroVideo) {
+
+    heroVideo.addEventListener("error", function () {
+        heroVideo.style.display = "none";
+        heroImage.style.display = "block";
+    });
+
+}
