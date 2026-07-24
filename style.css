@@ -1663,3 +1663,26 @@ section h2{
     transform:translateY(0);
 
 }
+/* =========================
+   SCROLL PROGRESS BAR
+========================= */
+
+.scroll-progress{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:0%;
+
+    height:3px;
+
+    background:linear-gradient(90deg,#d4af37,#f5e6b8);
+
+    z-index:10000;
+
+    transition:width .1s linear;
+
+}
