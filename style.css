@@ -440,15 +440,19 @@ img{
 
 .hero-description{
 
-    color:var(--light-gold);
+    max-width:760px;
 
-    font-size:19px;
+    margin:0 auto 45px;
 
-    max-width:850px;
+    color:#f4e7b0;
 
-    margin:auto;
+    font-size:20px;
 
-    margin-bottom:40px;
+    line-height:1.9;
+
+    letter-spacing:.4px;
+
+    text-shadow:0 2px 8px rgba(0,0,0,.35);
 
 }
 
@@ -568,23 +572,31 @@ img{
 
 .stat-box{
 
+    padding:28px 20px;
 
-    padding:25px 15px;
+    background:rgba(255,255,255,.06);
 
+    border:1px solid rgba(212,175,55,.25);
 
-    background:
-    rgba(255,255,255,.05);
+    border-radius:20px;
 
+    backdrop-filter:blur(14px);
 
-    border:
-    1px solid rgba(212,175,55,.4);
+    -webkit-backdrop-filter:blur(14px);
 
+    box-shadow:0 12px 35px rgba(0,0,0,.25);
 
-    border-radius:18px;
+    transition:.35s ease;
 
+}
 
-    backdrop-filter:blur(10px);
+.stat-box:hover{
 
+    transform:translateY(-8px);
+
+    border-color:var(--gold);
+
+    box-shadow:0 18px 45px rgba(212,175,55,.18);
 
 }
 
