@@ -478,6 +478,7 @@ img{
     background:var(--gold);
 
     color:var(--dark);
+   backdrop-filter:blur(8px);
 
 }
 
@@ -495,7 +496,9 @@ img{
 
 .explore-btn:hover{
 
-    transform:translateY(-4px);
+    transform:translateY(-5px) scale(1.03);
+
+    box-shadow:0 15px 35px rgba(212,175,55,.35);
 
 }
 
@@ -1354,61 +1357,9 @@ section h2{
 
 }
 
-
-
-/* =========================
-   FLOATING WHATSAPP
-========================= */
-
-
-.floating-whatsapp{
-
-    position:fixed;
-
-    right:25px;
-
-    bottom:90px;
-
-
-    width:60px;
-
-    height:60px;
-
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-
-    border-radius:50%;
-
-
-    background:#25D366;
-
-
-    color:#ffffff;
-
-
-    font-size:30px;
-
-
-    z-index:999;
-
-
-    box-shadow:
-
-    0 10px 30px rgba(0,0,0,.4);
-
-}
-
-
-
 /* =========================
    MOBILE BOTTOM BAR
 ========================= */
-
 
 .mobile-bottom-bar{
 
@@ -1602,59 +1553,7 @@ section h2{
     border-bottom:1px solid rgba(212,175,55,.25);
 
    }
-/* =========================
-   SUVARNA V2.0 Hero Upgrade
-========================= */
 
-.hero{
-    position:relative;
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    overflow:hidden;
-    background:
-        radial-gradient(circle at top, rgba(212,175,55,.15), transparent 45%),
-        linear-gradient(180deg,#050505,#140a02 55%,#050505);
-}
-
-.hero::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:
-        linear-gradient(90deg,
-        transparent,
-        rgba(212,175,55,.08),
-        transparent);
-    animation:goldSweep 8s linear infinite;
-}
-
-@keyframes goldSweep{
-    from{
-        transform:translateX(-100%);
-    }
-    to{
-        transform:translateX(100%);
-    }
-}
-
-.hero-content{
-    position:relative;
-    z-index:2;
-    animation:heroReveal 1.5s ease;
-}
-
-@keyframes heroReveal{
-    from{
-        opacity:0;
-        transform:translateY(40px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
 /* =========================
    SUVARNA V2.0 Product Cards
 ========================= */
@@ -1671,11 +1570,11 @@ section h2{
 }
 
 .card img{
-
     width:100%;
-    display:block;
+    height:280px;
+    object-fit:cover;
     transition:transform .6s ease;
-
+    border-bottom:1px solid rgba(212,175,55,.15);
 }
 
 .card:hover{
