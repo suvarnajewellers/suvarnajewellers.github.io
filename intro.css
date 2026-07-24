@@ -28,6 +28,8 @@
 .intro-content{
     text-align:center;
     padding:20px;
+   position: relative;
+z-index: 2;
     animation:introFade 1.2s ease;
 }
 
@@ -59,14 +61,15 @@
 #luxury-intro::before{
     content:"";
     position:absolute;
-    width:420px;
-    height:420px;
+    width:500px;
+    height:500px;
     border-radius:50%;
-    background:radial-gradient(
-        rgba(212,175,55,.18),
-        transparent 70%
-    );
+    background:radial-gradient(circle,
+        rgba(212,175,55,.15) 0%,
+        rgba(212,175,55,.05) 45%,
+        transparent 75%);
     animation:pulseGlow 4s infinite;
+    z-index:1;
 }
 
 @keyframes introFade{
