@@ -85,16 +85,27 @@ z-index: 2;
 
 @keyframes logoFloat{
 
-    0%,100%{
-        transform:translateY(0);
+    0%{
+        opacity:0;
+        transform:scale(0.82);
     }
 
-    50%{
-        transform:translateY(-6px);
+    25%{
+        opacity:1;
+        transform:scale(1);
+    }
+
+    70%{
+        opacity:1;
+        transform:scale(1.05);
+    }
+
+    100%{
+        opacity:1;
+        transform:scale(1.08);
     }
 
 }
-
 @keyframes pulseGlow{
     0%,100%{
         transform:scale(.9);
