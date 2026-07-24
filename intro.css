@@ -36,21 +36,20 @@ z-index: 2;
 .intro-logo{
     display:block;
     width:180px;
-    max-width:75%;
     height:auto;
-    margin:0 auto 30px;
-    animation:logoFloat 3s ease-in-out infinite;
+    margin:0 auto;
+    padding:0;
 }
 
-.intro-content h2{
-    margin:0;
-    color:#d4af37;
-    font-size:28px;
-    font-weight:600;
-    letter-spacing:1px;
-    text-transform:uppercase;
+.intro-content{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+    z-index:2;
 }
-
 .intro-content p{
     margin-top:14px;
     color:#f4e7b0;
