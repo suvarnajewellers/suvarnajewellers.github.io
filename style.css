@@ -299,15 +299,51 @@ img{
 
     overflow:hidden;
 
-    background:
-        linear-gradient(rgba(10,0,5,.72),rgba(10,0,5,.82)),
-        url("hero.jpg");
+    background:#000;
 
-    background-size:cover;
+}
+.hero-media{
 
-    background-position:center;
+    position:absolute;
 
-    background-attachment:fixed;
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    overflow:hidden;
+
+    z-index:0;
+
+}
+
+.hero-media video,
+.hero-media img{
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+#heroVideo{
+
+    display:block;
+
+}
+
+#heroImage{
+
+    display:none;
 
 }
 
