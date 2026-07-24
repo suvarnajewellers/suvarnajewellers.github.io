@@ -78,20 +78,16 @@
     }
 }
 
-@keyframes logoGlow{
+@keyframes logoFloat{
+
     0%,100%{
-        transform:scale(1);
-        filter:
-        drop-shadow(0 0 8px rgba(212,175,55,.45))
-        drop-shadow(0 0 20px rgba(212,175,55,.25));
+        transform:translateY(0);
     }
 
     50%{
-        transform:scale(1.05);
-        filter:
-        drop-shadow(0 0 16px rgba(255,215,0,.9))
-        drop-shadow(0 0 35px rgba(212,175,55,.55));
+        transform:translateY(-6px);
     }
+
 }
 
 @keyframes pulseGlow{
