@@ -368,19 +368,6 @@ img{
 
 }
 
-
-.hero-content{
-
-    max-width:1000px;
-
-    position:relative;
-
-    z-index:2;
-
-}
-
-
-
 /* Premium Badge */
 
 
@@ -1434,10 +1421,7 @@ section h2{
 /* =========================
    FINAL MOBILE FIX
 ========================= */
-
-
 @media(max-width:480px){
-
 
 .logo-img{
 
@@ -1445,15 +1429,13 @@ section h2{
 
 }
 
-
-
 .hero h1{
 
-    font-size:26px;
+    font-size:30px;
+
+    line-height:1.2;
 
 }
-
-
 
 .hero-description{
 
@@ -1461,22 +1443,17 @@ section h2{
 
 }
 
-
-
 .card h3{
 
     font-size:21px;
 
 }
 
-
-
 .contact-box{
 
     padding:25px 15px;
 
 }
-
 
 }
 /* =========================
