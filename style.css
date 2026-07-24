@@ -420,7 +420,15 @@ img{
 
 
 .hero-btn,
-.catalogue-btn,
+.catalogue-btn{
+
+    border:1px solid var(--gold);
+    color:var(--gold);
+    background:transparent;
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+
+}
 .explore-btn{
 
 
@@ -441,67 +449,20 @@ img{
 .hero-btn{
 
     background:var(--gold);
-
     color:var(--dark);
+    border:1px solid rgba(255,255,255,.15);
+    box-shadow:0 8px 20px rgba(212,175,55,.25);
 
 }
 
 
 
-.hero-btn:hover{
-
-    transform:translateY(-4px);
-
-    box-shadow:
-    0 12px 30px rgba(212,175,55,.4);
-
-}
-
-
-
-
-.catalogue-btn{
-
-    border:
-    1px solid var(--gold);
-
-    color:var(--gold);
-
-    background:transparent;
-
-}
-
-
-
-.catalogue-btn:hover{
-
-    background:var(--gold);
-
-    color:var(--dark);
-   backdrop-filter:blur(8px);
-
-}
-
-
-
-.explore-btn{
-
-    background:#ffffff;
-
-    color:var(--dark);
-
-}
-
-
-
+.hero-btn:hover,
+.catalogue-btn:hover,
 .explore-btn:hover{
-
     transform:translateY(-5px) scale(1.03);
-
     box-shadow:0 15px 35px rgba(212,175,55,.35);
-
 }
-
 
 
 /* =========================
