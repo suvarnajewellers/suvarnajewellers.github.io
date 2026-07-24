@@ -13,18 +13,17 @@ document.addEventListener("DOMContentLoaded", () => {
     // Homepage scroll lock
     document.body.style.overflow = "hidden";
 
-    // 2.5 સેકન્ડ પછી intro hide
+    // 2 સેકન્ડ સુધી logo દેખાડો
+setTimeout(() => {
+
+    intro.classList.add("hide");
+
+    document.body.style.overflow = "";
+
     setTimeout(() => {
+        intro.remove();
+    }, 800);
 
-        intro.classList.add("hide");
-
-        document.body.style.overflow = "";
-
-        // Animation પૂરી થયા પછી remove
-        setTimeout(() => {
-            intro.remove();
-        }, 800);
-
-    }, 2500);
+}, 2000);
 
 });
