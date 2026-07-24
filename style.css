@@ -1704,3 +1704,50 @@ section h2{
     line-height:1.7;
 
 }
+/* =========================
+   SUVARNA V2.0 WhatsApp
+========================= */
+
+.floating-whatsapp{
+
+    position:fixed;
+    right:22px;
+    bottom:22px;
+    width:64px;
+    height:64px;
+    border-radius:50%;
+    background:#25D366;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:30px;
+    text-decoration:none;
+    z-index:9999;
+    box-shadow:0 12px 30px rgba(37,211,102,.45);
+    animation:whatsappPulse 2s infinite;
+    transition:.3s ease;
+
+}
+
+.floating-whatsapp:hover{
+
+    transform:scale(1.1);
+
+}
+
+@keyframes whatsappPulse{
+
+    0%{
+        box-shadow:0 0 0 0 rgba(37,211,102,.6);
+    }
+
+    70%{
+        box-shadow:0 0 0 18px rgba(37,211,102,0);
+    }
+
+    100%{
+        box-shadow:0 0 0 0 rgba(37,211,102,0);
+    }
+
+}
