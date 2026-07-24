@@ -1602,3 +1602,56 @@ section h2{
     border-bottom:1px solid rgba(212,175,55,.25);
 
    }
+/* =========================
+   SUVARNA V2.0 Hero Upgrade
+========================= */
+
+.hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at top, rgba(212,175,55,.15), transparent 45%),
+        linear-gradient(180deg,#050505,#140a02 55%,#050505);
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(90deg,
+        transparent,
+        rgba(212,175,55,.08),
+        transparent);
+    animation:goldSweep 8s linear infinite;
+}
+
+@keyframes goldSweep{
+    from{
+        transform:translateX(-100%);
+    }
+    to{
+        transform:translateX(100%);
+    }
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    animation:heroReveal 1.5s ease;
+}
+
+@keyframes heroReveal{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
