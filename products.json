@@ -1,12 +1,19 @@
 [
   {
-    "id": 1,
-    "category": "Gold Jewellery",
-    "name": "Premium Gold Jewellery Collection",
-    "image": "gold-jewellery-1.jpg",
-    "description": "Elegant gold jewellery crafted with premium finishing and timeless design.",
-    "whatsapp": "https://wa.me/917777991118"
-  },
+  "id": 1,
+  "category": "Gold Jewellery",
+  "name": "Premium Gold Jewellery Collection",
+  "image": "gold-jewellery-1.jpg",
+
+  "code": "GJ001",
+  "metal": "22K Gold",
+  "grossWeight": "15.410 Gram",
+  "netWeight": "15.410 Gram",
+  "size": "24 Inch",
+
+  "description": "Elegant gold jewellery.",
+  "whatsapp": "https://wa.me/917777991118"
+},
   {
     "id": 2,
     "category": "Gold Jewellery",
