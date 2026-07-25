@@ -828,7 +828,17 @@ target="_blank">
 
 <script src="script.js"></script>
   <script src="intro.js"></script>
+<script>
+const video = document.getElementById("heroVideo");
+const image = document.getElementById("heroImage");
 
+if(video){
+    video.addEventListener("error", function () {
+        video.style.display = "none";
+        image.style.display = "block";
+    });
+}
+</script>
 </body>
 
 </html>
