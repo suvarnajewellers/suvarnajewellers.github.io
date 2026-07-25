@@ -243,13 +243,23 @@ goldProducts.forEach(product => {
 
 grid.innerHTML += `
 
-<a href="product.html?id=${product.id}"
-class="collection-link">
+<a href="product.html?id=${product.id}" class="collection-link">
 
 <div class="card">
 
-<img src="${product.image}"
-alt="${product.name}">
+${
+product.image.endsWith(".mp4")
+?
+
+`<video autoplay muted loop playsinline>
+    <source src="${product.image}" type="video/mp4">
+</video>`
+
+:
+
+`<img src="${product.image}" alt="${product.name}">`
+
+}
 
 <h3>${product.name}</h3>
 
