@@ -1333,13 +1333,23 @@ section h2{
     margin-top:25px;
 
 }
+.footer-social{
+
+display:flex;
+
+justify-content:center;
+
+gap:18px;
+
+flex-wrap:wrap;
+
+}
+
 .footer-social a{
 
 width:52px;
 
 height:52px;
-
-padding:0;
 
 display:flex;
 
@@ -1347,23 +1357,47 @@ align-items:center;
 
 justify-content:center;
 
+padding:0;
+
 border-radius:50%;
+
+background:rgba(212,175,55,.08);
+
+border:1px solid rgba(212,175,55,.35);
+
+transition:.3s;
+
+overflow:hidden;
+
+}
+
+.footer-social a:hover{
+
+background:#d4af37;
+
+transform:translateY(-4px);
 
 }
 
 .footer-social a svg{
 
-width:24px;
+width:24px !important;
 
-height:24px;
+height:24px !important;
 
-fill:currentColor;
+display:block;
+
+max-width:24px;
+
+max-height:24px;
 
 }
 
-.footer-social a span{
+.footer-social span{
 
 display:none;
+
+}
 
 }
 /* =========================
