@@ -99,6 +99,7 @@ View Details →
 `;
 
 });
+}
 
 /* ===========================
    LOAD PRODUCT DETAILS
