@@ -58,9 +58,12 @@ function loadCategoryProducts() {
   );
 
   grid.innerHTML = "";
+
 filtered.forEach(product => {
 
 grid.innerHTML += `
+
+<a href="product.html?id=${product.id}" class="collection-link">
 
 <div class="card">
 
@@ -83,19 +86,19 @@ product.image.endsWith(".mp4")
 
 <p>${product.description}</p>
 
-<a href="product.html?id=${product.id}" class="card-btn">
+<div class="card-btn">
 
 View Details →
 
-</a>
+</div>
 
 </div>
+
+</a>
 
 `;
 
 });
-
-}
 
 /* ===========================
    LOAD PRODUCT DETAILS
