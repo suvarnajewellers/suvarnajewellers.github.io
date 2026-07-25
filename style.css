@@ -1623,11 +1623,11 @@ display:none;
 
     border:1px solid rgba(212,175,55,.22);
 
-    border-radius:22px;
+    border-radius:26px;
 
     overflow:hidden;
 
-    transition:.4s ease;
+    transition:.45s ease;
 
     box-shadow:0 10px 30px rgba(0,0,0,.35);
 
@@ -1678,11 +1678,13 @@ display:none;
 
 .card:hover{
 
-    transform:translateY(-8px);
+    transform:translateY(-10px) scale(1.02);
 
     border-color:#d4af37;
 
-    box-shadow:0 18px 45px rgba(212,175,55,.25);
+    box-shadow:
+    0 20px 45px rgba(212,175,55,.25),
+    0 0 18px rgba(212,175,55,.18);
 
 }
 
@@ -1701,7 +1703,9 @@ display:none;
 
     font-weight:700;
 
-    margin:18px 20px 8px;
+    padding:18px 20px 8px;
+text-align:center;
+letter-spacing:.5px;
 
     line-height:1.4;
 
