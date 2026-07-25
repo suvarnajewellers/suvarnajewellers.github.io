@@ -58,33 +58,42 @@ function loadCategoryProducts() {
   );
 
   grid.innerHTML = "";
-     filtered.forEach(product => {
+filtered.forEach(product => {
 
-    grid.innerHTML += `
+grid.innerHTML += `
 
-    <div class="collection-card">
+<div class="card">
 
-      <img src="${product.image}" alt="${product.name}">
+${
+product.image.endsWith(".mp4")
 
-      <div class="collection-content">
+?
 
-        <h3>${product.name}</h3>
+`<video autoplay muted loop playsinline>
+<source src="${product.image}" type="video/mp4">
+</video>`
 
-        <p>${product.description}</p>
+:
 
-        <a href="product.html?id=${product.id}" class="gallery-btn">
+`<img src="${product.image}" alt="${product.name}">`
 
-          View Details
+}
 
-        </a>
+<h3>${product.name}</h3>
 
-      </div>
+<p>${product.description}</p>
 
-    </div>
+<a href="product.html?id=${product.id}" class="card-btn">
 
-    `;
+View Details →
 
-  });
+</a>
+
+</div>
+
+`;
+
+});
 
 }
 
