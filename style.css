@@ -561,6 +561,8 @@ img{
     border:1px solid rgba(212,175,55,.35);
     border-radius:40px;
     color:#fff;
+   backdrop-filter:blur(10px);
+-webkit-backdrop-filter:blur(10px);
     transition:.35s;
 }
 
@@ -574,10 +576,10 @@ img{
     transition:.35s;
 }
 .hero-social a:hover{
-    background:#d4af37;
+    background:linear-gradient(135deg,#d4af37,#f5e6b8);
     color:#111;
-    transform:translateY(-4px);
-    box-shadow:0 10px 25px rgba(212,175,55,.35);
+    transform:translateY(-5px) scale(1.05);
+    box-shadow:0 15px 35px rgba(212,175,55,.45);
 }
 
 .hero-social a svg{
