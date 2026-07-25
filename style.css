@@ -1595,7 +1595,8 @@ section h2{
 
 }
 
-.card:hover img{
+.card:hover img,
+.card:hover video{
 
     transform:scale(1.08);
 
