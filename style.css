@@ -1291,7 +1291,19 @@ section h2{
 .footer-links a,
 .footer-social a{
 
+    display:inline-block;
+
+    padding:12px 22px;
+
+    background:rgba(212,175,55,.08);
+
+    border:1px solid rgba(212,175,55,.35);
+
+    border-radius:40px;
+
     color:#ffffff;
+
+    font-weight:600;
 
     transition:.3s;
 
@@ -1302,7 +1314,13 @@ section h2{
 .footer-links a:hover,
 .footer-social a:hover{
 
-    color:var(--gold);
+    background:#d4af37;
+
+    color:#111111;
+
+    transform:translateY(-4px);
+
+    box-shadow:0 10px 25px rgba(212,175,55,.35);
 
 }
 
