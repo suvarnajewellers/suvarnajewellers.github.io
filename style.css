@@ -1846,3 +1846,26 @@ letter-spacing:.5px;
     box-shadow:0 10px 25px rgba(212,175,55,.35);
 
 }
+.collection-link{
+    text-decoration:none;
+    color:inherit;
+    display:block;
+}
+
+.card-btn{
+    width:calc(100% - 30px);
+    margin:0 15px 18px;
+    padding:12px;
+    text-align:center;
+    border-radius:40px;
+    background:linear-gradient(135deg,#d4af37,#f5e6b8);
+    color:#111;
+    font-weight:700;
+    font-size:15px;
+    transition:.35s;
+}
+
+.card:hover .card-btn{
+    transform:scale(1.04);
+    box-shadow:0 10px 25px rgba(212,175,55,.35);
+}
