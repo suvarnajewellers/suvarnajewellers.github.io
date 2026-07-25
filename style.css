@@ -1511,17 +1511,17 @@ section h2{
 
     position:relative;
 
-    background:#111;
+    background:linear-gradient(180deg,#181818,#0b0b0b);
 
-    border:1px solid rgba(212,175,55,.20);
+    border:1px solid rgba(212,175,55,.22);
 
-    border-radius:20px;
+    border-radius:22px;
 
     overflow:hidden;
 
-    transition:.45s ease;
+    transition:.4s ease;
 
-    box-shadow:0 12px 30px rgba(0,0,0,.35);
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
 
 }
 
@@ -1591,21 +1591,23 @@ section h2{
 
     font-size:22px;
 
-    padding:18px 20px 8px;
+    font-weight:700;
 
-    margin:0;
+    margin:18px 20px 8px;
+
+    line-height:1.4;
 
 }
 
 .card p{
 
-    color:#dddddd;
+    color:#e5e5e5;
+
+    font-size:15px;
 
     line-height:1.7;
 
     padding:0 20px 20px;
-
-    margin:0;
 
 }
 /* =========================
