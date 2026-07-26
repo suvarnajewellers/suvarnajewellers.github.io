@@ -2190,9 +2190,19 @@ transition:.4s;
 
 .review-card:hover{
 
-transform:translateY(-8px);
+transform:translateY(-12px) scale(1.03);
 
 border-color:#d4af37;
+
+box-shadow:
+0 25px 60px rgba(212,175,55,.22),
+0 0 25px rgba(212,175,55,.12);
+
+background:linear-gradient(
+180deg,
+rgba(255,255,255,.10),
+rgba(255,255,255,.05)
+);
 
 }
 
