@@ -385,7 +385,7 @@ img{
 
     position:relative;
 
-    z-index:2;
+    z-index:5;
 
     max-width:1050px;
 
@@ -1950,3 +1950,40 @@ letter-spacing:.5px;
     }
 
 }
+/* =========================
+   LUXURY GOLD PARTICLES
+========================= */
+
+.gold-particles{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:1;
+    overflow:hidden;
+}
+
+.gold-particles::before,
+.gold-particles::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+        radial-gradient(circle,#d4af37 1px,transparent 1px);
+    background-size:80px 80px;
+    opacity:.12;
+    animation:goldFloat 35s linear infinite;
+}
+
+.gold-particles::after{
+    animation-duration:55s;
+    opacity:.06;
+}
+
+@keyframes goldFloat{
+    from{
+        transform:translateY(0);
+    }
+    to{
+        transform:translateY(-120px);
+    }
+                        }
