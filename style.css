@@ -1714,14 +1714,17 @@ rgba(10,10,10,.98)
 .card video{
 
     width:100%;
-
     aspect-ratio:1/1;
-
     object-fit:cover;
-
     display:block;
+    transition:
+        transform .8s ease,
+        filter .6s ease;
 
-    transition:transform .8s ease;
+    filter:
+        contrast(1.05)
+        saturate(1.08)
+        brightness(.98);
 
 }
 
@@ -1742,6 +1745,11 @@ rgba(10,10,10,.98)
 .card:hover video{
 
     transform:scale(1.08);
+
+    filter:
+        contrast(1.12)
+        saturate(1.18)
+        brightness(1.02);
 
 }
 
