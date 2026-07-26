@@ -1645,9 +1645,14 @@ display:none;
 
     position:relative;
 
-    background:linear-gradient(180deg,#181818,#0b0b0b);
+    background:
+linear-gradient(
+145deg,
+rgba(35,20,5,.95),
+rgba(10,10,10,.98)
+);
 
-    border:1px solid rgba(212,175,55,.22);
+    border:1px solid rgba(212,175,55,.35);
 
     border-radius:26px;
 
@@ -1655,8 +1660,9 @@ display:none;
 
     transition:.45s ease;
 
-    box-shadow:0 10px 30px rgba(0,0,0,.35);
-
+    box-shadow:
+0 15px 40px rgba(0,0,0,.45),
+0 0 18px rgba(212,175,55,.08);
 }
 
 .card::before{
@@ -1709,8 +1715,9 @@ display:none;
     border-color:#d4af37;
 
     box-shadow:
-    0 20px 45px rgba(212,175,55,.25),
-    0 0 18px rgba(212,175,55,.18);
+0 25px 60px rgba(0,0,0,.55),
+0 0 35px rgba(212,175,55,.35),
+0 0 80px rgba(212,175,55,.12);
 
 }
 
