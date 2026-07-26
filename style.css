@@ -154,6 +154,10 @@ img{
     letter-spacing:2px;
     text-decoration:none;
     transition:.3s;
+   
+   text-shadow:
+0 0 12px rgba(212,175,55,.45),
+0 0 25px rgba(212,175,55,.18);
 }
 
 .logo a:hover{
@@ -187,7 +191,12 @@ img{
 }
 
 .nav-links a:hover{
-    color:#d4af37;
+
+    color:#f7d76a;
+
+    text-shadow:
+    0 0 10px rgba(212,175,55,.55);
+
 }
 
 .nav-links a:hover::after{
