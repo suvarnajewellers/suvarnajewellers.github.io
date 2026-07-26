@@ -743,13 +743,18 @@ inset 0 1px 0 rgba(255,255,255,.08);
 
 @media(max-width:900px){
 
-    .hero-title{
-        font-size:52px;
-    }
+.hero-title{
+    font-size:54px;
+    line-height:1.15;
+}
 
-    .hero-stats{
-        grid-template-columns:repeat(2,1fr);
-    }
+.hero-description{
+    font-size:18px;
+}
+
+.hero-stats{
+    grid-template-columns:repeat(2,1fr);
+}
 
 }
 
