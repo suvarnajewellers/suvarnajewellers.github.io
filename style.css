@@ -1674,6 +1674,8 @@ rgba(10,10,10,.98)
     border-radius:26px;
 
     overflow:hidden;
+   
+   isolation:isolate;
 
     transition:.45s ease;
 
@@ -1704,9 +1706,51 @@ rgba(10,10,10,.98)
 
 }
 
+.card::after{
+
+content:"";
+
+position:absolute;
+
+top:-120%;
+
+left:-40%;
+
+width:40%;
+
+height:300%;
+
+background:linear-gradient(
+
+90deg,
+
+transparent,
+
+rgba(255,255,255,.35),
+
+transparent
+
+);
+
+transform:rotate(25deg);
+
+transition:.8s;
+
+pointer-events:none;
+
+z-index:2;
+
+   }
+
 .card:hover::before{
 
     opacity:1;
+
+}
+
+.card:hover::after{
+
+left:120%;
 
 }
 
