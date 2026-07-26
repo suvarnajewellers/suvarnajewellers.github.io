@@ -2214,3 +2214,96 @@ grid-template-columns:1fr;
 }
 
 }
+
+/* =========================
+   LUXURY BANNER
+========================= */
+
+.luxury-banner{
+
+padding:90px 8%;
+
+background:
+linear-gradient(
+135deg,
+#120009,
+#2b0015,
+#120009
+);
+
+text-align:center;
+
+}
+
+.luxury-banner-content{
+
+max-width:900px;
+
+margin:auto;
+
+padding:60px 40px;
+
+background:rgba(255,255,255,.04);
+
+border:1px solid rgba(212,175,55,.25);
+
+border-radius:30px;
+
+backdrop-filter:blur(16px);
+
+-webkit-backdrop-filter:blur(16px);
+
+box-shadow:
+0 20px 60px rgba(0,0,0,.35);
+
+}
+
+.luxury-banner h2{
+
+font-size:48px;
+
+color:#d4af37;
+
+margin-bottom:20px;
+
+}
+
+.luxury-banner p{
+
+font-size:20px;
+
+line-height:1.9;
+
+color:#f5e6b8;
+
+margin-bottom:35px;
+
+}
+
+@media(max-width:768px){
+
+.luxury-banner{
+
+padding:60px 20px;
+
+}
+
+.luxury-banner-content{
+
+padding:35px 25px;
+
+}
+
+.luxury-banner h2{
+
+font-size:32px;
+
+}
+
+.luxury-banner p{
+
+font-size:16px;
+
+}
+
+}
