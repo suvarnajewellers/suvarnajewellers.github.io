@@ -1999,3 +1999,77 @@ letter-spacing:.5px;
         transform:translateY(-120px);
     }
                         }
+
+/* =========================
+FEATURED LUXURY STRIP
+========================= */
+
+.featured-strip{
+
+padding:22px 0;
+
+background:#090909;
+
+overflow:hidden;
+
+border-top:1px solid rgba(212,175,55,.25);
+
+border-bottom:1px solid rgba(212,175,55,.25);
+
+}
+
+.featured-title{
+
+text-align:center;
+
+color:#d4af37;
+
+font-size:14px;
+
+letter-spacing:4px;
+
+margin-bottom:18px;
+
+font-weight:700;
+
+}
+
+.featured-track{
+
+display:flex;
+
+width:max-content;
+
+animation:featuredMove 22s linear infinite;
+
+}
+
+.featured-item{
+
+margin:0 14px;
+
+padding:12px 28px;
+
+border-radius:40px;
+
+background:linear-gradient(135deg,#d4af37,#f5e6b8);
+
+color:#111;
+
+font-weight:700;
+
+white-space:nowrap;
+
+}
+
+@keyframes featuredMove{
+
+0%{
+transform:translateX(0);
+}
+
+100%{
+transform:translateX(-50%);
+}
+
+   }
