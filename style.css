@@ -1909,3 +1909,37 @@ letter-spacing:.5px;
 }
 
 }
+/* =========================
+   PREMIUM GOLD SHINE
+========================= */
+
+.hero::after{
+    content:"";
+    position:absolute;
+    top:-20%;
+    left:-40%;
+    width:35%;
+    height:150%;
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,.10),
+        rgba(212,175,55,.28),
+        transparent
+    );
+    transform:rotate(20deg);
+    animation:goldShine 8s linear infinite;
+    pointer-events:none;
+}
+
+@keyframes goldShine{
+
+    0%{
+        left:-45%;
+    }
+
+    100%{
+        left:140%;
+    }
+
+}
