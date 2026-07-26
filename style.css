@@ -2307,3 +2307,57 @@ font-size:16px;
 }
 
 }
+
+/* =========================
+   HERO AWARDS
+========================= */
+
+.hero-awards{
+
+display:flex;
+
+justify-content:center;
+
+gap:15px;
+
+flex-wrap:wrap;
+
+margin:25px 0 35px;
+
+}
+
+.hero-awards span{
+
+padding:10px 18px;
+
+border-radius:30px;
+
+background:rgba(212,175,55,.08);
+
+border:1px solid rgba(212,175,55,.30);
+
+color:#f5e6b8;
+
+font-size:14px;
+
+font-weight:600;
+
+}
+
+@media(max-width:768px){
+
+.hero-awards{
+
+gap:10px;
+
+}
+
+.hero-awards span{
+
+font-size:13px;
+
+padding:8px 14px;
+
+}
+
+}
