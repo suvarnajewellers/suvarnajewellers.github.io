@@ -403,19 +403,21 @@ img{
 
     border-radius:30px;
 
-    background:rgba(10,10,10,.22);
+    background:linear-gradient(
+180deg,
+rgba(15,15,15,.40),
+rgba(15,15,15,.18)
+);
 
     backdrop-filter:blur(18px);
 
     -webkit-backdrop-filter:blur(18px);
 
-    border:1px solid rgba(212,175,55,.28);
-
+    border:1px solid rgba(212,175,55,.30);
 box-shadow:
-    0 30px 80px rgba(0,0,0,.55),
-    0 0 30px rgba(212,175,55,.15),
-    inset 0 0 25px rgba(255,255,255,.03);
-
+0 30px 70px rgba(0,0,0,.50),
+0 0 40px rgba(212,175,55,.12),
+inset 0 1px 0 rgba(255,255,255,.08);
     animation:heroFade 1.3s ease;
 
 }
