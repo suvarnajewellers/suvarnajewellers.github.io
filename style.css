@@ -1818,3 +1818,47 @@ letter-spacing:.5px;
     transform:scale(1.04);
     box-shadow:0 10px 25px rgba(212,175,55,.35);
 }
+
+/* =========================
+   PREMIUM ANNOUNCEMENT BAR
+========================= */
+
+.announcement-bar{
+    width:100%;
+    overflow:hidden;
+    background:linear-gradient(90deg,#0b0b0b,#3a2200,#0b0b0b);
+    border-bottom:1px solid rgba(212,175,55,.35);
+    height:42px;
+    display:flex;
+    align-items:center;
+}
+
+.announcement-track{
+    white-space:nowrap;
+    color:#f5e6b8;
+    font-size:15px;
+    font-weight:600;
+    padding-left:100%;
+    animation:announcementMove 28s linear infinite;
+}
+
+@keyframes announcementMove{
+    from{
+        transform:translateX(0);
+    }
+    to{
+        transform:translateX(-100%);
+    }
+}
+
+@media(max-width:768px){
+
+.announcement-bar{
+    height:36px;
+}
+
+.announcement-track{
+    font-size:13px;
+}
+
+}
