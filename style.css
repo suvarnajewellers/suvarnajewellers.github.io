@@ -348,20 +348,23 @@ img{
 }
 
 .hero::before{
-
     content:"";
-
     position:absolute;
-
     inset:0;
 
     background:
-        radial-gradient(circle at top,
-        rgba(212,175,55,.18),
-        transparent 60%);
+        linear-gradient(
+            rgba(0,0,0,.55),
+            rgba(0,0,0,.45)
+        ),
+        radial-gradient(
+            circle at top,
+            rgba(212,175,55,.28) 0%,
+            rgba(212,175,55,.10) 35%,
+            transparent 70%
+        );
 
-    animation:heroGlow 6s ease-in-out infinite;
-
+    animation:heroGlow 8s ease-in-out infinite;
 }
 
 @keyframes heroGlow{
