@@ -87,9 +87,7 @@ product.image.endsWith(".mp4")
 <p>${product.description}</p>
 
 <div class="card-btn">
-
 View Details →
-
 </div>
 
 </div>
