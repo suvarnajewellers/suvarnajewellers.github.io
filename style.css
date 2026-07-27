@@ -1819,15 +1819,31 @@ left:120%;
 
 }
 
+.card{
+
+    text-align:center;
+
+}
+
+.card img{
+
+    border-bottom:1px solid rgba(212,175,55,.15);
+
+       }
+
 .card p{
 
-    color:#e5e5e5;
+    color:#efe3bf;
 
     font-size:15px;
 
-    line-height:1.7;
+    line-height:1.9;
 
-    padding:0 20px 20px;
+    text-align:center;
+
+    padding:0 24px 28px;
+
+    opacity:.9;
 
 }
 /* =========================
