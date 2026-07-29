@@ -103,14 +103,6 @@ content="Premium Gold, Silver, Rudraksha, Tulsi Jewellery Manufacturer - SUVARNA
 
         <li><a href="silver-jewellery.html">Silver</a></li>
 
-        <li><a href="rudraksha-mala.html">Rudraksha</a></li>
-
-        <li><a href="tulsi-mala.html">Tulsi</a></li>
-
-        <li><a href="pendant-collection.html">Pendant</a></li>
-
-        <li><a href="bracelet-collection.html">Bracelet</a></li>
-
     </ul>
 
 </nav>
@@ -168,6 +160,11 @@ Loading...
 <strong id="product-category">Loading...</strong>
 </div>
 
+     <div class="spec-item">
+<span>Type</span>
+<strong id="product-subcategory">Loading...</strong>
+     </div>
+     
 <div class="spec-item">
 <span>Product Code</span>
 <strong id="product-code">Loading...</strong>
@@ -349,6 +346,8 @@ media.innerHTML = `
 
     document.getElementById("product-name").textContent = product.name;
     document.getElementById("product-category").textContent = product.category;
+       document.getElementById("product-subcategory").textContent =
+product.subCategory || "-";
 
     document.getElementById("product-code").textContent =
       product.code || "-";
@@ -372,8 +371,13 @@ media.innerHTML = `
       product.whatsapp;
 
     const related = products
-      .filter(p => p.category === product.category && p.id !== product.id)
-      .slice(0, 4);
+      const related = products
+.filter(p => 
+p.category === product.category &&
+p.subCategory === product.subCategory &&
+p.id !== product.id
+)
+.slice(0,4);
 
     const grid = document.getElementById("related-products-grid");
 
