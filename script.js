@@ -117,6 +117,10 @@ function loadProductDetails() {
   document.getElementById("product-name").textContent = product.name;
 
   document.getElementById("product-category").textContent = product.category;
+   document.getElementById("product-metal").textContent = product.metal || "";
+document.getElementById("product-weight").textContent =
+"Gross: " + (product.grossWeight || "") +
+" | Net: " + (product.netWeight || "");
 
   document.getElementById("product-description").textContent = product.description;
 
