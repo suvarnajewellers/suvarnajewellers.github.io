@@ -103,14 +103,6 @@ SUVARNA JEWELLERS
 
 <li><a href="silver-jewellery.html" class="active">Silver</a></li>
 
-<li><a href="rudraksha-mala.html">Rudraksha</a></li>
-
-<li><a href="tulsi-mala.html">Tulsi</a></li>
-
-<li><a href="pendant-collection.html">Pendant</a></li>
-
-<li><a href="bracelet-collection.html">Bracelet</a></li>
-
 </ul>
 
 </nav>
@@ -202,7 +194,7 @@ class="collection-grid">
     <p>Trusted Since 2003</p>
 
     <p>
-        Premium Gold • Silver • Rudraksha • Tulsi Jewellery Manufacturer
+        Premium Gold & Silver Jewellery Manufacturer
     </p>
 
     <p class="footer-copy">
@@ -247,10 +239,19 @@ class="collection-link">
 
 <div class="card">
 
-<img src="${product.image}"
-alt="${product.name}">
+${
+product.image.endsWith(".mp4")
+?
+`<video autoplay muted loop playsinline>
+<source src="${product.image}" type="video/mp4">
+</video>`
+:
+`<img src="${product.image}" alt="${product.name}">`
+}
 
 <h3>${product.name}</h3>
+
+<p>${product.subCategory || ""}</p>
 
 <p>${product.description}</p>
 
