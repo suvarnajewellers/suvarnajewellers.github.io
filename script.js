@@ -22,7 +22,7 @@ fetch("products.json")
   });
 
 /* ===========================
-   LOAD CATEGORY PRODUCTS
+   LOAD CATEGORY PRODUCTS V2.0
 =========================== */
 
 function loadCategoryProducts() {
@@ -35,37 +35,31 @@ function loadCategoryProducts() {
 
   const page = window.location.pathname;
 
+
   if (page.includes("gold-jewellery"))
     category = "Gold Jewellery";
+
 
   else if (page.includes("silver-jewellery"))
     category = "Silver Jewellery";
 
-  else if (page.includes("rudraksha-mala"))
-    category = "Rudraksha Mala";
-
-  else if (page.includes("tulsi-mala"))
-    category = "Tulsi Mala";
-
-  else if (page.includes("pendant-collection"))
-    category = "Pendant Collection";
-
-  else if (page.includes("bracelet-collection"))
-    category = "Bracelet Collection";
 
   const filtered = products.filter(product =>
     product.category === category
   );
 
+
   grid.innerHTML = "";
 
-filtered.forEach(product => {
 
-grid.innerHTML += `
+  filtered.forEach(product => {
+
+    grid.innerHTML += `
 
 <a href="product.html?id=${product.id}" class="collection-link">
 
 <div class="card">
+
 
 ${
 product.image.endsWith(".mp4")
@@ -82,13 +76,18 @@ product.image.endsWith(".mp4")
 
 }
 
+
 <h3>${product.name}</h3>
 
+<p>${product.subCategory || ""}</p>
+
 <p>${product.description}</p>
+
 
 <div class="card-btn">
 View Details →
 </div>
+
 
 </div>
 
@@ -96,9 +95,9 @@ View Details →
 
 `;
 
-});
-}
+  });
 
+}
 /* ===========================
    LOAD PRODUCT DETAILS
 =========================== */
