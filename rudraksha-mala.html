@@ -173,8 +173,7 @@ Browse our exclusive Rudraksh Mala collection manufactured by SUVARNA JEWELLERS.
 
 </div>
 
-<div id="product-grid" class="collection-grid">
-
+<div id="products-grid" class="collection-grid">
 </div>
 
     </section>
@@ -240,11 +239,11 @@ fetch("products.json")
 
 const grid = document.getElementById("products-grid");
 
-const rudrakshProducts = products.filter(
-item => item.category === "Rudraksh Mala"
+const rudrakshaProducts = products.filter(
+item => item.category === "Rudraksha Mala"
 );
 
-rudrakshProducts.forEach(product => {
+rudrakshaProducts.forEach(product => {
 
 grid.innerHTML += `
 
