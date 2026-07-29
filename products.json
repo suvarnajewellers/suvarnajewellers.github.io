@@ -226,6 +226,13 @@
     "category": "Silver Jewellery",
     "name": "Classic Silver Design",
     "image": "silver-jewellery-5.jpg",
+
+    "code": "SJ005",
+  "metal": "Silver 925",
+  "grossWeight": "21.930 Gram",
+  "netWeight": "21.930 Gram",
+  "size": "1.5 Inch",
+    
     "description": "Classic silver jewellery designed with quality finishing.",
     "whatsapp": "https://wa.me/917777991118"
   },
