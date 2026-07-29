@@ -9,47 +9,76 @@ public_folder: "/images/products"
 collections:
   - name: "products"
     label: "Products"
-    files:
-      - file: "products.json"
-        label: "Products"
+    file: "products.json"
+    fields:
+
+      - label: "Products"
         name: "products"
-        format: "json"
+        widget: "list"
 
         fields:
-          - label: "Products"
-            name: "products"
+
+          - label: "ID"
+            name: "id"
+            widget: "number"
+
+          - label: "Category"
+            name: "category"
+            widget: "select"
+            options:
+              - Gold Jewellery
+              - Silver Jewellery
+
+          - label: "Sub Category"
+            name: "subCategory"
+            widget: "select"
+            options:
+              - Ring
+              - Pendant
+              - Bracelet
+              - Chain
+              - Earrings
+              - Rudraksha Jewellery
+              - Tulsi Mala
+              - Articles
+              - Custom Designs
+
+          - label: "Product Name"
+            name: "name"
+            widget: "string"
+
+          - label: "Product Code"
+            name: "code"
+            widget: "string"
+
+          - label: "Metal"
+            name: "metal"
+            widget: "string"
+
+          - label: "Gross Weight"
+            name: "grossWeight"
+            widget: "string"
+
+          - label: "Net Weight"
+            name: "netWeight"
+            widget: "string"
+
+          - label: "Size"
+            name: "size"
+            widget: "string"
+
+          - label: "Image"
+            name: "image"
+            widget: "image"
+
+          - label: "Description"
+            name: "description"
+            widget: "text"
+
+          - label: "Tags"
+            name: "tags"
             widget: "list"
 
-            fields:
-
-              - label: "Product ID"
-                name: "id"
-                widget: "number"
-
-              - label: "Category"
-                name: "category"
-                widget: "select"
-                options:
-                  - Gold Jewellery
-                  - Silver Jewellery
-                  - Rudraksha Mala
-                  - Rudraksha Bracelet
-                  - Pendant Collection
-                  - Tulsi Mala
-                  - Bracelet Collection
-
-              - label: "Product Name"
-                name: "name"
-                widget: "string"
-
-              - label: "Product Image"
-                name: "image"
-                widget: "image"
-
-              - label: "Description"
-                name: "description"
-                widget: "text"
-
-              - label: "WhatsApp"
-                name: "whatsapp"
-                widget: "string"
+          - label: "WhatsApp"
+            name: "whatsapp"
+            widget: "string"
