@@ -1,42 +1,73 @@
 [
   {
-  "id": 1,
-  "category": "Gold Jewellery",
-  "name": "Premium Gold Jewellery Collection",
-  "image": "gold-jewellery-1.jpg",
+    "id": 1,
+    "category": "Gold Jewellery",
+    "subCategory": "Custom Designs",
+    "name": "Premium Gold Jewellery Collection",
+    "image": "gold/gold-jewellery-1.jpg",
 
-  "code": "GJ001",
-  "metal": "22K Gold",
-  "grossWeight": "15.410 Gram",
-  "netWeight": "15.410 Gram",
-  "size": "24 Inch",
+    "code": "GJ001",
+    "metal": "22K Gold",
+    "grossWeight": "15.410 Gram",
+    "netWeight": "15.410 Gram",
+    "size": "24 Inch",
 
-  "description": "Elegant gold jewellery.",
-  "whatsapp": "https://wa.me/917777991118"
-},
+    "description": "Elegant gold jewellery crafted with premium quality.",
+    "tags": [
+      "gold jewellery",
+      "gold design",
+      "22k gold"
+    ],
+
+    "whatsapp": "https://wa.me/917777991118"
+  },
+
   {
     "id": 2,
     "category": "Gold Jewellery",
+    "subCategory": "Custom Designs",
     "name": "Luxury Gold Design",
-    "image": "gold-jewellery-2.jpg",
-    
+    "image": "gold/gold-jewellery-2.jpg",
+
     "code": "GJ002",
     "metal": "22K Gold",
     "grossWeight": "16.450 Gram",
     "netWeight": "16.450 Gram",
     "size": "24 Inch",
-    
+
     "description": "Premium gold jewellery design for special occasions.",
+    "tags": [
+      "gold jewellery",
+      "luxury gold design",
+      "gold collection"
+    ],
+
     "whatsapp": "https://wa.me/917777991118"
   },
+
   {
     "id": 3,
     "category": "Silver Jewellery",
+    "subCategory": "Custom Designs",
     "name": "Premium Silver Jewellery",
-    "image": "silver-jewellery-1.jpg",
+    "image": "silver/silver-jewellery-1.jpg",
+
+    "code": "SJ001",
+    "metal": "925 Silver",
+    "grossWeight": "",
+    "netWeight": "",
+    "size": "",
+
     "description": "Beautiful silver jewellery with elegant craftsmanship.",
+    "tags": [
+      "silver jewellery",
+      "925 silver",
+      "silver design"
+    ],
+
     "whatsapp": "https://wa.me/917777991118"
   },
+
   {
     "id": 4,
     "category": "Silver Jewellery",
