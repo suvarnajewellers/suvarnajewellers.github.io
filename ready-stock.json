@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "id": 1,
+    "code": "RS001",
+    "name": "Ready Stock Product",
+    "category": "Gold Jewellery",
+    "metal": "22K Gold",
+    "grossWeight": "10.000 Gram",
+    "netWeight": "10.000 Gram",
+    "image": "ready-stock-1.jpg",
+    "description": "Available in ready stock.",
+    "whatsapp": "https://wa.me/917777991118"
+  }
+]
