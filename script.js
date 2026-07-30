@@ -36,11 +36,23 @@ function loadCategoryProducts() {
   const page = window.location.pathname;
 
 
-  if (page.includes("gold-jewellery"))
-    category = "Gold Jewellery";
+  if (page.includes("gold-jewellery")) {
+  category = "Gold Jewellery";
+}
 
-else if (page.includes("silver-jewellery"))
-    category = "Silver Jewellery";
+else if (page.includes("silver-jewellery")) {
+  category = "Silver Jewellery";
+}
+
+else if (page.includes("ready-stock")) {
+  const filtered = products.filter(product => product.isReadyStock === true);
+
+  grid.innerHTML = "";
+
+  
+
+  return;
+}
 
 else if (page.includes("rudraksha-mala"))
     category = "Rudraksha Mala";
