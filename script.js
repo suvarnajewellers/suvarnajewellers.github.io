@@ -39,15 +39,32 @@ function loadCategoryProducts() {
   if (page.includes("gold-jewellery"))
     category = "Gold Jewellery";
 
-
-  else if (page.includes("silver-jewellery"))
+else if (page.includes("silver-jewellery"))
     category = "Silver Jewellery";
 
+else if (page.includes("rudraksha-mala"))
+    category = "Rudraksha Mala";
 
-  const filtered = products.filter(product =>
-    product.category === category
-  );
+else if (page.includes("tulsi-mala"))
+    category = "Tulsi Mala";
 
+else if (page.includes("pendant-collection"))
+    category = "Pendant Collection";
+
+else if (page.includes("bracelet-collection"))
+    category = "Bracelet Collection";
+
+
+  const filtered = products.filter(product => {
+
+    if (category === "Bracelet Collection") {
+        return product.category === "Bracelet Collection" ||
+               product.category === "Rudraksha Bracelet";
+    }
+
+    return product.category === category;
+
+});
 
   grid.innerHTML = "";
 
