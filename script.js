@@ -158,41 +158,47 @@ function loadReadyStock() {
 
   if (!grid) return;
 
-  const filtered = products.filter(product => product.isReadyStock === true);
+  const buttons = document.querySelectorAll(".filter-btn");
+
+const readyProducts = products.filter(
+  product => product.isReadyStock === true
+);
+
+function renderReadyStock(filter) {
 
   grid.innerHTML = "";
 
+  const filtered = filter === "All"
+    ? readyProducts
+    : readyProducts.filter(product =>
+        product.category === filter ||
+        product.subCategory === filter
+      );
+
   filtered.forEach(product => {
 
-    grid.innerHTML += `
-
-<a href="product.html?id=${product.id}" class="collection-link">
-
-<div class="card">
-
-${
-product.image.endsWith(".mp4")
-?
-`<video autoplay muted loop playsinline>
-<source src="${product.image}" type="video/mp4">
-</video>`
-:
-`<img src="${product.image}" alt="${product.name}">`
-}
-
-<h3>${product.name}</h3>
-
-<p>${product.subCategory || ""}</p>
-
-<p>${product.description}</p>
-
-</div>
-
-</a>
-
-`;
+    // અહીં તમારો હાલનો card code જ રહેશે.
+    // તેમાં કોઈ ફેરફાર કરવો નથી.
 
   });
+
+}
+
+renderReadyStock("All");
+
+buttons.forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    buttons.forEach(b => b.classList.remove("active"));
+
+    button.classList.add("active");
+
+    renderReadyStock(button.dataset.filter);
+
+  });
+
+});
 
 }
 /* =========================
