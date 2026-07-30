@@ -158,7 +158,7 @@ function loadReadyStock() {
 
   if (!grid) return;
 
-  const filtered = products.filter(product => product.readyStock === true);
+  const filtered = products.filter(product => product.isReadyStock === true);
 
   grid.innerHTML = "";
 
