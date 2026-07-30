@@ -15,7 +15,9 @@ fetch("products.json")
     products = data;
 
     loadCategoryProducts();
+    loadReadyStock();
     loadProductDetails();
+
   })
   .catch(error => {
     console.error("Products not loaded:", error);
@@ -160,6 +162,49 @@ document.getElementById("product-weight").textContent =
   document.getElementById("whatsapp-btn").href = product.whatsapp;
 
 }
+function loadReadyStock() {
+
+  const grid = document.getElementById("ready-stock-grid");
+
+  if (!grid) return;
+
+  const filtered = products.filter(product => product.readyStock === true);
+
+  grid.innerHTML = "";
+
+  filtered.forEach(product => {
+
+    grid.innerHTML += `
+
+<a href="product.html?id=${product.id}" class="collection-link">
+
+<div class="card">
+
+${
+product.image.endsWith(".mp4")
+?
+`<video autoplay muted loop playsinline>
+<source src="${product.image}" type="video/mp4">
+</video>`
+:
+`<img src="${product.image}" alt="${product.name}">`
+}
+
+<h3>${product.name}</h3>
+
+<p>${product.subCategory || ""}</p>
+
+<p>${product.description}</p>
+
+</div>
+
+</a>
+
+`;
+
+  });
+
+     }
 /* =========================
    MOBILE MENU
 ========================= */
