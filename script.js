@@ -75,28 +75,21 @@ else if (page.includes("bracelet-collection"))
 
   filtered.forEach(product => {
 
-    grid.innerHTML += `
+grid.innerHTML += `
 
 <a href="product.html?id=${product.id}" class="collection-link">
 
 <div class="card">
 
-
 ${
 product.image.endsWith(".mp4")
-
 ?
-
 `<video autoplay muted loop playsinline>
 <source src="${product.image}" type="video/mp4">
 </video>`
-
 :
-
 `<img src="${product.image}" alt="${product.name}">`
-
 }
-
 
 <h3>${product.name}</h3>
 
@@ -104,11 +97,9 @@ product.image.endsWith(".mp4")
 
 <p>${product.description}</p>
 
-
 <div class="card-btn">
 View Details →
 </div>
-
 
 </div>
 
@@ -116,7 +107,7 @@ View Details →
 
 `;
 
-  });
+});
 
 }
 /* ===========================
