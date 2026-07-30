@@ -82,10 +82,10 @@ collections:
             widget: "text"
 
           - label: "Ready Stock"
-            name: "readyStock"
-            widget: "boolean"
-            default: false
-            required: false
+  name: "isReadyStock"
+  widget: "boolean"
+  default: false
+  required: false
 
           - label: "Tags"
             name: "tags"
