@@ -42,7 +42,7 @@
     "netWeight": "",
     "size": "",
     "image": "images/products/gold-bracelet-1.jpg",
-    "isReadyStock": false,
+    "isReadyStock": true,
     "description": "",
     "tags": ["gold", "bracelet"],
     "whatsapp": "https://wa.me/917777991118"
