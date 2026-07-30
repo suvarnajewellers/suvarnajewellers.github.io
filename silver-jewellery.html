@@ -153,11 +153,31 @@ Discover our exclusive silver jewellery collection manufactured by SUVARNA JEWEL
 
 </div>
 
-<div
-id="products-grid"
-class="collection-grid">
+<div class="category-filter">
+
+<button class="filter-btn active" data-filter="All">All</button>
+
+<button class="filter-btn" data-filter="Ring">Ring</button>
+
+<button class="filter-btn" data-filter="Pendant">Pendant</button>
+
+<button class="filter-btn" data-filter="Bracelet">Bracelet</button>
+
+<button class="filter-btn" data-filter="Chain">Chain</button>
+
+<button class="filter-btn" data-filter="Earrings">Earrings</button>
+
+<button class="filter-btn" data-filter="Rudraksha Jewellery">Rudraksha Jewellery</button>
+
+<button class="filter-btn" data-filter="Tulsi Mala">Tulsi Mala</button>
+
+<button class="filter-btn" data-filter="Articles">Articles</button>
+
+<button class="filter-btn" data-filter="Custom Designs">Custom Designs</button>
 
 </div>
+
+<div id="products-grid" class="collection-grid"></div>
 
 </section>
 <!-- WHATSAPP CTA -->
@@ -215,27 +235,30 @@ class="collection-grid">
 </a>
 
 <script>
-
 fetch("products.json")
-
 .then(response => response.json())
-
 .then(products => {
 
 const grid = document.getElementById("products-grid");
+const buttons = document.querySelectorAll(".filter-btn");
 
 const silverProducts = products.filter(
-
 item => item.category === "Silver Jewellery"
-
 );
 
-silverProducts.forEach(product => {
+function renderProducts(filter){
+
+grid.innerHTML = "";
+
+const filtered = filter === "All"
+? silverProducts
+: silverProducts.filter(item => item.subCategory === filter);
+
+filtered.forEach(product => {
 
 grid.innerHTML += `
 
-<a href="product.html?id=${product.id}"
-class="collection-link">
+<a href="product.html?id=${product.id}" class="collection-link">
 
 <div class="card">
 
@@ -263,14 +286,26 @@ product.image.endsWith(".mp4")
 
 });
 
-})
+}
 
-.catch(error => {
+renderProducts("All");
 
-console.error(error);
+buttons.forEach(button=>{
+
+button.addEventListener("click",()=>{
+
+buttons.forEach(b=>b.classList.remove("active"));
+
+button.classList.add("active");
+
+renderProducts(button.dataset.filter);
 
 });
 
+});
+
+})
+.catch(console.error);
 </script>
 
 <script src="script.js"></script>
