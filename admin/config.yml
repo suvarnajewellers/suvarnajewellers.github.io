@@ -44,6 +44,11 @@ collections:
               - Articles
               - Custom Designs
 
+          - label: "Ready Stock"
+            name: "isReadyStock"
+            widget: "boolean"
+            default: false
+
           - label: "Product Name"
             name: "name"
             widget: "string"
