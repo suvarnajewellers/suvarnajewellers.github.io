@@ -45,17 +45,7 @@ function loadCategoryProducts() {
 else if (page.includes("silver-jewellery")) {
   category = "Silver Jewellery";
 }
-
-else if (page.includes("ready-stock")) {
-  const filtered = products.filter(product => product.isReadyStock === true);
-
-  grid.innerHTML = "";
-
-  
-
-  return;
-}
-
+   
 else if (page.includes("rudraksha-mala"))
     category = "Rudraksha Mala";
 
@@ -204,7 +194,7 @@ product.image.endsWith(".mp4")
 
   });
 
-     }
+}
 /* =========================
    MOBILE MENU
 ========================= */
