@@ -306,7 +306,9 @@ const grid = document.getElementById("products-grid");
 const buttons = document.querySelectorAll(".filter-btn");
 
 const goldProducts = products.filter(
-item => item.category === "Gold Jewellery"
+item =>
+item.category === "Gold Jewellery" &&
+item.isReadyStock !== true
 );
 
 function renderProducts(filter){
