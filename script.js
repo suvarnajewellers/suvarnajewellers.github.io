@@ -29,7 +29,7 @@ fetch("products.json")
 
 function loadCategoryProducts() {
 
-  const grid = document.getElementById("product-grid");
+  const grid = document.getElementById("products-grid");
 
   if (!grid) return;
 
