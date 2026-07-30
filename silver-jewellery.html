@@ -243,7 +243,9 @@ const grid = document.getElementById("products-grid");
 const buttons = document.querySelectorAll(".filter-btn");
 
 const silverProducts = products.filter(
-item => item.category === "Silver Jewellery"
+item =>
+item.category === "Silver Jewellery" &&
+item.isReadyStock !== true
 );
 
 function renderProducts(filter){
