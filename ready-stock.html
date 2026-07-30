@@ -145,6 +145,83 @@ class="collection-grid">
 </div>
 
 </section>
+  <script>
+
+fetch("products.json")
+
+.then(response => response.json())
+
+.then(products => {
+
+const grid = document.getElementById("ready-stock-grid");
+
+
+const readyProducts = products.filter(
+product => product.isReadyStock === true
+);
+
+
+readyProducts.forEach(product => {
+
+
+grid.innerHTML += `
+
+<a href="product.html?id=${product.id}" class="collection-link">
+
+<div class="card">
+
+
+${
+product.image.endsWith(".mp4")
+
+?
+
+`<video autoplay muted loop playsinline>
+<source src="${product.image}" type="video/mp4">
+</video>`
+
+:
+
+`<img src="${product.image}" alt="${product.name}">`
+
+}
+
+
+<h3>${product.name}</h3>
+
+<p>${product.category}</p>
+
+<p>${product.description}</p>
+
+
+<div class="card-btn">
+View Details →
+</div>
+
+
+</div>
+
+</a>
+
+`;
+
+
+});
+
+
+})
+
+
+.catch(error => {
+
+console.error("Ready Stock Error:", error);
+
+});
+
+
+</script>
+
+<script src="script.js"></script>
 </body>
 
 </html>
