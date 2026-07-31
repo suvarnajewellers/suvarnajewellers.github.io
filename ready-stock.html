@@ -7,19 +7,23 @@
 
 <title>Ready Stock | SUVARNA JEWELLERS</title>
 
-<link rel="stylesheet" href="style.css">
+<meta name="description" content="Premium Ready Stock Gold & Silver Jewellery available for immediate dispatch from Suvarna Jewellers.">
 
-<link rel="icon" type="image/png" href="Logo.png">
+<meta name="theme-color" content="#1a000d">
+
+<link rel="icon" href="Logo.png">
+<link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
-<!-- HEADER -->
+
+<div class="scroll-progress" id="scrollProgress"></div>
 
 <header class="top-header">
 
 <img src="Logo.png"
-alt="SUVARNA JEWELLERS"
+alt="Suvarna Jewellers"
 class="logo-img">
 
 <p class="tagline">
@@ -27,8 +31,6 @@ Trusted Since 2003
 </p>
 
 </header>
-
-<!-- NAVBAR -->
 
 <nav class="navbar">
 
@@ -41,7 +43,7 @@ SUVARNA JEWELLERS
 <div class="menu-toggle" id="menu-toggle">
 ☰
 </div>
-  
+
 <ul class="nav-links">
 
 <li><a href="index.html">Home</a></li>
@@ -50,20 +52,13 @@ SUVARNA JEWELLERS
 
 <li><a href="silver-jewellery.html">Silver</a></li>
 
-<li><a href="ready-stock.html" class="active">⭐ Ready Stock</a></li>
-
-</ul>
-<li>
-<a href="ready-stock.html" class="active">
+<li><a href="ready-stock.html" class="active">
 ⭐ Ready Stock
-</a>
-</li>
+</a></li>
 
 </ul>
 
 </nav>
-
-  <!-- READY STOCK HERO -->
 
 <section class="hero small-hero">
 
@@ -82,28 +77,33 @@ AVAILABLE TODAY
 
 </span>
 
-<h1>
+<h1 class="hero-title">
 
-Ready Stock Collection
+Premium Ready Stock
+
+<span>Immediate Dispatch</span>
 
 </h1>
 
 <p class="hero-description">
 
-Explore our latest ready stock Gold & Silver Jewellery available for immediate dispatch. Updated regularly for retailers and wholesalers.
+Explore our latest Gold, Silver, Rudraksha & Premium Jewellery available for immediate dispatch across India.
+
 </p>
 
 <div class="hero-buttons">
 
-<a href="#ready-stock-grid"
+<a href="#ready-stock-section"
 class="hero-btn">
 
-Explore Ready Stock
+Explore Collection
 
 </a>
 
 <a href="https://wa.me/917777991118"
+
 target="_blank"
+
 class="catalogue-btn">
 
 WhatsApp Enquiry
@@ -116,54 +116,227 @@ WhatsApp Enquiry
 
 </section>
 
-  <!-- READY STOCK -->
-
-<section class="collections">
+<section
+class="collections"
+id="ready-stock-section">
 
 <div class="section-title">
 
 <span class="small-title">
-AVAILABLE NOW
+
+READY STOCK
+
 </span>
 
 <h2>
-Premium Ready Stock
+
+Available Today
+
 </h2>
 
-<p>
+<p class="section-subtitle">
 
-Latest jewellery available for immediate dispatch.
+Premium Jewellery ready for dispatch.
 
 </p>
 
 </div>
 
-  <div class="category-filter">
+<div class="ready-toolbar">
 
-<button class="filter-btn active" data-filter="All">All</button>
+<input
 
-<button class="filter-btn" data-filter="Gold Jewellery">Gold</button>
+type="search"
 
-<button class="filter-btn" data-filter="Silver Jewellery">Silver</button>
+id="ready-search"
 
-<button class="filter-btn" data-filter="Ring">Ring</button>
+placeholder="Search jewellery..."
 
-<button class="filter-btn" data-filter="Pendant">Pendant</button>
+autocomplete="off">
 
-<button class="filter-btn" data-filter="Bracelet">Bracelet</button>
+<div class="ready-count">
 
-  </div>
-  
+<span id="ready-count">
+
+0
+
+</span>
+
+Products
+
+</div>
+
+</div>
+
+<div class="category-filter">
+
+<button class="filter-btn active"
+data-filter="All">
+
+All
+
+</button>
+
+<button class="filter-btn"
+data-filter="Gold Jewellery">
+
+Gold
+
+</button>
+
+<button class="filter-btn"
+data-filter="Silver Jewellery">
+
+Silver
+
+</button>
+
+<button class="filter-btn"
+data-filter="Ring">
+
+Ring
+
+</button>
+
+<button class="filter-btn"
+data-filter="Pendant">
+
+Pendant
+
+</button>
+
+<button class="filter-btn"
+data-filter="Bracelet">
+
+Bracelet
+
+</button>
+
+</div>
+
 <div
+
 id="ready-stock-grid"
+
 class="collection-grid">
 
 </div>
 
+<div
+id="empty-state"
+class="empty-state"
+style="display:none;">
+
+<h3>
+
+No Ready Stock Found
+
+</h3>
+
+<p>
+
+Please try another keyword or filter.
+
+</p>
+
+</div>
+
 </section>
-  
+
+<section class="luxury-banner">
+
+<div class="luxury-banner-content">
+
+<h2>
+
+Business Verification
+
+</h2>
+
+<p>
+
+GST Registered Manufacturer • Trusted Since 2003 • Gold & Silver Jewellery Manufacturer • Wholesale & Retail Supplier
+
+</p>
+
+<a
+
+href="https://wa.me/917777991118"
+
+class="hero-btn"
+
+target="_blank">
+
+Contact Us
+
+</a>
+
+</div>
+
+</section>
+
+<footer class="footer">
+
+<img
+src="Logo.png"
+class="logo-img"
+alt="Suvarna Jewellers">
+
+<h2>
+
+SUVARNA JEWELLERS
+
+</h2>
+
+<p>
+
+Premium Gold & Silver Jewellery Manufacturer
+
+</p>
+
+<div class="footer-links">
+
+<a href="index.html">
+Home
+</a>
+
+<a href="gold-jewellery.html">
+Gold
+</a>
+
+<a href="silver-jewellery.html">
+Silver
+</a>
+
+<a href="ready-stock.html">
+Ready Stock
+</a>
+
+</div>
+
+<p class="footer-copy"></p>
+
+</footer>
+
+<a
+
+href="https://wa.me/917777991118"
+
+target="_blank"
+
+class="floating-whatsapp">
+
+💬
+
+</a>
+
+<button id="scrollTopBtn">
+
+↑
+
+</button>
 
 <script src="script.js"></script>
-</body>
 
+</body>
 </html>
