@@ -118,7 +118,9 @@ function loadProductDetails() {
 
   const params = new URLSearchParams(window.location.search);
 
-  const id = Number(params.get("id"));
+  const id = params.get("id");
+
+const product = products.find(item => item.id == id);
 
   if (!id) return;
 
@@ -151,45 +153,81 @@ function loadReadyStock() {
 
   const buttons = document.querySelectorAll(".filter-btn");
 
-const readyProducts = products.filter(
-  product => product.isReadyStock === true
-);
+  const readyProducts = products.filter(product => product.isReadyStock === true);
 
-function renderReadyStock(filter) {
+  function renderReadyStock(filter) {
 
-  grid.innerHTML = "";
+    grid.innerHTML = "";
 
-  const filtered = filter === "All"
-    ? readyProducts
-    : readyProducts.filter(product =>
-        product.category === filter ||
-        product.subCategory === filter
-      );
+    const filtered = filter === "All"
+      ? readyProducts
+      : readyProducts.filter(product =>
+          product.category === filter ||
+          product.subCategory === filter
+        );
 
-  filtered.forEach(product => {
+    if (filtered.length === 0) {
+      grid.innerHTML = `
+        <div style="grid-column:1/-1;text-align:center;padding:40px;">
+          <h3>No Ready Stock Available</h3>
+        </div>
+      `;
+      return;
+    }
 
-    // અહીં તમારો હાલનો card code જ રહેશે.
-    // તેમાં કોઈ ફેરફાર કરવો નથી.
+    filtered.forEach(product => {
 
-  });
+      grid.innerHTML += `
 
+<a href="product.html?id=${product.id}" class="collection-link">
+
+<div class="card">
+
+${
+product.image.endsWith(".mp4")
+?
+`<video autoplay muted loop playsinline>
+<source src="${product.image}" type="video/mp4">
+</video>`
+:
+`<img src="${product.image}" alt="${product.name}">`
 }
 
-renderReadyStock("All");
+<h3>${product.name}</h3>
 
-buttons.forEach(button => {
+<p>${product.subCategory || ""}</p>
 
-  button.addEventListener("click", () => {
+<p>${product.description}</p>
 
-    buttons.forEach(b => b.classList.remove("active"));
+<div class="card-btn">
+View Details →
+</div>
 
-    button.classList.add("active");
+</div>
 
-    renderReadyStock(button.dataset.filter);
+</a>
+
+`;
+
+    });
+
+  }
+
+  renderReadyStock("All");
+
+  buttons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      buttons.forEach(b => b.classList.remove("active"));
+
+      button.classList.add("active");
+
+      renderReadyStock(button.dataset.filter);
+
+    });
 
   });
-
-});
 
 }
 /* =========================
