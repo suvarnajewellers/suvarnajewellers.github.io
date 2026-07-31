@@ -1,0 +1,144 @@
+/* ======================================
+   SUVARNA JEWELLERS V8
+   MANUFACTURER.CSS
+====================================== */
+
+
+/* ==========================
+   MANUFACTURER SECTION
+========================== */
+
+.manufacturer{
+
+    background:var(--surface);
+
+}
+
+
+
+/* ==========================
+   WRAPPER
+========================== */
+
+.manufacturer-wrapper{
+
+    display:grid;
+
+    grid-template-columns:
+
+    repeat(2,1fr);
+
+    gap:70px;
+
+    align-items:center;
+
+}
+
+
+
+/* ==========================
+   CONTENT
+========================== */
+
+.manufacturer-content h2{
+
+    font-size:42px;
+
+    margin-bottom:20px;
+
+}
+
+
+.manufacturer-content p{
+
+    font-size:17px;
+
+    margin-bottom:25px;
+
+}
+
+
+
+/* ==========================
+   LIST
+========================== */
+
+.manufacturer-list{
+
+    margin:30px 0;
+
+}
+
+
+.manufacturer-list li{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-bottom:15px;
+
+    color:var(--text-light);
+
+}
+
+
+
+.manufacturer-list i{
+
+    color:var(--primary);
+
+}
+
+
+
+/* ==========================
+   IMAGE
+========================== */
+
+.manufacturer-image{
+
+    position:relative;
+
+}
+
+
+
+.manufacturer-image img{
+
+    width:100%;
+
+    border-radius:var(--radius-lg);
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow);
+
+}
+
+
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:900px){
+
+    .manufacturer-wrapper{
+
+        grid-template-columns:1fr;
+
+        gap:40px;
+
+    }
+
+
+    .manufacturer-content h2{
+
+        font-size:34px;
+
+    }
+
+}
