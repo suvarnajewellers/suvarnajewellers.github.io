@@ -1,0 +1,166 @@
+/* ======================================
+   SUVARNA JEWELLERS V8
+   COLLECTIONS.CSS
+====================================== */
+
+
+/* ==========================
+   COLLECTION GRID
+========================== */
+
+.collection-grid{
+
+    display:grid;
+
+    grid-template-columns:
+
+    repeat(3,1fr);
+
+    gap:30px;
+
+}
+
+
+
+/* ==========================
+   COLLECTION CARD
+========================== */
+
+.collection-card{
+
+    position:relative;
+
+    height:380px;
+
+    overflow:hidden;
+
+    border-radius:var(--radius-lg);
+
+    border:1px solid var(--border);
+
+    background:var(--surface);
+
+}
+
+
+
+.collection-card img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.5s ease;
+
+}
+
+
+
+.collection-card:hover img{
+
+    transform:scale(1.08);
+
+}
+
+
+
+/* ==========================
+   COLLECTION OVERLAY
+========================== */
+
+.collection-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    align-items:flex-end;
+
+    padding:30px;
+
+    background:
+
+    linear-gradient(
+
+    0deg,
+
+    rgba(20,6,11,.9),
+
+    transparent
+
+    );
+
+}
+
+
+
+.collection-overlay h3{
+
+    color:var(--white);
+
+    font-size:28px;
+
+}
+
+
+
+.collection-overlay span{
+
+    color:var(--primary);
+
+    font-size:14px;
+
+}
+
+
+
+/* ==========================
+   COLLECTION LINK
+========================== */
+
+.collection-link{
+
+    display:block;
+
+}
+
+
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:992px){
+
+    .collection-grid{
+
+        grid-template-columns:
+
+        repeat(2,1fr);
+
+    }
+
+}
+
+
+
+@media(max-width:600px){
+
+    .collection-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .collection-card{
+
+        height:320px;
+
+    }
+
+}
