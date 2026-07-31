@@ -3,27 +3,90 @@
    API.JS
 ========================================== */
 
-let products = [];
 
-/* Load Products */
+/* ==========================
+   PRODUCTS STORAGE
+========================== */
 
-export async function loadProducts() {
+let PRODUCTS = [];
 
-    try {
 
-        const response = await fetch("products.json");
 
-        if (!response.ok) {
-            throw new Error("Unable to load products.json");
+/* ==========================
+   LOAD PRODUCTS JSON
+========================== */
+
+async function loadProducts(){
+
+    try{
+
+        const response = await fetch(
+            CONFIG.PRODUCTS_FILE || "products.json"
+        );
+
+
+        if(!response.ok){
+
+            throw new Error(
+                "Products file not found"
+            );
+
         }
 
-        products = await response.json();
 
-        return products;
+        const data = await response.json();
 
-    } catch (error) {
 
-        console.error(error);
+        /*
+          Support both formats:
+
+          [
+            {product}
+          ]
+
+          OR
+
+          {
+            products:[
+              {product}
+            ]
+          }
+        */
+
+
+        if(Array.isArray(data)){
+
+            PRODUCTS = data;
+
+        }
+
+        else if(data.products){
+
+            PRODUCTS = data.products;
+
+        }
+
+        else{
+
+            PRODUCTS = [];
+
+        }
+
+
+        return PRODUCTS;
+
+
+    }
+
+    catch(error){
+
+        console.error(
+            "Product Loading Error:",
+            error
+        );
+
+
+        PRODUCTS = [];
 
         return [];
 
@@ -31,39 +94,29 @@ export async function loadProducts() {
 
 }
 
-/* All Products */
 
-export function getProducts() {
 
-    return products;
+/* ==========================
+   GET ALL PRODUCTS
+========================== */
 
-}
+function getProducts(){
 
-/* Ready Stock */
-
-export function getReadyStock() {
-
-    return products.filter(product => product.isReadyStock === true);
+    return PRODUCTS;
 
 }
 
-/* Product By ID */
 
-export function getProduct(id) {
 
-    return products.find(product =>
+/* ==========================
+   GET BY CATEGORY
+========================== */
 
-        String(product.id) === String(id)
+function getProductsByCategory(category){
 
-    );
+    return PRODUCTS.filter(
 
-}
-
-/* Category */
-
-export function getCategory(category) {
-
-    return products.filter(product =>
+        product =>
 
         product.category === category
 
@@ -71,40 +124,86 @@ export function getCategory(category) {
 
 }
 
-/* Sub Category */
 
-export function getSubCategory(subCategory) {
 
-    return products.filter(product =>
+/* ==========================
+   GET SINGLE PRODUCT
+========================== */
 
-        product.subCategory === subCategory
+function getProductById(id){
 
-    );
+    return PRODUCTS.find(
 
-}
+        product =>
 
-/* Search */
-
-export function searchProducts(keyword) {
-
-    keyword = keyword.toLowerCase();
-
-    return products.filter(product =>
-
-        product.name.toLowerCase().includes(keyword)
-
-        ||
-
-        (product.description || "")
-        .toLowerCase()
-        .includes(keyword)
-
-        ||
-
-        (product.code || "")
-        .toLowerCase()
-        .includes(keyword)
+        product.id === id
 
     );
 
 }
+
+
+
+/* ==========================
+   SEARCH PRODUCTS
+========================== */
+
+function searchProducts(keyword){
+
+    if(!keyword){
+
+        return PRODUCTS;
+
+    }
+
+
+    keyword =
+    keyword.toLowerCase();
+
+
+
+    return PRODUCTS.filter(product => {
+
+
+        return (
+
+            product.name
+            ?.toLowerCase()
+            .includes(keyword)
+
+            ||
+
+            product.category
+            ?.toLowerCase()
+            .includes(keyword)
+
+            ||
+
+            product.metal
+            ?.toLowerCase()
+            .includes(keyword)
+
+        );
+
+
+    });
+
+}
+
+
+
+/* ==========================
+   EXPORT GLOBAL
+========================== */
+
+window.PRODUCTS = PRODUCTS;
+
+window.loadProducts = loadProducts;
+
+window.getProducts = getProducts;
+
+window.getProductsByCategory = getProductsByCategory;
+
+window.getProductById = getProductById;
+
+window.searchProducts = searchProducts;
