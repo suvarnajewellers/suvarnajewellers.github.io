@@ -1,0 +1,267 @@
+/* ======================================
+   SUVARNA JEWELLERS V8
+   COMPONENTS.CSS
+====================================== */
+
+
+/* ==========================
+   CARD COMPONENT
+========================== */
+
+.card{
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius);
+
+    overflow:hidden;
+
+    transition:var(--transition);
+
+}
+
+
+.card img{
+
+    width:100%;
+
+    height:280px;
+
+    object-fit:cover;
+
+}
+
+
+.card-content{
+
+    padding:25px;
+
+}
+
+
+.card h3{
+
+    font-size:22px;
+
+    margin-bottom:10px;
+
+}
+
+
+.card p{
+
+    font-size:15px;
+
+}
+
+
+
+/* ==========================
+   PRODUCT CARD
+========================== */
+
+.product-card{
+
+    background:var(--surface);
+
+    border-radius:var(--radius);
+
+    border:1px solid var(--border);
+
+    overflow:hidden;
+
+    transition:.3s ease;
+
+}
+
+
+.product-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:var(--shadow);
+
+}
+
+
+.product-image{
+
+    position:relative;
+
+    height:300px;
+
+    overflow:hidden;
+
+}
+
+
+.product-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+
+.product-info{
+
+    padding:20px;
+
+}
+
+
+.product-info h3{
+
+    font-size:20px;
+
+    margin-bottom:8px;
+
+}
+
+
+.product-category{
+
+    color:var(--primary);
+
+    font-size:13px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+
+}
+
+
+
+/* ==========================
+   BADGE
+========================== */
+
+.badge{
+
+    display:inline-flex;
+
+    padding:6px 14px;
+
+    border-radius:50px;
+
+    background:rgba(212,175,55,.12);
+
+    color:var(--primary);
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+
+
+
+/* ==========================
+   ICON BOX
+========================== */
+
+.icon-box{
+
+    width:70px;
+
+    height:70px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:rgba(212,175,55,.12);
+
+    color:var(--primary);
+
+    font-size:28px;
+
+    margin-bottom:20px;
+
+}
+
+
+
+/* ==========================
+   SOCIAL ICONS
+========================== */
+
+.social-icons{
+
+    display:flex;
+
+    gap:15px;
+
+}
+
+
+.social-icons a{
+
+    width:42px;
+
+    height:42px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    border:1px solid var(--border);
+
+    color:var(--primary);
+
+}
+
+
+.social-icons a:hover{
+
+    background:var(--primary);
+
+    color:#1a0b00;
+
+}
+
+
+
+/* ==========================
+   DIVIDER
+========================== */
+
+.divider{
+
+    width:100%;
+
+    height:1px;
+
+    background:var(--border);
+
+    margin:30px 0;
+
+}
+
+
+
+/* ==========================
+   SECTION BUTTON
+========================== */
+
+.section-button{
+
+    text-align:center;
+
+    margin-top:40px;
+
+  }
