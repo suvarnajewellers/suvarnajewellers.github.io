@@ -1,0 +1,285 @@
+/* ======================================
+   SUVARNA JEWELLERS V8
+   FOOTER.CSS
+====================================== */
+
+
+/* ==========================
+   FOOTER
+========================== */
+
+.footer{
+
+    background:#0d0307;
+
+    border-top:1px solid var(--border);
+
+    padding-top:70px;
+
+}
+
+
+
+/* ==========================
+   FOOTER GRID
+========================== */
+
+.footer-grid{
+
+    display:grid;
+
+    grid-template-columns:
+
+    repeat(4,1fr);
+
+    gap:40px;
+
+}
+
+
+
+/* ==========================
+   FOOTER LOGO
+========================== */
+
+.footer-logo{
+
+    width:90px;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.footer h3{
+
+    color:var(--primary);
+
+    font-size:22px;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.footer h4{
+
+    color:var(--primary);
+
+    font-size:18px;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.footer p{
+
+    font-size:15px;
+
+}
+
+
+
+/* ==========================
+   FOOTER LINKS
+========================== */
+
+.footer-links ul,
+.footer-products ul{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+
+
+.footer-links a,
+.footer-products a{
+
+    color:var(--text-light);
+
+    font-size:15px;
+
+}
+
+
+
+.footer-links a:hover,
+.footer-products a:hover{
+
+    color:var(--primary);
+
+}
+
+
+
+/* ==========================
+   SOCIAL
+========================== */
+
+.footer-social .social-icons{
+
+    margin-top:10px;
+
+}
+
+
+
+/* ==========================
+   FOOTER BOTTOM
+========================== */
+
+.footer-bottom{
+
+    margin-top:50px;
+
+    padding:20px;
+
+    text-align:center;
+
+    border-top:1px solid var(--border);
+
+    color:var(--text-light);
+
+    font-size:14px;
+
+}
+
+
+
+/* ==========================
+   FLOATING WHATSAPP
+========================== */
+
+.floating-whatsapp{
+
+    position:fixed;
+
+    right:25px;
+
+    bottom:25px;
+
+    width:60px;
+
+    height:60px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#25d366;
+
+    color:white;
+
+    border-radius:50%;
+
+    font-size:32px;
+
+    z-index:1000;
+
+    box-shadow:var(--shadow);
+
+}
+
+
+
+.floating-whatsapp:hover{
+
+    transform:scale(1.08);
+
+}
+
+
+
+/* ==========================
+   BACK TO TOP
+========================== */
+
+.back-to-top{
+
+    position:fixed;
+
+    right:25px;
+
+    bottom:100px;
+
+    width:45px;
+
+    height:45px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:var(--primary);
+
+    color:#1a0b00;
+
+    border-radius:50%;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:var(--transition);
+
+}
+
+
+
+.back-to-top.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:1000px){
+
+    .footer-grid{
+
+        grid-template-columns:
+
+        repeat(2,1fr);
+
+    }
+
+}
+
+
+
+@media(max-width:600px){
+
+    .footer-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .footer{
+
+        padding-top:50px;
+
+    }
+
+}
