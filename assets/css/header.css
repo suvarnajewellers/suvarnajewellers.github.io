@@ -1,0 +1,302 @@
+/* ======================================
+   SUVARNA JEWELLERS V8
+   HEADER.CSS
+====================================== */
+
+
+/* ==========================
+   HEADER
+========================== */
+
+.header{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:var(--header-height);
+
+    background:
+
+    rgba(20,6,11,.88);
+
+    backdrop-filter:blur(12px);
+
+    border-bottom:1px solid var(--border);
+
+    z-index:var(--z-header);
+
+    transition:var(--transition);
+
+}
+
+
+.header.scrolled{
+
+    background:
+
+    rgba(20,6,11,.96);
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+
+
+/* ==========================
+   HEADER CONTAINER
+========================== */
+
+.header .container{
+
+    height:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+}
+
+
+
+/* ==========================
+   LOGO
+========================== */
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+
+.logo img{
+
+    width:58px;
+
+    height:58px;
+
+    object-fit:contain;
+
+}
+
+
+.logo h1{
+
+    font-size:20px;
+
+    color:var(--primary);
+
+    letter-spacing:1px;
+
+}
+
+
+.logo span{
+
+    display:block;
+
+    font-size:11px;
+
+    color:var(--text-light);
+
+    letter-spacing:2px;
+
+}
+
+
+
+/* ==========================
+   NAVIGATION
+========================== */
+
+#navbar{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:35px;
+
+}
+
+
+#navbar ul{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:28px;
+
+}
+
+
+#navbar ul li a{
+
+    color:var(--white);
+
+    font-size:15px;
+
+    position:relative;
+
+}
+
+
+#navbar ul li a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-8px;
+
+    width:0;
+
+    height:2px;
+
+    background:var(--primary);
+
+    transition:var(--transition);
+
+}
+
+
+#navbar ul li a:hover{
+
+    color:var(--primary);
+
+}
+
+
+#navbar ul li a:hover::after{
+
+    width:100%;
+
+}
+
+
+
+/* ==========================
+   WHATSAPP BUTTON
+========================== */
+
+.nav-whatsapp{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:10px 22px;
+
+    border-radius:50px;
+
+    background:var(--primary);
+
+    color:#1a0b00;
+
+    font-weight:600;
+
+}
+
+
+.nav-whatsapp:hover{
+
+    background:var(--primary-dark);
+
+}
+
+
+
+/* ==========================
+   MOBILE MENU
+========================== */
+
+.menu-toggle{
+
+    display:none;
+
+    color:var(--primary);
+
+    font-size:28px;
+
+}
+
+
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:900px){
+
+    .menu-toggle{
+
+        display:block;
+
+    }
+
+
+    #navbar{
+
+        position:absolute;
+
+        top:var(--header-height);
+
+        left:0;
+
+        width:100%;
+
+        background:var(--background);
+
+        padding:30px 20px;
+
+        flex-direction:column;
+
+        gap:25px;
+
+        transform:translateY(-120%);
+
+        opacity:0;
+
+        pointer-events:none;
+
+        transition:var(--transition);
+
+    }
+
+
+    #navbar.active{
+
+        transform:translateY(0);
+
+        opacity:1;
+
+        pointer-events:auto;
+
+    }
+
+
+    #navbar ul{
+
+        flex-direction:column;
+
+        gap:20px;
+
+    }
+
+}
