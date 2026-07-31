@@ -3,11 +3,14 @@
    CONFIG.JS
 ========================================== */
 
-export const CONFIG = {
+const CONFIG = {
 
     BUSINESS: {
+
         name: "SUVARNA JEWELLERS",
+
         tagline: "Trusted Since 2003",
+
         type: "Gold & Silver Jewellery Manufacturer",
 
         gstin: "24CQMPS2913N1ZB",
@@ -20,23 +23,44 @@ export const CONFIG = {
 
         whatsapp: "https://wa.me/917777991118",
 
-        location: "3/672/A, Navkar House, In The Line of Naresh Bhelwala, Daliya Sheri, Navapura, Bhagal, Surat, Gujarat 395003, India",
+        location:
+        "3/672/A, Navkar House, In The Line of Naresh Bhelwala, Daliya Sheri, Navapura, Bhagal, Surat, Gujarat 395003, India",
 
-        maps: "https://maps.app.goo.gl/jQBxiMftaQzDLj1c8"
+        maps:
+        "https://maps.app.goo.gl/jQBxiMftaQzDLj1c8"
+
     },
+
 
     SOCIAL: {
-        instagram: "https://www.instagram.com/suvarna_jewellers_?igsh=Z3hvcm13b21pdmt6",
-        facebook: "https://www.facebook.com/share/1DQnSxg6UL/",
-        youtube: "https://youtube.com/@suvarnajewellers2003?si=KJsDMve0ExGE7knS"
+
+        instagram:
+        "https://www.instagram.com/suvarna_jewellers_?igsh=Z3hvcm13b21pdmt6",
+
+        facebook:
+        "https://www.facebook.com/share/1DQnSxg6UL/",
+
+        youtube:
+        "https://youtube.com/@suvarnajewellers2003?si=KJsDMve0ExGE7knS"
+
     },
 
+
     COMPANY: {
-        bulkOrders: true,
-        panIndiaDelivery: true,
-        wholesale: true,
-        retail: true,
-        gstRegistered: true
+
+        bulkOrders:true,
+
+        panIndiaDelivery:true,
+
+        wholesale:true,
+
+        retail:true,
+
+        gstRegistered:true
+
     }
 
 };
+
+
+window.CONFIG = CONFIG;
