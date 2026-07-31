@@ -1,0 +1,157 @@
+/* ======================================
+   SUVARNA JEWELLERS V8
+   CONTACT.CSS
+====================================== */
+
+
+/* ==========================
+   CONTACT SECTION
+========================== */
+
+.contact{
+
+    background:
+
+    linear-gradient(
+
+    180deg,
+
+    var(--surface),
+
+    var(--background)
+
+    );
+
+}
+
+
+
+/* ==========================
+   CONTACT GRID
+========================== */
+
+.contact-grid{
+
+    display:grid;
+
+    grid-template-columns:
+
+    repeat(4,1fr);
+
+    gap:25px;
+
+}
+
+
+
+/* ==========================
+   CONTACT CARD
+========================== */
+
+.contact-card{
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius);
+
+    padding:35px 20px;
+
+    text-align:center;
+
+    transition:var(--transition);
+
+}
+
+
+
+.contact-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:var(--shadow);
+
+}
+
+
+
+.contact-card i{
+
+    width:65px;
+
+    height:65px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin:0 auto 20px;
+
+    border-radius:50%;
+
+    background:rgba(212,175,55,.12);
+
+    color:var(--primary);
+
+    font-size:28px;
+
+}
+
+
+
+.contact-card h3{
+
+    font-size:22px;
+
+    margin-bottom:10px;
+
+}
+
+
+
+.contact-card a{
+
+    color:var(--primary);
+
+}
+
+
+
+.contact-card p{
+
+    color:var(--text-light);
+
+}
+
+
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:1000px){
+
+    .contact-grid{
+
+        grid-template-columns:
+
+        repeat(2,1fr);
+
+    }
+
+}
+
+
+
+@media(max-width:600px){
+
+    .contact-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+  }
