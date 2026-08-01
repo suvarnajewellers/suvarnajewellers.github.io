@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Silver Jewellery | SUVARNA JEWELLERS</title>
+
+<meta name="description"
+content="Premium Silver Jewellery Manufacturer in Surat. Silver Chains, Rings, Pendants, Bracelets and more by SUVARNA JEWELLERS.">
+
+<meta name="keywords"
+content="Silver Jewellery, Silver Manufacturer, Silver Chain, Silver Ring, Surat Jewellery">
+
+<meta name="robots"
+content="index,follow">
+
+<link rel="icon"
+href="../assets/images/logo/favicon.png">
+
+<link rel="stylesheet"
+href="../assets/css/style.css">
+
+<link rel="stylesheet"
+href="../assets/css/header.css">
+
+<link rel="stylesheet"
+href="../assets/css/collections.css">
+
+<link rel="stylesheet"
+href="../assets/css/footer.css">
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="container">
+
+        <a href="../index.html" class="logo">
+
+            <img
+            src="../assets/images/logo/logo.png"
+            alt="SUVARNA JEWELLERS">
+
+            <span>SUVARNA JEWELLERS</span>
+
+        </a>
+
+    </div>
+
+</header>
+
+<section class="page-banner">
+
+    <div class="container">
+
+        <h1>Silver Jewellery Collection</h1>
+
+        <p>
+            Premium Silver Jewellery Manufacturer • Trusted Since 2003
+        </p>
+
+    </div>
+
+</section>
+
+<section class="collections">
+
+    <div class="container">
+
+        <div
+        id="productsGrid"
+        class="ready-stock-grid">
+
+        </div>
+
+    </div>
+
+</section>
+
+  <footer class="footer">
+
+    <div class="container">
+
+        <div class="footer-bottom">
+
+            © 2026 SUVARNA JEWELLERS • Trusted Since 2003
+
+        </div>
+
+    </div>
+
+</footer>
+
+<script type="module">
+
+import { loadProducts, getProductsByCategory, getImage } from "../assets/js/api.js";
+
+document.addEventListener("DOMContentLoaded", async () => {
+
+    await loadProducts();
+
+    const grid = document.getElementById("productsGrid");
+
+    const products = getProductsByCategory("Silver Jewellery");
+
+    grid.innerHTML = "";
+
+    products.forEach(product => {
+
+        grid.innerHTML += `
+
+        <div class="ready-stock-card">
+
+            <div class="ready-stock-image">
+
+                <img src="../${getImage(product.image)}"
+                     alt="${product.name}">
+
+            </div>
+
+            <div class="ready-stock-info">
+
+                <h3>${product.name}</h3>
+
+                <p>${product.category}</p>
+
+                <a href="../product.html?id=${product.id}"
+                   class="btn btn-primary">
+
+                   View Details
+
+                </a>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+});
+
+</script>
+
+</body>
+
+          </html>
