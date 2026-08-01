@@ -2448,3 +2448,237 @@ padding:8px 14px;
     left:130%;
 
 }
+/* ==========================================
+   SUVARNA JEWELLERS V8
+   PREMIUM PRODUCT PAGE
+========================================== */
+
+.product-layout{
+display:grid;
+grid-template-columns:1.05fr .95fr;
+gap:60px;
+align-items:start;
+}
+
+.product-gallery{
+position:sticky;
+top:110px;
+}
+
+.product-main-image{
+background:linear-gradient(145deg,#1b0b10,#090909);
+border:1px solid rgba(212,175,55,.35);
+border-radius:28px;
+padding:25px;
+overflow:hidden;
+box-shadow:
+0 20px 50px rgba(0,0,0,.45),
+0 0 25px rgba(212,175,55,.10);
+cursor:pointer;
+}
+
+.product-main-image img{
+width:100%;
+height:560px;
+object-fit:contain;
+transition:.45s;
+}
+
+.product-main-image:hover img{
+transform:scale(1.04);
+}
+
+.product-thumbnails{
+display:flex;
+gap:12px;
+margin-top:18px;
+flex-wrap:wrap;
+}
+
+.product-thumbnails img{
+width:82px;
+height:82px;
+object-fit:cover;
+border-radius:14px;
+border:2px solid transparent;
+background:#111;
+cursor:pointer;
+transition:.3s;
+}
+
+.product-thumbnails img:hover,
+.product-thumbnails img.active{
+border-color:#d4af37;
+transform:translateY(-3px);
+}
+
+.product-details{
+background:rgba(255,255,255,.04);
+border:1px solid rgba(212,175,55,.25);
+border-radius:28px;
+padding:35px;
+backdrop-filter:blur(14px);
+-webkit-backdrop-filter:blur(14px);
+}
+
+.product-category{
+display:inline-block;
+padding:7px 16px;
+border-radius:30px;
+background:rgba(212,175,55,.10);
+border:1px solid rgba(212,175,55,.35);
+color:#d4af37;
+letter-spacing:2px;
+font-size:13px;
+font-weight:700;
+text-transform:uppercase;
+}
+
+.product-title{
+font-size:46px;
+line-height:1.15;
+margin:18px 0;
+color:#f5e6b8;
+}
+
+.product-short-description{
+font-size:17px;
+line-height:1.9;
+color:#ddd;
+margin-bottom:30px;
+}
+
+.product-specifications{
+display:grid;
+gap:14px;
+margin:35px 0;
+}
+
+.spec-item{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:16px 20px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(212,175,55,.12);
+border-radius:16px;
+}
+
+.spec-item span{
+color:#d8d8d8;
+}
+
+.spec-item strong{
+color:#d4af37;
+}
+
+.product-actions{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+margin-top:30px;
+}
+
+.btn{
+padding:15px 28px;
+border-radius:40px;
+font-weight:700;
+transition:.35s;
+}
+
+.btn-primary{
+background:linear-gradient(135deg,#d4af37,#f5e6b8);
+color:#111;
+}
+
+.btn-outline{
+border:1px solid #d4af37;
+color:#d4af37;
+}
+
+.btn:hover{
+transform:translateY(-4px);
+box-shadow:0 15px 35px rgba(212,175,55,.25);
+}
+
+.image-lightbox{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.94);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:99999;
+}
+
+.image-lightbox.show{
+display:flex;
+}
+
+.image-lightbox img{
+max-width:92%;
+max-height:88%;
+border-radius:18px;
+}
+
+.lightbox-close{
+position:absolute;
+top:30px;
+right:30px;
+font-size:34px;
+background:none;
+border:0;
+color:#fff;
+cursor:pointer;
+}
+
+@media(max-width:900px){
+
+.product-layout{
+grid-template-columns:1fr;
+gap:35px;
+}
+
+.product-gallery{
+position:static;
+}
+
+.product-main-image img{
+height:380px;
+}
+
+.product-details{
+padding:25px;
+}
+
+.product-title{
+font-size:34px;
+}
+
+.product-actions{
+flex-direction:column;
+}
+
+.product-actions .btn{
+width:100%;
+text-align:center;
+}
+
+}
+
+@media(max-width:480px){
+
+.product-main-image img{
+height:300px;
+}
+
+.product-title{
+font-size:28px;
+}
+
+.product-thumbnails img{
+width:65px;
+height:65px;
+}
+
+}
