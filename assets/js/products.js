@@ -86,8 +86,7 @@ async function loadProduct(){
 
     try{
 
-        const products = await getProducts();
-
+        const products = await loadProducts();
 
         currentProduct = products.find(
             product => product.id === productId
