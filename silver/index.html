@@ -97,9 +97,10 @@ href="../assets/css/footer.css">
 
 </footer>
 
-<script type="module">
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/api.js"></script>
 
-import { loadProducts, getProductsByCategory, getImage } from "../assets/js/api.js";
+<script>
 
 document.addEventListener("DOMContentLoaded", async () => {
 
@@ -119,7 +120,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             <div class="ready-stock-image">
 
-                <img src="../${getImage(product.image)}"
+                <img src="../${product.image}"
                      alt="${product.name}">
 
             </div>
@@ -133,7 +134,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 <a href="../product.html?id=${product.id}"
                    class="btn btn-primary">
 
-                   View Details
+                    View Details
 
                 </a>
 
