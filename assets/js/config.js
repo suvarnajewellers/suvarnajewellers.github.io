@@ -58,7 +58,9 @@ const CONFIG = {
 
         gstRegistered:true
 
-    }
+    },
+
+   PRODUCTS_FILE: "products.json"
 
 };
 
