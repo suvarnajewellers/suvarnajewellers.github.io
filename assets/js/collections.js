@@ -24,21 +24,25 @@ async function initCollectionPage(){
         grid.innerHTML += `
         <a href="../product.html?id=${product.id}" class="collection-link">
 
-            <div class="card">
+            <div class="collection-card">
 
-                <img src="../${getImage(product.image)}"
-                     alt="${product.name}"
-                     loading="lazy">
+    <img src="../${getImage(product.image)}"
+         alt="${product.name}"
+         loading="lazy">
 
-                <h3>${product.name}</h3>
+    <div class="collection-overlay">
 
-                <p>${product.category}</p>
+        <div>
 
-                <div class="card-btn">
-                    View Details
-                </div>
+            <span>${product.category}</span>
 
-            </div>
+            <h3>${product.name}</h3>
+
+        </div>
+
+    </div>
+
+</div>
 
         </a>
         `;
