@@ -5,125 +5,73 @@
 
 
 /* ==========================
-   PRODUCT STATE
+   GLOBAL VARIABLES
 ========================== */
 
 let currentProduct = null;
-
-let relatedProducts = [];
-
+let products = [];
 let productImages = [];
-
 
 
 /* ==========================
    DOM ELEMENTS
 ========================== */
 
-const mainImage = $("#mainImage");
+const mainImage = document.getElementById("mainImage");
+const thumbnailContainer = document.getElementById("thumbnailContainer");
 
-const thumbnailContainer = $("#thumbnailContainer");
+const productCategory = document.getElementById("productCategory");
+const productName = document.getElementById("productName");
+const productDescription = document.getElementById("productDescription");
 
-const productCategory = $("#productCategory");
+const productMetal = document.getElementById("productMetal");
+const productGrossWeight = document.getElementById("productGrossWeight");
+const productNetWeight = document.getElementById("productNetWeight");
+const productSize = document.getElementById("productSize");
 
-const productName = $("#productName");
+const whatsappButton = document.getElementById("whatsappButton");
+const relatedProducts = document.getElementById("relatedProducts");
 
-const productDescription = $("#productDescription");
-
-const productMetal = $("#productMetal");
-
-const productGrossWeight = $("#productGrossWeight");
-
-const productNetWeight = $("#productNetWeight");
-
-const productSize = $("#productSize");
-
-const whatsappButton = $("#whatsappButton");
-
-const relatedProductsGrid = $("#relatedProducts");
-
-const imageLightbox = $("#imageLightbox");
-
-const lightboxImage = $("#lightboxImage");
-
-const lightboxClose = $("#lightboxClose");
-
-
-
-/* ==========================
-   GET PRODUCT ID
-========================== */
-
-const params = new URLSearchParams(window.location.search);
-
-const productId = params.get("id");
-
+const imageLightbox = document.getElementById("imageLightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const lightboxClose = document.getElementById("lightboxClose");
 
 
 /* ==========================
    INITIALIZE
 ========================== */
 
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener("DOMContentLoaded", initProductPage);
+
+async function initProductPage(){
+
+    const params = new URLSearchParams(window.location.search);
+
+    const productId = params.get("id");
 
     if(!productId){
 
         window.location.href = "collections.html";
-
         return;
 
     }
 
-    await loadProduct();
+    products = await getProducts();
 
-});
+    currentProduct = products.find(product => product.id === productId);
 
-/* ==========================
-   LOAD PRODUCT
-========================== */
+    if(!currentProduct){
 
-async function loadProduct(){
-
-    try{
-
-        const products = await loadProducts();
-
-        currentProduct = products.find(
-            product => product.id === productId
-        );
-
-
-        if(!currentProduct){
-
-            window.location.href = "collections.html";
-
-            return;
-
-        }
-
-
-        renderProduct(currentProduct);
-
-
-        loadRelatedProducts(
-            products,
-            currentProduct
-        );
-
+        window.location.href = "collections.html";
+        return;
 
     }
-    catch(error){
 
-        console.error(
-            "Product loading error:",
-            error
-        );
+    renderProduct(currentProduct);
 
-    }
+    renderRelatedProducts();
 
 }
-
-
 
 /* ==========================
    RENDER PRODUCT
@@ -131,284 +79,149 @@ async function loadProduct(){
 
 function renderProduct(product){
 
+    productCategory.textContent = product.category || "";
 
-    productCategory.textContent =
-    product.category || "";
+    productName.textContent = product.name || "";
 
+    productDescription.textContent = product.description || "";
 
-    productName.textContent =
-    product.name || "";
+    productMetal.textContent = product.metal || "-";
 
+    productGrossWeight.textContent = product.grossWeight || "-";
 
-    productDescription.textContent =
-    product.description || "";
+    productNetWeight.textContent = product.netWeight || "-";
 
-
-    productMetal.textContent =
-    product.metal || "-";
+    productSize.textContent = product.size || "-";
 
 
-    productGrossWeight.textContent =
-    product.grossWeight || "-";
+    productImages = [];
+
+    if(product.image){
+
+        productImages.push(product.image);
+
+    }
+
+    if(Array.isArray(product.gallery)){
+
+        productImages.push(...product.gallery);
+
+    }
+
+    productImages = [...new Set(productImages)];
 
 
-    productNetWeight.textContent =
-    product.netWeight || "-";
+    if(productImages.length){
 
+        mainImage.src = productImages[0];
 
-    productSize.textContent =
-    product.size || "-";
+        mainImage.alt = product.name;
 
-
-    productImages =
-    getProductImages(product);
-
-
-    setMainImage(
-        productImages[0]
-    );
+    }
 
 
     createThumbnails();
 
-
-    createWhatsappLink(product);
-
-
-       }
-
-/* ==========================
-   PRODUCT IMAGES
-========================== */
-
-function getProductImages(product){
-
-    let images = [];
-
-
-    if(product.image){
-
-        images.push(product.image);
-
-    }
-
-
-    if(product.gallery && Array.isArray(product.gallery)){
-
-        images = [
-            ...images,
-            ...product.gallery
-        ];
-
-    }
-
-
-    return [
-        ...new Set(images)
-    ];
+    createWhatsappButton(product);
 
 }
 
 
-
 /* ==========================
-   SET MAIN IMAGE
-========================== */
-
-function setMainImage(image){
-
-    if(!image || !mainImage){
-
-        return;
-
-    }
-
-
-    mainImage.src = image;
-
-    mainImage.alt =
-    currentProduct?.name || "Jewellery Product";
-
-}
-
-
-
-/* ==========================
-   CREATE THUMBNAILS
+   THUMBNAILS
 ========================== */
 
 function createThumbnails(){
 
-    if(!thumbnailContainer){
-
-        return;
-
-    }
-
-
     thumbnailContainer.innerHTML = "";
-
 
     productImages.forEach((image,index)=>{
 
+        const img = document.createElement("img");
 
-        const thumb = document.createElement("img");
+        img.src = image;
 
+        img.alt = currentProduct.name;
 
-        thumb.src = image;
+        if(index === 0){
 
-        thumb.alt =
-        currentProduct.name;
+            img.classList.add("active");
 
+        }
 
-        thumb.className =
-        index === 0
-        ?
-        "active"
-        :
-        "";
+        img.addEventListener("click",()=>{
 
+            mainImage.src = image;
 
-        thumb.addEventListener(
-            "click",
-            ()=>{
+            document
+            .querySelectorAll("#thumbnailContainer img")
+            .forEach(item=>item.classList.remove("active"));
 
+            img.classList.add("active");
 
-                setMainImage(image);
+        });
 
-
-                document
-                .querySelectorAll(
-                    ".product-thumbnails img"
-                )
-                .forEach(img=>{
-
-                    img.classList.remove(
-                        "active"
-                    );
-
-                });
-
-
-                thumb.classList.add(
-                    "active"
-                );
-
-
-            }
-        );
-
-
-        thumbnailContainer.appendChild(
-            thumb
-        );
-
+        thumbnailContainer.appendChild(img);
 
     });
 
-
-           }
+   }
 
 /* ==========================
-   WHATSAPP LINK
+   WHATSAPP BUTTON
 ========================== */
 
-function createWhatsappLink(product){
+function createWhatsappButton(product){
 
-
-    if(!whatsappButton){
-
-        return;
-
-    }
-
+    const phone =
+    CONFIG.BUSINESS.phone.replace(/\D/g,"");
 
     const message =
+`Hello SUVARNA JEWELLERS,
 
-    `Hello SUVARNA JEWELLERS,
+I am interested in this product.
 
-I am interested in:
-
-Product: ${product.name}
-
-Category: ${product.category}
+Product : ${product.name}
+Category : ${product.category}
 
 Please share more details.`;
 
-
-
-    const whatsappURL =
-
-    `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(message)}`;
-
-
-
-    whatsappButton.href = whatsappURL;
-
+    whatsappButton.href =
+    `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 
 }
 
 
 
 /* ==========================
-   LOAD RELATED PRODUCTS
+   RELATED PRODUCTS
 ========================== */
 
-function loadRelatedProducts(products, current){
+function renderRelatedProducts(){
 
+    relatedProducts.innerHTML = "";
 
-    relatedProducts = products
+    const items = products
 
-    .filter(product =>
+    .filter(item =>
 
-        product.category === current.category &&
+        item.category === currentProduct.category &&
 
-        product.id !== current.id
+        item.id !== currentProduct.id
 
     )
 
     .slice(0,4);
 
 
-
-    renderRelatedProducts();
-
-
-}
-
-
-
-/* ==========================
-   RENDER RELATED PRODUCTS
-========================== */
-
-function renderRelatedProducts(){
-
-
-    if(!relatedProductsGrid){
-
-        return;
-
-    }
-
-
-    relatedProductsGrid.innerHTML = "";
-
-
-    relatedProducts.forEach(product=>{
-
+    items.forEach(product=>{
 
         const card = document.createElement("a");
-
 
         card.href =
         `product.html?id=${product.id}`;
 
-
-        card.className =
-        "product-card";
-
-
+        card.className = "product-card";
 
         card.innerHTML = `
 
@@ -417,32 +230,23 @@ function renderRelatedProducts(){
             <img
             src="${product.image}"
             alt="${product.name}"
-            loading="lazy"
-            >
+            loading="lazy">
 
         </div>
 
-
         <div class="card-content">
 
-            <h3>
-            ${product.name}
-            </h3>
+            <h3>${product.name}</h3>
 
-            <p>
-            ${product.category}
-            </p>
+            <p>${product.category}</p>
 
         </div>
 
         `;
 
-
-        relatedProductsGrid.appendChild(card);
-
+        relatedProducts.appendChild(card);
 
     });
-
 
 }
 
@@ -452,32 +256,21 @@ function renderRelatedProducts(){
 
 if(mainImage){
 
-    mainImage.addEventListener(
-        "click",
-        ()=>{
+    mainImage.addEventListener("click",()=>{
 
+        if(!mainImage.src){
 
-            if(!imageLightbox || !lightboxImage){
-
-                return;
-
-            }
-
-
-            lightboxImage.src =
-            mainImage.src;
-
-
-            imageLightbox.classList.add(
-                "show"
-            );
-
+            return;
 
         }
-    );
+
+        lightboxImage.src = mainImage.src;
+
+        imageLightbox.classList.add("show");
+
+    });
 
 }
-
 
 
 /* ==========================
@@ -486,70 +279,36 @@ if(mainImage){
 
 if(lightboxClose){
 
-    lightboxClose.addEventListener(
-        "click",
-        ()=>{
+    lightboxClose.addEventListener("click",()=>{
 
+        imageLightbox.classList.remove("show");
 
-            imageLightbox.classList.remove(
-                "show"
-            );
-
-
-        }
-    );
+    });
 
 }
 
-
-
-/* ==========================
-   CLOSE ON BACKGROUND CLICK
-========================== */
 
 if(imageLightbox){
 
-    imageLightbox.addEventListener(
-        "click",
-        (event)=>{
+    imageLightbox.addEventListener("click",(event)=>{
 
+        if(event.target === imageLightbox){
 
-            if(event.target === imageLightbox){
-
-
-                imageLightbox.classList.remove(
-                    "show"
-                );
-
-
-            }
-
+            imageLightbox.classList.remove("show");
 
         }
-    );
+
+    });
 
 }
 
 
+document.addEventListener("keydown",(event)=>{
 
-/* ==========================
-   ESC KEY CLOSE
-========================== */
+    if(event.key === "Escape"){
 
-document.addEventListener(
-"keydown",
-(event)=>{
-
-
-    if(event.key === "Escape" && imageLightbox){
-
-
-        imageLightbox.classList.remove(
-            "show"
-        );
-
+        imageLightbox.classList.remove("show");
 
     }
-
 
 });
