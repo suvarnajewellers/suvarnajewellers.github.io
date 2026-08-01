@@ -11,12 +11,17 @@
 let PRODUCTS = [];
 
 
-
 /* ==========================
    LOAD PRODUCTS JSON
 ========================== */
 
 async function loadProducts(){
+
+    if(PRODUCTS.length){
+
+        return PRODUCTS;
+
+    }
 
     try{
 
@@ -24,35 +29,13 @@ async function loadProducts(){
             CONFIG.PRODUCTS_FILE || "products.json"
         );
 
-
         if(!response.ok){
 
-            throw new Error(
-                "Products file not found"
-            );
+            throw new Error("Products file not found");
 
         }
 
-
         const data = await response.json();
-
-
-        /*
-          Support both formats:
-
-          [
-            {product}
-          ]
-
-          OR
-
-          {
-            products:[
-              {product}
-            ]
-          }
-        */
-
 
         if(Array.isArray(data)){
 
@@ -60,7 +43,7 @@ async function loadProducts(){
 
         }
 
-        else if(data.products){
+        else if(Array.isArray(data.products)){
 
             PRODUCTS = data.products;
 
@@ -72,19 +55,13 @@ async function loadProducts(){
 
         }
 
-
         return PRODUCTS;
-
 
     }
 
     catch(error){
 
-        console.error(
-            "Product Loading Error:",
-            error
-        );
-
+        console.error("Product Loading Error:", error);
 
         PRODUCTS = [];
 
@@ -95,115 +72,88 @@ async function loadProducts(){
 }
 
 
-
 /* ==========================
    GET ALL PRODUCTS
 ========================== */
 
-function getProducts(){
+async function getProducts(){
+
+    if(!PRODUCTS.length){
+
+        await loadProducts();
+
+    }
 
     return PRODUCTS;
 
 }
 
 
-
 /* ==========================
    GET BY CATEGORY
 ========================== */
 
-function getProductsByCategory(category){
+async function getProductsByCategory(category){
 
-    return PRODUCTS.filter(
+    const products = await getProducts();
 
-        product =>
-
+    return products.filter(product =>
         product.category === category
-
     );
 
 }
-
 
 
 /* ==========================
-   GET SINGLE PRODUCT
+   GET PRODUCT BY ID
 ========================== */
 
-function getProductById(id){
+async function getProductById(id){
 
-    return PRODUCTS.find(
+    const products = await getProducts();
 
-        product =>
-
+    return products.find(product =>
         product.id === id
-
     );
 
 }
-
 
 
 /* ==========================
    SEARCH PRODUCTS
 ========================== */
 
-function searchProducts(keyword){
+async function searchProducts(keyword){
+
+    const products = await getProducts();
 
     if(!keyword){
 
-        return PRODUCTS;
+        return products;
 
     }
 
+    keyword = keyword.toLowerCase();
 
-    keyword =
-    keyword.toLowerCase();
+    return products.filter(product =>
 
+        product.name?.toLowerCase().includes(keyword) ||
 
+        product.category?.toLowerCase().includes(keyword) ||
 
-    return PRODUCTS.filter(product => {
+        product.metal?.toLowerCase().includes(keyword)
 
-
-        return (
-
-            product.name
-            ?.toLowerCase()
-            .includes(keyword)
-
-            ||
-
-            product.category
-            ?.toLowerCase()
-            .includes(keyword)
-
-            ||
-
-            product.metal
-            ?.toLowerCase()
-            .includes(keyword)
-
-        );
-
-
-    });
+    );
 
 }
-
 
 
 /* ==========================
    EXPORT GLOBAL
 ========================== */
 
-window.PRODUCTS = PRODUCTS;
-
 window.loadProducts = loadProducts;
-
 window.getProducts = getProducts;
-
 window.getProductsByCategory = getProductsByCategory;
-
 window.getProductById = getProductById;
-
 window.searchProducts = searchProducts;
