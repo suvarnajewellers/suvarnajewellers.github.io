@@ -56,12 +56,9 @@ async function initProductPage(){
 
     }
 
-    await loadProducts();
+    products = await getProducts();
 
-products = getProducts();
-
-    currentProduct = products.find(product => product.id === productId);
-
+currentProduct = products.find(product => product.id === productId);
     if(!currentProduct){
 
         window.location.href = "collections.html";
