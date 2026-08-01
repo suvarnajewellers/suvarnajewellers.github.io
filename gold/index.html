@@ -74,10 +74,10 @@ href="../assets/css/footer.css">
     <div class="container">
 
         <div
-        id="productsGrid"
-        class="ready-stock-grid">
-
-        </div>
+    id="productsGrid"
+    class="ready-stock-grid"
+    data-category="Gold Jewellery">
+</div>
 
     </div>
 
@@ -107,54 +107,7 @@ href="../assets/css/footer.css">
 <script src="../assets/js/main.js"></script>
 
 
-<script>
-
-document.addEventListener("DOMContentLoaded", async () => {
-
-    await loadProducts();
-
-    const grid = document.getElementById("productsGrid");
-
-    const products = await getProductsByCategory("Gold Jewellery");
-    grid.innerHTML = "";
-
-    products.forEach(product => {
-
-        grid.innerHTML += `
-
-        <div class="ready-stock-card">
-
-            <div class="ready-stock-image">
-
-                <img src="../${getImage(product.image)}"
-                     alt="${product.name}">
-
-            </div>
-
-            <div class="ready-stock-info">
-
-                <h3>${product.name}</h3>
-
-                <p>${product.category}</p>
-
-                <a href="../product.html?id=${product.id}"
-                   class="btn btn-primary">
-
-                   View Details
-
-                </a>
-
-            </div>
-
-        </div>
-
-        `;
-
-    });
-
-});
-
-</script>
+<script src="../assets/js/collections.js"></script>
 
 </body>
 
