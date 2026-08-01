@@ -1,5 +1,19 @@
+# ==========================================
+# SUVARNA JEWELLERS V8
+# ROBOTS.TXT
+# ==========================================
+
 User-agent: *
 
 Allow: /
+
+Disallow: /admin/
+
+Disallow: /.github/
+
+Disallow: /docs/
+
+Disallow: /uploads/
+
 
 Sitemap: https://suvarnajewellers.co.in/sitemap.xml
