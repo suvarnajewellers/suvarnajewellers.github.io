@@ -56,7 +56,9 @@ async function initProductPage(){
 
     }
 
-    products = await getProducts();
+    await loadProducts();
+
+products = getProducts();
 
     currentProduct = products.find(product => product.id === productId);
 
