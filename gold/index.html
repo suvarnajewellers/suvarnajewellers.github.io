@@ -115,8 +115,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const grid = document.getElementById("productsGrid");
 
-    const products = getProductsByCategory("Gold Jewellery");
-
+    const products = await getProductsByCategory("Gold Jewellery");
     grid.innerHTML = "";
 
     products.forEach(product => {
