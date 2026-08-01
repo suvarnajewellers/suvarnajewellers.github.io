@@ -266,3 +266,36 @@ function initScrollTop(){
 
 
   }
+
+/* ==========================
+   HIDE LOADER
+========================== */
+
+function hideLoader(){
+
+    const loader = document.getElementById("loader");
+
+    if(loader){
+
+        loader.style.display = "none";
+
+    }
+
+}
+
+
+/* ==========================
+   SCROLL TO TOP
+========================== */
+
+function scrollToTop(){
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+}
