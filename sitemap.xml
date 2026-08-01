@@ -2,52 +2,60 @@
 
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-<url>
-<loc>https://suvarnajewellers.co.in/</loc>
-<changefreq>weekly</changefreq>
-<priority>1.0</priority>
-</url>
+  <url>
+    <loc>https://suvarnajewellers.co.in/</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
 
-<url>
-<loc>https://suvarnajewellers.co.in/gold-jewellery.html</loc>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
+  <url>
+    <loc>https://suvarnajewellers.co.in/ready-stock/</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
 
-<url>
-<loc>https://suvarnajewellers.co.in/silver-jewellery.html</loc>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
+  <url>
+    <loc>https://suvarnajewellers.co.in/gold/</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
 
-<url>
-<loc>https://suvarnajewellers.co.in/rudraksha-mala.html</loc>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
+  <url>
+    <loc>https://suvarnajewellers.co.in/silver/</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
 
-<url>
-<loc>https://suvarnajewellers.co.in/tulsi-mala.html</loc>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
+  <url>
+    <loc>https://suvarnajewellers.co.in/rudraksha-mala/</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
-<url>
-<loc>https://suvarnajewellers.co.in/pendant-collection.html</loc>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
+  <url>
+    <loc>https://suvarnajewellers.co.in/rudraksha-bracelet/</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
-<url>
-<loc>https://suvarnajewellers.co.in/bracelet-collection.html</loc>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
+  <url>
+    <loc>https://suvarnajewellers.co.in/pendants/</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
-<url>
-<loc>https://suvarnajewellers.co.in/product.html</loc>
-<changefreq>weekly</changefreq>
-<priority>0.8</priority>
-</url>
+  <url>
+    <loc>https://suvarnajewellers.co.in/tulsi-mala/</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
 </urlset>
