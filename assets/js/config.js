@@ -60,8 +60,7 @@ const CONFIG = {
 
     },
 
-   PRODUCTS_FILE: "products.json"
-
+   PRODUCTS_FILE: "/products.json"
 };
 
 
