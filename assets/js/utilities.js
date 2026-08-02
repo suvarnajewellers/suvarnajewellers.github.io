@@ -80,14 +80,12 @@ function getImage(path){
 ========================== */
 
 function whatsappMessage(product){
+function whatsappMessage(product){
 
-    const CONFIG = {
-    WHATSAPP_NUMBER: "917777991118"
-};
-
+    const number = "917777991118";
 
     const message =
-    `Hello Suvarna Jewellers,
+`Hello Suvarna Jewellers,
 
 I am interested in:
 ${product.name}
@@ -96,7 +94,6 @@ Category:
 ${product.category}
 
 Please share details.`;
-
 
     return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 
