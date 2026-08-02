@@ -25,8 +25,6 @@ async function(){
 
     const products = await getProducts();
 
-alert("Products: " + products.length);
-
 renderReadyStock(products);
 
 
@@ -56,8 +54,6 @@ function renderReadyStock(products){
 
 
     products.forEach(product=>{
-alert(product.name);
-console.log(product);
         grid.innerHTML += `
 
 
