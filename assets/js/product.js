@@ -196,17 +196,6 @@ Please share more details.`;
 
     whatsappButton.href = whatsappLink;
 
-    /* Sticky Button */
-
-    const stickyButton =
-    document.getElementById("stickyWhatsappButton");
-
-    if(stickyButton){
-
-        stickyButton.href = whatsappLink;
-
-    }
-
 }
 
 /* ==========================
