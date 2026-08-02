@@ -109,11 +109,13 @@ function renderProduct(product){
 
     if(productImages.length){
 
-        mainImage.src = getImage(productImages[0]);
+    mainImage.src = getImage(productImages[0]);
 
-        mainImage.alt = product.name;
+    mainImage.alt = product.name;
 
-    }
+    mainImage.style.opacity = "1";
+
+}
 
 
     createThumbnails();
@@ -206,17 +208,15 @@ function renderRelatedProducts(){
 
 relatedProducts.innerHTML = "";  
 
-const items = products  
-
-.filter(item =>  
-
-    item.category === currentProduct.category &&  
-
-    item.id !== currentProduct.id  
-
-)  
-
-.slice(0,4);  
+const items = products
+.filter(item =>
+    item.id !== currentProduct.id &&
+    (
+        item.category === currentProduct.category ||
+        item.metal === currentProduct.metal
+    )
+)
+.slice(0,4);
 
 
 items.forEach(product=>{  
