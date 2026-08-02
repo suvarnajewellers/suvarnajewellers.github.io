@@ -24,7 +24,9 @@ async function(){
 
 
     const products = await getProducts();
-console.log("READY PRODUCTS", products);
+
+alert("Products: " + products.length);
+
 renderReadyStock(products);
 
 
