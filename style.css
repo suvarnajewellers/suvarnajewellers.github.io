@@ -2947,3 +2947,11 @@ font-size:14px;
     }
 
        }
+
+#mainImage{
+
+    transition:opacity .18s ease;
+
+    cursor:zoom-in;
+
+}
