@@ -80,7 +80,6 @@ function getImage(path){
 ========================== */
 
 function whatsappMessage(product){
-function whatsappMessage(product){
 
     const number = "917777991118";
 
@@ -98,7 +97,6 @@ Please share details.`;
     return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 
 }
-
 
 
 /* ==========================
