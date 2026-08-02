@@ -81,8 +81,9 @@ function getImage(path){
 
 function whatsappMessage(product){
 
-    const number =
-    "917777991118";
+    const CONFIG = {
+    WHATSAPP_NUMBER: "917777991118"
+};
 
 
     const message =
