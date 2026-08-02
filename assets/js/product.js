@@ -109,7 +109,7 @@ productImages = [...new Set(productImages)];
 
 if(productImages.length){  
 
-    mainImage.src = productImages[0];  
+    mainImage.src = getImage(productImages[0]);  
 
     mainImage.alt = product.name;  
 
@@ -134,7 +134,7 @@ productImages.forEach((image,index)=>{
 
     const img = document.createElement("img");  
 
-    img.src = image;  
+    img.src = getImage(image);  
 
     img.alt = currentProduct.name;  
 
@@ -222,7 +222,7 @@ items.forEach(product=>{
     <div class="card-image">  
 
         <img  
-        src="${product.image}"  
+        src="${getImage(product.image)}"  
         alt="${product.name}"  
         loading="lazy">  
 
