@@ -26,7 +26,7 @@ async function initCollectionPage(){
 
             <div class="collection-card">
 
-    <img src="../${getImage(product.image)}"
+    <img src="${getImage(product.image)}"
          alt="${product.name}"
          loading="lazy">
 
