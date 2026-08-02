@@ -98,7 +98,7 @@ console.log(product);
                 <img
 src="${product.image}"
 alt="${product.name}"
-onerror="alert('Image not found: ${product.image}')">
+style="width:100%;display:block;">
 
                 `
 
