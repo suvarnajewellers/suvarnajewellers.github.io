@@ -144,17 +144,25 @@ productImages.forEach((image,index)=>{
 
     }  
 
-    img.addEventListener("click",()=>{  
+    img.addEventListener("click",()=>{
 
-        mainImage.src = image;  
+    mainImage.style.opacity = "0";
 
-        document  
-        .querySelectorAll("#thumbnailContainer img")  
-        .forEach(item=>item.classList.remove("active"));  
+    setTimeout(()=>{
 
-        img.classList.add("active");  
+        mainImage.src = getImage(image);
 
-    });  
+        mainImage.style.opacity = "1";
+
+    },180);
+
+    document
+    .querySelectorAll("#thumbnailContainer img")
+    .forEach(item=>item.classList.remove("active"));
+
+    img.classList.add("active");
+
+});
 
     thumbnailContainer.appendChild(img);  
 
