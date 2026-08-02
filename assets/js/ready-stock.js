@@ -56,7 +56,7 @@ function renderReadyStock(products){
 
 
     products.forEach(product=>{
-
+alert(product.name);
 console.log(product);
         grid.innerHTML += `
 
