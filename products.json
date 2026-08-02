@@ -4,9 +4,9 @@
     "category": "Gold Jewellery",
     "name": "Gold Chain",
     "metal": "Gold",
-    "grossWeight": "",
-    "netWeight": "",
-    "size": "",
+    "grossWeight": "16.450 Gram",
+    "netWeight": "16.450 Gram",
+    "size": "24 Inch",
     "description": "Premium Gold Chain manufactured by Suvarna Jewellers.",
     "image": "gold/gold-chain-1.jpg",
     "readyStock": true
@@ -17,8 +17,8 @@
     "name": "Gold Ring",
     "metal": "Gold",
     "grossWeight": "",
-    "netWeight": "",
-    "size": "",
+    "netWeight": "3.560 Gram",
+    "size": "16",
     "description": "Premium Gold Ring manufactured by Suvarna Jewellers.",
     "image": "gold/gold-ring-1.jpg",
     "readyStock": true
@@ -26,25 +26,25 @@
   {
     "id": "S001",
     "category": "Silver Jewellery",
-    "name": "Silver Chain",
+    "name": "Silver Bracelet",
     "metal": "Silver",
-    "grossWeight": "",
-    "netWeight": "",
-    "size": "",
+    "grossWeight": "20.150 Gram",
+    "netWeight": "20.150 Gram",
+    "size": "8 Inch",
     "description": "Premium Silver Chain manufactured by Suvarna Jewellers.",
-    "image": "silver/silver-chain-1.jpg",
+    "image": "silver-jewellery-1.jpg",
     "readyStock": true
   },
   {
     "id": "S002",
     "category": "Silver Jewellery",
-    "name": "Silver Ring",
+    "name": "Silver Pendant",
     "metal": "Silver",
-    "grossWeight": "",
-    "netWeight": "",
-    "size": "",
+    "grossWeight": "17.500 Gram",
+    "netWeight": "17.500 Gram",
+    "size": "1.25 Inch",
     "description": "Premium Silver Ring manufactured by Suvarna Jewellers.",
-    "image": "silver/silver-ring-1.jpg",
+    "image": "silver-jewellery-3.jpg",
     "readyStock": true
   },
   {
@@ -52,11 +52,11 @@
     "category": "Rudraksha Mala",
     "name": "Gold Rudraksha Mala",
     "metal": "Gold",
-    "grossWeight": "",
-    "netWeight": "",
-    "size": "",
+    "grossWeight": "24.850 Gram",
+    "netWeight": "20.150 Gram",
+    "size": "24 Inch",
     "description": "Premium Gold Rudraksha Mala.",
-    "image": "rudraksha-mala/rudraksha-mala-1.jpg",
+    "image": "rudraksha-mala-1.jpg",
     "readyStock": true
   },
   {
@@ -64,11 +64,11 @@
     "category": "Rudraksha Bracelet",
     "name": "Gold Rudraksha Bracelet",
     "metal": "Gold",
-    "grossWeight": "",
-    "netWeight": "",
-    "size": "",
+    "grossWeight": "30.850 Gram",
+    "netWeight": "27.350 Gram",
+    "size": "8 Inch",
     "description": "Premium Gold Rudraksha Bracelet.",
-    "image": "rudraksha-bracelet/rudraksha-bracelet-1.jpg",
+    "image": "rudraksha-bracelet-1.jpg",
     "readyStock": true
   },
   {
@@ -77,10 +77,10 @@
     "name": "Gold Pendant",
     "metal": "Gold",
     "grossWeight": "",
-    "netWeight": "",
+    "netWeight": "5.780 Gram",
     "size": "",
     "description": "Premium Gold Pendant.",
-    "image": "pendants/gold-pendant-1.jpg",
+    "image": "pendant-1.jpg",
     "readyStock": true
   },
   {
@@ -89,10 +89,10 @@
     "name": "Tulsi Mala",
     "metal": "Wood",
     "grossWeight": "",
-    "netWeight": "",
-    "size": "",
+    "netWeight": "10.650 Gram",
+    "size": "24 Inch",
     "description": "Premium Tulsi Mala.",
-    "image": "tulsi-mala/tulsi-mala-1.jpg",
+    "image": "tulsi-mala-1.jpg",
     "readyStock": true
   }
 ]
