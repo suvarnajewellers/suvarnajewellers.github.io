@@ -2803,3 +2803,147 @@ font-size:14px;
     padding:60px 20px;
 
        }
+
+/* ==========================================
+   PREMIUM PRODUCT PAGE
+========================================== */
+
+.product-layout{
+
+    gap:60px;
+
+    align-items:flex-start;
+
+}
+
+.product-main-image{
+
+    background:#fff;
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.12);
+
+}
+
+.product-main-image img{
+
+    width:100%;
+
+    display:block;
+
+    transition:.4s;
+
+}
+
+.product-main-image img:hover{
+
+    transform:scale(1.04);
+
+}
+
+.product-details{
+
+    background:#fff;
+
+    padding:30px;
+
+    border-radius:24px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+}
+
+.product-title{
+
+    font-size:38px;
+
+    margin-bottom:12px;
+
+    color:#2b0015;
+
+}
+
+.premium-divider{
+
+    width:90px;
+
+    height:4px;
+
+    border-radius:50px;
+
+    background:#d4af37;
+
+    margin:18px 0 24px;
+
+}
+
+.product-specifications{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:16px;
+
+    margin:30px 0;
+
+}
+
+.spec-item{
+
+    background:#faf8f3;
+
+    border:1px solid rgba(212,175,55,.25);
+
+    border-radius:16px;
+
+    padding:16px;
+
+}
+
+.spec-item span{
+
+    display:block;
+
+    color:#777;
+
+    font-size:13px;
+
+    margin-bottom:6px;
+
+}
+
+.spec-item strong{
+
+    color:#2b0015;
+
+    font-size:17px;
+
+}
+
+#whatsappButton{
+
+    font-size:17px;
+
+    padding:16px 28px;
+
+}
+
+@media(max-width:768px){
+
+    .product-title{
+
+        font-size:30px;
+
+    }
+
+    .product-specifications{
+
+        grid-template-columns:1fr;
+
+    }
+
+       }
