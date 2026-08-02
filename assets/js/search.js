@@ -49,27 +49,16 @@ function(){
    SEARCH FUNCTION
 ========================== */
 
-function performSearch(keyword){
-
+async function performSearch(keyword){
 
     const resultBox =
     document.getElementById(
         "searchResults"
     );
 
-
     if(!resultBox) return;
 
-
-
-    const results =
-    searchProducts(keyword);
-
-
-
-    resultBox.innerHTML="";
-
-
+    resultBox.innerHTML = "";
 
     if(keyword.length < 2){
 
@@ -81,10 +70,10 @@ function performSearch(keyword){
 
     }
 
-
+    const results =
+    await searchProducts(keyword);
 
     if(results.length === 0){
-
 
         resultBox.innerHTML = `
 
@@ -96,69 +85,47 @@ function performSearch(keyword){
 
         `;
 
-
         resultBox.classList.add(
             "active"
         );
-
 
         return;
 
     }
 
-
-
     results
     .slice(0,8)
     .forEach(product=>{
 
-
         resultBox.innerHTML += `
-
 
         <a
         href="product.html?id=${product.id}"
         class="search-item">
 
-
             <img
             src="${getImage(product.image)}"
             alt="${product.name}">
 
-
             <div>
 
+                <h4>${product.name}</h4>
 
-                <h4>
-                ${product.name}
-                </h4>
-
-
-                <span>
-                ${product.category}
-                </span>
-
+                <span>${product.category}</span>
 
             </div>
 
-
         </a>
-
 
         `;
 
-
     });
-
-
 
     resultBox.classList.add(
         "active"
     );
 
-
 }
-
 
 
 /* ==========================
