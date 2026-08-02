@@ -23,12 +23,9 @@ async function(){
 
 
 
-    await loadProducts();
+    const products = await getProducts();
 
-
-    renderReadyStock(
-        getProducts()
-    );
+renderReadyStock(products);
 
 
 });
