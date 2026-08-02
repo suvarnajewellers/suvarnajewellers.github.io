@@ -70,57 +70,57 @@ renderRelatedProducts();
 }
 
 /* ==========================
-RENDER PRODUCT
+   RENDER PRODUCT
 ========================== */
 
 function renderProduct(product){
 
-productCategory.textContent = product.category || "";  
+    productCategory.textContent = product.category || "";
 
-productName.textContent = product.name || "";  
+    productName.textContent = product.name || "";
 
-productDescription.textContent = product.description || "";  
+    productDescription.textContent = product.description || "";
 
-productMetal.textContent = product.metal || "-";  
+    productMetal.textContent = product.metal || "-";
 
-productGrossWeight.textContent = product.grossWeight || "-";  
+    productGrossWeight.textContent = product.grossWeight || "-";
 
-productNetWeight.textContent = product.netWeight || "-";  
+    productNetWeight.textContent = product.netWeight || "-";
 
-productSize.textContent = product.size || "-";  
-
-
-productImages = [];  
-
-if(product.image){  
-
-    productImages.push(product.image);  
-
-}  
-
-if(Array.isArray(product.gallery)){  
-
-    productImages.push(...product.gallery);  
-
-}  
-
-productImages = [...new Set(productImages)];  
+    productSize.textContent = product.size || "-";
 
 
-if(productImages.length){  
+    productImages = [];
 
-    mainImage.src = getImage(productImages[0]);  
+    if(product.image){
 
-    mainImage.alt = product.name;  
+        productImages.push(product.image);
 
-}  
+    }
+
+    if(Array.isArray(product.gallery)){
+
+        productImages.push(...product.gallery);
+
+    }
+
+    productImages = [...new Set(productImages)];
 
 
-createThumbnails();  
+    if(productImages.length){
 
-createWhatsappButton(product);
+        mainImage.src = getImage(productImages[0]);
 
-}
+        mainImage.alt = product.name;
+
+    }
+
+
+    createThumbnails();
+
+    createWhatsappButton(product);
+
+    }
 
 /* ==========================
 THUMBNAILS
@@ -176,11 +176,10 @@ WHATSAPP BUTTON
 
 function createWhatsappButton(product){
 
-const phone =  
-CONFIG.BUSINESS.phone.replace(/\D/g,"");  
+    const phone =
+    CONFIG.BUSINESS.phone.replace(/\D/g,"");
 
-const message =
-
+    const message =
 `Hello SUVARNA JEWELLERS,
 
 I am interested in this product.
@@ -190,8 +189,23 @@ Category : ${product.category}
 
 Please share more details.`;
 
-whatsappButton.href =  
-`https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    const whatsappLink =
+    `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+    /* Main Button */
+
+    whatsappButton.href = whatsappLink;
+
+    /* Sticky Button */
+
+    const stickyButton =
+    document.getElementById("stickyWhatsappButton");
+
+    if(stickyButton){
+
+        stickyButton.href = whatsappLink;
+
+    }
 
 }
 
