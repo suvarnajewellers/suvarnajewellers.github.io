@@ -110,7 +110,17 @@ img{
 
 }
 
+/* PRODUCT PAGE HEADER LOGO */
 
+.logo img{
+
+width:140px;
+
+height:auto;
+
+display:block;
+
+}
 
 .tagline{
 
@@ -935,8 +945,6 @@ section h2{
 
 }
 
-
-
 /* =========================
    COLLECTION SECTION
 ========================= */
@@ -1042,8 +1050,6 @@ section h2{
     color:#ffffff;
 
 }
-
-
 
 /* =========================
    MANUFACTURING
@@ -3214,5 +3220,15 @@ saturate(1.08);
 box-shadow:
 0 25px 60px rgba(0,0,0,.55),
 0 0 30px rgba(212,175,55,.28);
+
+}
+
+.header .container{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
 
 }
