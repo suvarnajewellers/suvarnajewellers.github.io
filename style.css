@@ -3068,3 +3068,59 @@ transform:scale(1.08);
 transform:scale(1.04);
 
 }
+
+/* ==========================================
+   LUXURY GOLD SHINE EFFECT
+========================================== */
+
+.card::before{
+
+content:"";
+
+position:absolute;
+
+top:-120%;
+
+left:-60%;
+
+width:45%;
+
+height:320%;
+
+background:linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.18),
+rgba(212,175,55,.22),
+transparent
+);
+
+transform:rotate(25deg);
+
+transition:.8s;
+
+pointer-events:none;
+
+}
+
+.card:hover::before{
+
+left:130%;
+
+}
+
+.card img{
+
+filter:
+contrast(1.02)
+saturate(1.08);
+
+}
+
+.card:hover{
+
+box-shadow:
+0 25px 60px rgba(0,0,0,.55),
+0 0 30px rgba(212,175,55,.28);
+
+}
