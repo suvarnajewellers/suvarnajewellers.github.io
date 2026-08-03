@@ -3358,7 +3358,7 @@ align-items:center;
 .header .container{
     max-width:1400px;
     margin:auto;
-    padding:16px 30px;
+    padding:12px 18px;
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -3372,7 +3372,7 @@ align-items:center;
 }
 
 .logo img{
-    width:80px;
+    width:58px;
     height:auto;
     display:block;
 }
@@ -3380,16 +3380,16 @@ align-items:center;
 .logo-text h1{
     margin:0;
     color:#d4af37;
-    font-size:28px;
+    font-size:18px;
     line-height:1.1;
     letter-spacing:1px;
 }
 
 .logo-text span{
     display:block;
-    margin-top:4px;
+    margin-top:3px;
     color:#f5e6b8;
-    font-size:13px;
+    font-size:11px;
     letter-spacing:2px;
 }
 
