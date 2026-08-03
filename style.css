@@ -134,7 +134,115 @@ display:block;
 
 }
 
+/* ==========================================
+   GLOBAL HEADER
+========================================== */
 
+.header{
+
+background:linear-gradient(135deg,#1a000d,#2b0015);
+
+border-bottom:1px solid rgba(212,175,55,.35);
+
+position:sticky;
+
+top:0;
+
+z-index:9999;
+
+}
+
+.header .container{
+
+max-width:1400px;
+
+margin:auto;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding:18px 30px;
+
+}
+
+.logo{
+
+display:flex;
+
+align-items:center;
+
+gap:18px;
+
+text-decoration:none;
+
+}
+
+.logo img{
+
+width:85px;
+
+height:auto;
+
+display:block;
+
+}
+
+.logo h1{
+
+font-size:28px;
+
+color:#d4af37;
+
+margin:0;
+
+line-height:1.1;
+
+letter-spacing:1px;
+
+}
+
+.logo span{
+
+display:block;
+
+font-size:13px;
+
+color:#f5e6b8;
+
+letter-spacing:2px;
+
+margin-top:4px;
+
+}
+
+.header nav{
+
+display:flex;
+
+align-items:center;
+
+gap:28px;
+
+}
+
+.header nav a{
+
+color:#ffffff;
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+.header nav a:hover{
+
+color:#d4af37;
+
+}
 
 /* =========================
    SUVARNA V2.0
