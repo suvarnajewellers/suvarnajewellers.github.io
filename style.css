@@ -609,3 +609,61 @@ font-size:13px;
 color:#ddd;
 
 }
+/* ===== MOBILE FIX ===== */
+
+@media (max-width:992px){
+
+.header .container{
+    height:80px;
+}
+
+.logo img{
+    width:52px;
+}
+
+.logo-text h1{
+    font-size:18px;
+}
+
+.logo-text span{
+    font-size:9px;
+    letter-spacing:2px;
+}
+
+.navbar{
+    display:none;
+}
+
+.menu-toggle{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.hero{
+    min-height:auto;
+    padding:120px 0 70px;
+}
+
+.hero h2{
+    font-size:42px;
+    line-height:1.2;
+}
+
+.hero p{
+    font-size:16px;
+}
+
+.hero-stats{
+    grid-template-columns:1fr;
+}
+
+.hero-buttons{
+    flex-direction:column;
+}
+
+.btn{
+    width:100%;
+}
+
+   }
