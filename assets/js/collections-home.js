@@ -38,7 +38,12 @@ async function initCollectionsHome(){
 function renderCollections(products){
 
     const grid = document.getElementById("collectionsGrid");
+   
+const count = document.getElementById("productCount");
 
+if(count){
+    count.textContent = products.length;
+}
     grid.innerHTML = "";
 
     if(products.length === 0){
