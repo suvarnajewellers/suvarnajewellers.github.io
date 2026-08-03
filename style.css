@@ -3028,21 +3028,37 @@ padding-bottom:15px;
 
 .card-btn{
 
-margin:0 20px 20px;
+display:block;
 
-padding:14px;
+margin:18px 20px 20px;
 
-border-radius:40px;
+padding:14px 22px;
+
+border-radius:50px;
 
 text-align:center;
 
-background:linear-gradient(135deg,#d4af37,#f5e6b8);
+background:linear-gradient(135deg,#d4af37,#f8e8b5);
 
 color:#111;
 
+font-size:16px;
+
 font-weight:700;
 
+letter-spacing:.5px;
+
+box-shadow:0 8px 20px rgba(212,175,55,.25);
+
 transition:.35s;
+
+}
+
+.card-btn:hover{
+
+transform:translateY(-3px);
+
+box-shadow:0 15px 30px rgba(212,175,55,.40);
 
 }
 
@@ -3060,12 +3076,6 @@ box-shadow:
 .card:hover img{
 
 transform:scale(1.08);
-
-}
-
-.card:hover .card-btn{
-
-transform:scale(1.04);
 
 }
 
