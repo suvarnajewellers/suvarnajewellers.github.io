@@ -151,10 +151,8 @@ ul{
    SECTION
 ========================================== */
 
-section{
-
+section:not(.hero){
     padding:100px 0;
-
 }
 
 
@@ -878,3 +876,13 @@ padding-top:92px;
     inset:0;
     background:rgba(20,0,10,.72);
    }
+/* HERO OVERRIDE */
+
+.hero{
+    padding:0 !important;
+    min-height:calc(100vh - 92px);
+}
+
+.hero .hero-content{
+    padding:120px 0 80px;
+}
