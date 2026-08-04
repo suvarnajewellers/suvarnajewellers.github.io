@@ -1437,3 +1437,54 @@ img{
     }
 
 }
+/* ==========================================
+   PRODUCT PAGE GALLERY FIX
+========================================== */
+
+.product-gallery{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.product-main-image{
+    width:100%;
+    border-radius:20px;
+    overflow:hidden;
+    border:1px solid rgba(212,175,55,.2);
+    background:#1b0a10;
+}
+
+.product-main-image img{
+    width:100%;
+    display:block;
+    height:550px;
+    object-fit:cover;
+}
+
+.product-thumbnails{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.product-thumbnails img{
+    width:90px;
+    height:90px;
+    object-fit:cover;
+    cursor:pointer;
+    border-radius:12px;
+    border:2px solid transparent;
+}
+
+.product-thumbnails img.active{
+    border-color:#d4af37;
+}
+
+@media(max-width:768px){
+
+    .product-main-image img{
+        height:380px;
+    }
+
+}
