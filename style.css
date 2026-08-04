@@ -708,3 +708,71 @@ margin-bottom:18px;
 }
 
 }
+/* ==========================================
+   PREMIUM FEATURES SECTION
+========================================== */
+
+.features{
+    padding:90px 0;
+    background:linear-gradient(180deg,#18000c,#220010);
+}
+
+.features .container{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+}
+
+.feature-card{
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(212,175,55,.18);
+    border-radius:22px;
+    padding:40px 25px;
+    text-align:center;
+    backdrop-filter:blur(12px);
+    transition:.35s ease;
+}
+
+.feature-card:hover{
+    transform:translateY(-10px);
+    border-color:#d4af37;
+    box-shadow:0 20px 45px rgba(0,0,0,.35);
+}
+
+.feature-card i{
+    font-size:46px;
+    color:#d4af37;
+    margin-bottom:22px;
+}
+
+.feature-card h3{
+    font-size:24px;
+    color:#f5e6b8;
+    margin-bottom:15px;
+}
+
+.feature-card p{
+    color:#d7d7d7;
+    font-size:15px;
+    line-height:1.7;
+}
+
+@media(max-width:992px){
+
+.features .container{
+    grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:600px){
+
+.features .container{
+    grid-template-columns:1fr;
+}
+
+.feature-card{
+    padding:30px 20px;
+}
+
+}
