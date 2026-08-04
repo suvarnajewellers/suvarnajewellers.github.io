@@ -667,3 +667,44 @@ color:#ddd;
 }
 
    }
+/* ===== FINAL MOBILE HERO FIX ===== */
+
+@media (max-width:768px){
+
+.hero{
+
+min-height:auto;
+
+padding-top:40px;
+
+padding-bottom:60px;
+
+}
+
+.hero-content{
+
+padding:20px 0;
+
+}
+
+.hero h2{
+
+font-size:30px;
+
+line-height:1.2;
+
+}
+
+.hero p{
+
+font-size:15px;
+
+}
+
+.hero-badge{
+
+margin-bottom:18px;
+
+}
+
+}
