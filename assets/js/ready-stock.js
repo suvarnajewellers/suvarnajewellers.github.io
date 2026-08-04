@@ -1,199 +1,78 @@
 /* ==========================================
-   SUVARNA JEWELLERS V8
+   SUVARNA JEWELLERS V9
    READY-STOCK.JS
 ========================================== */
 
-let allReadyStock = [];
-let currentFilter = "All";
+document.addEventListener("DOMContentLoaded", loadReadyStock);
 
-/* ==========================
-   PAGE LOAD
-========================== */
+async function loadReadyStock(){
 
-document.addEventListener("DOMContentLoaded", async function () {
+    const grid = document.getElementById("readyStockGrid");
 
-    const grid = document.getElementById("readyStockPageGrid");
+    if(!grid) return;
 
-    if (!grid) return;
+    try{
 
-    allReadyStock = await getProducts();
+        const response = await fetch("products.json");
+        const data = await response.json();
 
-    renderReadyStock(allReadyStock);
+        const products = Array.isArray(data)
+            ? data
+            : (data.products || []);
 
-    updateProductCount(allReadyStock);
+        const readyStock = products
+            .filter(product => product.isReadyStock === true)
+            .slice(0,8);
 
-    initSearch();
+        if(readyStock.length === 0){
 
-    initFilters();
+            grid.innerHTML = `
+                <p style="text-align:center;width:100%;">
+                    No Ready Stock Available.
+                </p>
+            `;
+            return;
+        }
 
-});
+        grid.innerHTML = readyStock.map(product => `
 
+            <div class="product-card">
 
-/* ==========================
-   SEARCH
-========================== */
+                <img
+                    src="${product.image}"
+                    alt="${product.name}">
 
-function initSearch() {
+                <div class="product-info">
 
-    const input = document.getElementById("ready-search");
+                    <h3>${product.name}</h3>
 
-    if (!input) return;
+                    <p>${product.category || ""}</p>
 
-    input.addEventListener("input", filterProducts);
+                    <a
+                        href="product.html?id=${product.id}"
+                        class="btn btn-primary">
 
-}
+                        View Details
 
+                    </a>
 
-/* ==========================
-   FILTER BUTTONS
-========================== */
+                </div>
 
-function initFilters() {
+            </div>
 
-    const buttons = document.querySelectorAll(".filter-btn");
+        `).join("");
 
-    buttons.forEach(button => {
-
-        button.addEventListener("click", function () {
-
-            buttons.forEach(btn => btn.classList.remove("active"));
-
-            this.classList.add("active");
-
-            currentFilter = this.dataset.filter;
-
-            filterProducts();
-
-        });
-
-    });
-
-}
-
-
-/* ==========================
-   FILTER PRODUCTS
-========================== */
-
-function filterProducts() {
-
-    const keyword =
-        document.getElementById("ready-search")
-        ?.value
-        .toLowerCase()
-        .trim() || "";
-
-    let filtered = allReadyStock.filter(product => {
-
-        const matchesSearch =
-
-            product.name.toLowerCase().includes(keyword) ||
-
-            product.category.toLowerCase().includes(keyword) ||
-
-            (product.metal || "")
-                .toLowerCase()
-                .includes(keyword);
-
-        const matchesFilter =
-
-            currentFilter === "All" ||
-
-            product.category === currentFilter;
-
-        return matchesSearch && matchesFilter;
-
-    });
-
-    renderReadyStock(filtered);
-
-    updateProductCount(filtered);
-
-}
-/* ==========================
-   RENDER READY STOCK
-========================== */
-
-function renderReadyStock(products) {
-
-    const grid = document.getElementById("readyStockPageGrid");
-    const empty = document.getElementById("empty-state");
-
-    if (!grid) return;
-
-    grid.innerHTML = "";
-
-    if (products.length === 0) {
-
-        if (empty) empty.style.display = "block";
-
-        return;
     }
 
-    if (empty) empty.style.display = "none";
+    catch(error){
 
-    products.forEach(product => {
+        console.error(error);
 
-        grid.innerHTML += `
-
-<div class="ready-stock-card">
-
-    <div class="ready-stock-image">
-
-        <img
-            src="${getImage(product.image)}"
-            alt="${product.name}"
-            loading="lazy">
-
-        <span class="stock-badge">
-            Ready Stock
-        </span>
-
-    </div>
-
-    <div class="ready-stock-info">
-
-        <h3>${product.name}</h3>
-
-        <p>${product.category}</p>
-
-        ${product.metal ? `<small>${product.metal}</small>` : ""}
-
-        <a
-            href="product.html?id=${product.id}"
-            class="btn btn-primary ready-stock-btn">
-            View Product
-        </a>
-
-        <a
-            href="${whatsappMessage(product)}"
-            target="_blank"
-            class="btn btn-outline ready-stock-btn">
-            WhatsApp Enquiry
-        </a>
-
-    </div>
-
-</div>
-
-`;
-
-    });
-
-}
-
-
-/* ==========================
-   PRODUCT COUNT
-========================== */
-
-function updateProductCount(products) {
-
-    const count = document.getElementById("ready-count");
-
-    if (count) {
-
-        count.textContent = products.length;
+        grid.innerHTML = `
+            <p style="text-align:center;width:100%;">
+                Unable to load Ready Stock.
+            </p>
+        `;
 
     }
 
