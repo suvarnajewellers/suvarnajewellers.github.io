@@ -1219,273 +1219,128 @@ padding:30px 22px;
 }
 
    }
-
-   /* ==========================================================
-   PART 4B
-   PREMIUM COLLECTIONS
-========================================================== */
+/* ==========================================
+COLLECTIONS
+========================================== */
 
 .collections{
-
-position:relative;
-
 padding:110px 0;
-
-background:
-linear-gradient(
-180deg,
-#1a000d,
-#250012,
-#140008
-);
-
-overflow:hidden;
-
+background:#14030a;
 }
 
+.section-title{
+max-width:760px;
+margin:0 auto 60px;
+text-align:center;
+}
 
-/* ==========================================================
-   COLLECTION GRID
-========================================================== */
+.section-title span{
+display:inline-block;
+color:#d4af37;
+font-size:14px;
+font-weight:600;
+letter-spacing:3px;
+margin-bottom:15px;
+text-transform:uppercase;
+}
+
+.section-title h2{
+font-family:"Cinzel",serif;
+font-size:52px;
+color:#fff;
+margin-bottom:18px;
+}
+
+.section-title p{
+font-size:18px;
+line-height:1.8;
+color:#d0d0d0;
+}
 
 .collection-grid{
-
 display:grid;
-
 grid-template-columns:repeat(3,1fr);
-
-gap:35px;
-
+gap:30px;
 }
-
-
-/* ==========================================================
-   COLLECTION CARD
-========================================================== */
 
 .collection-card{
-
 position:relative;
-
+height:460px;
+border-radius:26px;
 overflow:hidden;
-
-border-radius:28px;
-
-background:rgba(255,255,255,.05);
-
-border:1px solid rgba(212,175,55,.15);
-
-transition:.4s ease;
-
 cursor:pointer;
-
-box-shadow:0 15px 35px rgba(0,0,0,.25);
-
+background:#000;
+transition:.4s;
 }
-
-.collection-card:hover{
-
-transform:translateY(-12px);
-
-border-color:var(--gold);
-
-box-shadow:
-
-0 30px 70px rgba(0,0,0,.40);
-
-}
-
-
-/* ==========================================================
-   IMAGE
-========================================================== */
 
 .collection-card img{
-
 width:100%;
-
-height:420px;
-
+height:100%;
 object-fit:cover;
-
-transition:.7s ease;
-
+transition:.5s;
 }
 
 .collection-card:hover img{
-
 transform:scale(1.08);
-
 }
-
-
-/* ==========================================================
-   OVERLAY
-========================================================== */
 
 .collection-overlay{
-
 position:absolute;
-
-left:0;
-
-right:0;
-
-bottom:0;
-
-padding:30px;
-
-background:
-
-linear-gradient(
-
-180deg,
-
-transparent,
-
-rgba(10,0,5,.92)
-
-);
-
+inset:0;
 display:flex;
-
 align-items:flex-end;
-
-height:100%;
-
-transition:.35s ease;
-
-}
-
-.collection-overlay div{
-
-width:100%;
-
-}
-
-.collection-overlay span{
-
-display:inline-block;
-
-margin-bottom:12px;
-
-padding:8px 18px;
-
-border-radius:40px;
-
-background:rgba(212,175,55,.18);
-
-color:var(--gold-light);
-
-font-size:12px;
-
-letter-spacing:2px;
-
-text-transform:uppercase;
-
+padding:30px;
+background:linear-gradient(to top,
+rgba(0,0,0,.85),
+rgba(0,0,0,.15));
 }
 
 .collection-overlay h3{
-
-font-size:30px;
-
-color:#ffffff;
-
-line-height:1.3;
-
+font-family:"Cinzel",serif;
+font-size:28px;
+color:#fff;
+margin-bottom:8px;
 }
 
-
-/* ==========================================================
-   GOLD LINE
-========================================================== */
-
-.collection-card::after{
-
-content:"";
-
-position:absolute;
-
-left:0;
-
-bottom:0;
-
-width:0;
-
-height:4px;
-
-background:
-
-linear-gradient(
-
-90deg,
-
-var(--gold),
-
-var(--gold-light)
-
-);
-
-transition:.35s ease;
-
+.collection-overlay span{
+color:#d4af37;
+font-size:15px;
+letter-spacing:1px;
 }
 
-.collection-card:hover::after{
-
-width:100%;
-
+.collection-card:hover{
+transform:translateY(-8px);
+box-shadow:0 22px 50px rgba(0,0,0,.35);
 }
-
-
-/* ==========================================================
-   RESPONSIVE
-========================================================== */
 
 @media(max-width:992px){
 
 .collection-grid{
-
 grid-template-columns:repeat(2,1fr);
-
-}
-
-.collection-card img{
-
-height:340px;
-
 }
 
 }
 
-@media(max-width:600px){
+@media(max-width:768px){
+
+.collections{
+padding:70px 0;
+}
+
+.section-title h2{
+font-size:38px;
+}
 
 .collection-grid{
-
 grid-template-columns:1fr;
-
-gap:25px;
-
 }
 
-.collection-card img{
-
-height:320px;
-
-}
-
-.collection-overlay{
-
-padding:24px;
-
-}
-
-.collection-overlay h3{
-
-font-size:24px;
-
+.collection-card{
+height:380px;
 }
 
    }
+
    /* ==========================================================
    PART 4C
    PREMIUM READY STOCK
