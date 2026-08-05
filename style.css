@@ -968,13 +968,46 @@ margin-top:30px;
 }
 
 .hero-stat{
-padding:28px 20px;
-border-radius:24px;
-background:rgba(255,255,255,.06);
+padding:30px 22px;
+border-radius:26px;
+background:rgba(255,255,255,.08);
 border:1px solid rgba(212,175,55,.20);
-backdrop-filter:blur(12px);
-transition:.35s;
+backdrop-filter:blur(18px);
+-webkit-backdrop-filter:blur(18px);
+box-shadow:
+0 10px 30px rgba(0,0,0,.18);
+transition:.4s ease;
+position:relative;
+overflow:hidden;
 }
+
+.hero-stat::before{
+content:"";
+position:absolute;
+top:0;
+left:-100%;
+width:100%;
+height:100%;
+background:linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.18),
+transparent
+);
+transition:.8s;
+}
+
+.hero-stat:hover::before{
+left:100%;
+}
+
+.hero-stat:hover{
+transform:translateY(-10px);
+border-color:#d4af37;
+box-shadow:
+0 20px 45px rgba(0,0,0,.35),
+0 0 20px rgba(212,175,55,.15);
+                     }
 
 .hero-stat:hover{
 transform:translateY(-8px);
