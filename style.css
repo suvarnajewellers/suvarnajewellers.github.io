@@ -694,6 +694,14 @@ align-items:center;
 }
 
 .navbar a{
+transition:.35s ease;
+}
+
+.navbar a:hover{
+transform:translateY(-2px);
+}
+
+.navbar a{
 color:#f4f4f4;
 text-decoration:none;
 font-weight:500;
@@ -730,6 +738,17 @@ border:1px solid rgba(212,175,55,.25);
 background:rgba(255,255,255,.05);
 color:#d4af37;
 font-size:22px;
+}
+
+.menu-toggle:hover{
+background:#d4af37;
+color:#2b0015;
+transform:rotate(90deg);
+transition:.35s ease;
+}
+
+.menu-toggle:active{
+transform:scale(.95);
 }
 
 @media(max-width:768px){
