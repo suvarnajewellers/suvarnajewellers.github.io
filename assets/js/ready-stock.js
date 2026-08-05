@@ -1,57 +1,85 @@
 /* ==========================================
-   SUVARNA JEWELLERS V9
+   SUVARNA JEWELLERS V10
    READY-STOCK.JS
 ========================================== */
 
-document.addEventListener("DOMContentLoaded", loadReadyStock);
+document.addEventListener(
+"DOMContentLoaded",
+loadReadyStock
+);
+
 
 async function loadReadyStock(){
 
-    const grid = document.getElementById("readyStockPageGrid");
+    const grid = document.getElementById(
+        "readyStockPageGrid"
+    );
+
     if(!grid) return;
+
 
     try{
 
-        const response = await fetch("products.json");
-        const data = await response.json();
+        const products = await getProducts();
 
-        const products = Array.isArray(data)
-            ? data
-            : (data.products || []);
 
-        const readyStock = products
-            .filter(product => product.isReadyStock === true)
-            .slice(0,8);
+        const readyStock = products.filter(
+            product => product.isReadyStock === true
+        );
+
 
         if(readyStock.length === 0){
 
             grid.innerHTML = `
-                <p style="text-align:center;width:100%;">
-                    No Ready Stock Available.
-                </p>
+            <p style="text-align:center;width:100%;">
+            No Ready Stock Available.
+            </p>
             `;
+
             return;
         }
 
-        grid.innerHTML = readyStock.map(product => `
+
+        grid.innerHTML = readyStock.map(product => {
+
+
+            return `
 
             <div class="product-card">
 
-                <img
-                    src="${product.image}"
-                    alt="${product.name}">
+                <img 
+                src="${product.image}"
+                alt="${product.name}"
+                loading="lazy">
+
 
                 <div class="product-info">
 
-                    <h3>${product.name}</h3>
+                    <h3>
+                    ${product.name}
+                    </h3>
 
-                    <p>${product.category || ""}</p>
+
+                    <p>
+                    ${product.category || ""}
+                    </p>
+
+
+                    <a 
+                    href="product.html?id=${product.id}"
+                    class="btn btn-primary">
+
+                    View Product
+
+                    </a>
+
 
                     <a
-                        href="product.html?id=${product.id}"
-                        class="btn btn-primary">
+                    href="https://wa.me/917777991118"
+                    target="_blank"
+                    class="btn">
 
-                        View Details
+                    WhatsApp
 
                     </a>
 
@@ -59,18 +87,26 @@ async function loadReadyStock(){
 
             </div>
 
-        `).join("");
+            `;
+
+
+        }).join("");
+
 
     }
 
     catch(error){
 
-        console.error(error);
+        console.error(
+            "Ready Stock Error:",
+            error
+        );
+
 
         grid.innerHTML = `
-            <p style="text-align:center;width:100%;">
-                Unable to load Ready Stock.
-            </p>
+        <p style="text-align:center;width:100%;">
+        Unable to load Ready Stock.
+        </p>
         `;
 
     }
