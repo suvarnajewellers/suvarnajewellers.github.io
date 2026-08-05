@@ -1385,11 +1385,16 @@ transform:scale(1.08);
 position:absolute;
 inset:0;
 display:flex;
-align-items:flex-end;
-padding:30px;
-background:linear-gradient(to top,
-rgba(0,0,0,.85),
-rgba(0,0,0,.15));
+flex-direction:column;
+justify-content:flex-end;
+padding:35px;
+background:linear-gradient(
+to top,
+rgba(0,0,0,.92),
+rgba(0,0,0,.35),
+transparent
+);
+transition:.4s ease;
 }
 
 .collection-overlay h3{
@@ -1403,6 +1408,18 @@ margin-bottom:8px;
 color:#d4af37;
 font-size:15px;
 letter-spacing:1px;
+}
+
+.collection-card:hover .collection-overlay{
+padding-bottom:45px;
+}
+
+.collection-overlay h3{
+transition:.35s ease;
+}
+
+.collection-card:hover .collection-overlay h3{
+color:#f7e7a5;
 }
 
 .collection-card:hover{
