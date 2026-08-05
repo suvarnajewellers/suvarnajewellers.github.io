@@ -2645,8 +2645,6 @@ html{
 scroll-behavior:smooth;
 }
 
-
-
 ::selection{
 background:#d4af37;
 color:#2b0015;
@@ -2663,27 +2661,6 @@ background:#16040b;
 ::-webkit-scrollbar-thumb{
 background:#d4af37;
 border-radius:20px;
-}
-
-
-
-.btn:hover{
-transform:translateY(-4px);
-}
-
-.section-title,
-.section-heading{
-margin-bottom:60px;
-}
-
-.section-tag{
-display:inline-block;
-margin-bottom:15px;
-letter-spacing:3px;
-text-transform:uppercase;
-color:#d4af37;
-font-size:14px;
-font-weight:600;
 }
 
 .card,
@@ -2718,18 +2695,6 @@ transform:translateY(0);
 
 }
 
-.card:hover,
-.feature-card:hover,
-.collection-card:hover,
-.ready-stock-card:hover,
-.contact-card:hover,
-.trust-item:hover,
-.product-card:hover,
-.stat-box:hover,
-.manufacturer-image:hover img,
-.about-image:hover img{
-transition:.35s ease;
-}
 /* MOBILE PERFORMANCE */
 
 @media (max-width:768px){
