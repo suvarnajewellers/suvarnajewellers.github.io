@@ -2254,23 +2254,46 @@ transition:.35s ease;
 /* WHATSAPP */
 
 .product-actions .btn-primary{
-
-background:
-
-linear-gradient(
+background:linear-gradient(
 135deg,
-#25D366,
-#12b857
+#25D366 0%,
+#18b85a 100%
 );
-
 color:#fff;
-
+border:none;
 box-shadow:
-
-0 15px 35px rgba(37,211,102,.25);
-
+0 15px 35px rgba(37,211,102,.30),
+0 5px 15px rgba(0,0,0,.20);
+position:relative;
+overflow:hidden;
+transition:.4s ease;
 }
 
+.product-actions .btn-primary::before{
+content:"";
+position:absolute;
+top:0;
+left:-100%;
+width:100%;
+height:100%;
+background:linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.35),
+transparent
+);
+transition:.8s ease;
+}
+
+.product-actions .btn-primary:hover::before{
+left:100%;
+}
+
+.product-actions .btn-primary:hover{
+transform:translateY(-5px);
+box-shadow:
+0 22px 45px rgba(37,211,102,.45);
+}
 
 .product-actions .btn-primary:hover{
 
@@ -2286,13 +2309,18 @@ box-shadow:
 /* OUTLINE */
 
 .product-actions .btn-outline{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(212,175,55,.35);
+color:#f7e7a5;
+backdrop-filter:blur(10px);
+transition:.4s ease;
+}
 
-border:1px solid rgba(212,175,55,.45);
-
-color:var(--gold-light);
-
-background:rgba(255,255,255,.04);
-
+.product-actions .btn-outline:hover{
+background:#d4af37;
+color:#2b0015;
+border-color:#d4af37;
+transform:translateY(-5px);
 }
 
 
