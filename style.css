@@ -2224,308 +2224,110 @@ padding:20px;
 }
 
 }
-   /* ==========================================================
-   PART 6A
-   ABOUT + MANUFACTURER SECTION
-========================================================== */
 
+/* ==========================================
+MANUFACTURER
+========================================== */
 
-/* ==========================================================
-   ABOUT SECTION
-========================================================== */
-
-.about-section{
-
-position:relative;
-
+.manufacturer{
 padding:120px 0;
-
-background:
-
-linear-gradient(
-180deg,
-#140008,
-#250012
-);
-
-overflow:hidden;
-
+background:linear-gradient(180deg,#14030a,#240612);
 }
 
-
-.about-layout{
-
+.manufacturer-wrapper{
 display:grid;
-
 grid-template-columns:1fr 1fr;
-
-gap:70px;
-
 align-items:center;
-
+gap:70px;
 }
 
-
-/* ==========================================================
-   ABOUT IMAGE
-========================================================== */
-
-.about-image{
-
-position:relative;
-
-border-radius:30px;
-
+.manufacturer-image{
 overflow:hidden;
-
-border:1px solid rgba(212,175,55,.18);
-
-box-shadow:
-
-0 25px 60px rgba(0,0,0,.35);
-
+border-radius:28px;
 }
 
-
-.about-image img{
-
+.manufacturer-image img{
 width:100%;
-
-height:520px;
-
-object-fit:cover;
-
-transition:.6s ease;
-
+display:block;
+border-radius:28px;
+transition:.5s;
 }
 
-
-.about-image:hover img{
-
-transform:scale(1.06);
-
+.manufacturer-image:hover img{
+transform:scale(1.05);
 }
 
-
-/* ==========================================================
-   ABOUT CONTENT
-========================================================== */
-
-.about-content h2{
-
-font-size:48px;
-
-color:#fff;
-
-margin-bottom:25px;
-
-}
-
-
-.about-content p{
-
-font-size:17px;
-
-line-height:2;
-
-color:#ddd;
-
-margin-bottom:25px;
-
-}
-
-
-/* ==========================================================
-   TRUST CARDS
-========================================================== */
-
-.trust-grid{
-
-display:grid;
-
-grid-template-columns:repeat(2,1fr);
-
-gap:22px;
-
-margin-top:40px;
-
-}
-
-
-.trust-card{
-
-padding:28px;
-
-border-radius:24px;
-
-background:
-
-rgba(255,255,255,.05);
-
-border:1px solid rgba(212,175,55,.15);
-
-backdrop-filter:blur(14px);
-
-transition:.35s ease;
-
-}
-
-
-.trust-card:hover{
-
-transform:translateY(-8px);
-
-border-color:var(--gold);
-
-}
-
-
-.trust-card h3{
-
-font-size:30px;
-
-color:var(--gold);
-
-margin-bottom:8px;
-
-}
-
-
-.trust-card span{
-
+.manufacturer-content .section-tag{
+display:inline-block;
+margin-bottom:18px;
+color:#d4af37;
+letter-spacing:3px;
 font-size:14px;
-
-color:#ddd;
-
-letter-spacing:1px;
-
+font-weight:600;
 }
 
-
-/* ==========================================================
-   MANUFACTURER SECTION
-========================================================== */
-
-.manufacturer-section{
-
-padding:100px 0;
-
-background:#140008;
-
+.manufacturer-content h2{
+font-family:"Cinzel",serif;
+font-size:52px;
+line-height:1.25;
+color:#fff;
+margin-bottom:24px;
 }
 
-
-.manufacturer-box{
-
-padding:60px;
-
-border-radius:35px;
-
-background:
-
-linear-gradient(
-135deg,
-rgba(212,175,55,.12),
-rgba(255,255,255,.04)
-);
-
-border:1px solid rgba(212,175,55,.25);
-
-text-align:center;
-
+.manufacturer-content p{
+font-size:18px;
+line-height:1.9;
+color:#d8d8d8;
+margin-bottom:30px;
 }
 
-
-.manufacturer-box h2{
-
-font-size:44px;
-
-color:var(--gold-light);
-
-margin-bottom:20px;
-
+.manufacturer-list{
+list-style:none;
+padding:0;
+margin:0 0 40px;
 }
 
-
-.manufacturer-box p{
-
-max-width:850px;
-
-margin:auto;
-
+.manufacturer-list li{
+display:flex;
+align-items:center;
+gap:14px;
+margin-bottom:18px;
+color:#fff;
 font-size:17px;
-
-line-height:2;
-
-color:#eee;
-
 }
 
-
-/* ==========================================================
-   RESPONSIVE
-========================================================== */
+.manufacturer-list i{
+color:#d4af37;
+font-size:18px;
+}
 
 @media(max-width:992px){
 
-.about-layout{
-
+.manufacturer-wrapper{
 grid-template-columns:1fr;
-
 }
 
-
-.about-content h2{
-
-font-size:38px;
-
+.manufacturer-content{
+order:2;
 }
 
-
-.manufacturer-box{
-
-padding:40px 25px;
-
+.manufacturer-image{
+order:1;
 }
 
 }
 
+@media(max-width:768px){
 
-@media(max-width:600px){
-
-.about-section{
-
-padding:80px 0;
-
+.manufacturer{
+padding:70px 0;
 }
 
-
-.about-image img{
-
-height:350px;
-
+.manufacturer-content h2{
+font-size:36px;
 }
 
-
-.trust-grid{
-
-grid-template-columns:1fr;
-
 }
-
-
-.manufacturer-box h2{
-
-font-size:32px;
-
-}
-
-   }
-   /* ==========================================================
-   PART 6B
-   PREMIUM CONTACT SECTION
-========================================================== */
-
 
 /* ==========================================================
    CONTACT SECTION
