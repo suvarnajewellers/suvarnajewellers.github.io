@@ -866,7 +866,10 @@ line-height:1.12;
 font-weight:700;
 color:#f8e7b0;
 margin-bottom:28px;
-text-shadow:0 10px 35px rgba(0,0,0,.45);
+text-shadow:
+0 5px 15px rgba(0,0,0,.35),
+0 15px 40px rgba(0,0,0,.45),
+0 0 20px rgba(212,175,55,.10);
 }
 
 .hero p{
