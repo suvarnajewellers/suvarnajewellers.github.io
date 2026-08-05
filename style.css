@@ -782,7 +782,6 @@ font-size:22px;
 .menu-toggle:hover{
 background:#d4af37;
 color:#2b0015;
-transform:rotate(90deg);
 transition:.35s ease;
 }
 
