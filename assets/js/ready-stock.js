@@ -24,9 +24,8 @@ async function loadReadyStock(){
 
 
         const readyStock = products.filter(
-    product => 
-    product.isReadyStock == true ||
-    product.isReadyStock == "true"
+    product =>
+    product.readyStock === true
 );
 
 console.log("ALL PRODUCTS:", products);
