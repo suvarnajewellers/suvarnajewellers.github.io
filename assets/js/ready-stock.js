@@ -7,8 +7,7 @@ document.addEventListener("DOMContentLoaded", loadReadyStock);
 
 async function loadReadyStock(){
 
-    const grid = document.getElementById("readyStockGrid");
-
+    const grid = document.getElementById("readyStockPageGrid");
     if(!grid) return;
 
     try{
