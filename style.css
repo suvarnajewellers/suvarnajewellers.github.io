@@ -2440,355 +2440,86 @@ grid-template-columns:1fr;
 }
 
 }
-/* ==========================================================
-   CONTACT SECTION
-========================================================== */
 
-.contact-section{
+/* ==========================================
+CONTACT
+========================================== */
 
+.contact{
 padding:120px 0;
-
-background:
-
-linear-gradient(
-180deg,
-#140008,
-#250012
-);
-
+background:linear-gradient(180deg,#220611,#14030a);
 }
 
-
-/* ==========================================================
-   CONTACT GRID
-========================================================== */
-
-.contact-layout{
-
+.contact-grid{
 display:grid;
-
-grid-template-columns:1fr 1fr;
-
-gap:60px;
-
-align-items:start;
-
+grid-template-columns:repeat(4,1fr);
+gap:28px;
+margin-top:50px;
 }
-
-
-/* ==========================================================
-   CONTACT INFO
-========================================================== */
-
-.contact-info h2{
-
-font-size:46px;
-
-color:#fff;
-
-margin-bottom:20px;
-
-}
-
-
-.contact-info p{
-
-font-size:17px;
-
-line-height:1.9;
-
-color:#ddd;
-
-margin-bottom:35px;
-
-}
-
-
-/* ==========================================================
-   CONTACT CARDS
-========================================================== */
-
-.contact-cards{
-
-display:grid;
-
-grid-template-columns:repeat(2,1fr);
-
-gap:20px;
-
-}
-
 
 .contact-card{
-
-padding:25px;
-
-border-radius:22px;
-
-background:
-
-rgba(255,255,255,.05);
-
-border:1px solid rgba(212,175,55,.15);
-
-transition:.35s ease;
-
+padding:35px 25px;
+text-align:center;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(212,175,55,.18);
+border-radius:24px;
+backdrop-filter:blur(12px);
+transition:.35s;
 }
-
 
 .contact-card:hover{
-
-transform:translateY(-6px);
-
-border-color:var(--gold);
-
+transform:translateY(-10px);
+border-color:#d4af37;
+box-shadow:0 20px 45px rgba(0,0,0,.30);
 }
-
 
 .contact-card i{
-
-font-size:28px;
-
-color:var(--gold);
-
-margin-bottom:15px;
-
+font-size:40px;
+color:#d4af37;
+margin-bottom:20px;
 }
-
 
 .contact-card h3{
-
-font-size:20px;
-
+font-family:"Cinzel",serif;
+font-size:24px;
 color:#fff;
-
-margin-bottom:8px;
-
+margin-bottom:15px;
 }
 
-
-.contact-card span{
-
-font-size:14px;
-
-color:#ccc;
-
+.contact-card a,
+.contact-card p{
+color:#d8d8d8;
+font-size:16px;
+line-height:1.8;
+text-decoration:none;
+word-break:break-word;
 }
 
-
-/* ==========================================================
-   WHATSAPP CTA BOX
-========================================================== */
-
-.contact-whatsapp{
-
-margin-top:35px;
-
-padding:30px;
-
-border-radius:28px;
-
-background:
-
-linear-gradient(
-135deg,
-rgba(37,211,102,.18),
-rgba(37,211,102,.05)
-);
-
-border:1px solid rgba(37,211,102,.35);
-
-display:flex;
-
-align-items:center;
-
-justify-content:space-between;
-
-gap:20px;
-
+.contact-card a:hover{
+color:#d4af37;
 }
-
-
-.contact-whatsapp h3{
-
-color:#fff;
-
-font-size:22px;
-
-}
-
-
-.contact-whatsapp a{
-
-background:#25D366;
-
-color:#fff;
-
-padding:14px 28px;
-
-border-radius:50px;
-
-font-weight:600;
-
-transition:.35s ease;
-
-}
-
-
-.contact-whatsapp a:hover{
-
-transform:translateY(-4px);
-
-box-shadow:
-
-0 15px 35px rgba(37,211,102,.35);
-
-}
-
-
-/* ==========================================================
-   CONTACT FORM
-========================================================== */
-
-.contact-form{
-
-padding:40px;
-
-border-radius:30px;
-
-background:
-
-rgba(255,255,255,.05);
-
-border:1px solid rgba(212,175,55,.18);
-
-backdrop-filter:blur(15px);
-
-}
-
-
-.contact-form input,
-
-.contact-form textarea{
-
-width:100%;
-
-padding:16px 20px;
-
-margin-bottom:18px;
-
-border-radius:14px;
-
-background:
-
-rgba(255,255,255,.08);
-
-border:1px solid rgba(255,255,255,.12);
-
-color:#fff;
-
-font-size:15px;
-
-outline:none;
-
-transition:.3s ease;
-
-}
-
-
-.contact-form input:focus,
-
-.contact-form textarea:focus{
-
-border-color:var(--gold);
-
-}
-
-
-.contact-form textarea{
-
-height:140px;
-
-resize:none;
-
-}
-
-
-.contact-form button{
-
-width:100%;
-
-height:55px;
-
-border:none;
-
-border-radius:50px;
-
-background:
-
-linear-gradient(
-135deg,
-var(--gold),
-var(--gold-light)
-);
-
-color:#2b0015;
-
-font-weight:700;
-
-cursor:pointer;
-
-}
-
-
-/* ==========================================================
-   RESPONSIVE
-========================================================== */
 
 @media(max-width:992px){
 
-.contact-layout{
+.contact-grid{
+grid-template-columns:repeat(2,1fr);
+}
 
+}
+
+@media(max-width:768px){
+
+.contact{
+padding:70px 0;
+}
+
+.contact-grid{
 grid-template-columns:1fr;
+}
 
 }
 
 
-}
-
-
-@media(max-width:600px){
-
-.contact-info h2{
-
-font-size:34px;
-
-}
-
-
-.contact-cards{
-
-grid-template-columns:1fr;
-
-}
-
-
-.contact-whatsapp{
-
-flex-direction:column;
-
-align-items:flex-start;
-
-}
-
-
-.contact-form{
-
-padding:25px;
-
-}
-
-   }
    /* ==========================================================
    PART 7A
    PREMIUM FOOTER + FLOATING ELEMENTS
