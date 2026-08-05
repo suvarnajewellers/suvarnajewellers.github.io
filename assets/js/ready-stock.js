@@ -3,86 +3,200 @@
    READY-STOCK.JS
 ========================================== */
 
+let readyProducts = [];
+let filteredProducts = [];
+
 document.addEventListener(
-"DOMContentLoaded",
-loadReadyStock
+    "DOMContentLoaded",
+    initReadyStock
 );
 
+async function initReadyStock(){
 
-async function loadReadyStock(){
+    const grid =
+        document.getElementById("readyStockPageGrid");
 
-    const grid = document.getElementById(
-        "readyStockPageGrid"
-    );
+    const search =
+        document.getElementById("ready-search");
 
-    if(!grid) return;
+    const count =
+        document.getElementById("ready-count");
 
+    const empty =
+        document.getElementById("empty-state");
+
+    if(
+        !grid ||
+        !search ||
+        !count ||
+        !empty
+    ){
+        return;
+    }
 
     try{
 
-        const products = await getProducts();
+        const products =
+            await getProducts();
 
+        readyProducts =
+            products.filter(product =>
+                product.readyStock === true
+            );
 
-        const readyStock = products.filter(
-    product =>
-    product.readyStock === true
-);
+        filteredProducts =
+            [...readyProducts];
 
-console.log("ALL PRODUCTS:", products);
-alert("Total Products: " + products.length + "\nReady Stock: " + readyStock.length);
+        count.textContent =
+            filteredProducts.length;
 
-        if(readyStock.length === 0){
+        renderProducts(
+            filteredProducts
+        );
 
-            grid.innerHTML = `
-            <p style="text-align:center;width:100%;">
-            No Ready Stock Available.
-            </p>
-            `;
+        search.addEventListener(
+            "input",
+            function(){
 
-            return;
+                const keyword =
+                    this.value
+                    .trim()
+                    .toLowerCase();
+
+                filteredProducts =
+                    readyProducts.filter(product=>{
+
+                        return (
+
+                            product.name
+                            ?.toLowerCase()
+                            .includes(keyword)
+
+                            ||
+
+                            product.category
+                            ?.toLowerCase()
+                            .includes(keyword)
+
+                            ||
+
+                            product.metal
+                            ?.toLowerCase()
+                            .includes(keyword)
+
+                        );
+
+                    });
+
+                count.textContent =
+                    filteredProducts.length;
+
+                renderProducts(
+                    filteredProducts
+                );
+
+            }
+        );
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        grid.innerHTML = `
+        <p class="error-text">
+        Unable to load products.
+        </p>
+        `;
+
+    }
+
+}
+/* ==========================
+   RENDER PRODUCTS
+========================== */
+
+function renderProducts(products){
+
+    const grid =
+        document.getElementById(
+            "readyStockPageGrid"
+        );
+
+    const empty =
+        document.getElementById(
+            "empty-state"
+        );
+
+    if(!grid) return;
+
+    if(products.length === 0){
+
+        grid.innerHTML = "";
+
+        if(empty){
+            empty.style.display = "block";
         }
 
+        return;
 
-        grid.innerHTML = readyStock.map(product => {
+    }
 
+    if(empty){
+        empty.style.display = "none";
+    }
 
-            return `
+    grid.innerHTML = products.map(product => `
 
-            <div class="product-card">
+        <div class="product-card">
 
-                <img 
-                src="${product.image}"
-                alt="${product.name}"
-                loading="lazy">
+            <div class="product-image">
 
+                <img
+                    src="${product.image}"
+                    alt="${product.name}"
+                    loading="lazy"
+                    onerror="this.src='Logo.png'">
 
-                <div class="product-info">
+            </div>
 
-                    <h3>
-                    ${product.name}
-                    </h3>
+            <div class="product-info">
 
+                <span class="product-category">
 
-                    <p>
                     ${product.category || ""}
-                    </p>
 
+                </span>
 
-                    <a 
-                    href="product.html?id=${product.id}"
-                    class="btn btn-primary">
+                <h3>
 
-                    View Product
+                    ${product.name}
+
+                </h3>
+
+                <p>
+
+                    ${product.netWeight || "-"}
+
+                </p>
+
+                <div class="product-buttons">
+
+                    <a
+                        href="product.html?id=${product.id}"
+                        class="btn btn-primary">
+
+                        View Product
 
                     </a>
 
-
                     <a
-                    href="https://wa.me/917777991118"
-                    target="_blank"
-                    class="btn">
+                        href="https://wa.me/917777991118?text=Hello%20Suvarna%20Jewellers,%20I%20am%20interested%20in%20${encodeURIComponent(product.name)}"
+                        target="_blank"
+                        class="btn">
 
-                    WhatsApp
+                        WhatsApp
 
                     </a>
 
@@ -90,28 +204,74 @@ alert("Total Products: " + products.length + "\nReady Stock: " + readyStock.leng
 
             </div>
 
-            `;
+        </div>
 
+    `).join("");
 
-        }).join("");
+                           }
+/* ==========================
+   IMAGE PATH FIX
+========================== */
 
+document.addEventListener("error", function(event){
+
+    if(event.target.tagName === "IMG"){
+
+        event.target.src = "Logo.png";
 
     }
 
-    catch(error){
-
-        console.error(
-            "Ready Stock Error:",
-            error
-        );
+}, true);
 
 
-        grid.innerHTML = `
-        <p style="text-align:center;width:100%;">
-        Unable to load Ready Stock.
-        </p>
-        `;
+/* ==========================
+   FUTURE CATEGORY FILTER
+========================== */
+
+function filterReadyStock(category){
+
+    if(category === "all"){
+
+        renderProducts(readyProducts);
+
+        const count =
+        document.getElementById("ready-count");
+
+        if(count){
+
+            count.textContent =
+            readyProducts.length;
+
+        }
+
+        return;
+
+    }
+
+    const filtered = readyProducts.filter(product =>
+
+        product.category === category
+
+    );
+
+    renderProducts(filtered);
+
+    const count =
+    document.getElementById("ready-count");
+
+    if(count){
+
+        count.textContent =
+        filtered.length;
 
     }
 
 }
+
+
+/* ==========================
+   GLOBAL EXPORT
+========================== */
+
+window.filterReadyStock =
+filterReadyStock;
