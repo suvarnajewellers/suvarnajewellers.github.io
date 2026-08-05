@@ -30,8 +30,7 @@ async function loadReadyStock(){
 );
 
 console.log("ALL PRODUCTS:", products);
-console.log("READY STOCK:", readyStock);
-
+alert("Total Products: " + products.length + "\nReady Stock: " + readyStock.length);
 
         if(readyStock.length === 0){
 
