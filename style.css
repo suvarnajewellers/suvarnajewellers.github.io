@@ -647,6 +647,7 @@ background:rgba(30,5,12,.82);
 backdrop-filter:blur(18px);
 border-bottom:1px solid rgba(212,175,55,.15);
 transition:.35s;
+box-shadow:0 8px 30px rgba(0,0,0,.18);
 }
 
 .header-container{
