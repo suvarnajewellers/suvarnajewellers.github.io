@@ -2752,3 +2752,31 @@ box-shadow:none;
 }
 
 }
+
+/* ==========================================
+LUXURY SECTION DIVIDER
+========================================== */
+
+section{
+position:relative;
+}
+
+section::after{
+content:"";
+position:absolute;
+left:50%;
+bottom:0;
+transform:translateX(-50%);
+width:120px;
+height:1px;
+background:linear-gradient(
+90deg,
+transparent,
+rgba(212,175,55,.45),
+transparent
+);
+}
+
+footer::after{
+display:none;
+}
