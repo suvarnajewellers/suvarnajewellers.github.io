@@ -689,9 +689,47 @@ text-transform:uppercase;
 }
 
 .navbar{
+
 display:flex;
-gap:34px;
+
+justify-content:space-between;
+
 align-items:center;
+
+padding:18px 20px;
+
+background:#2b0015;
+
+position:sticky;
+
+top:0;
+
+z-index:1000;
+
+}
+
+.logo{
+
+font-size:22px;
+
+font-weight:700;
+
+}
+
+.nav-links{
+
+display:flex;
+
+align-items:center;
+
+gap:24px;
+
+list-style:none;
+
+margin:0;
+
+padding:0;
+
 }
 
 .navbar a{
@@ -790,7 +828,37 @@ height:46px;
 font-size:18px;
 border-radius:12px;
 }
+.nav-links{
 
+display:none;
+
+flex-direction:column;
+
+position:absolute;
+
+top:100%;
+
+left:0;
+
+width:100%;
+
+background:#2b0015;
+
+padding:20px;
+
+}
+
+.nav-links.active{
+
+display:flex;
+
+}
+
+.navbar{
+
+position:relative;
+
+   }
 }
 
 /* ==========================================================
