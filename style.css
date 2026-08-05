@@ -1564,18 +1564,27 @@ rgba(0,0,0,.12)
 
 .ready-stock-info h3{
 font-family:"Cinzel",serif;
-font-size:21px;
+font-size:24px;
+color:#f8e7b0;
+margin-bottom:12px;
 line-height:1.4;
-color:#fff;
-margin:0;
+}
+
+.ready-stock-info h3:hover{
+color:#d4af37;
 }
 
 .ready-stock-info p{
+display:inline-block;
+padding:8px 18px;
+border-radius:30px;
+background:rgba(212,175,55,.12);
+border:1px solid rgba(212,175,55,.20);
 color:#d4af37;
-font-size:14px;
-margin:0;
+font-size:13px;
+font-weight:600;
 letter-spacing:1px;
-text-transform:uppercase;
+margin-bottom:22px;
 }
 
 .section-button{
