@@ -734,22 +734,41 @@ font-size:22px;
 
 @media(max-width:768px){
 
+.header{
+padding:0 6px;
+}
+
 .header-container{
-height:78px;
+height:72px;
+}
+
+.logo{
+gap:10px;
 }
 
 .logo img{
-width:46px;
-height:46px;
+width:42px;
+height:42px;
 }
 
 .logo-text h1{
-font-size:22px;
+font-size:18px;
 }
 
 .logo-text span{
-font-size:10px;
-letter-spacing:2px;
+font-size:9px;
+letter-spacing:1.5px;
+}
+
+.navbar{
+padding-top:20px;
+}
+
+.menu-toggle{
+width:46px;
+height:46px;
+font-size:18px;
+border-radius:12px;
 }
 
 }
