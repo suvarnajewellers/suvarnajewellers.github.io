@@ -104,66 +104,55 @@ function initHeader(){
 ========================== */
 
 function initMobileMenu(){
-
+function initMobileMenu(){
 
     const button =
     document.getElementById(
-        "menuToggle"
+        "menu-toggle"
     );
-
 
     const nav =
-    document.getElementById(
-        "navbar"
+    document.querySelector(
+        ".nav-links"
     );
-
 
     if(!button || !nav) return;
 
-
-
     button.addEventListener(
-    "click",
-    function(){
-
-
-        nav.classList.toggle(
-            "active"
-        );
-
-
-        button.classList.toggle(
-            "open"
-        );
-
-
-    });
-
-
-
-    nav
-    .querySelectorAll("a")
-    .forEach(link=>{
-
-
-        link.addEventListener(
         "click",
         function(){
 
-
-            nav.classList.remove(
+            nav.classList.toggle(
                 "active"
             );
 
+            button.classList.toggle(
+                "active"
+            );
 
-        });
+        }
+    );
 
+    nav.querySelectorAll("a").forEach(link=>{
+
+        link.addEventListener(
+            "click",
+            function(){
+
+                nav.classList.remove(
+                    "active"
+                );
+
+                button.classList.remove(
+                    "active"
+                );
+
+            }
+        );
 
     });
 
-
 }
-
 
 
 /* ==========================
@@ -222,8 +211,8 @@ function initScrollTop(){
 
     const button =
     document.getElementById(
-        "backToTop"
-    );
+    "scrollTopBtn"
+);
 
 
     if(!button) return;
