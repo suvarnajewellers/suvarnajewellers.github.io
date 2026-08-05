@@ -1140,364 +1140,86 @@ grid-template-columns:1fr;
 }
 
 }
-/* ==========================================================
-   PART 4A
-   PREMIUM FEATURES
-========================================================== */
+/* ==========================================
+FEATURES
+========================================== */
 
 .features{
-
-position:relative;
-
 padding:100px 0;
-
-background:linear-gradient(
-180deg,
-rgba(18,0,8,.96),
-rgba(28,0,12,.98)
-);
-
+background:linear-gradient(180deg,#18040c,#250712);
 }
 
 .features .container{
-
 display:grid;
-
 grid-template-columns:repeat(4,1fr);
+gap:28px;
+}
 
-gap:30px;
-
+.features .section-heading{
+grid-column:1/-1;
+text-align:center;
+margin-bottom:25px;
 }
 
 .feature-card{
-
-position:relative;
-
-padding:40px 30px;
-
-text-align:center;
-
-border-radius:28px;
-
 background:rgba(255,255,255,.05);
-
 border:1px solid rgba(212,175,55,.15);
-
-backdrop-filter:blur(16px);
-
+border-radius:24px;
+padding:40px 30px;
+text-align:center;
+backdrop-filter:blur(14px);
 transition:.35s ease;
-
-overflow:hidden;
-
 }
 
 .feature-card:hover{
-
 transform:translateY(-10px);
-
-border-color:var(--gold);
-
-box-shadow:
-0 22px 55px rgba(0,0,0,.35);
-
-}
-
-.feature-card::before{
-
-content:"";
-
-position:absolute;
-
-top:0;
-
-left:-120%;
-
-width:60%;
-
-height:100%;
-
-background:
-
-linear-gradient(
-90deg,
-transparent,
-rgba(255,255,255,.12),
-transparent
-);
-
-transform:skewX(-25deg);
-
-transition:.8s;
-
-}
-
-.feature-card:hover::before{
-
-left:180%;
-
+border-color:#d4af37;
+box-shadow:0 20px 45px rgba(0,0,0,.30);
 }
 
 .feature-card i{
-
-width:82px;
-
-height:82px;
-
-margin:auto;
-
-margin-bottom:24px;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-border-radius:50%;
-
-font-size:32px;
-
-color:var(--gold);
-
-background:
-
-linear-gradient(
-135deg,
-rgba(212,175,55,.18),
-rgba(212,175,55,.05)
-);
-
-border:1px solid rgba(212,175,55,.20);
-
-transition:.35s ease;
-
-}
-
-.feature-card:hover i{
-
-transform:rotate(8deg) scale(1.08);
-
+font-size:42px;
+color:#d4af37;
+margin-bottom:22px;
 }
 
 .feature-card h3{
-
+font-family:"Cinzel",serif;
 font-size:24px;
-
-margin-bottom:14px;
-
-color:var(--gold-light);
-
+color:#fff;
+margin-bottom:15px;
 }
 
 .feature-card p{
-
-font-size:15px;
-
+font-size:16px;
 line-height:1.8;
-
-color:#dddddd;
-
-/* ==========================================================
-   PART 4A
-   PREMIUM FEATURES
-========================================================== */
-
-.features{
-
-position:relative;
-
-padding:100px 0;
-
-background:linear-gradient(
-180deg,
-rgba(18,0,8,.96),
-rgba(28,0,12,.98)
-);
-
+color:#d8d8d8;
 }
-
-.features .container{
-
-display:grid;
-
-grid-template-columns:repeat(4,1fr);
-
-gap:30px;
-
-}
-
-.feature-card{
-
-position:relative;
-
-padding:40px 30px;
-
-text-align:center;
-
-border-radius:28px;
-
-background:rgba(255,255,255,.05);
-
-border:1px solid rgba(212,175,55,.15);
-
-backdrop-filter:blur(16px);
-
-transition:.35s ease;
-
-overflow:hidden;
-
-}
-
-.feature-card:hover{
-
-transform:translateY(-10px);
-
-border-color:var(--gold);
-
-box-shadow:
-0 22px 55px rgba(0,0,0,.35);
-
-}
-
-.feature-card::before{
-
-content:"";
-
-position:absolute;
-
-top:0;
-
-left:-120%;
-
-width:60%;
-
-height:100%;
-
-background:
-
-linear-gradient(
-90deg,
-transparent,
-rgba(255,255,255,.12),
-transparent
-);
-
-transform:skewX(-25deg);
-
-transition:.8s;
-
-}
-
-.feature-card:hover::before{
-
-left:180%;
-
-}
-
-.feature-card i{
-
-width:82px;
-
-height:82px;
-
-margin:auto;
-
-margin-bottom:24px;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-border-radius:50%;
-
-font-size:32px;
-
-color:var(--gold);
-
-background:
-
-linear-gradient(
-135deg,
-rgba(212,175,55,.18),
-rgba(212,175,55,.05)
-);
-
-border:1px solid rgba(212,175,55,.20);
-
-transition:.35s ease;
-
-}
-
-.feature-card:hover i{
-
-transform:rotate(8deg) scale(1.08);
-
-}
-
-.feature-card h3{
-
-font-size:24px;
-
-margin-bottom:14px;
-
-color:var(--gold-light);
-
-}
-
-.feature-card p{
-
-font-size:15px;
-
-line-height:1.8;
-
-color:#dddddd;
-
-}
-
-
-/* ==========================================================
-   RESPONSIVE
-========================================================== */
 
 @media(max-width:992px){
 
 .features .container{
-
 grid-template-columns:repeat(2,1fr);
-
 }
 
 }
 
-@media(max-width:600px){
+@media(max-width:768px){
+
+.features{
+padding:70px 0;
+}
 
 .features .container{
-
 grid-template-columns:1fr;
-
-gap:22px;
-
 }
 
 .feature-card{
-
 padding:30px 22px;
-
 }
 
-.feature-card i{
+   }
 
-width:70px;
-
-height:70px;
-
-font-size:28px;
-
-}
-
-}
    /* ==========================================================
    PART 4B
    PREMIUM COLLECTIONS
