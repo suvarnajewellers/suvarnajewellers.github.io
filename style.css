@@ -1450,19 +1450,41 @@ grid-template-columns:repeat(2,1fr);
 @media(max-width:768px){
 
 .ready-stock{
-padding:70px 0;
+padding:60px 0;
 }
 
 .ready-stock-grid{
 grid-template-columns:1fr;
+gap:20px;
+}
+
+.ready-stock-card{
+border-radius:22px;
 }
 
 .ready-stock-card img{
-height:260px;
+height:auto;
+aspect-ratio:1/1;
+padding:8px;
+}
+
+.ready-stock-info{
+padding:20px 18px;
+}
+
+.ready-stock-info h3{
+font-size:19px;
+}
+
+.ready-stock-info p{
+font-size:13px;
+}
+
+.section-button{
+margin-top:35px;
 }
 
 }
-
 /* ==========================================================
    PRODUCT CARD
 ========================================================== */
