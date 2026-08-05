@@ -2576,28 +2576,6 @@ justify-content:center;
 PREMIUM POLISH
 ========================================== */
 
-html{
-scroll-behavior:smooth;
-}
-
-::selection{
-background:#d4af37;
-color:#2b0015;
-}
-
-::-webkit-scrollbar{
-width:10px;
-}
-
-::-webkit-scrollbar-track{
-background:#16040b;
-}
-
-::-webkit-scrollbar-thumb{
-background:#d4af37;
-border-radius:20px;
-}
-
 .card,
 .feature-card,
 .collection-card,
