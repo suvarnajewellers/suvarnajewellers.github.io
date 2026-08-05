@@ -1243,11 +1243,13 @@ gap:30px;
 .collection-card{
 position:relative;
 height:460px;
-border-radius:26px;
+border-radius:28px;
 overflow:hidden;
 cursor:pointer;
 background:#000;
-transition:.4s;
+transition:.45s ease;
+border:1px solid rgba(212,175,55,.18);
+box-shadow:0 15px 35px rgba(0,0,0,.25);
 }
 
 .collection-card img{
