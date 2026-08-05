@@ -2645,25 +2645,7 @@ html{
 scroll-behavior:smooth;
 }
 
-body{
-background:#14030a;
-color:#fff;
-overflow-x:hidden;
-}
 
-section{
-position:relative;
-}
-
-.container{
-width:min(1400px,92%);
-margin:auto;
-}
-
-img{
-max-width:100%;
-display:block;
-}
 
 ::selection{
 background:#d4af37;
@@ -2683,9 +2665,7 @@ background:#d4af37;
 border-radius:20px;
 }
 
-.btn{
-transition:.35s ease;
-}
+
 
 .btn:hover{
 transform:translateY(-4px);
@@ -2738,13 +2718,33 @@ transform:translateY(0);
 
 }
 
-.hero-content,
-.section-title,
-.feature-card,
-.collection-card,
-.ready-stock-card,
-.manufacturer-content,
-.about-content,
-.contact-card{
-animation:fadeUp .8s ease both;
+.card:hover,
+.feature-card:hover,
+.collection-card:hover,
+.ready-stock-card:hover,
+.contact-card:hover,
+.trust-item:hover,
+.product-card:hover,
+.stat-box:hover,
+.manufacturer-image:hover img,
+.about-image:hover img{
+transition:.35s ease;
+}
+/* MOBILE PERFORMANCE */
+
+@media (max-width:768px){
+
+.card:hover,
+.feature-card:hover,
+.collection-card:hover,
+.ready-stock-card:hover,
+.contact-card:hover,
+.trust-item:hover,
+.product-card:hover{
+
+transform:none;
+box-shadow:none;
+
+}
+
 }
