@@ -1553,11 +1553,13 @@ saturate(1.08);
 }
 
 .ready-stock-info{
-padding:24px 20px;
+padding:28px 22px;
 text-align:center;
-display:flex;
-flex-direction:column;
-gap:12px;
+background:linear-gradient(
+180deg,
+rgba(255,255,255,.02),
+rgba(0,0,0,.12)
+);
 }
 
 .ready-stock-info h3{
