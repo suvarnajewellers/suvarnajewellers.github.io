@@ -425,49 +425,6 @@ background:var(--gold);
 color:#140008;
 
             }
-/* ==========================================================
-   PART 1C
-   UTILITIES + GRID + CARDS + ANIMATIONS
-========================================================== */
-
-
-/* ==========================================================
-   DISPLAY UTILITIES
-========================================================== */
-
-.flex{
-display:flex;
-align-items:center;
-}
-
-.flex-between{
-display:flex;
-align-items:center;
-justify-content:space-between;
-}
-
-.flex-center{
-display:flex;
-align-items:center;
-justify-content:center;
-}
-
-.grid{
-display:grid;
-gap:30px;
-}
-
-.grid-2{
-grid-template-columns:repeat(2,1fr);
-}
-
-.grid-3{
-grid-template-columns:repeat(3,1fr);
-}
-
-.grid-4{
-grid-template-columns:repeat(4,1fr);
-}
 
 /* ==========================================================
    PREMIUM CARD
