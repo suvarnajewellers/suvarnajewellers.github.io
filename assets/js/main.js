@@ -181,33 +181,27 @@ function initScrollProgress(){
 ========================== */
 
 function initScrollTop(){
-console.log("ScrollTop Initialized");
-    const button =
-    document.getElementById("backToTop");
 
-    if(!button) return;
+    const button = document.getElementById("backToTop");
 
-    window.addEventListener("scroll", function(){
+    console.log(button);
 
-        if(window.scrollY > 400){
+    if(!button){
+        alert("Button Not Found");
+        return;
+    }
 
-            button.classList.add("show");
+    alert("Button Found");
 
-        }else{
+    button.onclick = function(){
 
-            button.classList.remove("show");
+        alert("Clicked");
 
-        }
-
-    });
-
-    button.addEventListener("click", function(){
-     console.log("Button Click");
         window.scrollTo({
             top:0,
             behavior:"smooth"
         });
 
-    });
+    };
 
 }
