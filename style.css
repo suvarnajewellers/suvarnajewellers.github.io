@@ -3883,18 +3883,20 @@ bottom:82px;
 }
 
 }
-.back-to-top{
-    pointer-events:auto !important;
-    z-index:999999 !important;
-   }
+/* FORCE BACK TO TOP CLICK */
 .back-to-top{
     position:fixed !important;
     right:20px !important;
     bottom:95px !important;
-    z-index:9999999 !important;
+    width:60px !important;
+    height:60px !important;
+    z-index:2147483647 !important;
     pointer-events:auto !important;
 }
 
+.back-to-top *{
+    pointer-events:none !important;
+}
 .back-to-top i{
     pointer-events:none;
 }
