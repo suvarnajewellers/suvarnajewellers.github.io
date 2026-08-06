@@ -794,6 +794,7 @@ HERO
 .hero{
 position:relative;
 min-height:100vh;
+padding-top:82px;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -829,7 +830,7 @@ z-index:3;
 max-width:900px;
 margin:auto;
 text-align:center;
-padding:140px 20px 80px;
+padding:100px 20px 80px;
 }
 
 .hero-badge{
