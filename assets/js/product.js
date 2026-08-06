@@ -109,19 +109,24 @@ function renderProduct(product){
 
     if(productImages.length){
 
-    mainImage.src = getImage(productImages[0]);
+    mainImage.style.opacity = "0";
 
-    mainImage.alt = product.name;
+setTimeout(()=>{
 
-    mainImage.style.opacity = "1";
+mainImage.src = getImage(productImages[0]);
 
+mainImage.alt = product.name;
+
+mainImage.style.opacity = "1";
+
+},150);
 }
 
 
     createThumbnails();
 
     createWhatsappButton(product);
-
+mainImage.style.cursor = "zoom-in";
     }
 
 /* ==========================
@@ -217,7 +222,15 @@ const items = products
     )
 )
 .slice(0,4);
+if(items.length===0){
 
+relatedProducts.innerHTML=
+
+"<p class='no-products'>No Related Products Available.</p>";
+
+return;
+
+        }
 
 items.forEach(product=>{  
 
