@@ -102,59 +102,33 @@ function initHeader(){
 /* ==========================
    MOBILE MENU
 ========================== */
-
-function initMobileMenu(){
 function initMobileMenu(){
 
     const button =
-    document.getElementById(
-        "menu-toggle"
-    );
+    document.getElementById("menuToggle");
 
     const nav =
-    document.querySelector(
-        ".nav-links"
-    );
+    document.getElementById("navbar");
 
     if(!button || !nav) return;
 
-    button.addEventListener(
-        "click",
-        function(){
+    button.addEventListener("click", function(){
 
-            nav.classList.toggle(
-                "active"
-            );
+        nav.classList.toggle("active");
 
-            button.classList.toggle(
-                "active"
-            );
+    });
 
-        }
-    );
+    nav.querySelectorAll("a").forEach(function(link){
 
-    nav.querySelectorAll("a").forEach(link=>{
+        link.addEventListener("click", function(){
 
-        link.addEventListener(
-            "click",
-            function(){
+            nav.classList.remove("active");
 
-                nav.classList.remove(
-                    "active"
-                );
-
-                button.classList.remove(
-                    "active"
-                );
-
-            }
-        );
+        });
 
     });
 
 }
-
-
 /* ==========================
    SCROLL PROGRESS
 ========================== */
