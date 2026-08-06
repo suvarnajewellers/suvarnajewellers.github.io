@@ -3768,3 +3768,21 @@ bottom:85px;
 }
 
 }
+
+.floating-whatsapp{
+position:fixed !important;
+right:20px !important;
+bottom:20px !important;
+left:auto !important;
+top:auto !important;
+z-index:99999 !important;
+}
+
+.back-to-top{
+position:fixed !important;
+right:20px !important;
+bottom:90px !important;
+left:auto !important;
+top:auto !important;
+z-index:99998 !important;
+}
