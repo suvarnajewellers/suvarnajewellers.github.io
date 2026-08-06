@@ -184,24 +184,31 @@ function initScrollTop(){
 
     const button = document.getElementById("backToTop");
 
-    console.log(button);
+    if(!button) return;
 
-    if(!button){
-        alert("Button Not Found");
-        return;
-    }
+    window.addEventListener("scroll", function(){
 
-    alert("Button Found");
+        if(window.scrollY > 400){
+            button.classList.add("show");
+        }else{
+            button.classList.remove("show");
+        }
 
-    button.onclick = function(){
+    });
 
-        alert("Clicked");
+
+    button.addEventListener("click", function(e){
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        console.log("BACK TOP CLICKED");
 
         window.scrollTo({
             top:0,
             behavior:"smooth"
         });
 
-    };
+    });
 
 }
