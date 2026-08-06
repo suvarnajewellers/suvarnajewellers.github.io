@@ -998,11 +998,6 @@ border-color:#d4af37;
 box-shadow:
 0 20px 45px rgba(0,0,0,.35),
 0 0 20px rgba(212,175,55,.15);
-                     }
-
-.hero-stat:hover{
-transform:translateY(-8px);
-border-color:#d4af37;
 }
 
 .hero-stat h3{
@@ -1026,6 +1021,7 @@ MOBILE
 
 .hero{
 min-height:auto;
+padding-top:72px;
 }
 
 .hero-content{
