@@ -182,48 +182,32 @@ function initScrollProgress(){
 
 function initScrollTop(){
 
-
     const button =
-document.getElementById("backToTop");
-
+    document.getElementById("backToTop");
 
     if(!button) return;
 
-
-
-    window.addEventListener(
-    "scroll",
-    function(){
-
+    window.addEventListener("scroll", function(){
 
         if(window.scrollY > 400){
 
-            button.classList.add(
-                "show"
-            );
+            button.classList.add("show");
+
+        }else{
+
+            button.classList.remove("show");
 
         }
 
-        else{
+    });
 
-            button.classList.remove(
-                "show"
-            );
+    button.addEventListener("click", function(){
 
-        }
-
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
 
     });
 
-
-
-    button.addEventListener(
-    "click",
-    function(){
-
-        scrollToTop();
-
-    });
-
-
-  }
+}
