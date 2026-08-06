@@ -3887,3 +3887,14 @@ bottom:82px;
     pointer-events:auto !important;
     z-index:999999 !important;
    }
+.back-to-top{
+    position:fixed !important;
+    right:20px !important;
+    bottom:95px !important;
+    z-index:9999999 !important;
+    pointer-events:auto !important;
+}
+
+.back-to-top i{
+    pointer-events:none;
+}
