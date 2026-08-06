@@ -633,7 +633,160 @@ width:100%;
 }
 
    }
+/* ==========================================
+   PREMIUM HEADER
+========================================== */
 
+.header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+z-index:1000;
+background:rgba(30,5,12,.82);
+backdrop-filter:blur(18px);
+border-bottom:1px solid rgba(212,175,55,.15);
+box-shadow:0 8px 30px rgba(0,0,0,.18);
+}
+
+.header-container{
+display:flex;
+align-items:center;
+justify-content:space-between;
+height:82px;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:12px;
+text-decoration:none;
+}
+
+.logo img{
+width:42px;
+height:42px;
+object-fit:contain;
+}
+
+.logo-text h1{
+margin:0;
+font-size:22px;
+font-family:"Cinzel",serif;
+color:#d4af37;
+}
+
+.logo-text span{
+display:block;
+margin-top:4px;
+font-size:10px;
+letter-spacing:2px;
+color:#f5e6b3;
+text-transform:uppercase;
+}
+
+.header-right{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.header-whatsapp{
+display:flex;
+align-items:center;
+justify-content:center;
+padding:10px 18px;
+background:#d4af37;
+color:#2b0015;
+text-decoration:none;
+border-radius:10px;
+font-weight:600;
+}
+
+.navbar{
+display:flex;
+align-items:center;
+gap:28px;
+}
+
+.navbar a{
+color:#fff;
+text-decoration:none;
+font-weight:500;
+transition:.3s;
+}
+
+.navbar a:hover,
+.navbar a.active{
+color:#d4af37;
+}
+
+.menu-toggle{
+display:none;
+width:46px;
+height:46px;
+border:1px solid rgba(212,175,55,.3);
+border-radius:12px;
+background:#2b0015;
+color:#d4af37;
+font-size:22px;
+cursor:pointer;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width:768px){
+
+.header-container{
+height:72px;
+}
+
+.logo img{
+width:34px;
+height:34px;
+}
+
+.logo-text h1{
+font-size:18px;
+}
+
+.logo-text span{
+font-size:8px;
+letter-spacing:1px;
+}
+
+.header-whatsapp{
+display:none;
+}
+
+.menu-toggle{
+display:block;
+}
+
+.navbar{
+display:none;
+flex-direction:column;
+position:absolute;
+top:72px;
+left:0;
+width:100%;
+background:#2b0015;
+padding:20px;
+gap:20px;
+border-top:1px solid rgba(212,175,55,.2);
+}
+
+.navbar.active{
+display:flex;
+}
+
+.navbar a{
+width:100%;
+text-align:center;
+padding:12px 0;
+}
+
+}
 /* ==========================================
 HERO
 ========================================== */
