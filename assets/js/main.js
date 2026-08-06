@@ -184,9 +184,7 @@ function initScrollTop(){
 
 
     const button =
-    document.getElementById(
-    "scrollTopBtn"
-);
+document.getElementById("backToTop");
 
 
     if(!button) return;
