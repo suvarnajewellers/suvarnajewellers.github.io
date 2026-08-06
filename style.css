@@ -752,7 +752,7 @@ padding:0 6px;
 }
 
 .header-container{
-height:72px;
+height:82px;
 }
 
 .logo{
@@ -760,8 +760,8 @@ gap:10px;
 }
 
 .logo img{
-width:42px;
-height:42px;
+width:34px;
+height:34px;
 }
 
 .logo-text h1{
@@ -3150,6 +3150,8 @@ align-items:center;
 
 justify-content:center;
 
+margin-top:88px;
+
 padding:70px 20px;
 
 background:
@@ -3162,7 +3164,7 @@ linear-gradient(
 
 overflow:hidden;
 
-}
+   }
 
 
 .ready-overlay{
@@ -3466,6 +3468,8 @@ color:#ddd;
 @media (max-width:768px){
 
 .ready-hero{
+
+margin-top:72px;
 
 min-height:auto;
 
