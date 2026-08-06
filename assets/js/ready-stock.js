@@ -1,277 +1,394 @@
 /* ==========================================
-   SUVARNA JEWELLERS V10
+   SUVARNA JEWELLERS V10 LUXURY
    READY-STOCK.JS
 ========================================== */
 
 let readyProducts = [];
 let filteredProducts = [];
 
+let grid = null;
+let searchInput = null;
+let countElement = null;
+let emptyState = null;
+
+
+/* ==========================================
+   DOM READY
+========================================== */
+
 document.addEventListener(
     "DOMContentLoaded",
     initReadyStock
 );
 
+
+/* ==========================================
+   INITIALIZE
+========================================== */
+
 async function initReadyStock(){
 
-    const grid =
-        document.getElementById("readyStockPageGrid");
+    grid =
+    document.getElementById(
+        "readyStockPageGrid"
+    );
 
-    const search =
-        document.getElementById("ready-search");
+    searchInput =
+    document.getElementById(
+        "ready-search"
+    );
 
-    const count =
-        document.getElementById("ready-count");
+    countElement =
+    document.getElementById(
+        "ready-count"
+    );
 
-    const empty =
-        document.getElementById("empty-state");
+    emptyState =
+    document.getElementById(
+        "empty-state"
+    );
 
     if(
         !grid ||
-        !search ||
-        !count ||
-        !empty
+        !searchInput ||
+        !countElement ||
+        !emptyState
     ){
         return;
     }
 
+    showLoading();
+
     try{
 
         const products =
-            await getProducts();
+        await getProducts();
 
         readyProducts =
-            products.filter(product =>
-                product.readyStock === true
-            );
+        products.filter(product =>
+            product.readyStock === true
+        );
 
         filteredProducts =
-            [...readyProducts];
+        [...readyProducts];
 
-        count.textContent =
-            filteredProducts.length;
+        updateCount();
 
         renderProducts(
             filteredProducts
         );
 
-        search.addEventListener(
-            "input",
-            function(){
-
-                const keyword =
-                    this.value
-                    .trim()
-                    .toLowerCase();
-
-                filteredProducts =
-                    readyProducts.filter(product=>{
-
-                        return (
-
-                            product.name
-                            ?.toLowerCase()
-                            .includes(keyword)
-
-                            ||
-
-                            product.category
-                            ?.toLowerCase()
-                            .includes(keyword)
-
-                            ||
-
-                            product.metal
-                            ?.toLowerCase()
-                            .includes(keyword)
-
-                        );
-
-                    });
-
-                count.textContent =
-                    filteredProducts.length;
-
-                renderProducts(
-                    filteredProducts
-                );
-
-            }
-        );
+        initSearch();
 
     }
 
     catch(error){
 
-        console.error(error);
+        console.error(
+            "Ready Stock Error:",
+            error
+        );
 
         grid.innerHTML = `
-        <p class="error-text">
-        Unable to load products.
-        </p>
+        <div class="error-box">
+            Unable to load products.
+        </div>
         `;
 
     }
 
 }
-/* ==========================
-   RENDER PRODUCTS
-========================== */
+/* ==========================================
+   SEARCH
+========================================== */
 
-function renderProducts(products){
+function initSearch(){
 
-    const grid =
-        document.getElementById(
-            "readyStockPageGrid"
-        );
+    searchInput.addEventListener(
+        "input",
+        function(){
 
-    const empty =
-        document.getElementById(
-            "empty-state"
-        );
+            applyFilters();
 
-    if(!grid) return;
-
-    if(products.length === 0){
-
-        grid.innerHTML = "";
-
-        if(empty){
-            empty.style.display = "block";
         }
+    );
 
-        return;
+}
 
-    }
 
-    if(empty){
-        empty.style.display = "none";
-    }
+/* ==========================================
+   APPLY FILTERS
+========================================== */
 
-    grid.innerHTML = products.map(product => `
+function applyFilters(){
 
-        <div class="product-card">
+    const keyword =
+    searchInput.value
+    .trim()
+    .toLowerCase();
 
-            <div class="product-image">
+    filteredProducts =
+    readyProducts.filter(product=>{
 
-                <img
-                    src="${product.image}"
-                    alt="${product.name}"
-                    loading="lazy"
-                    onerror="this.src='Logo.png'">
+        const name =
+        (product.name || "")
+        .toLowerCase();
 
-            </div>
+        const category =
+        (product.category || "")
+        .toLowerCase();
+
+        const metal =
+        (product.metal || "")
+        .toLowerCase();
+
+        return(
+
+            name.includes(keyword)
+
+            ||
+
+            category.includes(keyword)
+
+            ||
+
+            metal.includes(keyword)
+
+        );
+
+    });
+
+    updateCount();
+
+    renderProducts(
+        filteredProducts
+    );
+
+}
+
+
+/* ==========================================
+   UPDATE COUNT
+========================================== */
+
+function updateCount(){
+
+    if(!countElement) return;
+
+    countElement.textContent =
+    filteredProducts.length;
+
+}
+
+
+/* ==========================================
+   LOADING
+========================================== */
+
+function showLoading(){
+
+    grid.innerHTML = "";
+
+    for(let i=0;i<6;i++){
+
+        grid.innerHTML += `
+
+        <div class="product-card loading-card">
+
+            <div class="product-image"></div>
 
             <div class="product-info">
 
-                <span class="product-category">
+                <div class="loading-line"></div>
 
-                    ${product.category || ""}
-
-                </span>
-
-                <h3>
-
-                    ${product.name}
-
-                </h3>
-
-                <p>
-
-                    ${product.netWeight || "-"}
-
-                </p>
-
-                <div class="product-buttons">
-
-                    <a
-                        href="product.html?id=${product.id}"
-                        class="btn btn-primary">
-
-                        View Product
-
-                    </a>
-
-                    <a
-                        href="https://wa.me/917777991118?text=Hello%20Suvarna%20Jewellers,%20I%20am%20interested%20in%20${encodeURIComponent(product.name)}"
-                        target="_blank"
-                        class="btn">
-
-                        WhatsApp
-
-                    </a>
-
-                </div>
+                <div class="loading-line short"></div>
 
             </div>
 
         </div>
 
-    `).join("");
-
-                           }
-/* ==========================
-   IMAGE PATH FIX
-========================== */
-
-document.addEventListener("error", function(event){
-
-    if(event.target.tagName === "IMG"){
-
-        event.target.src = "Logo.png";
+        `;
 
     }
 
-}, true);
-
-
-/* ==========================
-   FUTURE CATEGORY FILTER
-========================== */
-
-function filterReadyStock(category){
-
-    if(category === "all"){
-
-        renderProducts(readyProducts);
-
-        const count =
-        document.getElementById("ready-count");
-
-        if(count){
-
-            count.textContent =
-            readyProducts.length;
-
         }
+/* ==========================================
+   RENDER PRODUCTS
+========================================== */
+
+function renderProducts(products){
+
+    if(!grid) return;
+
+    if(products.length===0){
+
+        grid.innerHTML="";
+
+        emptyState.style.display="block";
 
         return;
 
     }
 
-    const filtered = readyProducts.filter(product =>
+    emptyState.style.display="none";
 
-        product.category === category
+    grid.innerHTML=products.map(product=>`
 
+    <article class="product-card">
+
+        <div class="product-image">
+
+            <img
+                src="${product.image}"
+                alt="${product.name}"
+                loading="lazy"
+                onerror="this.src='Logo.png'">
+
+            <span class="product-badge">
+                Ready Stock
+            </span>
+
+        </div>
+
+        <div class="product-info">
+
+            <span class="product-category">
+
+                ${product.category || ""}
+
+            </span>
+
+            <h3>
+
+                ${product.name}
+
+            </h3>
+
+            <p class="product-weight">
+
+                Net Weight :
+                ${product.netWeight || "-"}
+
+            </p>
+
+            <div class="product-buttons">
+
+                <a
+                    href="product.html?id=${product.id}"
+                    class="btn btn-primary">
+
+                    View Product
+
+                </a>
+
+                <a
+                    href="https://wa.me/917777991118?text=${encodeURIComponent(
+                        "Hello Suvarna Jewellers, I am interested in " + product.name
+                    )}"
+                    target="_blank"
+                    class="btn btn-outline">
+
+                    WhatsApp
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </article>
+
+    `).join("");
+
+    animateCards();
+
+}
+/* ==========================================
+   CARD ANIMATION
+========================================== */
+
+function animateCards(){
+
+    const cards =
+    document.querySelectorAll(
+        ".product-card"
     );
 
-    renderProducts(filtered);
+    cards.forEach((card,index)=>{
 
-    const count =
-    document.getElementById("ready-count");
+        card.style.opacity="0";
+        card.style.transform="translateY(30px)";
 
-    if(count){
+        setTimeout(()=>{
 
-        count.textContent =
-        filtered.length;
+            card.style.transition=
+            ".45s ease";
 
-    }
+            card.style.opacity="1";
+            card.style.transform=
+            "translateY(0)";
+
+        },index*70);
+
+    });
 
 }
 
 
-/* ==========================
-   GLOBAL EXPORT
-========================== */
+/* ==========================================
+   IMAGE FALLBACK
+========================================== */
+
+document.addEventListener(
+"error",
+function(event){
+
+    if(
+        event.target.tagName==="IMG"
+    ){
+
+        event.target.src="Logo.png";
+
+    }
+
+},
+true);
+
+
+/* ==========================================
+   CATEGORY FILTER
+========================================== */
+
+function filterReadyStock(category){
+
+    if(category==="all"){
+
+        filteredProducts=
+        [...readyProducts];
+
+    }
+
+    else{
+
+        filteredProducts=
+        readyProducts.filter(product=>
+
+            (product.category||"")
+            .toLowerCase()===category
+            .toLowerCase()
+
+        );
+
+    }
+
+    applyFilters();
+
+}
+
+
+/* ==========================================
+   EXPORT
+========================================== */
 
 window.filterReadyStock =
 filterReadyStock;
