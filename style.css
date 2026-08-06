@@ -3883,3 +3883,7 @@ bottom:82px;
 }
 
 }
+.back-to-top{
+    pointer-events:auto !important;
+    z-index:999999 !important;
+   }
