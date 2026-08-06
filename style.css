@@ -3797,7 +3797,21 @@ BACK TO TOP
 
 .back-to-top{
 
-bottom:95px;
+position:fixed;
+
+right:20px;
+bottom:90px;
+
+width:60px;
+height:60px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+border:none;
+border-radius:50%;
+cursor:pointer;
 
 background:linear-gradient(
 135deg,
@@ -3816,6 +3830,10 @@ opacity:0;
 visibility:hidden;
 
 transform:translateY(25px);
+
+transition:all .35s ease;
+
+z-index:99999;
 
 }
 
@@ -3860,7 +3878,7 @@ bottom:16px;
 
 .back-to-top{
 
-bottom:84px;
+bottom:82px;
 
 }
 
