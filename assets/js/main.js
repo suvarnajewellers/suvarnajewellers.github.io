@@ -12,7 +12,7 @@ document.addEventListener(
 "DOMContentLoaded",
 function(){
 
-
+console.log("MAIN.JS LOADED");
     initLoader();
 
 
@@ -181,7 +181,7 @@ function initScrollProgress(){
 ========================== */
 
 function initScrollTop(){
-
+console.log("ScrollTop Initialized");
     const button =
     document.getElementById("backToTop");
 
@@ -202,7 +202,7 @@ function initScrollTop(){
     });
 
     button.addEventListener("click", function(){
-
+     console.log("Button Click");
         window.scrollTo({
             top:0,
             behavior:"smooth"
