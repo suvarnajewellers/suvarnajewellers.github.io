@@ -174,13 +174,43 @@ function initScrollProgress(){
 
 }
 
-
-
 /* ==========================
    BACK TO TOP
 ========================== */
 
 function initScrollTop(){
 
-    
+    const button = document.querySelector(".back-to-top");
+
+    if(!button) return;
+
+    function toggleButton(){
+
+        if(window.scrollY > 300){
+
+            button.classList.add("show");
+
+        }else{
+
+            button.classList.remove("show");
+
+        }
+
+    }
+
+    window.addEventListener("scroll", toggleButton);
+
+    toggleButton();
+
+    button.addEventListener("click", function(e){
+
+        e.preventDefault();
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    });
+
 }
