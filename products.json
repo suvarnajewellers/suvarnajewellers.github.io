@@ -93,7 +93,7 @@
     "size": "-",
     "description": "Premium Gold Pendant.",
     "image": "gold-pendant-12.jpg",
-    "readyStock": true 
+    "readyStock": false 
   },
   {
     "id": "T001",
