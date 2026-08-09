@@ -4705,3 +4705,299 @@ bottom:82px;
 .about-image p{
     display:none !important;
 }
+/* =========================================================
+   SUVARNA JEWELLERS — PREMIUM CONTACT SECTION
+========================================================= */
+
+.premium-contact{
+    position:relative;
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 15%,
+            rgba(212,175,55,.055),
+            transparent 30%
+        ),
+        linear-gradient(
+            180deg,
+            #2b0015 0%,
+            #21000f 55%,
+            #18000b 100%
+        );
+}
+
+
+/* HEADING */
+
+.premium-contact-title{
+    max-width:760px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.premium-contact-title h2{
+    font-family:Cinzel,Georgia,serif;
+    font-size:clamp(30px,4vw,48px);
+    line-height:1.2;
+    color:#f8f3e8;
+    letter-spacing:.2px;
+}
+
+.premium-contact-title p{
+    max-width:650px;
+    margin:0 auto;
+    color:rgba(248,243,232,.62);
+    line-height:1.9;
+}
+
+
+/* GRID */
+
+.premium-contact-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+
+    margin-top:45px;
+
+    background:rgba(212,175,55,.13);
+    border:1px solid rgba(212,175,55,.13);
+}
+
+
+/* CARD */
+
+.premium-contact-card{
+    position:relative;
+
+    min-height:285px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+
+    padding:30px 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(55,4,28,.95),
+            rgba(31,0,15,.98)
+        );
+
+    border-radius:0!important;
+
+    transition:
+        transform .35s ease,
+        background .35s ease,
+        box-shadow .35s ease;
+}
+
+.premium-contact-card:hover{
+    background:
+        linear-gradient(
+            145deg,
+            rgba(66,6,34,.98),
+            rgba(36,0,18,.99)
+        );
+
+    transform:translateY(-5px);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.30);
+}
+
+
+/* ICON */
+
+.premium-contact-card .contact-icon{
+    width:48px;
+    height:48px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin-bottom:22px;
+
+    border:1px solid rgba(212,175,55,.30);
+
+    color:#d4af37;
+
+    font-size:18px;
+
+    background:rgba(212,175,55,.035);
+}
+
+
+/* LABEL */
+
+.premium-contact-card .contact-label{
+    margin-bottom:9px;
+
+    color:rgba(212,175,55,.72);
+
+    font-size:8px;
+    font-weight:600;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+}
+
+
+/* TITLE */
+
+.premium-contact-card h3{
+    margin:0 0 10px;
+
+    font-family:Cinzel,Georgia,serif;
+
+    font-size:20px;
+    font-weight:600;
+
+    color:#f8f3e8;
+}
+
+
+/* DESCRIPTION */
+
+.premium-contact-card p{
+    margin:0;
+
+    min-height:57px;
+
+    color:rgba(248,243,232,.55);
+
+    font-size:12px;
+    line-height:1.75;
+}
+
+
+/* LINKS */
+
+.premium-contact-card > a{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+
+    margin-top:auto;
+
+    color:#e8ce76;
+
+    font-size:10px;
+    font-weight:600;
+
+    letter-spacing:1.2px;
+
+    text-decoration:none;
+    text-transform:uppercase;
+
+    transition:
+        color .25s ease,
+        gap .25s ease;
+}
+
+.premium-contact-card > a:hover{
+    color:#fff;
+    gap:13px;
+}
+
+.premium-contact-card > a i{
+    font-size:9px;
+}
+
+
+/* LOCATION */
+
+.premium-contact-card .location-link{
+    display:block;
+
+    min-height:auto;
+
+    margin:0;
+
+    color:rgba(248,243,232,.58);
+
+    font-size:12px;
+    line-height:1.7;
+
+    text-decoration:none;
+}
+
+.premium-contact-card .location-link:hover{
+    color:#e8ce76;
+    text-decoration:none;
+}
+
+.contact-location-card p{
+    min-height:90px;
+}
+
+
+/* BOTTOM TRUST STRIP */
+
+.contact-bottom{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:35px;
+
+    margin-top:28px;
+    padding-top:22px;
+
+    border-top:1px solid rgba(212,175,55,.10);
+}
+
+.contact-bottom span{
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    color:rgba(248,243,232,.50);
+
+    font-size:9px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+.contact-bottom i{
+    color:#d4af37;
+    font-size:11px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:1000px){
+
+    .premium-contact-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .premium-contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    .premium-contact-card{
+        min-height:245px;
+        padding:28px 22px;
+    }
+
+    .premium-contact-title h2{
+        font-size:30px;
+    }
+
+    .contact-bottom{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:15px;
+    }
+
+   }
