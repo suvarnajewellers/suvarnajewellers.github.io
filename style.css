@@ -5001,3 +5001,15 @@ bottom:82px;
     }
 
    }
+/* =========================================
+   REMOVE PLAIN TRUST STRIP BELOW LOCATION
+   ========================================= */
+
+#contact + .trust-bar,
+#contact ~ .trust-bar{
+    display:none !important;
+}
+/* Hide plain trust items when they appear after Location */
+.contact .trust-bar{
+    display:none !important;
+}
