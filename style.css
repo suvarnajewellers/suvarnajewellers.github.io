@@ -4692,3 +4692,16 @@ bottom:82px;
         width:100%;
     }
 }
+/* =========================================================
+   ABOUT — REMOVE LEGACY BRAND CAPTION
+========================================================= */
+
+.about-image-caption,
+.about-image .about-caption,
+.about-image .logo-caption,
+.about-image .brand-caption,
+.about-image h3,
+.about-image h4,
+.about-image p{
+    display:none !important;
+}
