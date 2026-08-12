@@ -108,6 +108,18 @@
     "readyStock": false 
   },
   {
+    "id": "P003",
+    "category": "Pendant",
+    "name": "Gold Pendant",
+    "metal": "18CT Gold",
+    "grossWeight": "-",
+    "netWeight": "-",
+    "size": "-",
+    "description": "Premium Gold Pendant.",
+    "image": "gold/pendant-13.jpg",
+    "readyStock": false 
+  },
+  {
     "id": "T001",
     "category": "Tulsi Mala",
     "name": "Tulsi Mala",
