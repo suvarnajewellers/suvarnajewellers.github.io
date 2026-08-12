@@ -60,6 +60,18 @@
     "readyStock": true
   },
   {
+    "id": "RM002",
+    "category": "Rudraksha Mala",
+    "name": "Gold Rudraksha Mala",
+    "metal": "Gold",
+    "grossWeight": "-",
+    "netWeight": "19.460 Gram",
+    "size": "24 Inch",
+    "description": "Premium Gold Rudraksha Mala.",
+    "image": "gold/rudraksha-mala-12.jpg",
+    "readyStock": true
+  },
+  {
     "id": "RB001",
     "category": "Rudraksha Bracelet",
     "name": "Gold Rudraksha Bracelet",
@@ -92,7 +104,7 @@
     "netWeight": "1.060 Gram",
     "size": "-",
     "description": "Premium Gold Pendant.",
-    "image": "gold-pendant-12.jpg",
+    "image": "gold/pendant-12.jpg",
     "readyStock": false 
   },
   {
