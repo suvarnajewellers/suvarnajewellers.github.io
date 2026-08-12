@@ -9,19 +9,19 @@
     "size": "24 Inch",
     "description": "Premium Gold Chain manufactured by Suvarna Jewellers.",
     "image": "gold-jewellery-1.jpg",
-    "readyStock": true
+    "readyStock": false 
   },
   {
     "id": "G002",
     "category": "Gold Jewellery",
-    "name": "Gold Ring",
+    "name": "Gold Chain",
     "metal": "Gold",
-    "grossWeight": "",
-    "netWeight": "3.560 Gram",
-    "size": "16",
+    "grossWeight": "-",
+    "netWeight": "-",
+    "size": "24 Inch",
     "description": "Premium Gold Ring manufactured by Suvarna Jewellers.",
     "image": "gold-jewellery-2.jpg",
-    "readyStock": true
+    "readyStock": false 
   },
   {
     "id": "S001",
