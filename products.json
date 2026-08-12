@@ -32,7 +32,7 @@
     "netWeight": "20.150 Gram",
     "size": "8 Inch",
     "description": "Premium Silver Chain manufactured by Suvarna Jewellers.",
-    "image": "silver-jewellery-1.jpg",
+    "image": "silver/silver-jewellery-1.jpg",
     "readyStock": true
   },
   {
@@ -44,7 +44,7 @@
     "netWeight": "- Gram",
     "size": "- Inch",
     "description": "Premium Silver Chain manufactured by Suvarna Jewellers.",
-    "image": "silver-jewellery-2.jpg",
+    "image": "silver/silver-jewellery-2.jpg",
     "readyStock": false 
   },
   {
@@ -56,7 +56,7 @@
     "netWeight": "17.500 Gram",
     "size": "1.25 Inch",
     "description": "Premium Silver Ring manufactured by Suvarna Jewellers.",
-    "image": "silver-jewellery-3.jpg",
+    "image": "silver/silver-jewellery-3.jpg",
     "readyStock": true
   },
   {
@@ -68,7 +68,7 @@
     "netWeight": "- Gram",
     "size": "- Inch",
     "description": "Premium Silver Chain manufactured by Suvarna Jewellers.",
-    "image": "silver-jewellery-4.jpg",
+    "image": "silver/silver-jewellery-4.jpg",
     "readyStock": false 
   },
   {
@@ -80,7 +80,7 @@
     "netWeight": "21.730 Gram",
     "size": "1.25 Inch",
     "description": "Premium Silver Chain manufactured by Suvarna Jewellers.",
-    "image": "silver-jewellery-5.jpg",
+    "image": "silver/silver-jewellery-5.jpg",
     "readyStock": false 
   },
   {
