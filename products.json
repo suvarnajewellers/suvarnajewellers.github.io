@@ -94,6 +94,30 @@
     "description": "Premium Silver Chain manufactured by Suvarna Jewellers.",
     "image": "silver/silver-jewellery-6.jpg",
     "readyStock": false 
+  },  
+  {
+    "id": "S007",
+    "category": "Silver Jewellery",
+    "name": "Silver Pendant",
+    "metal": "Silver 925",
+    "grossWeight": "8.890 Gram",
+    "netWeight": "8.890 Gram",
+    "size": "1.10 Inch",
+    "description": "Premium Silver Chain manufactured by Suvarna Jewellers.",
+    "image": "silver/silver-jewellery-7.jpg",
+    "readyStock": false 
+  },  
+  {
+    "id": "S008",
+    "category": "Silver Jewellery",
+    "name": "Silver Pendant",
+    "metal": "Silver 925",
+    "grossWeight": "25.000 Gram",
+    "netWeight": "25.000 Gram",
+    "size": "1.50 Inch",
+    "description": "Premium Silver Chain manufactured by Suvarna Jewellers.",
+    "image": "silver/silver-jewellery-8.jpg",
+    "readyStock": false 
   },
   {
     "id": "RM001",
