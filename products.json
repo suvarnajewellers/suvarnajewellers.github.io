@@ -84,6 +84,18 @@
     "readyStock": false 
   },
   {
+    "id": "S006",
+    "category": "Silver Jewellery",
+    "name": "Silver Pendant",
+    "metal": "Silver 925",
+    "grossWeight": "49.820 Gram",
+    "netWeight": "40.010 Gram",
+    "size": "2.50 Inch",
+    "description": "Premium Silver Chain manufactured by Suvarna Jewellers.",
+    "image": "silver/silver-jewellery-6.jpg",
+    "readyStock": false 
+  },
+  {
     "id": "RM001",
     "category": "Rudraksha Mala",
     "name": "Gold Rudraksha Mala",
