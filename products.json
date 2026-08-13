@@ -8,7 +8,7 @@
     "netWeight": "16.450 Gram",
     "size": "24 Inch",
     "description": "Premium Gold Chain manufactured by Suvarna Jewellers.",
-    "image": "gold-jewellery-1.jpg",
+    "image": "gold/gold-jewellery-1.jpg",
     "readyStock": false 
   },
   {
@@ -20,7 +20,7 @@
     "netWeight": "-",
     "size": "24 Inch",
     "description": "Premium Gold Ring manufactured by Suvarna Jewellers.",
-    "image": "gold-jewellery-2.jpg",
+    "image": "gold/gold-jewellery-2.jpg",
     "readyStock": false 
   },
   {
