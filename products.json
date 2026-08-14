@@ -267,7 +267,7 @@
     "id": "RB001",
     "category": "Rudraksha Bracelet",
     "name": "Gold Rudraksha Bracelet",
-    "metal": "Gold",
+    "metal": "22CT Gold",
     "grossWeight": "30.850 Gram",
     "netWeight": "27.350 Gram",
     "size": "8 Inch",
@@ -286,6 +286,18 @@
     "description": "Premium Gold Rudraksha Bracelet.",
     "image": "gold/rudraksha-bracelet-2.jpg",
     "readyStock": false 
+  },
+  {
+    "id": "BRG0002",
+    "category": "Rudraksha Bracelet",
+    "name": "Gold Rudraksha Bracelet",
+    "metal": "22CT Gold",
+    "grossWeight": "- Gram",
+    "netWeight": "7.820 Gram",
+    "size": "8 Inch",
+    "description": "Premium Gold Rudraksha Bracelet.",
+    "image": "gold/BRG0002.jpg",
+    "readyStock": true
   },
   {
     "id": "RB003",
