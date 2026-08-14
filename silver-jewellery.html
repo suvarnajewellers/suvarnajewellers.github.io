@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Silver Jewellery | Suvarna Jewellers</title>
+<meta name="description" content="Silver Jewellery by Suvarna Jewellers — premium jewellery manufacturing and wholesale supply since 2003.">
+<link rel="icon" href="Logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --burg:#21000f;--burg2:#120008;--panel:#2a0a18;--panel2:#32101d;
+  --gold:#d4af37;--gold2:#ecd36d;--ivory:#f7f2e8;--muted:rgba(247,242,232,.68);
+  --line:rgba(212,175,55,.22);--shadow:0 24px 70px rgba(0,0,0,.34);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(180deg,var(--burg2),var(--burg) 38%,#180009 100%);color:var(--ivory);font-family:Inter,Arial,sans-serif}
+a{color:inherit}
+.container{width:min(1180px,calc(100% - 48px));margin:auto}
+.header{position:sticky;top:0;z-index:1000;background:rgba(18,0,8,.92);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.header-inner{min-height:82px;display:flex;align-items:center;gap:24px}
+.logo{display:flex;align-items:center;gap:13px;text-decoration:none}
+.logo img{width:55px;height:55px;object-fit:contain}
+.logo h1{font:600 18px/1.1 Cinzel,Georgia,serif;letter-spacing:1.8px;color:var(--gold);margin:0}
+.logo span{display:block;margin-top:6px;font-size:8px;letter-spacing:3px;color:rgba(255,255,255,.55)}
+.nav{margin-left:auto;display:flex;gap:28px;align-items:center}
+.nav a{text-decoration:none;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.78)}
+.nav a:hover,.nav a.active{color:var(--gold)}
+.wa{border:1px solid rgba(212,175,55,.5);padding:11px 15px;text-decoration:none;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--gold)}
+.menu{display:none;margin-left:auto;width:42px;height:42px;background:none;border:1px solid var(--line);color:var(--gold);font-size:22px}
+.hero{padding:92px 0 72px;text-align:center;border-bottom:1px solid rgba(212,175,55,.13);position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:-30% -10%;background:radial-gradient(circle at 50% 35%,rgba(212,175,55,.14),transparent 34%);pointer-events:none}
+.kicker{position:relative;display:inline-flex;align-items:center;gap:13px;padding:9px 18px;border-radius:999px;background:rgba(212,175,55,.08);color:var(--gold);font-size:10px;letter-spacing:3px;text-transform:uppercase}
+.kicker:before,.kicker:after{content:"";width:28px;height:1px;background:var(--gold)}
+h2{position:relative;font:600 clamp(42px,7vw,76px)/.98 Cinzel,Georgia,serif;letter-spacing:.3px;margin:26px auto 20px;max-width:900px}
+.hero p{position:relative;max-width:760px;margin:0 auto;color:var(--muted);font-size:16px;line-height:1.9}
+.actions{position:relative;display:flex;justify-content:center;gap:14px;margin-top:30px;flex-wrap:wrap}
+.btn{display:inline-flex;justify-content:center;align-items:center;min-height:50px;padding:0 24px;text-decoration:none;text-transform:uppercase;letter-spacing:1.2px;font-size:10px;font-weight:700}
+.btn-gold{background:linear-gradient(100deg,var(--gold),#f1df92);color:#26000f;box-shadow:0 16px 35px rgba(212,175,55,.16)}
+.btn-outline{border:1px solid var(--gold);color:var(--gold)}
+.section{padding:78px 0}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:28px}
+.eyebrow{font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase}
+.section h3{font:600 34px/1.1 Cinzel,Georgia,serif;margin:9px 0 0}
+.section-head p{max-width:520px;color:var(--muted);line-height:1.7;margin:0}
+.filters{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 28px}
+.filter{background:transparent;border:1px solid var(--line);color:rgba(255,255,255,.72);padding:10px 14px;font-size:10px;letter-spacing:1px;text-transform:uppercase;cursor:pointer}
+.filter.active,.filter:hover{border-color:var(--gold);color:var(--gold)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.015));border:1px solid var(--line);overflow:hidden;min-height:360px;position:relative}
+.card-media{aspect-ratio:1/1.08;background:#160009;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.card-media img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.card:hover .card-media img{transform:scale(1.035)}
+.card-body{padding:17px}
+.card-cat{font-size:9px;letter-spacing:1.7px;text-transform:uppercase;color:var(--gold)}
+.card-title{font:600 18px/1.25 Cinzel,Georgia,serif;margin:8px 0;color:var(--ivory)}
+.card-note{color:var(--muted);font-size:12px;line-height:1.6;margin:0}
+.empty{border:1px solid var(--line);padding:62px 22px;text-align:center;background:rgba(255,255,255,.02)}
+.empty strong{display:block;font:600 28px Cinzel,Georgia,serif;color:var(--gold);margin-bottom:12px}
+.empty p{margin:0 auto 20px;max-width:560px;color:var(--muted);line-height:1.8}
+.band{padding:60px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:linear-gradient(90deg,rgba(212,175,55,.04),rgba(255,255,255,.015),rgba(212,175,55,.04))}
+.band-inner{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.point{border:1px solid var(--line);padding:25px;background:rgba(255,255,255,.018)}
+.point b{display:block;font:600 19px Cinzel,Georgia,serif;margin-bottom:8px}
+.point span{font-size:12px;color:var(--muted);line-height:1.7}
+.footer{padding:70px 0 28px;border-top:1px solid var(--line);background:#0e0006}
+.footer-grid{display:grid;grid-template-columns:1.4fr .8fr .8fr;gap:42px}
+.footer h4{font:600 17px Cinzel,Georgia,serif;color:var(--gold);margin:0 0 14px}
+.footer p,.footer a{font-size:12px;color:var(--muted);line-height:1.8;text-decoration:none}
+.footer a:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid rgba(212,175,55,.12);margin-top:38px;padding-top:20px;color:rgba(255,255,255,.4);font-size:10px;letter-spacing:1px}
+.float{position:fixed;right:20px;bottom:20px;z-index:900;display:flex;flex-direction:column;gap:12px}
+.float a{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;text-decoration:none;font-size:20px;box-shadow:0 12px 30px rgba(0,0,0,.35)}
+.float .top{background:#f1d96f;color:#28000f}.float .whatsapp{background:#18b96b;color:#fff}
+@media(max-width:900px){.nav,.wa{display:none}.menu{display:block}.grid{grid-template-columns:repeat(2,1fr)}.band-inner{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){
+ .container{width:min(100% - 32px,1180px)}.header-inner{min-height:74px}.logo img{width:48px;height:48px}.logo h1{font-size:15px}.hero{padding:70px 0 58px}h2{font-size:44px}.hero p{font-size:14px}.section{padding:58px 0}.section-head{display:block}.section-head p{margin-top:12px}.grid{grid-template-columns:1fr}.card{min-height:0}.card-media{aspect-ratio:1/.92}.footer-grid{grid-template-columns:1fr}.float{right:14px;bottom:16px}.float a{width:48px;height:48px}
+}
+</style>
+
+<style id="suvarna-footer-premium-final">
+.footer{text-align:center}
+.footer .footer-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:42px;
+  align-items:start;
+  text-align:center;
+}
+.footer .footer-grid > div{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+}
+.footer .footer-grid .logo{
+  justify-content:center;
+  margin-left:auto;
+  margin-right:auto;
+}
+.footer .footer-grid p{
+  max-width:340px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.footer .footer-grid h4,.footer .footer-grid a{text-align:center}
+.footer .footer-bottom{text-align:center}
+@media(max-width:760px){
+  .footer .footer-grid{grid-template-columns:1fr;gap:30px}
+  .footer .footer-grid > div{width:100%}
+  .footer .footer-grid p{max-width:420px}
+}
+</style>
+
+
+<style id="suvarna-final-category-polish">
+/* SUVARNA FINAL LUXURY POLISH — category pages */
+:root{--lux-gold:#d4af37;--lux-ivory:#f7f2e8;--lux-muted:rgba(247,242,232,.66)}
+body{letter-spacing:.005em}
+.header{background:rgba(18,0,8,.88);box-shadow:0 10px 36px rgba(0,0,0,.18)}
+.header-inner{min-height:84px}
+.nav{gap:30px}
+.nav a{font-size:10px;letter-spacing:1.25px;position:relative;padding:32px 0}
+.nav a:after{content:"";position:absolute;left:50%;bottom:22px;width:0;height:1px;background:linear-gradient(90deg,transparent,var(--lux-gold),transparent);transform:translateX(-50%);transition:.25s}
+.nav a:hover:after,.nav a.active:after{width:28px}
+.hero{padding:112px 0 92px}
+.kicker{background:transparent;border:0;padding:0;font-size:9px;letter-spacing:4px}
+.kicker:before,.kicker:after{width:34px;opacity:.65}
+.hero h2{max-width:980px;font-size:clamp(46px,6.6vw,78px);letter-spacing:-.01em}
+.hero p{max-width:650px;font-size:14px;line-height:1.9}
+.actions{margin-top:34px}
+.btn{min-height:48px;border-radius:2px}
+.section{padding:92px 0}
+.section-head{margin-bottom:34px}
+.section h3{font-size:32px}
+.filters{gap:8px;margin-bottom:34px}
+.filter{padding:10px 16px;border-radius:2px;background:transparent}
+.grid{gap:20px}
+.card{border-radius:2px;background:rgba(255,255,255,.018);box-shadow:0 16px 42px rgba(0,0,0,.16)}
+.card:hover{transform:translateY(-6px);box-shadow:0 24px 55px rgba(0,0,0,.26)}
+.card-media{background:#140007}
+.card-media img{object-position:center}
+.card-body{padding:19px 18px 21px}
+.card-cat{font-size:8px;letter-spacing:2.1px}
+.card-title{font-size:17px;letter-spacing:.1px}
+.band{padding:72px 0;background:linear-gradient(90deg,rgba(212,175,55,.025),rgba(255,255,255,.012),rgba(212,175,55,.025))}
+.point{border-radius:2px;padding:28px;background:rgba(255,255,255,.012)}
+.footer{text-align:center;padding:76px 0 26px}
+.footer-grid{grid-template-columns:repeat(3,minmax(0,1fr));text-align:center;align-items:start}
+.footer-grid>div{display:flex;flex-direction:column;align-items:center}
+.footer p{max-width:340px;margin-left:auto;margin-right:auto}
+.footer-bottom{text-align:center}
+.float{right:22px;bottom:22px}
+.float a{width:50px;height:50px}
+@media(max-width:900px){.nav{display:none}.menu{display:block}.hero{padding:84px 0 68px}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.header-inner{min-height:74px}.hero h2{font-size:43px}.hero{padding:72px 0 60px}.section{padding:62px 0}.footer-grid{grid-template-columns:1fr;gap:28px}.footer{padding-top:60px}}
+</style>
+
+<style id="suvarna-global-premium-polish-v11">
+/* ==========================================================
+   SUVARNA JEWELLERS — GLOBAL PREMIUM POLISH v11
+   Consistency pass for all catalogue / category / product pages
+========================================================== */
+:root{
+  --lux-gold:#d4af37;
+  --lux-gold-soft:#f3e3a0;
+  --lux-ivory:#f7f2e8;
+  --lux-muted:rgba(247,242,232,.66);
+  --lux-line:rgba(212,175,55,.20);
+  --lux-shadow:0 18px 50px rgba(0,0,0,.24);
+}
+
+html{scroll-behavior:smooth;}
+body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+
+/* ---------- GLOBAL HEADER ---------- */
+.header,
+.top-header{
+  box-shadow:0 10px 38px rgba(0,0,0,.18);
+  border-bottom-color:rgba(212,175,55,.20)!important;
+}
+.header-container,.header-inner{position:relative;}
+
+/* Keep logo/header proportions restrained on mobile */
+@media(max-width:760px){
+  .header-container,.header-inner{min-height:76px!important;}
+}
+
+/* ---------- PREMIUM SEARCH ---------- */
+.search-wrap{
+  position:relative!important;
+  min-height:56px!important;
+  border:1px solid rgba(212,175,55,.28)!important;
+  border-radius:3px!important;
+  background:linear-gradient(135deg,rgba(255,255,255,.045),rgba(255,255,255,.018))!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 14px 34px rgba(0,0,0,.16)!important;
+  transition:border-color .25s ease,box-shadow .25s ease,background .25s ease!important;
+}
+.search-wrap:focus-within{
+  border-color:rgba(212,175,55,.62)!important;
+  background:rgba(255,255,255,.055)!important;
+  box-shadow:0 0 0 3px rgba(212,175,55,.055),0 18px 40px rgba(0,0,0,.20)!important;
+}
+.search-wrap .search-icon i,
+.search-wrap>i{color:var(--lux-gold)!important;}
+.search-wrap .search{color:var(--lux-ivory)!important;font-size:13px!important;}
+.search-wrap .search::placeholder{color:rgba(247,242,232,.42)!important;}
+.search-shortcut{color:rgba(212,175,55,.45)!important;}
+.search-clear{color:var(--lux-gold)!important;}
+
+/* ---------- COUNTS / FILTERS ---------- */
+.count-box{
+  border-color:rgba(212,175,55,.22)!important;
+  background:linear-gradient(145deg,rgba(212,175,55,.055),rgba(255,255,255,.018))!important;
+  box-shadow:0 14px 34px rgba(0,0,0,.12)!important;
+}
+.chips,.filters{scrollbar-width:none;}
+.chips::-webkit-scrollbar{display:none;}
+.chip,.filter{
+  transition:all .22s ease!important;
+  border-color:rgba(212,175,55,.22)!important;
+}
+.chip.active,.chip:hover,.filter.active,.filter:hover{
+  border-color:var(--lux-gold)!important;
+  box-shadow:0 8px 22px rgba(212,175,55,.10)!important;
+}
+
+/* ---------- PRODUCT / CATALOGUE CARDS ---------- */
+.card,.product-card,.ready-stock-card{
+  border-color:rgba(212,175,55,.18)!important;
+  box-shadow:0 16px 42px rgba(0,0,0,.16)!important;
+  transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease!important;
+}
+.card:hover,.product-card:hover,.ready-stock-card:hover{
+  transform:translateY(-5px)!important;
+  border-color:rgba(212,175,55,.40)!important;
+  box-shadow:0 24px 58px rgba(0,0,0,.26)!important;
+}
+.card-image,.card-media,.product-image,.product-main-image{
+  background:#120006;
+}
+.card-image img,.card-media img,.product-image img,.product-main-image img{
+  transition:transform .5s ease,filter .5s ease!important;
+}
+.card:hover .card-image img,.card:hover .card-media img,.product-card:hover img{
+  transform:scale(1.025);
+}
+.card-info,.card-body,.ready-stock-info{position:relative;}
+.actions a,.card .actions a{
+  transition:all .22s ease!important;
+}
+
+/* ---------- HERO / SECTION RHYTHM ---------- */
+.hero,.ready-hero{
+  border-bottom-color:rgba(212,175,55,.15)!important;
+}
+.eyebrow,.kicker,.premium-badge{
+  letter-spacing:3px!important;
+}
+
+/* ---------- CTA PANELS ---------- */
+.cta,.cta-section{
+  border-color:rgba(212,175,55,.22)!important;
+  box-shadow:0 18px 50px rgba(0,0,0,.16)!important;
+}
+
+/* ---------- FOOTER — CENTERED / QUIET LUXURY ---------- */
+.footer{text-align:center!important;}
+.footer .footer-grid{
+  text-align:center!important;
+  align-items:start!important;
+}
+.footer .footer-grid>div,
+.footer .footer-grid>section{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center!important;
+}
+.footer .footer-logo,
+.footer .logo,
+.footer .logo-img{
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+.footer p,.footer h3,.footer h4,.footer h5,.footer a{
+  text-align:center!important;
+}
+.footer-bottom,.footer-copy{
+  text-align:center!important;
+}
+
+/* ---------- FLOATING ACTIONS ---------- */
+.floating-whatsapp,.back-to-top,.float a{
+  box-shadow:0 14px 34px rgba(0,0,0,.28)!important;
+}
+.back-to-top{transition:opacity .25s ease,transform .25s ease,box-shadow .25s ease!important;}
+.back-to-top:hover{transform:translateY(-3px)!important;}
+
+/* ---------- MOBILE: MORE AIR, LESS BULK ---------- */
+@media(max-width:760px){
+  .catalogue-bar{gap:10px!important;}
+  .search-wrap{min-height:54px!important;}
+  .search-shortcut{display:none!important;}
+  .count-box{min-height:54px!important;}
+  .chips{padding-bottom:13px!important;}
+  .chip,.filter{min-height:44px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;}
+  .card:hover,.product-card:hover,.ready-stock-card:hover{transform:none!important;}
+  .footer{padding-bottom:26px!important;}
+}
+
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="container header-inner">
+    <a class="logo" href="index.html">
+      <img src="Logo.png" alt="Suvarna Jewellers">
+      <div><h1>SUVARNA JEWELLERS</h1><span>TRUSTED SINCE 2003</span></div>
+    </a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="collections.html">Collections</a>
+      <a href="ready-stock.html">Ready Stock</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <a class="wa" href="https://wa.me/917777991118?text=Hello%20Suvarna%20Jewellers%2C%20I%20am%20interested%20in%20your%20Silver Jewellery%20collection.">Enquire on WhatsApp</a>
+    <button class="menu" id="menu" aria-label="Open menu">☰</button>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="container">
+    <div class="kicker">THE SILVER COLLECTION</div>
+    <h2>Silver With A Distinctive Finish.</h2>
+    <p>Explore Suvarna's silver jewellery range with a focus on clean finishing, dependable quality and wholesale-ready collections.</p>
+    <div class="actions">
+      <a class="btn btn-gold" href="#products">Explore Collection</a>
+      <a class="btn btn-outline" href="https://wa.me/917777991118?text=Hello%20Suvarna%20Jewellers%2C%20please%20share%20your%20Silver Jewellery%20catalogue.">Request Catalogue</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="products">
+  <div class="container">
+    <div class="section-head">
+      <div><div class="eyebrow">CURATED FOR BUSINESS</div><h3>Silver Jewellery</h3></div>
+      <p>Browse the current collection. Product data can be connected to the same catalogue/API used by your existing website without changing this premium layout.</p>
+    </div>
+    <div class="filters"><button class="filter active" data-filter="All Silver">All Silver</button><button class="filter " data-filter="Chains">Chains</button><button class="filter " data-filter="Rings">Rings</button><button class="filter " data-filter="Bracelets">Bracelets</button><button class="filter " data-filter="Pendants">Pendants</button><button class="filter " data-filter="Articles">Articles</button></div>
+    <div id="grid" class="grid" aria-live="polite"></div>
+    <div id="empty" class="empty" hidden>
+      <strong>Catalogue Ready</strong>
+      <p>The collection page is ready for live products. Once your product feed/API is connected, products will appear here automatically instead of showing a generic loading/error message.</p>
+      <a class="btn btn-gold" href="https://wa.me/917777991118?text=Hello%20Suvarna%20Jewellers%2C%20please%20share%20the%20Silver Jewellery%20catalogue.">Get Catalogue on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+ <div class="container band-inner"><div class="point"><b>Consistent Quality</b><span>Reliable finishing standards across repeat business orders.</span></div><div class="point"><b>Wholesale Focus</b><span>Collections developed for jewellery retailers and resellers.</span></div><div class="point"><b>Pan India Supply</b><span>Dependable fulfilment for jewellery businesses across India.</span></div></div>
+</section>
+
+<section class="section">
+ <div class="container" style="text-align:center">
+   <div class="eyebrow">SUVARNA JEWELLERS • SINCE 2003</div>
+   <h3 style="font-size:clamp(30px,5vw,48px);max-width:760px;margin:12px auto 16px">Built For Retailers. Trusted By Jewellery Businesses.</h3>
+   <p style="max-width:700px;margin:0 auto;color:var(--muted);line-height:1.8">For wholesale enquiries, manufacturing requirements, catalogue requests and ready stock availability, speak directly with our team.</p>
+   <div class="actions"><a class="btn btn-gold" href="https://wa.me/917777991118?text=Hello%20Suvarna%20Jewellers%2C%20I%20want%20to%20discuss%20a%20wholesale%20requirement.">Speak on WhatsApp</a><a class="btn btn-outline" href="tel:+917777991118">Call +91 77779 91118</a></div>
+ </div>
+</section>
+</main>
+
+<footer class="footer">
+ <div class="container footer-grid">
+  <div><a class="logo" href="index.html"><img src="Logo.png" alt="Suvarna Jewellers"><div><h1>SUVARNA JEWELLERS</h1><span>TRUSTED SINCE 2003</span></div></a><p style="margin-top:16px">Premium Gold & Silver Jewellery Manufacturer trusted since 2003. Serving wholesalers and retailers across India.</p></div>
+  <div><h4>Collections</h4><p><a href="gold-jewellery.html">Gold Jewellery</a></p><p><a href="silver-jewellery.html">Silver Jewellery</a></p><p><a href="rudraksha-mala.html">Rudraksha</a></p><p><a href="pendant-collection.html">Pendants</a></p></div>
+  <div><h4>Contact</h4><p><a href="https://wa.me/917777991118">WhatsApp</a></p><p><a href="tel:+917777991118">+91 77779 91118</a></p><p><a href="mailto:info@suvarnajewellers.co.in">info@suvarnajewellers.co.in</a></p></div>
+ </div>
+ <div class="container footer-bottom">© 2003–2026 Suvarna Jewellers. All rights reserved.</div>
+</footer>
+
+<div class="float">
+ <a class="top" href="#" aria-label="Back to top">↑</a>
+ <a class="whatsapp" href="https://wa.me/917777991118?text=Hello%20Suvarna%20Jewellers" aria-label="WhatsApp">◔</a>
+</div>
+
+<script>
+const CATEGORY = "Silver";
+const ENDPOINTS = [
+  "/api/products?category="+encodeURIComponent(CATEGORY),
+  "products.json",
+  "data/products.json"
+];
+const grid=document.getElementById("grid"), empty=document.getElementById("empty");
+function card(item,i){
+  const image=item.image||item.imageUrl||item.thumbnail||item.photo||"";
+  const title=item.name||item.title||("Silver Jewellery Collection "+String(i+1).padStart(2,"0"));
+  const cat=item.category||CATEGORY;
+  return `<article class="card"><div class="card-media">${image?`<img loading="lazy" src="${image}" alt="${title.replace(/"/g,'&quot;')}">`:`<div style="font:600 22px Cinzel;color:var(--gold);letter-spacing:1px">SUVARNA</div>`}</div><div class="card-body"><div class="card-cat">${cat}</div><div class="card-title">${title}</div><p class="card-note">${item.description||"Premium jewellery collection — enquire for catalogue, pricing and availability."}</p></div></article>`;
+}
+function render(items){
+  if(!Array.isArray(items)||!items.length){empty.hidden=false;return;}
+  grid.innerHTML=items.map(card).join("");
+}
+async function load(){
+  for(const url of ENDPOINTS){
+    try{
+      const r=await fetch(url,{headers:{"Accept":"application/json"}});
+      if(!r.ok) continue;
+      const data=await r.json();
+      const items=Array.isArray(data)?data:(data.products||data.items||[]);
+      const filtered=items.filter(x=>!x.category||String(x.category).toLowerCase().includes(CATEGORY.toLowerCase()));
+      if(filtered.length){render(filtered);return;}
+    }catch(e){}
+  }
+  empty.hidden=false;
+}
+document.querySelectorAll(".filter").forEach(btn=>btn.addEventListener("click",()=>{
+ document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));btn.classList.add("active");
+}));
+document.getElementById("menu").addEventListener("click",()=>{
+ const nav=document.querySelector(".nav");
+ const open=nav.style.display==="flex";
+ nav.style.display=open?"none":"flex";
+ nav.style.position="absolute";nav.style.top="74px";nav.style.left="16px";nav.style.right="16px";
+ nav.style.padding="14px";nav.style.flexDirection="column";nav.style.alignItems="stretch";
+ nav.style.background="#170009";nav.style.border="1px solid var(--line)";
+});
+load();
+</script>
+</body>
+</html>
