@@ -262,6 +262,90 @@
     "description": "Premium Gold Rudraksha Mala.",
     "image": "gold/RMG0046.jpg",
     "readyStock": true 
+  },  
+  {
+    "id": "RMG0048",
+    "category": "Rudraksha Mala",
+    "name": "Gold Rudraksha Mala",
+    "metal": "22CT Gold",
+    "grossWeight": "- Gram",
+    "netWeight": "18.320 Gram",
+    "size": "24 Inch",
+    "description": "Premium Gold Rudraksha Mala.",
+    "image": "gold/RMG0048.jpg",
+    "readyStock": true 
+  },  
+  {
+    "id": "RMG0050",
+    "category": "Rudraksha Mala",
+    "name": "Gold Rudraksha Mala",
+    "metal": "22CT Gold",
+    "grossWeight": "- Gram",
+    "netWeight": "25.120 Gram",
+    "size": "24 Inch",
+    "description": "Premium Gold Rudraksha Mala.",
+    "image": "gold/RMG0050.jpg",
+    "readyStock": true 
+  },  
+  {
+    "id": "RMG0051",
+    "category": "Rudraksha Mala",
+    "name": "Gold Rudraksha Mala",
+    "metal": "22CT Gold",
+    "grossWeight": "- Gram",
+    "netWeight": "29.960 Gram",
+    "size": "24 Inch",
+    "description": "Premium Gold Rudraksha Mala.",
+    "image": "gold/RMG0051.jpg",
+    "readyStock": true 
+  },  
+  {
+    "id": "RMG0052",
+    "category": "Rudraksha Mala",
+    "name": "Gold Rudraksha Mala",
+    "metal": "22CT Gold",
+    "grossWeight": "- Gram",
+    "netWeight": "22.760 Gram",
+    "size": "24 Inch",
+    "description": "Premium Gold Rudraksha Mala.",
+    "image": "gold/RMG0052.jpg",
+    "readyStock": true 
+  },  
+  {
+    "id": "RMG0053",
+    "category": "Rudraksha Mala",
+    "name": "Gold Rudraksha Mala",
+    "metal": "22CT Gold",
+    "grossWeight": "- Gram",
+    "netWeight": "30.730 Gram",
+    "size": "24 Inch",
+    "description": "Premium Gold Rudraksha Mala.",
+    "image": "gold/RMG0053.jpg",
+    "readyStock": true 
+  },  
+  {
+    "id": "RMG0054",
+    "category": "Rudraksha Mala",
+    "name": "Gold Rudraksha Mala",
+    "metal": "22CT Gold",
+    "grossWeight": "- Gram",
+    "netWeight": "24.990 Gram",
+    "size": "24 Inch",
+    "description": "Premium Gold Rudraksha Mala.",
+    "image": "gold/RMG0054.jpg",
+    "readyStock": true 
+  },  
+  {
+    "id": "RMG0055",
+    "category": "Rudraksha Mala",
+    "name": "Gold Rudraksha Mala",
+    "metal": "22CT Gold",
+    "grossWeight": "- Gram",
+    "netWeight": "21.990 Gram",
+    "size": "24 Inch",
+    "description": "Premium Gold Rudraksha Mala.",
+    "image": "gold/RMG0055.jpg",
+    "readyStock": true 
   },
   {
     "id": "RM001",
@@ -1092,17 +1176,29 @@
     "readyStock": false 
   },
   {
-    "id": "T001",
+    "id": "RMG0047",
     "category": "Tulsi Mala",
     "name": "Tulsi Mala",
     "metal": "22CT Gold",
     "grossWeight": "",
-    "netWeight": "10.650 Gram",
+    "netWeight": "9.970 Gram",
+    "size": "24 Inch",
+    "description": "Premium Tulsi Mala.",
+    "image": "gold/RMG0047.jpg",
+    "readyStock": true
+  },
+  {
+    "id": "T001",
+    "category": "Tulsi Mala",
+    "name": "Tulsi Mala",
+    "metal": "22CT Gold",
+    "grossWeight": "- Gram",
+    "netWeight": "- Gram",
     "size": "24 Inch",
     "description": "Premium Tulsi Mala.",
     "image": "gold/tulsi-mala-1.jpg",
-    "readyStock": true
-  },
+    "readyStock": false 
+  },  
   {
     "id": "T002",
     "category": "Tulsi Mala",
