@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Collections | SUVARNA JEWELLERS</title>
+<meta name="description" content="Explore Suvarna Jewellers premium Gold, Silver, Rudraksha, Pendant and Bracelet collections.">
+<meta name="theme-color" content="#120007">
+<link rel="icon" href="Logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
+:root{
+  --s-bg:#0c0307;
+  --s-bg2:#14070c;
+  --s-bg3:#1e0a12;
+  --s-gold:#d4af37;
+  --s-gold2:#f3dfa0;
+  --s-ivory:#fbf7ef;
+  --s-muted:rgba(251,247,239,.66);
+  --s-faint:rgba(251,247,239,.40);
+  --s-line:rgba(212,175,55,.16);
+  --s-green:#25d366;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--s-bg);
+  color:var(--s-ivory);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+.collections-page{
+  min-height:100vh;
+  overflow-x:hidden;
+  background:
+    radial-gradient(circle at 50% -8%,rgba(110,0,45,.28),transparent 31%),
+    linear-gradient(180deg,#19070d 0%,#0e0408 48%,#090205 100%);
+}
+.container{width:min(1160px,calc(100% - 36px));margin:auto}
+
+/* =========================================================
+   HEADER
+========================================================= */
+.header{
+  position:sticky!important;
+  top:0;
+  z-index:1000;
+  background:rgba(12,3,7,.82)!important;
+  border-bottom:1px solid rgba(212,175,55,.15)!important;
+  box-shadow:0 10px 35px rgba(0,0,0,.25)!important;
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+}
+.header-container{min-height:82px!important}
+.logo-text h1{
+  font-family:Cinzel,Georgia,serif!important;
+  font-weight:600!important;
+  letter-spacing:1.25px!important;
+}
+.logo-text span{letter-spacing:2.5px!important}
+.navbar{gap:30px!important}
+.navbar a{
+  font-size:10px!important;
+  letter-spacing:1.25px!important;
+}
+.header-whatsapp{
+  border-color:rgba(212,175,55,.34)!important;
+  transition:.25s ease;
+}
+.header-whatsapp:hover{
+  background:rgba(212,175,55,.08);
+  border-color:rgba(212,175,55,.68)!important;
+}
+
+/* =========================================================
+   HERO — restrained editorial luxury
+========================================================= */
+.collection-hero{
+  position:relative;
+  overflow:hidden;
+  padding:96px 20px 60px!important;
+  text-align:center;
+  border-bottom:1px solid rgba(212,175,55,.10);
+}
+.collection-hero:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 50% 0,rgba(212,175,55,.10),transparent 28%),
+    linear-gradient(180deg,rgba(255,255,255,.012),transparent 68%);
+  pointer-events:none;
+}
+.collection-hero:after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:0;
+  width:min(640px,78vw);
+  height:1px;
+  transform:translateX(-50%);
+  background:linear-gradient(90deg,transparent,rgba(212,175,55,.42),transparent);
+}
+.collection-hero .eyebrow{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  gap:11px;
+  color:var(--s-gold2);
+  font:600 9px Cinzel,serif;
+  letter-spacing:3.7px;
+}
+.collection-hero .eyebrow:before,
+.collection-hero .eyebrow:after{
+  content:"";
+  width:30px;
+  height:1px;
+  background:rgba(212,175,55,.65);
+}
+.collection-hero h1{
+  position:relative;
+  max-width:900px;
+  margin:18px auto 16px;
+  color:var(--s-ivory);
+  font:600 clamp(40px,5.3vw,66px)/1.03 Cinzel,Georgia,serif;
+  letter-spacing:-.35px;
+}
+.collection-hero p{
+  position:relative;
+  max-width:650px;
+  margin:0 auto;
+  color:var(--s-muted);
+  font:400 13px/1.9 Inter,Arial,sans-serif;
+}
+
+/* =========================================================
+   SEARCH
+========================================================= */
+.collection-toolbar{
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  max-width:940px;
+  margin:34px auto 0;
+}
+.search-shell{
+  position:relative;
+  flex:1;
+  min-width:0;
+  display:flex;
+  align-items:center;
+  height:60px;
+  border:1px solid rgba(212,175,55,.25);
+  border-radius:2px;
+  background:rgba(255,255,255,.028);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.03),0 16px 42px rgba(0,0,0,.20);
+  transition:border-color .25s,box-shadow .25s,background .25s;
+}
+.search-shell:focus-within{
+  border-color:rgba(212,175,55,.58);
+  background:rgba(255,255,255,.043);
+  box-shadow:0 0 0 3px rgba(212,175,55,.04),0 20px 46px rgba(0,0,0,.24);
+}
+.search-icon{
+  width:34px;
+  height:34px;
+  display:grid;
+  place-items:center;
+  flex:0 0 auto;
+  margin-left:15px;
+  border:1px solid rgba(212,175,55,.20);
+  border-radius:50%;
+  color:var(--s-gold2);
+  background:rgba(212,175,55,.045);
+}
+.search-icon i{font-size:11px}
+.premium-search{
+  width:100%;
+  min-width:0;
+  height:58px;
+  padding:0 18px;
+  border:0!important;
+  outline:0!important;
+  background:transparent!important;
+  color:var(--s-ivory);
+  font:400 13px Inter,Arial,sans-serif;
+}
+.premium-search::placeholder{color:rgba(251,247,239,.36)}
+.premium-search::-webkit-search-cancel-button,
+.premium-search::-webkit-search-decoration{
+  -webkit-appearance:none!important;
+  appearance:none!important;
+  display:none!important;
+}
+.premium-search[type=search]{
+  -webkit-appearance:none!important;
+  appearance:none!important;
+}
+.product-count{
+  min-width:116px;
+  height:60px;
+  display:grid;
+  place-items:center;
+  align-content:center;
+  gap:2px;
+  border:1px solid rgba(212,175,55,.18);
+  background:rgba(212,175,55,.035);
+  box-shadow:0 16px 42px rgba(0,0,0,.15);
+  color:var(--s-faint);
+  font:500 8px Inter,Arial,sans-serif;
+  letter-spacing:1.6px;
+  text-transform:uppercase;
+}
+.product-count strong{
+  color:var(--s-gold2);
+  font:600 22px Cinzel,Georgia,serif;
+  line-height:1;
+}
+
+/* =========================================================
+   COLLECTION GRID
+   Consistent image stage + quieter luxury cards.
+========================================================= */
+.collection-section{
+  padding:68px 0 100px!important;
+}
+.collection-grid-premium{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:24px;
+  align-items:stretch;
+}
+.collection-item{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  overflow:hidden;
+  border:1px solid rgba(212,175,55,.13);
+  border-radius:3px;
+  background:#12060a;
+  text-decoration:none;
+  color:inherit;
+  box-shadow:0 16px 48px rgba(0,0,0,.22);
+  transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease;
+}
+.collection-item:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:5;
+  pointer-events:none;
+  border:1px solid rgba(255,255,255,.025);
+}
+.collection-item:hover{
+  transform:translateY(-6px);
+  border-color:rgba(212,175,55,.40);
+  box-shadow:0 28px 64px rgba(0,0,0,.32);
+}
+.collection-image{
+  position:relative;
+  width:100%;
+  aspect-ratio:1/1.05;
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+  background:
+    radial-gradient(circle at 50% 42%,rgba(212,175,55,.065),transparent 48%),
+    #100408;
+  isolation:isolate;
+}
+.collection-image img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:100%!important;
+  max-height:100%!important;
+  padding:10px;
+  object-fit:contain!important;
+  object-position:center!important;
+  background:#100408!important;
+  transition:transform .55s cubic-bezier(.2,.7,.2,1),filter .55s ease;
+  user-select:none;
+  -webkit-user-select:none;
+  -webkit-user-drag:none;
+  -webkit-touch-callout:none;
+  pointer-events:none;
+}
+.collection-item:hover .collection-image img{
+  transform:scale(1.018);
+  filter:saturate(1.025);
+}
+.collection-image:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:2;
+  background:linear-gradient(180deg,transparent 64%,rgba(7,0,4,.34));
+  pointer-events:none;
+}
+.collection-watermark{
+  position:absolute;
+  z-index:3;
+  left:50%;
+  bottom:12px;
+  transform:translateX(-50%) rotate(-5deg);
+  white-space:nowrap;
+  color:rgba(251,247,239,.14);
+  font:600 7px Cinzel,serif;
+  letter-spacing:2.1px;
+  text-transform:uppercase;
+  text-shadow:0 1px 8px rgba(0,0,0,.55);
+  pointer-events:none;
+}
+.collection-info{
+  position:relative;
+  z-index:4;
+  display:flex;
+  flex-direction:column;
+  flex:1;
+  min-height:154px;
+  padding:21px 21px 20px!important;
+  border-top:1px solid rgba(212,175,55,.10);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.008) 42%,rgba(7,0,4,.16));
+}
+.collection-info:before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:21px;
+  width:34px;
+  height:1px;
+  background:linear-gradient(90deg,var(--s-gold),transparent);
+  opacity:.72;
+}
+.collection-info .category{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:10px;
+  color:rgba(243,223,160,.74)!important;
+  font:600 8px/1.2 Inter,sans-serif!important;
+  letter-spacing:1.9px!important;
+  text-transform:uppercase;
+}
+.collection-info .category:before{
+  content:"";
+  width:5px;
+  height:5px;
+  border:1px solid var(--s-gold);
+  transform:rotate(45deg);
+  display:inline-block;
+  flex:0 0 auto;
+}
+.collection-info h3{
+  margin:0!important;
+  max-width:94%;
+  color:var(--s-ivory)!important;
+  font:500 18px/1.28 Cinzel,Georgia,serif!important;
+  letter-spacing:.12px;
+}
+.collection-info .view{
+  display:inline-flex;
+  align-items:center;
+  width:max-content;
+  margin-top:auto!important;
+  padding-top:18px;
+  color:rgba(251,247,239,.58)!important;
+  font:600 8px/1.2 Inter,sans-serif!important;
+  letter-spacing:1.45px!important;
+  text-transform:uppercase;
+}
+.collection-info .view:after{
+  content:"";
+  width:25px;
+  height:1px;
+  margin-left:9px;
+  background:rgba(212,175,55,.36);
+  transition:width .25s,background .25s;
+}
+.collection-info .view i{display:none}
+.collection-item:hover .collection-info .view{
+  color:var(--s-gold2)!important;
+}
+.collection-item:hover .collection-info .view:after{
+  width:40px;
+  background:var(--s-gold);
+}
+.empty-state-premium{
+  grid-column:1/-1;
+  padding:76px 20px;
+  text-align:center;
+  border:1px solid rgba(212,175,55,.13);
+  color:var(--s-muted);
+  background:rgba(255,255,255,.015);
+}
+.empty-state-premium h3{
+  margin:0 0 8px;
+  color:var(--s-ivory);
+  font:500 23px Cinzel,Georgia,serif;
+}
+
+/* =========================================================
+   CONTACT — premium editorial panel
+========================================================= */
+.contact-section{
+  padding:6px 0 92px;
+  scroll-margin-top:100px;
+}
+.contact-panel{
+  position:relative;
+  overflow:hidden;
+  padding:64px 58px 58px;
+  border:1px solid rgba(212,175,55,.15);
+  background:
+    radial-gradient(circle at 50% 0,rgba(212,175,55,.075),transparent 32%),
+    linear-gradient(145deg,rgba(255,255,255,.032),rgba(255,255,255,.008));
+  box-shadow:0 28px 76px rgba(0,0,0,.26);
+}
+.contact-panel:before{
+  content:"";
+  position:absolute;
+  inset:12px;
+  border:1px solid rgba(212,175,55,.045);
+  pointer-events:none;
+}
+.contact-heading{
+  position:relative;
+  z-index:1;
+  max-width:700px;
+  margin:0 auto 36px;
+  text-align:center;
+}
+.contact-eyebrow{
+  display:inline-block;
+  color:var(--s-gold2);
+  font:600 9px/1.2 Cinzel,serif;
+  letter-spacing:3.4px;
+}
+.contact-heading h2{
+  margin:13px 0 11px;
+  color:var(--s-ivory);
+  font:600 clamp(30px,4vw,45px)/1.08 Cinzel,Georgia,serif;
+}
+.contact-heading p{
+  margin:0 auto;
+  max-width:610px;
+  color:var(--s-muted);
+  font:400 12.5px/1.85 Inter,Arial,sans-serif;
+}
+.contact-grid{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+}
+.contact-card{
+  min-width:0;
+  min-height:112px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:20px;
+  border:1px solid rgba(212,175,55,.12);
+  background:rgba(255,255,255,.018);
+  color:inherit;
+  text-decoration:none;
+  transition:transform .25s ease,border-color .25s ease,background .25s ease,box-shadow .25s ease;
+}
+a.contact-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(212,175,55,.38);
+  background:rgba(212,175,55,.035);
+  box-shadow:0 18px 38px rgba(0,0,0,.20);
+}
+.contact-icon{
+  width:43px;
+  height:43px;
+  flex:0 0 43px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(212,175,55,.22);
+  color:var(--s-gold2);
+  background:rgba(212,175,55,.045);
+  font-size:15px;
+}
+.whatsapp-icon{color:#25d366}
+.contact-copy{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+.contact-copy small{
+  color:rgba(243,223,160,.62);
+  font:600 7px/1.2 Inter,sans-serif;
+  letter-spacing:1.8px;
+}
+.contact-copy strong{
+  color:var(--s-ivory);
+  font:500 13px/1.3 Cinzel,Georgia,serif;
+}
+.contact-copy em{
+  color:var(--s-faint);
+  font:400 8px/1.35 Inter,Arial,sans-serif;
+  font-style:normal;
+}
+.contact-arrow{
+  margin-left:auto;
+  flex:0 0 auto;
+  color:rgba(212,175,55,.48);
+  font-size:9px;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+.footer{
+  position:relative!important;
+  overflow:hidden;
+  padding:60px 0 25px!important;
+  text-align:center!important;
+  border-top:1px solid rgba(212,175,55,.15)!important;
+  background:
+    radial-gradient(circle at 50% 0,rgba(212,175,55,.06),transparent 29%),
+    linear-gradient(180deg,rgba(26,0,10,.74),rgba(5,0,3,.97))!important;
+}
+.footer:before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:50%;
+  width:min(720px,82vw);
+  height:1px;
+  transform:translateX(-50%);
+  background:linear-gradient(90deg,transparent,rgba(212,175,55,.48),transparent);
+}
+.footer-signature{
+  position:relative;
+  max-width:900px;
+  margin:0 auto;
+  text-align:center;
+}
+.footer-rule{
+  display:block;
+  width:62px;
+  height:1px;
+  margin:0 auto 24px;
+  background:linear-gradient(90deg,transparent,var(--s-gold),transparent);
+}
+.footer-logo-wrap{
+  width:74px;
+  height:74px;
+  margin:0 auto 16px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(212,175,55,.22);
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(212,175,55,.07),rgba(255,255,255,.01));
+  box-shadow:0 14px 34px rgba(0,0,0,.22);
+}
+.footer-logo{
+  display:block;
+  width:56px;
+  height:56px;
+  object-fit:contain;
+}
+.footer-brand{
+  color:var(--s-gold2);
+  font:600 19px/1.2 Cinzel,Georgia,serif;
+  letter-spacing:3.1px;
+}
+.footer-tagline{
+  margin-top:9px;
+  color:rgba(251,247,239,.49);
+  font:600 7.5px/1.4 Inter,Arial,sans-serif;
+  letter-spacing:2.4px;
+}
+.footer-service-row{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin:24px auto 0;
+  color:rgba(243,223,160,.70);
+  font:600 7px/1.4 Inter,Arial,sans-serif;
+  letter-spacing:1.6px;
+}
+.footer-service-row i{
+  width:3px;
+  height:3px;
+  border-radius:50%;
+  background:var(--s-gold);
+  opacity:.7;
+}
+.footer-years{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  margin-top:20px;
+  color:rgba(243,223,160,.78);
+  font:500 9px/1 Inter,Arial,sans-serif;
+  letter-spacing:2px;
+}
+.footer-years i{
+  display:block;
+  width:24px;
+  height:1px;
+  background:rgba(212,175,55,.42);
+}
+.footer-description{
+  margin:13px 0 11px!important;
+  color:rgba(251,247,239,.34)!important;
+  font:400 8px/1.6 Inter,Arial,sans-serif!important;
+  letter-spacing:1.05px;
+}
+.footer-location{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  color:rgba(251,247,239,.40);
+  font:500 7.5px/1.4 Inter,Arial,sans-serif;
+  letter-spacing:1.1px;
+  text-transform:uppercase;
+}
+.footer-location i{
+  color:rgba(212,175,55,.68);
+  font-size:9px;
+}
+.footer-bottom-line{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  margin-top:22px;
+  padding-top:16px;
+  border-top:1px solid rgba(255,255,255,.05);
+  color:rgba(251,247,239,.22);
+  font:500 7px/1.4 Inter,Arial,sans-serif;
+  letter-spacing:1.25px;
+}
+
+/* =========================================================
+   FLOATING ACTIONS
+========================================================= */
+.floating-whatsapp{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:1200;
+  width:55px;
+  height:55px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:50%;
+  background:var(--s-green);
+  color:#fff;
+  text-decoration:none;
+  box-shadow:0 14px 34px rgba(0,0,0,.40);
+  font-size:24px;
+  transition:transform .25s ease,box-shadow .25s ease;
+}
+.floating-whatsapp:hover{
+  transform:translateY(-3px) scale(1.03);
+  box-shadow:0 18px 42px rgba(0,0,0,.46);
+}
+.back-to-top{
+  position:fixed;
+  right:18px;
+  bottom:84px;
+  z-index:1199;
+  width:47px;
+  height:47px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(212,175,55,.44);
+  border-radius:50%;
+  background:rgba(18,0,8,.88);
+  color:var(--s-gold2);
+  text-decoration:none;
+  box-shadow:0 12px 32px rgba(0,0,0,.34);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  transition:opacity .25s,visibility .25s,transform .25s,background .25s;
+}
+.back-to-top.show{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+.back-to-top:hover{
+  background:var(--s-gold);
+  color:#170008;
+  transform:translateY(-2px);
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+@media(max-width:980px){
+  .collection-grid-premium{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .contact-grid{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  .container{width:min(100% - 28px,600px)}
+  .header-container{min-height:76px!important}
+  .collection-hero{padding:70px 15px 47px!important}
+  .collection-hero h1{font-size:40px;line-height:1.04}
+  .collection-hero p{max-width:520px;font-size:12.5px;line-height:1.85}
+  .collection-toolbar{display:block;margin-top:27px}
+  .search-shell{height:58px}
+  .premium-search{height:56px}
+  .product-count{width:100%;min-width:0;height:52px;margin-top:10px}
+  .collection-section{padding:51px 0 75px!important}
+  .collection-grid-premium{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .collection-image{aspect-ratio:1/1.07}
+  .collection-image img{padding:5px}
+  .collection-info{min-height:136px!important;padding:17px 15px 17px!important}
+  .collection-info:before{left:15px}
+  .collection-info .category{font-size:7px!important;letter-spacing:1.5px!important;margin-bottom:8px}
+  .collection-info h3{font-size:14px!important;line-height:1.28!important}
+  .collection-info .view{font-size:7px!important;padding-top:15px}
+  .contact-section{padding:5px 0 66px}
+  .contact-panel{padding:42px 17px 18px}
+  .contact-panel:before{inset:7px}
+  .contact-heading{margin-bottom:25px}
+  .contact-heading h2{font-size:31px}
+  .contact-heading p{font-size:11.5px}
+  .contact-grid{gap:9px}
+  .contact-card{min-height:86px;padding:15px}
+  .footer{padding:50px 0 21px!important}
+  .footer-logo-wrap{width:68px;height:68px;margin-bottom:14px}
+  .footer-logo{width:52px;height:52px}
+  .footer-brand{font-size:16px;letter-spacing:2.5px}
+  .footer-tagline{font-size:6.5px;letter-spacing:1.9px}
+  .footer-service-row{gap:8px;font-size:6.5px;letter-spacing:1.2px}
+  .footer-bottom-line{flex-direction:column;gap:7px}
+  .floating-whatsapp{width:52px;height:52px;right:13px;bottom:13px;font-size:22px}
+  .back-to-top{right:13px;bottom:76px;width:46px;height:46px}
+}
+@media(max-width:390px){
+  .container{width:calc(100% - 24px)}
+  .collection-hero h1{font-size:34px}
+  .collection-grid-premium{gap:10px}
+  .collection-info{padding:15px 13px 15px!important;min-height:128px!important}
+  .collection-info h3{font-size:13px!important}
+}
+
+/* Prevent accidental image selection/drag */
+.collection-image,.collection-image img{
+  user-select:none;
+  -webkit-user-select:none;
+  -webkit-touch-callout:none;
+}
+</style>
+
+<style id="premium-luxury-polish">
+:root{
+  --lux-gold:#c9a34a;
+  --lux-gold-soft:#ead9a3;
+  --lux-cream:#f6f1e7;
+  --lux-muted:rgba(246,241,231,.58);
+}
+.collection-hero{
+  padding-top:108px!important;
+  padding-bottom:70px!important;
+}
+.collection-hero .eyebrow{
+  letter-spacing:4.5px!important;
+  font-size:8px!important;
+  opacity:.92;
+}
+.collection-hero h1{
+  font-weight:500!important;
+  letter-spacing:-.7px!important;
+  text-shadow:0 8px 35px rgba(0,0,0,.28);
+}
+.collection-hero p{
+  max-width:610px!important;
+  color:rgba(246,241,231,.55)!important;
+}
+.collection-toolbar{
+  max-width:920px!important;
+  margin-top:40px!important;
+}
+.search-shell{
+  height:62px!important;
+  border-color:rgba(201,163,74,.22)!important;
+  background:rgba(255,255,255,.028)!important;
+  box-shadow:0 14px 42px rgba(0,0,0,.20)!important;
+}
+.search-shell:focus-within{
+  border-color:rgba(201,163,74,.55)!important;
+  box-shadow:0 0 0 3px rgba(201,163,74,.035),0 18px 48px rgba(0,0,0,.24)!important;
+}
+.search-icon{
+  border-color:rgba(201,163,74,.18)!important;
+  background:rgba(201,163,74,.035)!important;
+}
+.product-count{
+  min-width:126px!important;
+  height:62px!important;
+  border-color:rgba(201,163,74,.16)!important;
+  background:rgba(255,255,255,.018)!important;
+}
+.collection-section{
+  padding-top:76px!important;
+  padding-bottom:112px!important;
+}
+.collection-grid-premium{
+  gap:24px!important;
+}
+.collection-item{
+  border-color:rgba(201,163,74,.13)!important;
+  background:rgba(255,255,255,.018)!important;
+  box-shadow:0 16px 48px rgba(0,0,0,.18)!important;
+  transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s,box-shadow .35s!important;
+}
+.collection-item:hover{
+  transform:translateY(-8px)!important;
+  border-color:rgba(201,163,74,.36)!important;
+  box-shadow:0 28px 65px rgba(0,0,0,.28)!important;
+}
+.collection-image{
+  aspect-ratio:1/1.04!important;
+  background:
+    radial-gradient(circle at 50% 44%,rgba(201,163,74,.055),transparent 52%),
+    #100005!important;
+}
+.collection-image img{
+  padding:10px!important;
+}
+.collection-info{
+  min-height:158px!important;
+  padding:22px 21px 21px!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.008))!important;
+}
+.collection-info .category{
+  color:rgba(234,217,163,.68)!important;
+  letter-spacing:2.15px!important;
+}
+.collection-info h3{
+  font-size:18px!important;
+  font-weight:500!important;
+  letter-spacing:.05px!important;
+}
+.collection-info .view{
+  color:rgba(246,241,231,.48)!important;
+  letter-spacing:1.65px!important;
+}
+.contact-section{
+  padding-top:8px!important;
+  padding-bottom:100px!important;
+}
+.contact-panel{
+  padding:64px 58px 58px!important;
+  border-color:rgba(201,163,74,.15)!important;
+  background:
+    radial-gradient(circle at 50% 0,rgba(201,163,74,.065),transparent 38%),
+    rgba(255,255,255,.018)!important;
+  box-shadow:0 24px 70px rgba(0,0,0,.25)!important;
+}
+.contact-heading h2{
+  font-weight:500!important;
+  letter-spacing:-.3px!important;
+}
+.contact-card{
+  border-color:rgba(201,163,74,.11)!important;
+  background:rgba(255,255,255,.018)!important;
+}
+.footer{
+  padding-top:66px!important;
+  padding-bottom:28px!important;
+}
+.footer-logo-wrap{
+  border-color:rgba(201,163,74,.20)!important;
+  box-shadow:0 12px 30px rgba(0,0,0,.18)!important;
+}
+.footer-brand{
+  font-weight:500!important;
+  letter-spacing:3.6px!important;
+}
+.footer-tagline{
+  color:rgba(246,241,231,.44)!important;
+}
+.footer-service-row{
+  color:rgba(234,217,163,.62)!important;
+}
+.floating-whatsapp{
+  box-shadow:0 12px 32px rgba(0,0,0,.34)!important;
+}
+.back-to-top{
+  border-color:rgba(201,163,74,.38)!important;
+}
+@media(max-width:760px){
+  .collection-hero{
+    padding-top:78px!important;
+    padding-bottom:48px!important;
+  }
+  .collection-hero h1{
+    font-size:38px!important;
+  }
+  .collection-toolbar{
+    margin-top:28px!important;
+  }
+  .collection-section{
+    padding-top:52px!important;
+    padding-bottom:76px!important;
+  }
+  .collection-grid-premium{
+    gap:13px!important;
+  }
+  .collection-image{
+    aspect-ratio:1/1.06!important;
+  }
+  .collection-image img{
+    padding:6px!important;
+  }
+  .collection-info{
+    min-height:138px!important;
+    padding:17px 15px 16px!important;
+  }
+  .collection-info h3{
+    font-size:14px!important;
+  }
+  .contact-panel{
+    padding:44px 17px 20px!important;
+  }
+}
+</style>
+
+</head>
+
+<body class="collections-page">
+
+<header class="header">
+  <div class="container header-container">
+    <a href="index.html" class="logo" aria-label="Suvarna Jewellers Home">
+      <img src="Logo.png" alt="SUVARNA JEWELLERS">
+      <div class="logo-text">
+        <h1>SUVARNA JEWELLERS</h1>
+        <span>Trusted Since 2003</span>
+      </div>
+    </a>
+
+    <nav class="navbar" id="navbar" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="collections.html" class="active">Collections</a>
+      <a href="ready-stock.html">Ready Stock</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="header-right">
+      <a href="https://wa.me/917777991118" class="header-whatsapp" target="_blank" rel="noopener">WhatsApp</a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open Menu" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="collection-hero">
+    <div class="eyebrow">THE SUVARNA COLLECTION</div>
+    <h1>Explore Our Collections</h1>
+    <p>Gold, Silver, Rudraksha, Pendants and more — curated for wholesalers, retailers and jewellery businesses across India.</p>
+
+    <div class="collection-toolbar">
+      <label class="search-shell" for="collectionSearch">
+        <span class="search-icon" aria-hidden="true">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </span>
+        <input
+          type="search"
+          id="collectionSearch"
+          class="premium-search"
+          placeholder="Search by product or category..."
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          spellcheck="false"
+          aria-label="Search products"
+        >
+      </label>
+
+      <div class="product-count" aria-live="polite">
+        <strong id="productCount">0</strong>
+        <span>Products</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="collection-section">
+    <div class="container">
+      <div id="collectionsGrid" class="collection-grid-premium" aria-live="polite"></div>
+    </div>
+  </section>
+
+</main>
+
+<section class="contact-section" id="contact" aria-labelledby="contact-title">
+  <div class="container">
+    <div class="contact-panel">
+      <div class="contact-heading">
+        <span class="contact-eyebrow">CONNECT WITH SUVARNA</span>
+        <h2 id="contact-title">Let’s Talk Jewellery.</h2>
+        <p>For wholesale enquiries, product availability, catalogue requirements or business discussions, our team is ready to assist.</p>
+      </div>
+
+      <div class="contact-grid">
+        <a class="contact-card" href="tel:+917777991118" aria-label="Call Suvarna Jewellers">
+          <span class="contact-icon"><i class="fa-solid fa-phone" aria-hidden="true"></i></span>
+          <span class="contact-copy">
+            <small>CALL US</small>
+            <strong>+91 77779 91118</strong>
+            <em>Speak with our team</em>
+          </span>
+          <i class="fa-solid fa-arrow-up-right-from-square contact-arrow" aria-hidden="true"></i>
+        </a>
+
+        <a class="contact-card" href="https://wa.me/917777991118" target="_blank" rel="noopener" aria-label="WhatsApp Suvarna Jewellers">
+          <span class="contact-icon whatsapp-icon"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></span>
+          <span class="contact-copy">
+            <small>WHATSAPP</small>
+            <strong>Start A Conversation</strong>
+            <em>Fast business enquiries</em>
+          </span>
+          <i class="fa-solid fa-arrow-up-right-from-square contact-arrow" aria-hidden="true"></i>
+        </a>
+
+        <a class="contact-card" href="https://maps.app.goo.gl/EEixX3R33D3WA94r5" target="_blank" rel="noopener" aria-label="Open Suvarna Jewellers location in Google Maps">
+          <span class="contact-icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
+          <span class="contact-copy">
+            <small>VISIT US</small>
+            <strong>Surat, Gujarat</strong>
+            <em>Open location in Google Maps</em>
+          </span>
+          <i class="fa-solid fa-arrow-up-right-from-square contact-arrow" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer" id="footer">
+  <div class="container">
+    <div class="footer-signature">
+      <span class="footer-rule" aria-hidden="true"></span>
+
+      <div class="footer-logo-wrap">
+        <img class="footer-logo" src="Logo.png" alt="SUVARNA JEWELLERS">
+      </div>
+
+      <div class="footer-brand">SUVARNA JEWELLERS</div>
+      <div class="footer-tagline">GOLD &amp; SILVER JEWELLERY MANUFACTURER</div>
+
+      <div class="footer-service-row" aria-label="Suvarna Jewellers services">
+        <span>PAN INDIA DELIVERY</span>
+        <i aria-hidden="true"></i>
+        <span>WHOLESALE SUPPLY</span>
+        <i aria-hidden="true"></i>
+        <span>TRUSTED SINCE 2003</span>
+      </div>
+
+      <div class="footer-years">
+        <span>2003</span><i aria-hidden="true"></i><span>2026</span>
+      </div>
+
+      <p class="footer-description">
+        Gold &amp; Silver Jewellery Manufacturer · Premium Craftsmanship · Pan India Supply
+      </p>
+
+      <div class="footer-location">
+        <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+        <span>Surat, Gujarat, India</span>
+      </div>
+
+      <div class="footer-bottom-line">
+        <span>© 2003–2026 SUVARNA JEWELLERS</span>
+        <span>ALL RIGHTS RESERVED</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a
+  class="back-to-top"
+  id="backToTop"
+  href="#top"
+  aria-label="Back to top"
+  title="Back to top"
+>
+  <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+</a>
+
+<a
+  class="floating-whatsapp"
+  href="https://wa.me/917777991118"
+  target="_blank"
+  rel="noopener"
+  aria-label="Chat with Suvarna Jewellers on WhatsApp"
+  title="WhatsApp"
+>
+  <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+</a>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/utilities.js"></script>
+<script src="assets/js/api.js"></script>
+
+<script>
+(function(){
+  const toggle = document.getElementById('menuToggle');
+  const nav = document.getElementById('navbar');
+
+  if(toggle && nav){
+    toggle.addEventListener('click', function(){
+      const open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close Menu' : 'Open Menu');
+      toggle.innerHTML = open ? '&times;' : '☰';
+    });
+
+    nav.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click', function(){
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded','false');
+        toggle.setAttribute('aria-label','Open Menu');
+        toggle.innerHTML = '☰';
+      });
+    });
+  }
+})();
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+
+  const grid = document.getElementById('collectionsGrid');
+  const search = document.getElementById('collectionSearch');
+  const count = document.getElementById('productCount');
+  const backToTop = document.getElementById('backToTop');
+
+  if(!grid || !search || !count) return;
+
+  let products = [];
+
+  function esc(value){
+    return String(value ?? '').replace(/[&<>"']/g, function(char){
+      return {
+        '&':'&amp;',
+        '<':'&lt;',
+        '>':'&gt;',
+        '"':'&quot;',
+        "'":'&#39;'
+      }[char];
+    });
+  }
+
+  function searchableText(product){
+    return (
+      (product.name || '') + ' ' +
+      (product.category || '') + ' ' +
+      (product.metal || '')
+    ).toLowerCase();
+  }
+
+  function render(list){
+    count.textContent = list.length;
+
+    if(!list.length){
+      grid.innerHTML =
+        '<div class="empty-state-premium">' +
+          '<h3>No Products Found</h3>' +
+          '<p>Try another product or category.</p>' +
+        '</div>';
+      return;
+    }
+
+    grid.innerHTML = list.map(function(product){
+
+      const id = encodeURIComponent(product.id);
+      const name = esc(product.name || 'Suvarna Jewellery');
+      const category = esc(product.category || 'SUVARNA JEWELLERS');
+      const image = getImage(product.image);
+
+      return `
+        <a
+          class="collection-item"
+          href="product.html?id=${id}&from=collection"
+          aria-label="View ${name}"
+        >
+          <div class="collection-image">
+            <img
+              src="${image}"
+              alt="${name}"
+              loading="lazy"
+              decoding="async"
+              draggable="false"
+              onerror="this.onerror=null;this.src='Logo.png';"
+            >
+            <span class="collection-watermark">SUVARNA JEWELLERS · 2003</span>
+          </div>
+
+          <div class="collection-info">
+            <div class="category">${category}</div>
+            <h3>${name}</h3>
+            <span class="view">View Product</span>
+          </div>
+        </a>
+      `;
+    }).join('');
+  }
+
+  function applySearch(){
+    const query = search.value.trim().toLowerCase();
+
+    if(!query){
+      render(products);
+      return;
+    }
+
+    render(products.filter(function(product){
+      return searchableText(product).includes(query);
+    }));
+  }
+
+  (async function(){
+    try{
+      products = await getProducts();
+      if(!Array.isArray(products)) products = [];
+      applySearch();
+    }catch(error){
+      console.error(error);
+
+      grid.innerHTML =
+        '<div class="empty-state-premium">' +
+          '<h3>Unable to load products.</h3>' +
+          '<p>Please refresh the page or contact Suvarna Jewellers.</p>' +
+        '</div>';
+
+      count.textContent = '0';
+    }
+  })();
+
+  search.addEventListener('input', applySearch);
+
+  search.addEventListener('keydown', function(event){
+    if(event.key === 'Escape'){
+      if(search.value){
+        search.value = '';
+        applySearch();
+      }
+      search.blur();
+    }
+  });
+
+  document.querySelectorAll('a[href="#contact"]').forEach(function(link){
+    link.addEventListener('click', function(event){
+      const target = document.getElementById('contact');
+      if(!target) return;
+
+      event.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - 88;
+      window.scrollTo({top:Math.max(0,top),behavior:'smooth'});
+      history.replaceState(null,'','#contact');
+    });
+  });
+
+  function updateBackToTop(){
+    if(window.scrollY > 420){
+      backToTop.classList.add('show');
+    }else{
+      backToTop.classList.remove('show');
+    }
+  }
+
+  window.addEventListener('scroll', updateBackToTop, {passive:true});
+  updateBackToTop();
+});
+</script>
+
+</body>
+</html>
