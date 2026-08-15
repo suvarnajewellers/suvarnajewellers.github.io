@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Collections | SUVARNA JEWELLERS</title>
+<meta name="description" content="Explore Suvarna Jewellers premium Gold, Silver, Rudraksha, Pendant and Bracelet collections.">
+<meta name="theme-color" content="#18000B">
+<link rel="icon" href="Logo.png">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<style>
+/* SUVARNA COLLECTIONS — premium page-only layer */
+.collections-page{background:linear-gradient(180deg,#18000b 0%,#24000f 45%,#18000b 100%);min-height:100vh}
+.collection-hero{position:relative;overflow:hidden;padding:92px 20px 54px;text-align:center;border-bottom:1px solid rgba(212,175,55,.16)}
+.collection-hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(212,175,55,.12),transparent 42%);pointer-events:none}
+.collection-hero .eyebrow{position:relative;color:#d4af37;font:600 11px Cinzel,serif;letter-spacing:4px}
+.collection-hero h1{position:relative;margin:18px auto 14px;color:#f8f4ea;font:600 clamp(34px,5vw,58px) Cinzel,Georgia,serif;letter-spacing:.4px}
+.collection-hero p{position:relative;max-width:680px;margin:0 auto;color:rgba(248,244,234,.68);font:400 14px/1.8 Inter,sans-serif}
+.collection-toolbar{position:relative;display:flex;align-items:center;justify-content:center;gap:14px;margin:32px auto 0;max-width:760px}
+.premium-search{width:min(560px,100%);height:50px;padding:0 18px;border:1px solid rgba(212,175,55,.25);border-radius:4px;background:rgba(255,255,255,.055);backdrop-filter:blur(12px);color:#fff;outline:none}
+.premium-search::placeholder{color:rgba(255,255,255,.42)}
+.premium-search:focus{border-color:rgba(212,175,55,.7);box-shadow:0 0 0 3px rgba(212,175,55,.07)}
+.product-count{white-space:nowrap;color:rgba(248,244,234,.6);font:11px Inter,sans-serif;letter-spacing:.6px}
+.product-count strong{display:block;color:#d4af37;font:600 18px Cinzel,serif}
+.collection-section{padding:58px 20px 90px}
+.collection-grid-premium{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+.collection-item{position:relative;display:block;overflow:hidden;border:1px solid rgba(212,175,55,.14);border-radius:5px;background:rgba(255,255,255,.035);text-decoration:none;box-shadow:0 18px 50px rgba(0,0,0,.22);transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease}
+.collection-item:hover{transform:translateY(-5px);border-color:rgba(212,175,55,.42);box-shadow:0 24px 60px rgba(0,0,0,.34)}
+.collection-image{position:relative;aspect-ratio:1/1;overflow:hidden;background:#21000e}
+.collection-image img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1),filter .5s ease}
+.collection-item:hover .collection-image img{transform:scale(1.045);filter:saturate(1.04)}
+.collection-image:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(20,0,10,.55));pointer-events:none}
+.collection-info{padding:17px 17px 18px}
+.collection-info .category{color:#d4af37;font:600 9px Inter,sans-serif;letter-spacing:2px;text-transform:uppercase}
+.collection-info h3{margin:7px 0 13px;color:#f8f4ea;font:500 17px Cinzel,serif;line-height:1.35}
+.collection-info .view{color:rgba(248,244,234,.58);font:500 10px Inter,sans-serif;letter-spacing:1.2px;text-transform:uppercase}
+.collection-info .view i{margin-left:7px;color:#d4af37;transition:transform .25s ease}
+.collection-item:hover .view i{transform:translateX(4px)}
+.empty-state-premium{grid-column:1/-1;padding:70px 20px;text-align:center;border:1px solid rgba(212,175,55,.14);color:rgba(248,244,234,.62)}
+@media(max-width:1050px){.collection-grid-premium{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){.collection-hero{padding:68px 18px 42px}.collection-toolbar{display:block}.product-count{margin-top:12px}.collection-grid-premium{grid-template-columns:repeat(2,1fr);gap:14px}.collection-section{padding:40px 14px 65px}}
+@media(max-width:480px){.collection-grid-premium{grid-template-columns:1fr 1fr}.collection-info{padding:13px}.collection-info h3{font-size:14px}.collection-info .view{font-size:9px}}
+</style>
+
+<style id="collection-search-final">
+.search-wrap{position:relative;display:flex;align-items:center;gap:10px;min-height:56px;padding:0 14px;border:1px solid rgba(212,175,55,.28);border-radius:3px;background:linear-gradient(135deg,rgba(255,255,255,.045),rgba(255,255,255,.018));box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 14px 34px rgba(0,0,0,.16)}
+.search-wrap:focus-within{border-color:rgba(212,175,55,.62);box-shadow:0 0 0 3px rgba(212,175,55,.055),0 18px 40px rgba(0,0,0,.20)}
+.search-icon{width:30px;height:30px;display:grid;place-items:center;border:1px solid rgba(212,175,55,.2);border-radius:50%;color:#f3e3a0;background:rgba(212,175,55,.06);flex:0 0 auto}
+.search{flex:1 1 auto;min-width:0;width:100%;border:0;outline:0;background:transparent;color:#f7f2e8;appearance:none;-webkit-appearance:none}
+.search::-webkit-search-cancel-button,.search::-webkit-search-decoration,.search::-webkit-search-results-button,.search::-webkit-search-results-decoration{display:none!important;width:0!important;height:0!important;appearance:none!important;-webkit-appearance:none!important}
+.search-clear{flex:0 0 30px;width:30px;height:30px;display:grid;place-items:center;padding:0;margin:0;border:0;background:transparent;color:#d4af37;cursor:pointer}
+.search-clear[hidden]{display:none!important}
+@media(max-width:760px){.collection-search-wrap{min-height:54px}}
+</style>
+</head>
+<body class="collections-page">
+
+<header class="header">
+<div class="container header-container">
+<a href="index.html" class="logo">
+<img src="Logo.png" alt="SUVARNA JEWELLERS">
+<div class="logo-text"><h1>SUVARNA JEWELLERS</h1><span>Trusted Since 2003</span></div>
+</a>
+<nav class="navbar" id="navbar">
+<a href="index.html">Home</a><a href="collections.html" class="active">Collections</a><a href="ready-stock.html">Ready Stock</a><a href="#footer">Contact</a>
+</nav>
+<div class="header-right">
+<a href="https://wa.me/917777991118" class="header-whatsapp" target="_blank" rel="noopener">WhatsApp</a>
+<button class="menu-toggle" id="menuToggle" aria-label="Open Menu">☰</button>
+</div>
+</div>
+</header>
+
+<main>
+<section class="collection-hero">
+<div class="eyebrow">THE SUVARNA COLLECTION</div>
+<h1>Explore Our Collections</h1>
+<p>Gold, Silver, Rudraksha, Pendants and more — curated for wholesalers, retailers and jewellery businesses across India.</p>
+<div class="collection-toolbar">
+<label class="search-wrap collection-search-wrap" for="collectionSearch"><span class="search-icon" aria-hidden="true"><i class="fa-solid fa-magnifying-glass"></i></span><input type="search" id="collectionSearch" class="premium-search search" placeholder="Search by product or category..." autocomplete="off" spellcheck="false"><button class="search-clear" id="collectionSearchClear" type="button" aria-label="Clear search" hidden><i class="fa-solid fa-xmark"></i></button></label>
+<div class="product-count"><strong id="productCount">0</strong>PRODUCTS</div>
+</div>
+</section>
+
+<section class="collection-section">
+<div class="container">
+<div id="collectionsGrid" class="collection-grid-premium" aria-live="polite"></div>
+</div>
+</section>
+</main>
+
+<footer class="footer" id="footer">
+<div class="container"><p>© 2003–2026 SUVARNA JEWELLERS · Gold &amp; Silver Jewellery Manufacturer</p></div>
+</footer>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/utilities.js"></script>
+<script src="assets/js/api.js"></script>
+<script src="assets/js/collections-home.js"></script>
+<script>
+(function(){
+ const t=document.getElementById('menuToggle'),n=document.getElementById('navbar');
+ if(t&&n){t.addEventListener('click',()=>{n.classList.toggle('open');n.classList.toggle('active')});}
+})();
+</script>
+<script>
+document.addEventListener('DOMContentLoaded',function(){const search=document.getElementById('collectionSearch'),clear=document.getElementById('collectionSearchClear');if(!search||!clear)return;function sync(){clear.hidden=!search.value.trim()}search.addEventListener('input',sync);clear.addEventListener('click',function(){search.value='';sync();search.focus();search.dispatchEvent(new Event('input',{bubbles:true}))});sync();});
+</script>
+<script>
+/* Replace the legacy renderer with the premium card renderer while keeping the same API/search behavior. */
+document.addEventListener('DOMContentLoaded',function(){
+ const grid=document.getElementById('collectionsGrid'), search=document.getElementById('collectionSearch'), count=document.getElementById('productCount');
+ if(!grid) return;
+ let products=[];
+ const esc=v=>String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+ const render=list=>{
+   count.textContent=list.length;
+   grid.innerHTML=list.length?list.map(p=>`<a class="collection-item" href="product.html?id=${encodeURIComponent(p.id)}">
+    <div class="collection-image"><img src="${getImage(p.image)}" alt="${esc(p.name)}" loading="lazy" onerror="this.src='Logo.png'"></div>
+    <div class="collection-info"><div class="category">${esc(p.category||'SUVARNA JEWELLERS')}</div><h3>${esc(p.name)}</h3><span class="view">View Product <i class="fa-solid fa-arrow-right"></i></span></div>
+   </a>`).join(''):`<div class="empty-state-premium"><h3>No Products Found</h3><p>Try another product or category.</p></div>`;
+ };
+ (async()=>{try{products=await getProducts();render(products)}catch(e){grid.innerHTML='<div class="empty-state-premium"><h3>Unable to load products.</h3></div>'}})();
+ search?.addEventListener('input',()=>{const q=search.value.trim().toLowerCase();render(products.filter(p=>(p.name||'').toLowerCase().includes(q)||(p.category||'').toLowerCase().includes(q)||(p.metal||'').toLowerCase().includes(q)))});
+})();
+</script>
+</body>
+</html>
