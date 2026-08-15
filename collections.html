@@ -834,6 +834,60 @@ a.contact-card:hover{
   }
   .collection-info h3{font-size:13px!important}
 }
+
+/* FINAL FOOTER BRAND SIGNATURE — footer only */
+.footer{
+  position:relative!important;overflow:hidden;
+  padding:62px 0 26px!important;text-align:center!important;
+  border-top:1px solid rgba(212,175,55,.18)!important;
+  background:
+    radial-gradient(circle at 50% 0,rgba(212,175,55,.075),transparent 30%),
+    linear-gradient(180deg,rgba(26,0,10,.78),rgba(5,0,3,.96))!important;
+}
+.footer:before{
+  content:"";position:absolute;top:0;left:50%;
+  width:min(760px,82vw);height:1px;transform:translateX(-50%);
+  background:linear-gradient(90deg,transparent,rgba(212,175,55,.52),transparent);
+}
+.footer-signature{position:relative;max-width:900px;margin:0 auto;text-align:center}
+.footer-rule{display:block;width:64px;height:1px;margin:0 auto 24px;
+  background:linear-gradient(90deg,transparent,var(--s-gold),transparent)}
+.footer-logo-wrap{
+  width:76px;height:76px;margin:0 auto 16px;display:grid;place-items:center;
+  border:1px solid rgba(212,175,55,.24);border-radius:50%;
+  background:radial-gradient(circle,rgba(212,175,55,.08),rgba(255,255,255,.012));
+  box-shadow:0 14px 34px rgba(0,0,0,.22)
+}
+.footer-logo{display:block;width:58px;height:58px;object-fit:contain}
+.footer-brand{color:var(--s-gold2);font:600 19px/1.2 Cinzel,Georgia,serif;letter-spacing:3.2px}
+.footer-tagline{margin-top:9px;color:rgba(247,242,232,.52);
+  font:600 7.5px/1.4 Inter,Arial,sans-serif;letter-spacing:2.5px}
+.footer-service-row{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;
+  gap:12px;margin:24px auto 0;color:rgba(243,227,160,.72);
+  font:600 7px/1.4 Inter,Arial,sans-serif;letter-spacing:1.65px}
+.footer-service-row i{width:3px;height:3px;border-radius:50%;background:var(--s-gold);opacity:.7}
+.footer-years{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:20px;
+  color:rgba(243,227,160,.82);font:500 9px/1 Inter,Arial,sans-serif;letter-spacing:2px}
+.footer-years i{display:block;width:24px;height:1px;background:rgba(212,175,55,.45)}
+.footer-description{margin:13px 0 11px!important;color:rgba(247,242,232,.38)!important;
+  font:400 8px/1.6 Inter,Arial,sans-serif!important;letter-spacing:1.15px}
+.footer-location{display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  color:rgba(247,242,232,.42);font:500 7.5px/1.4 Inter,Arial,sans-serif;
+  letter-spacing:1.15px;text-transform:uppercase}
+.footer-location i{color:rgba(212,175,55,.72);font-size:9px}
+.footer-bottom-line{display:flex;justify-content:center;gap:18px;margin-top:22px;padding-top:16px;
+  border-top:1px solid rgba(255,255,255,.055);color:rgba(247,242,232,.24);
+  font:500 7px/1.4 Inter,Arial,sans-serif;letter-spacing:1.3px}
+@media(max-width:760px){
+  .footer{padding:50px 0 21px!important}
+  .footer-logo-wrap{width:68px;height:68px;margin-bottom:14px}
+  .footer-logo{width:52px;height:52px}
+  .footer-brand{font-size:16px;letter-spacing:2.5px}
+  .footer-tagline{font-size:6.5px;letter-spacing:1.9px}
+  .footer-service-row{gap:8px;font-size:6.5px;letter-spacing:1.2px}
+  .footer-bottom-line{flex-direction:column;gap:7px}
+}
+
 </style>
 
 </head>
@@ -952,10 +1006,33 @@ a.contact-card:hover{
   <div class="container">
     <div class="footer-signature">
       <span class="footer-rule" aria-hidden="true"></span>
+      <div class="footer-logo-wrap">
+        <img class="footer-logo" src="Logo.png" alt="SUVARNA JEWELLERS">
+      </div>
       <div class="footer-brand">SUVARNA JEWELLERS</div>
       <div class="footer-tagline">GOLD &amp; SILVER JEWELLERY MANUFACTURER</div>
-      <div class="footer-years"><span>2003</span><i aria-hidden="true"></i><span>2026</span></div>
-      <p>Trusted Since 2003 · Pan India Supply</p>
+
+      <div class="footer-service-row" aria-label="Suvarna Jewellers services">
+        <span>PAN INDIA DELIVERY</span>
+        <i aria-hidden="true"></i>
+        <span>WHOLESALE SUPPLY</span>
+        <i aria-hidden="true"></i>
+        <span>TRUSTED SINCE 2003</span>
+      </div>
+
+      <div class="footer-years">
+        <span>2003</span><i aria-hidden="true"></i><span>2026</span>
+      </div>
+
+      <p class="footer-description">
+        Gold &amp; Silver Jewellery Manufacturer · Premium Craftsmanship · Pan India Supply
+      </p>
+
+      <div class="footer-location">
+        <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+        <span>Surat, Gujarat, India</span>
+      </div>
+
       <div class="footer-bottom-line">
         <span>© 2003–2026 SUVARNA JEWELLERS</span>
         <span>ALL RIGHTS RESERVED</span>
