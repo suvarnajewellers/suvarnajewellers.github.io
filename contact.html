@@ -6,7 +6,7 @@
 
 <title>Contact | SUVARNA JEWELLERS</title>
 
-<meta name="description" content="Contact Suvarna Jewellers for jewellery enquiries, ready stock, wholesale requirements and business enquiries across India.">
+<meta name="description" content="Contact Suvarna Jewellers for ready stock, jewellery enquiries, wholesale requirements and business enquiries across India.">
 <meta name="theme-color" content="#120008">
 
 <link rel="icon" href="Logo.png">
@@ -20,7 +20,6 @@
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 <style>
-
 :root{
   --bg:#100006;
   --bg2:#21000f;
@@ -124,6 +123,7 @@ a{
   letter-spacing:1.1px;
   padding:29px 0;
   position:relative;
+  transition:.25s;
 }
 
 .navbar a:hover,
@@ -172,6 +172,7 @@ a{
   border:1px solid var(--line);
   color:var(--gold);
   font-size:20px;
+  cursor:pointer;
 }
 
 /* =========================
@@ -180,11 +181,11 @@ a{
 
 .hero{
   position:relative;
-  min-height:430px;
+  min-height:455px;
   display:grid;
   place-items:center;
   text-align:center;
-  padding:78px 0 70px;
+  padding:80px 0 70px;
   overflow:hidden;
   border-bottom:1px solid rgba(212,175,55,.12);
 }
@@ -253,11 +254,11 @@ a{
 }
 
 /* =========================
-   CONTACT SECTION
+   SECTION
 ========================= */
 
 .section{
-  padding:72px 0 88px;
+  padding:75px 0 90px;
 }
 
 .section-head{
@@ -377,19 +378,34 @@ a{
   justify-content:space-between;
   gap:25px;
   padding:34px;
-  border:1px solid rgba(37,211,102,.18);
+  border:1px solid rgba(37,211,102,.2);
   background:
     linear-gradient(
       120deg,
-      rgba(37,211,102,.055),
+      rgba(37,211,102,.06),
       rgba(255,255,255,.02)
     );
+  position:relative;
+  overflow:hidden;
+}
+
+.whatsapp-card:after{
+  content:"";
+  position:absolute;
+  width:180px;
+  height:180px;
+  border:1px solid rgba(37,211,102,.08);
+  border-radius:50%;
+  right:-80px;
+  top:-80px;
 }
 
 .whatsapp-left{
   display:flex;
   align-items:center;
   gap:18px;
+  position:relative;
+  z-index:1;
 }
 
 .whatsapp-icon{
@@ -433,6 +449,8 @@ a{
   letter-spacing:1.1px;
   text-transform:uppercase;
   transition:.25s;
+  position:relative;
+  z-index:2;
 }
 
 .whatsapp-button:hover{
@@ -441,13 +459,13 @@ a{
 }
 
 /* =========================
-   BUSINESS ADDRESS
+   ADDRESS
 ========================= */
 
 .address-section{
   max-width:980px;
   margin:55px auto 0;
-  padding:40px 35px;
+  padding:42px 35px;
   text-align:center;
   border:1px solid var(--line);
   background:
@@ -457,6 +475,7 @@ a{
       rgba(255,255,255,.02)
     );
   position:relative;
+  overflow:hidden;
 }
 
 .address-section:before{
@@ -491,14 +510,58 @@ a{
   line-height:1.8;
 }
 
+.map-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  margin-top:22px;
+  min-height:42px;
+  padding:0 18px;
+  border:1px solid rgba(212,175,55,.4);
+  color:var(--gold2);
+  text-decoration:none;
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+  transition:.25s;
+  position:relative;
+}
+
+.map-button:hover{
+  background:var(--gold);
+  color:#170008;
+  transform:translateY(-2px);
+}
+
 /* =========================
-   ENQUIRY CTA
+   BUSINESS NOTE
+========================= */
+
+.business-note{
+  max-width:980px;
+  margin:22px auto 0;
+  text-align:center;
+  color:rgba(255,255,255,.4);
+  font-size:8px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.business-note i{
+  color:var(--gold);
+  margin-right:5px;
+}
+
+/* =========================
+   CTA
 ========================= */
 
 .cta{
   margin:0 auto 80px;
   max-width:980px;
-  padding:52px 26px;
+  padding:55px 26px;
   text-align:center;
   border:1px solid var(--line);
   background:
@@ -538,6 +601,7 @@ a{
   display:inline-flex;
   align-items:center;
   justify-content:center;
+  gap:9px;
   min-height:44px;
   padding:0 21px;
   border:1px solid var(--gold);
@@ -558,6 +622,7 @@ a{
 
 .btn-primary:hover{
   transform:translateY(-2px);
+  box-shadow:0 15px 35px rgba(212,175,55,.2);
 }
 
 /* =========================
@@ -740,6 +805,10 @@ a{
     padding:55px 0 68px;
   }
 
+  .section-head{
+    margin-bottom:32px;
+  }
+
   .section-head h2{
     font-size:28px;
   }
@@ -747,6 +816,10 @@ a{
   .contact-grid{
     grid-template-columns:1fr;
     gap:13px;
+  }
+
+  .contact-card{
+    min-height:220px;
   }
 
   .whatsapp-card{
@@ -767,6 +840,14 @@ a{
   .address-section{
     padding:35px 20px;
     margin-top:35px;
+  }
+
+  .address-section .address{
+    font-size:11px;
+  }
+
+  .business-note{
+    line-height:1.8;
   }
 
   .cta{
@@ -799,8 +880,11 @@ a{
     padding:25px 20px;
   }
 
-}
+  .whatsapp-text h3{
+    font-size:19px;
+  }
 
+}
 </style>
 </head>
 
@@ -815,26 +899,20 @@ a{
   <div class="container header-container">
 
     <a href="index.html" class="logo">
-
       <img src="Logo.png" alt="Suvarna Jewellers">
 
       <div class="logo-text">
         <h1>SUVARNA JEWELLERS</h1>
         <span>Gold &amp; Silver Jewellery</span>
       </div>
-
     </a>
 
     <nav class="navbar" id="navbar">
 
       <a href="index.html">Home</a>
-
       <a href="collections.html">Collections</a>
-
       <a href="ready-stock.html">Ready Stock</a>
-
       <a href="about.html">About</a>
-
       <a href="contact.html" class="active">Contact</a>
 
     </nav>
@@ -853,6 +931,7 @@ a{
       <button
         class="menu-toggle"
         id="menuToggle"
+        type="button"
         aria-label="Open Menu"
         aria-expanded="false"
       >
@@ -897,7 +976,7 @@ a{
   </section>
 
 
-  <!-- CONTACT -->
+  <!-- CONTACT SECTION -->
 
   <section class="section">
 
@@ -914,15 +993,14 @@ a{
         </h2>
 
         <p>
-          Choose the channel that is most convenient for you.
-          Our team is available for genuine jewellery and business enquiries.
+          For the fastest assistance, connect with us on WhatsApp.
+          You can also reach us by phone or email for detailed enquiries.
         </p>
 
       </div>
 
 
       <div class="contact-grid">
-
 
         <!-- EMAIL -->
 
@@ -962,7 +1040,7 @@ a{
 
           <p>
             Speak directly with Suvarna Jewellers
-            for your jewellery and business requirements.
+            for jewellery and business requirements.
           </p>
 
           <a href="tel:+917777991118">
@@ -1009,7 +1087,6 @@ a{
 
         </article>
 
-
       </div>
 
 
@@ -1036,6 +1113,21 @@ a{
           Surat, Gujarat 395003, India
         </p>
 
+        <a
+          class="map-button"
+          href="https://www.google.com/maps/search/?api=1&query=3%2F672%2FA%2C%20Navkar%20House%2C%20Daliya%20Sheri%2C%20Navapura%2C%20Bhagal%2C%20Surat%2C%20Gujarat%20395003%2C%20India"
+          target="_blank"
+          rel="noopener"
+        >
+          <i class="fa-solid fa-location-arrow"></i>
+          Open In Google Maps
+        </a>
+
+      </div>
+
+      <div class="business-note">
+        <i class="fa-solid fa-shield-halved"></i>
+        Genuine jewellery &amp; business enquiries only
       </div>
 
     </div>
@@ -1053,7 +1145,7 @@ a{
 
     <p>
       Send us the product name, reference image or your jewellery
-      requirement and our team will assist you directly.
+      requirement and our team will assist you directly on WhatsApp.
     </p>
 
     <a
@@ -1062,6 +1154,7 @@ a{
       target="_blank"
       rel="noopener"
     >
+      <i class="fa-brands fa-whatsapp"></i>
       Talk To Suvarna
     </a>
 
@@ -1106,7 +1199,9 @@ a{
 </footer>
 
 
-<!-- FLOATING WHATSAPP -->
+<!-- =========================
+     FLOATING WHATSAPP
+========================= -->
 
 <a
   class="floating-whatsapp"
@@ -1119,7 +1214,9 @@ a{
 </a>
 
 
-<!-- BACK TO TOP -->
+<!-- =========================
+     BACK TO TOP
+========================= -->
 
 <a
   class="back-to-top"
@@ -1153,7 +1250,34 @@ a{
         open ? "true" : "false"
       );
 
+      toggle.setAttribute(
+        "aria-label",
+        open ? "Close Menu" : "Open Menu"
+      );
+
       toggle.innerHTML = open ? "&times;" : "☰";
+
+    });
+
+    nav.querySelectorAll("a").forEach(function(link){
+
+      link.addEventListener("click",function(){
+
+        nav.classList.remove("open");
+
+        toggle.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+        toggle.setAttribute(
+          "aria-label",
+          "Open Menu"
+        );
+
+        toggle.innerHTML = "☰";
+
+      });
 
     });
 
@@ -1162,7 +1286,9 @@ a{
 })();
 
 
-/* Back To Top */
+/* =========================
+   BACK TO TOP
+========================= */
 
 (function(){
 
