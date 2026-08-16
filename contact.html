@@ -3,16 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
 <title>Contact | SUVARNA JEWELLERS</title>
-<meta name="description" content="Connect with SUVARNA JEWELLERS for private client enquiries, wholesale jewellery requirements, ready stock and Pan India supply.">
+
+<meta name="description" content="Contact Suvarna Jewellers for jewellery enquiries, ready stock, wholesale requirements and business enquiries across India.">
 <meta name="theme-color" content="#120008">
+
 <link rel="icon" href="Logo.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 <style>
+
 :root{
   --bg:#100006;
   --bg2:#21000f;
@@ -23,8 +31,15 @@
   --line:rgba(212,175,55,.18);
   --green:#25d366;
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   margin:0;
   background:
@@ -33,44 +48,37 @@ body{
   font-family:Inter,Arial,sans-serif;
   overflow-x:hidden;
 }
-a{color:inherit}
-.container{width:min(1180px,calc(100% - 32px));margin:auto}
 
-/* Loader */
-#page-loader{
-  position:fixed;inset:0;z-index:99999;
-  display:grid;place-items:center;
-  background:radial-gradient(circle at 50% 42%,rgba(212,175,55,.13),transparent 28%),#160009;
-  transition:opacity .5s,visibility .5s;
-}
-#page-loader.hide{opacity:0;visibility:hidden;pointer-events:none}
-.loader-inner{text-align:center}
-.loader-inner img{width:min(190px,55vw);height:auto}
-.loader-line{
-  width:72px;height:1px;
-  background:linear-gradient(90deg,transparent,var(--gold),transparent);
-  margin:20px auto 12px;
-}
-.loader-text{
-  font:600 10px Cinzel,serif;
-  letter-spacing:3px;
-  color:var(--gold);
+a{
+  color:inherit;
 }
 
-/* Header */
+.container{
+  width:min(1180px,calc(100% - 32px));
+  margin:auto;
+}
+
+/* =========================
+   HEADER
+========================= */
+
 .header{
-  position:sticky;top:0;z-index:1000;
-  background:rgba(16,0,6,.82);
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(16,0,6,.84);
   border-bottom:1px solid var(--line);
   backdrop-filter:blur(18px);
   -webkit-backdrop-filter:blur(18px);
 }
+
 .header-container{
   min-height:76px;
   display:flex;
   align-items:center;
   gap:22px;
 }
+
 .logo{
   display:flex;
   align-items:center;
@@ -79,13 +87,20 @@ a{color:inherit}
   color:var(--ivory);
   min-width:0;
 }
-.logo img{width:47px;height:47px;object-fit:contain}
+
+.logo img{
+  width:47px;
+  height:47px;
+  object-fit:contain;
+}
+
 .logo-text h1{
   margin:0;
   color:var(--gold);
   font:600 17px Cinzel,serif;
   letter-spacing:1.5px;
 }
+
 .logo-text span{
   display:block;
   margin-top:3px;
@@ -94,12 +109,14 @@ a{color:inherit}
   letter-spacing:2.5px;
   text-transform:uppercase;
 }
+
 .navbar{
   margin-left:auto;
   display:flex;
   gap:27px;
   align-items:center;
 }
+
 .navbar a{
   color:rgba(255,255,255,.75);
   text-decoration:none;
@@ -108,17 +125,29 @@ a{color:inherit}
   padding:29px 0;
   position:relative;
 }
-.navbar a:hover,.navbar a.active{color:var(--gold)}
+
+.navbar a:hover,
+.navbar a.active{
+  color:var(--gold);
+}
+
 .navbar a.active:after{
   content:"";
   position:absolute;
   left:50%;
   bottom:18px;
   transform:translateX(-50%);
-  width:22px;height:1px;
+  width:22px;
+  height:1px;
   background:var(--gold);
 }
-.header-right{display:flex;align-items:center;gap:10px}
+
+.header-right{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
 .header-whatsapp{
   border:1px solid rgba(212,175,55,.42);
   color:var(--gold);
@@ -127,45 +156,66 @@ a{color:inherit}
   font-size:9px;
   letter-spacing:1.1px;
   text-transform:uppercase;
+  transition:.25s;
 }
+
+.header-whatsapp:hover{
+  background:var(--gold);
+  color:#170008;
+}
+
 .menu-toggle{
   display:none;
-  width:42px;height:42px;
+  width:42px;
+  height:42px;
   background:none;
   border:1px solid var(--line);
   color:var(--gold);
   font-size:20px;
-  cursor:pointer;
 }
 
-/* Hero */
+/* =========================
+   HERO
+========================= */
+
 .hero{
   position:relative;
-  min-height:475px;
+  min-height:430px;
   display:grid;
   place-items:center;
   text-align:center;
-  padding:82px 0 70px;
+  padding:78px 0 70px;
   overflow:hidden;
   border-bottom:1px solid rgba(212,175,55,.12);
 }
+
 .hero:before{
   content:"";
-  position:absolute;inset:0;
+  position:absolute;
+  inset:0;
   background:
-    radial-gradient(circle at 50% 32%,rgba(212,175,55,.16),transparent 25%),
+    radial-gradient(circle at 50% 30%,rgba(212,175,55,.16),transparent 25%),
     radial-gradient(circle at 85% 70%,rgba(108,0,42,.25),transparent 30%),
     linear-gradient(180deg,rgba(38,0,18,.1),rgba(7,0,4,.72));
 }
+
 .hero:after{
   content:"";
   position:absolute;
-  width:420px;height:420px;
+  width:480px;
+  height:480px;
   border:1px solid rgba(212,175,55,.08);
   border-radius:50%;
-  bottom:-280px;left:-130px;
+  bottom:-330px;
+  right:-130px;
 }
-.hero-inner{position:relative;z-index:1;max-width:790px}
+
+.hero-inner{
+  position:relative;
+  z-index:1;
+  max-width:800px;
+}
+
 .eyebrow{
   display:inline-flex;
   align-items:center;
@@ -176,29 +226,314 @@ a{color:inherit}
   letter-spacing:3.2px;
   text-transform:uppercase;
 }
-.eyebrow:before,.eyebrow:after{
+
+.eyebrow:before,
+.eyebrow:after{
   content:"";
-  width:34px;height:1px;
+  width:34px;
+  height:1px;
   background:var(--gold);
 }
+
 .hero h1{
   margin:20px 0 16px;
   font:600 clamp(39px,6vw,70px)/1.03 Cinzel,serif;
 }
-.hero h1 span{color:var(--gold2)}
+
+.hero h1 span{
+  color:var(--gold2);
+}
+
 .hero p{
-  max-width:680px;
+  max-width:650px;
   margin:0 auto;
   color:var(--muted);
   font-size:14px;
   line-height:1.9;
 }
-.hero-actions{
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  margin-top:28px;
+
+/* =========================
+   CONTACT SECTION
+========================= */
+
+.section{
+  padding:72px 0 88px;
 }
+
+.section-head{
+  text-align:center;
+  max-width:760px;
+  margin:0 auto 42px;
+}
+
+.section-head h2{
+  margin:12px 0 10px;
+  font:600 32px Cinzel,serif;
+}
+
+.section-head p{
+  margin:0;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.8;
+}
+
+/* =========================
+   CONTACT GRID
+========================= */
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  max-width:980px;
+  margin:0 auto;
+}
+
+.contact-card{
+  position:relative;
+  border:1px solid rgba(212,175,55,.17);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.055),
+      rgba(255,255,255,.015)
+    );
+  padding:30px;
+  min-height:235px;
+  transition:.3s;
+  overflow:hidden;
+}
+
+.contact-card:before{
+  content:"";
+  position:absolute;
+  inset:8px;
+  border:1px solid rgba(212,175,55,.055);
+  pointer-events:none;
+}
+
+.contact-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(212,175,55,.42);
+  box-shadow:0 20px 50px rgba(0,0,0,.25);
+}
+
+.contact-icon{
+  width:48px;
+  height:48px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(212,175,55,.28);
+  border-radius:50%;
+  color:var(--gold2);
+  background:rgba(212,175,55,.055);
+  margin-bottom:20px;
+  position:relative;
+}
+
+.contact-icon i{
+  font-size:17px;
+}
+
+.contact-card h3{
+  margin:0 0 10px;
+  font:500 20px Cinzel,serif;
+  color:var(--ivory);
+  position:relative;
+}
+
+.contact-card p{
+  margin:0;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.9;
+  position:relative;
+}
+
+.contact-card a{
+  display:inline-block;
+  margin-top:15px;
+  color:var(--gold2);
+  text-decoration:none;
+  font-size:11px;
+  letter-spacing:.5px;
+  position:relative;
+  word-break:break-word;
+}
+
+.contact-card a:hover{
+  color:var(--gold);
+}
+
+/* =========================
+   WHATSAPP FEATURE
+========================= */
+
+.whatsapp-card{
+  grid-column:1/-1;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:25px;
+  padding:34px;
+  border:1px solid rgba(37,211,102,.18);
+  background:
+    linear-gradient(
+      120deg,
+      rgba(37,211,102,.055),
+      rgba(255,255,255,.02)
+    );
+}
+
+.whatsapp-left{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
+.whatsapp-icon{
+  width:58px;
+  height:58px;
+  flex:0 0 auto;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:var(--green);
+  color:#fff;
+  font-size:27px;
+  box-shadow:0 12px 30px rgba(37,211,102,.18);
+}
+
+.whatsapp-text h3{
+  margin:0 0 7px;
+  font:500 22px Cinzel,serif;
+}
+
+.whatsapp-text p{
+  margin:0;
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.7;
+}
+
+.whatsapp-button{
+  flex:0 0 auto;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  min-height:45px;
+  padding:0 21px;
+  background:var(--green);
+  color:#fff;
+  text-decoration:none;
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:1.1px;
+  text-transform:uppercase;
+  transition:.25s;
+}
+
+.whatsapp-button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 25px rgba(37,211,102,.2);
+}
+
+/* =========================
+   BUSINESS ADDRESS
+========================= */
+
+.address-section{
+  max-width:980px;
+  margin:55px auto 0;
+  padding:40px 35px;
+  text-align:center;
+  border:1px solid var(--line);
+  background:
+    linear-gradient(
+      120deg,
+      rgba(212,175,55,.065),
+      rgba(255,255,255,.02)
+    );
+  position:relative;
+}
+
+.address-section:before{
+  content:"";
+  position:absolute;
+  inset:9px;
+  border:1px solid rgba(212,175,55,.055);
+  pointer-events:none;
+}
+
+.address-section .contact-icon{
+  margin:0 auto 17px;
+}
+
+.address-section h3{
+  margin:0 0 10px;
+  font:500 24px Cinzel,serif;
+}
+
+.address-section p{
+  max-width:700px;
+  margin:0 auto;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.9;
+}
+
+.address-section .address{
+  margin-top:15px;
+  color:var(--gold2);
+  font-size:12px;
+  line-height:1.8;
+}
+
+/* =========================
+   ENQUIRY CTA
+========================= */
+
+.cta{
+  margin:0 auto 80px;
+  max-width:980px;
+  padding:52px 26px;
+  text-align:center;
+  border:1px solid var(--line);
+  background:
+    linear-gradient(
+      120deg,
+      rgba(212,175,55,.075),
+      rgba(255,255,255,.025)
+    );
+  position:relative;
+  overflow:hidden;
+}
+
+.cta:before{
+  content:"";
+  position:absolute;
+  inset:8px;
+  border:1px solid rgba(212,175,55,.07);
+  pointer-events:none;
+}
+
+.cta h2{
+  position:relative;
+  margin:0 0 9px;
+  font:500 28px Cinzel,serif;
+}
+
+.cta p{
+  position:relative;
+  margin:0 auto 22px;
+  max-width:620px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.8;
+}
+
 .btn{
   display:inline-flex;
   align-items:center;
@@ -212,323 +547,92 @@ a{color:inherit}
   letter-spacing:1.2px;
   text-transform:uppercase;
   transition:.25s;
+  position:relative;
 }
+
 .btn-primary{
   background:linear-gradient(135deg,#f1d77c,#c79d20);
   color:#1b0009;
   box-shadow:0 12px 32px rgba(212,175,55,.13);
 }
-.btn-outline{color:var(--gold2);background:rgba(255,255,255,.025)}
-.btn:hover{transform:translateY(-2px)}
 
-/* Contact */
-.section{padding:72px 0 88px}
-.section-head{
-  text-align:center;
-  max-width:760px;
-  margin:0 auto 38px;
-}
-.section-head h2{
-  margin:11px 0 10px;
-  font:600 32px Cinzel,serif;
-}
-.section-head p{
-  margin:0;
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.8;
-}
-.contact-layout{
-  display:grid;
-  grid-template-columns:1.08fr .92fr;
-  gap:20px;
-  align-items:stretch;
-}
-.contact-panel{
-  position:relative;
-  overflow:hidden;
-  border:1px solid rgba(212,175,55,.16);
-  background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.014));
-  box-shadow:0 20px 55px rgba(0,0,0,.2);
-}
-.contact-panel:before{
-  content:"";
-  position:absolute;
-  inset:8px;
-  border:1px solid rgba(212,175,55,.055);
-  pointer-events:none;
-}
-.panel-inner{position:relative;padding:34px}
-.panel-kicker{
-  color:var(--gold);
-  font-size:8px;
-  font-weight:700;
-  letter-spacing:2px;
-  text-transform:uppercase;
-}
-.panel-title{
-  margin:10px 0 12px;
-  font:500 28px/1.2 Cinzel,serif;
-}
-.panel-copy{
-  margin:0;
-  max-width:650px;
-  color:var(--muted);
-  font-size:12px;
-  line-height:1.9;
-}
-.contact-list{
-  display:grid;
-  gap:12px;
-  margin-top:28px;
-}
-.contact-item{
-  display:flex;
-  gap:14px;
-  align-items:flex-start;
-  padding:17px 16px;
-  border:1px solid rgba(212,175,55,.12);
-  background:rgba(255,255,255,.025);
-  transition:.25s;
-}
-.contact-item:hover{
-  border-color:rgba(212,175,55,.38);
+.btn-primary:hover{
   transform:translateY(-2px);
 }
-.contact-icon{
-  flex:0 0 38px;
-  width:38px;height:38px;
-  display:grid;place-items:center;
-  border:1px solid rgba(212,175,55,.24);
-  border-radius:50%;
-  color:var(--gold2);
-  background:rgba(212,175,55,.06);
-}
-.contact-label{
-  margin:0 0 5px;
-  color:rgba(255,255,255,.42);
-  font-size:8px;
-  font-weight:700;
-  letter-spacing:1.6px;
-  text-transform:uppercase;
-}
-.contact-value{
-  margin:0;
-  color:var(--ivory);
-  font-size:12px;
-  line-height:1.7;
-}
-.contact-value a{
-  color:var(--gold2);
-  text-decoration:none;
-}
-.contact-value a:hover{text-decoration:underline}
-.address{max-width:530px}
-.action-row{
-  display:flex;
-  gap:9px;
-  flex-wrap:wrap;
-  margin-top:22px;
-}
-.small-btn{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  min-height:40px;
-  padding:0 15px;
-  border:1px solid rgba(212,175,55,.3);
-  color:var(--gold2);
-  text-decoration:none;
-  font-size:8px;
-  font-weight:700;
-  letter-spacing:1px;
-  text-transform:uppercase;
-  transition:.25s;
-}
-.small-btn.primary{background:var(--gold);color:#170008;border-color:var(--gold)}
-.small-btn:hover{transform:translateY(-2px)}
 
-.concierge{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  min-height:100%;
-}
-.concierge-badge{
-  width:54px;height:54px;
-  display:grid;place-items:center;
-  border:1px solid rgba(212,175,55,.32);
-  border-radius:50%;
-  color:var(--gold2);
-  background:radial-gradient(circle,rgba(212,175,55,.12),rgba(212,175,55,.025));
-  font-size:19px;
-  margin-bottom:22px;
-}
-.concierge h3{
-  margin:0 0 10px;
-  font:500 25px Cinzel,serif;
-}
-.concierge p{
-  margin:0;
-  color:var(--muted);
-  font-size:12px;
-  line-height:1.9;
-}
-.concierge-quote{
-  margin:24px 0;
-  padding:17px 0 17px 18px;
-  border-left:1px solid var(--gold);
-  color:rgba(248,243,233,.78);
-  font:400 14px/1.8 Cinzel,serif;
-}
-.concierge-note{
-  margin-top:3px;
-  color:rgba(255,255,255,.4);
-  font-size:8px;
-  letter-spacing:1px;
-  text-transform:uppercase;
-}
+/* =========================
+   FOOTER
+========================= */
 
-/* Map / visit */
-.visit-section{
-  padding:0 0 86px;
-}
-.visit-card{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  min-height:300px;
-  border:1px solid var(--line);
-  background:linear-gradient(120deg,rgba(212,175,55,.075),rgba(255,255,255,.025));
-  overflow:hidden;
-}
-.visit-copy{padding:38px}
-.visit-copy h2{
-  margin:9px 0 11px;
-  font:500 28px Cinzel,serif;
-}
-.visit-copy p{
-  margin:0;
-  color:var(--muted);
-  font-size:12px;
-  line-height:1.9;
-}
-.map-visual{
-  position:relative;
-  min-height:300px;
-  display:grid;
-  place-items:center;
-  overflow:hidden;
-  background:
-    radial-gradient(circle at 50% 50%,rgba(212,175,55,.13),transparent 27%),
-    radial-gradient(circle at 20% 80%,rgba(108,0,42,.28),transparent 35%),
-    #130007;
-  border-left:1px solid rgba(212,175,55,.13);
-}
-.map-visual:before,.map-visual:after{
-  content:"";
-  position:absolute;
-  border:1px solid rgba(212,175,55,.1);
-  border-radius:50%;
-}
-.map-visual:before{width:230px;height:230px}
-.map-visual:after{width:390px;height:390px}
-.map-pin{
-  position:relative;
-  z-index:1;
-  width:62px;height:62px;
-  display:grid;place-items:center;
-  border-radius:50%;
-  background:linear-gradient(135deg,#f1d77c,#c79d20);
-  color:#170008;
-  box-shadow:0 0 0 10px rgba(212,175,55,.08),0 20px 45px rgba(0,0,0,.4);
-  font-size:22px;
-}
-.map-label{
-  position:absolute;
-  z-index:1;
-  bottom:28px;
-  left:28px;
-  right:28px;
-  text-align:center;
-  color:rgba(248,243,233,.55);
-  font-size:8px;
-  letter-spacing:1.5px;
-  text-transform:uppercase;
-}
-
-/* Final CTA */
-.cta{
-  margin:0 auto 80px;
-  max-width:980px;
-  padding:50px 26px;
-  text-align:center;
-  border:1px solid var(--line);
-  background:linear-gradient(120deg,rgba(212,175,55,.075),rgba(255,255,255,.025));
-  position:relative;
-  overflow:hidden;
-}
-.cta:before{
-  content:"";
-  position:absolute;
-  inset:8px;
-  border:1px solid rgba(212,175,55,.07);
-  pointer-events:none;
-}
-.cta h2{
-  position:relative;
-  margin:0 0 9px;
-  font:500 28px Cinzel,serif;
-}
-.cta p{
-  position:relative;
-  margin:0 auto 22px;
-  max-width:620px;
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.8;
-}
-
-/* Footer */
 .footer{
   border-top:1px solid var(--line);
   padding:45px 0 24px;
   text-align:center;
   background:rgba(5,0,3,.5);
 }
-.footer img{width:58px}
+
+.footer img{
+  width:58px;
+}
+
 .footer h3{
   margin:9px 0;
   color:var(--gold);
   font:500 15px Cinzel,serif;
   letter-spacing:1.7px;
 }
-.footer p{color:var(--muted);font-size:10px}
+
+.footer p{
+  color:var(--muted);
+  font-size:10px;
+  line-height:1.8;
+}
+
 .footer-copy{
   margin-top:25px;
   padding-top:17px;
   border-top:1px solid rgba(255,255,255,.06);
 }
 
-/* Floating WhatsApp / Top */
+/* =========================
+   FLOATING WHATSAPP
+========================= */
+
 .floating-whatsapp{
   position:fixed;
-  right:16px;bottom:16px;
-  width:56px;height:56px;
+  right:16px;
+  bottom:16px;
+  width:56px;
+  height:56px;
   border-radius:50%;
-  display:grid;place-items:center;
+  display:grid;
+  place-items:center;
   background:var(--green);
   color:#fff;
   text-decoration:none;
   box-shadow:0 12px 32px rgba(0,0,0,.35);
   z-index:1200;
   font-size:25px;
+  transition:.25s;
 }
+
+.floating-whatsapp:hover{
+  transform:translateY(-3px) scale(1.03);
+}
+
+/* =========================
+   BACK TO TOP
+========================= */
+
 .back-to-top{
   position:fixed;
-  right:16px;bottom:84px;
-  width:48px;height:48px;
+  right:16px;
+  bottom:84px;
+  width:48px;
+  height:48px;
   border-radius:50%;
-  display:grid;place-items:center;
+  display:grid;
+  place-items:center;
   background:rgba(18,0,8,.88);
   border:1px solid rgba(212,175,55,.48);
   color:var(--gold2);
@@ -541,20 +645,45 @@ a{color:inherit}
   transition:.25s;
   backdrop-filter:blur(10px);
 }
-.back-to-top.show{opacity:1;visibility:visible;transform:translateY(0)}
-.back-to-top:hover{background:var(--gold);color:#170008;transform:translateY(-2px)}
 
-/* Responsive */
-@media(max-width:1000px){
-  .navbar{gap:18px}
-  .contact-layout{grid-template-columns:1fr}
+.back-to-top.show{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
 }
+
+.back-to-top:hover{
+  background:var(--gold);
+  color:#170008;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:1000px){
+
+  .navbar{
+    gap:18px;
+  }
+
+}
+
 @media(max-width:760px){
-  .container{width:min(100% - 28px,560px)}
-  .header-container{min-height:68px}
+
+  .container{
+    width:min(100% - 28px,560px);
+  }
+
+  .header-container{
+    min-height:68px;
+  }
+
   .navbar{
     position:absolute;
-    left:14px;right:14px;top:100%;
+    left:14px;
+    right:14px;
+    top:100%;
     display:none;
     flex-direction:column;
     align-items:stretch;
@@ -563,311 +692,514 @@ a{color:inherit}
     border:1px solid var(--line);
     padding:7px;
   }
-  .navbar.open{display:flex}
-  .navbar a{padding:14px;border-bottom:1px solid rgba(255,255,255,.05)}
-  .navbar a.active:after{display:none}
-  .header-whatsapp{display:none}
-  .menu-toggle{display:block}
-  .logo img{width:43px;height:43px}
-  .logo-text h1{font-size:14px}
-  .hero{min-height:430px;padding:65px 0 55px}
-  .hero h1{font-size:39px}
-  .hero p{font-size:13px}
-  .hero-actions{flex-direction:column;max-width:270px;margin:24px auto 0}
-  .section{padding:55px 0 68px}
-  .panel-inner{padding:25px 20px}
-  .panel-title{font-size:24px}
-  .visit-card{grid-template-columns:1fr}
-  .map-visual{border-left:0;border-top:1px solid rgba(212,175,55,.13);min-height:250px}
-  .visit-copy{padding:28px 22px}
-  .cta{margin-bottom:68px;padding:42px 20px}
-  .floating-whatsapp{width:52px;height:52px;right:13px;bottom:13px;font-size:22px}
-  .back-to-top{right:13px;bottom:77px}
+
+  .navbar.open{
+    display:flex;
+  }
+
+  .navbar a{
+    padding:14px;
+    border-bottom:1px solid rgba(255,255,255,.05);
+  }
+
+  .navbar a.active:after{
+    display:none;
+  }
+
+  .header-whatsapp{
+    display:none;
+  }
+
+  .menu-toggle{
+    display:block;
+  }
+
+  .logo img{
+    width:43px;
+    height:43px;
+  }
+
+  .logo-text h1{
+    font-size:14px;
+  }
+
+  .hero{
+    min-height:390px;
+    padding:65px 0 55px;
+  }
+
+  .hero h1{
+    font-size:39px;
+  }
+
+  .hero p{
+    font-size:13px;
+  }
+
+  .section{
+    padding:55px 0 68px;
+  }
+
+  .section-head h2{
+    font-size:28px;
+  }
+
+  .contact-grid{
+    grid-template-columns:1fr;
+    gap:13px;
+  }
+
+  .whatsapp-card{
+    grid-column:auto;
+    display:block;
+    padding:28px 22px;
+  }
+
+  .whatsapp-left{
+    align-items:flex-start;
+    margin-bottom:22px;
+  }
+
+  .whatsapp-button{
+    width:100%;
+  }
+
+  .address-section{
+    padding:35px 20px;
+    margin-top:35px;
+  }
+
+  .cta{
+    margin-bottom:60px;
+    padding:42px 20px;
+  }
+
+  .floating-whatsapp{
+    width:52px;
+    height:52px;
+    right:13px;
+    bottom:13px;
+    font-size:22px;
+  }
+
+  .back-to-top{
+    right:13px;
+    bottom:77px;
+  }
+
 }
+
 @media(max-width:390px){
-  .hero h1{font-size:34px}
-  .contact-item{padding:14px 12px}
+
+  .hero h1{
+    font-size:34px;
+  }
+
+  .contact-card{
+    padding:25px 20px;
+  }
+
 }
+
 </style>
 </head>
 
 <body id="top">
 
-<div id="page-loader">
-  <div class="loader-inner">
-    <img src="Logo.png" alt="Suvarna Jewellers">
-    <div class="loader-line"></div>
-    <div class="loader-text">SUVARNA JEWELLERS</div>
-  </div>
-</div>
+<!-- =========================
+     HEADER
+========================= -->
 
 <header class="header">
+
   <div class="container header-container">
-    <a class="logo" href="index.html" aria-label="Suvarna Jewellers Home">
+
+    <a href="index.html" class="logo">
+
       <img src="Logo.png" alt="Suvarna Jewellers">
+
       <div class="logo-text">
         <h1>SUVARNA JEWELLERS</h1>
         <span>Gold &amp; Silver Jewellery</span>
       </div>
+
     </a>
 
     <nav class="navbar" id="navbar">
+
       <a href="index.html">Home</a>
+
       <a href="collections.html">Collections</a>
+
       <a href="ready-stock.html">Ready Stock</a>
+
       <a href="about.html">About</a>
+
       <a href="contact.html" class="active">Contact</a>
+
     </nav>
 
     <div class="header-right">
-      <a class="header-whatsapp" href="https://wa.me/917777991118" target="_blank" rel="noopener">WhatsApp</a>
-      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open Menu" aria-expanded="false">☰</button>
+
+      <a
+        class="header-whatsapp"
+        href="https://wa.me/917777991118"
+        target="_blank"
+        rel="noopener"
+      >
+        WhatsApp
+      </a>
+
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Open Menu"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+
     </div>
+
   </div>
+
 </header>
+
+
+<!-- =========================
+     MAIN
+========================= -->
 
 <main>
 
-<section class="hero">
-  <div class="hero-inner">
-    <div class="eyebrow">PRIVATE CLIENT ENQUIRIES</div>
-    <h1>Connect With<br><span>Suvarna Jewellers.</span></h1>
-    <p>
-      For wholesale requirements, ready stock, product enquiries and Pan India supply,
-      connect directly with our team through WhatsApp or email.
-    </p>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="https://wa.me/917777991118?text=Hello%20Suvarna%20Jewellers%2C%20I%20would%20like%20to%20make%20an%20enquiry." target="_blank" rel="noopener">
-        WhatsApp Concierge
-      </a>
-      <a class="btn btn-outline" href="mailto:suvarna2003@hotmail.com?subject=Enquiry%20for%20Suvarna%20Jewellers">
-        Email The House
-      </a>
-    </div>
-  </div>
-</section>
+  <!-- HERO -->
 
-<section class="section">
-  <div class="container">
+  <section class="hero">
 
-    <div class="section-head">
-      <div class="eyebrow">CONTACT</div>
-      <h2>Speak Directly With Our Team</h2>
+    <div class="hero-inner">
+
+      <div class="eyebrow">
+        SUVARNA JEWELLERS
+      </div>
+
+      <h1>
+        Let’s Begin<br>
+        <span>A Conversation.</span>
+      </h1>
+
       <p>
-        We keep enquiries direct and personal. Share your product requirement,
-        catalogue request or wholesale enquiry and our team will assist you.
+        For jewellery enquiries, ready stock, wholesale requirements
+        and business enquiries, connect directly with our team.
       </p>
-    </div>
-
-    <div class="contact-layout">
-
-      <article class="contact-panel">
-        <div class="panel-inner">
-          <div class="panel-kicker">THE HOUSE OF SUVARNA</div>
-          <h2 class="panel-title">A Direct Line To Our Team</h2>
-          <p class="panel-copy">
-            Whether you are looking for a specific design, ready stock availability,
-            wholesale supply or product information, choose the channel that is most convenient for you.
-          </p>
-
-          <div class="contact-list">
-
-            <div class="contact-item">
-              <div class="contact-icon"><i class="fa-brands fa-whatsapp"></i></div>
-              <div>
-                <p class="contact-label">WhatsApp Concierge</p>
-                <p class="contact-value">
-                  <a href="https://wa.me/917777991118" target="_blank" rel="noopener">+91 77779 91118</a>
-                </p>
-              </div>
-            </div>
-
-            <div class="contact-item">
-              <div class="contact-icon"><i class="fa-regular fa-envelope"></i></div>
-              <div>
-                <p class="contact-label">Private Client Email</p>
-                <p class="contact-value">
-                  <a href="mailto:suvarna2003@hotmail.com?subject=Enquiry%20for%20Suvarna%20Jewellers">suvarna2003@hotmail.com</a>
-                </p>
-              </div>
-            </div>
-
-            <div class="contact-item">
-              <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
-              <div>
-                <p class="contact-label">Business Address</p>
-                <p class="contact-value address">
-                  3/672/A, Navkar House,<br>
-                  In The Line of Naresh Bhelwala,<br>
-                  Daliya Sheri, Navapura, Bhagal,<br>
-                  Surat, Gujarat 395003, India
-                </p>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="action-row">
-            <a class="small-btn primary" href="https://wa.me/917777991118?text=Hello%20Suvarna%20Jewellers%2C%20I%20would%20like%20to%20make%20an%20enquiry." target="_blank" rel="noopener">
-              <i class="fa-brands fa-whatsapp"></i> Start Enquiry
-            </a>
-            <a class="small-btn" href="mailto:suvarna2003@hotmail.com?subject=Enquiry%20for%20Suvarna%20Jewellers">
-              <i class="fa-regular fa-envelope"></i> Send Email
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <article class="contact-panel">
-        <div class="panel-inner concierge">
-          <div class="concierge-badge"><i class="fa-solid fa-gem"></i></div>
-          <div class="panel-kicker">PRIVATE CLIENT SERVICE</div>
-          <h3>WhatsApp Concierge</h3>
-          <p>
-            For the fastest response, send us your product name, reference image,
-            catalogue requirement or quantity directly on WhatsApp.
-          </p>
-
-          <div class="concierge-quote">
-            “For every enquiry, a direct conversation. For every order, dependable service.”
-          </div>
-
-          <a class="btn btn-primary" href="https://wa.me/917777991118?text=Hello%20Suvarna%20Jewellers%2C%20I%20would%20like%20to%20make%20an%20enquiry." target="_blank" rel="noopener">
-            Chat With Suvarna
-          </a>
-
-          <div class="concierge-note">
-            Gold · Silver · Rudraksha · Tulsi · Ready Stock · Wholesale
-          </div>
-        </div>
-      </article>
 
     </div>
-  </div>
-</section>
 
-<section class="visit-section">
-  <div class="container">
-    <div class="visit-card">
+  </section>
 
-      <div class="visit-copy">
-        <div class="eyebrow">VISIT THE HOUSE</div>
-        <h2>Our Business Address</h2>
+
+  <!-- CONTACT -->
+
+  <section class="section">
+
+    <div class="container">
+
+      <div class="section-head">
+
+        <div class="eyebrow">
+          CONTACT
+        </div>
+
+        <h2>
+          Connect With Suvarna
+        </h2>
+
         <p>
-          3/672/A, Navkar House, In The Line of Naresh Bhelwala,
-          Daliya Sheri, Navapura, Bhagal, Surat, Gujarat 395003, India.
+          Choose the channel that is most convenient for you.
+          Our team is available for genuine jewellery and business enquiries.
         </p>
 
-        <div class="action-row">
-          <a class="small-btn primary"
-             href="https://maps.app.goo.gl/PSsVvBtYW7FRuKya9"
-             target="_blank" rel="noopener">
-            <i class="fa-solid fa-location-arrow"></i> Open In Maps
-          </a>
-        </div>
       </div>
 
-      <div class="map-visual" aria-label="Suvarna Jewellers location">
-        <div class="map-pin"><i class="fa-solid fa-location-dot"></i></div>
-        <div class="map-label">Surat · Gujarat · India</div>
+
+      <div class="contact-grid">
+
+
+        <!-- EMAIL -->
+
+        <article class="contact-card">
+
+          <div class="contact-icon">
+            <i class="fa-regular fa-envelope"></i>
+          </div>
+
+          <h3>
+            Email
+          </h3>
+
+          <p>
+            For business enquiries, product requirements,
+            catalogue requests and general enquiries.
+          </p>
+
+          <a href="mailto:jewellerssuvarna@gmail.com">
+            jewellerssuvarna@gmail.com
+          </a>
+
+        </article>
+
+
+        <!-- PHONE -->
+
+        <article class="contact-card">
+
+          <div class="contact-icon">
+            <i class="fa-solid fa-phone"></i>
+          </div>
+
+          <h3>
+            Phone
+          </h3>
+
+          <p>
+            Speak directly with Suvarna Jewellers
+            for your jewellery and business requirements.
+          </p>
+
+          <a href="tel:+917777991118">
+            +91 77779 91118
+          </a>
+
+        </article>
+
+
+        <!-- WHATSAPP -->
+
+        <article class="whatsapp-card">
+
+          <div class="whatsapp-left">
+
+            <div class="whatsapp-icon">
+              <i class="fa-brands fa-whatsapp"></i>
+            </div>
+
+            <div class="whatsapp-text">
+
+              <h3>
+                WhatsApp Enquiry
+              </h3>
+
+              <p>
+                The fastest way to enquire about ready stock,
+                products, wholesale requirements and availability.
+              </p>
+
+            </div>
+
+          </div>
+
+          <a
+            class="whatsapp-button"
+            href="https://wa.me/917777991118?text=Hello%20Suvarna%20Jewellers%2C%20I%20would%20like%20to%20make%20an%20enquiry."
+            target="_blank"
+            rel="noopener"
+          >
+            <i class="fa-brands fa-whatsapp"></i>
+            Start Enquiry
+          </a>
+
+        </article>
+
+
+      </div>
+
+
+      <!-- BUSINESS ADDRESS -->
+
+      <div class="address-section">
+
+        <div class="contact-icon">
+          <i class="fa-solid fa-location-dot"></i>
+        </div>
+
+        <h3>
+          Visit Suvarna Jewellers
+        </h3>
+
+        <p>
+          Our business address in Surat, Gujarat.
+        </p>
+
+        <p class="address">
+          3/672/A, Navkar House,<br>
+          In The Line of Naresh Bhelwala,<br>
+          Daliya Sheri, Navapura, Bhagal,<br>
+          Surat, Gujarat 395003, India
+        </p>
+
       </div>
 
     </div>
-  </div>
-</section>
 
-<section class="cta">
-  <h2>Looking For A Specific Design?</h2>
-  <p>
-    Send us the product name, reference image or quantity requirement.
-    Our team can assist with availability and wholesale enquiries.
-  </p>
-  <a class="btn btn-primary"
-     href="https://wa.me/917777991118?text=Hello%20Suvarna%20Jewellers%2C%20I%20am%20looking%20for%20a%20specific%20jewellery%20design."
-     target="_blank" rel="noopener">
-    Talk To Suvarna
-  </a>
-</section>
+  </section>
+
+
+  <!-- CTA -->
+
+  <section class="cta">
+
+    <h2>
+      Looking For A Specific Design?
+    </h2>
+
+    <p>
+      Send us the product name, reference image or your jewellery
+      requirement and our team will assist you directly.
+    </p>
+
+    <a
+      class="btn btn-primary"
+      href="https://wa.me/917777991118?text=Hello%20Suvarna%20Jewellers%2C%20I%20am%20looking%20for%20a%20specific%20jewellery%20design."
+      target="_blank"
+      rel="noopener"
+    >
+      Talk To Suvarna
+    </a>
+
+  </section>
 
 </main>
 
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer class="footer">
+
   <div class="container">
-    <img src="Logo.png" alt="Suvarna Jewellers">
-    <h3>SUVARNA JEWELLERS</h3>
-    <p>Gold &amp; Silver Jewellery Manufacturer · Trusted Since 2003 · Pan India Supply</p>
-    <p class="footer-copy">© 2003–2026 SUVARNA JEWELLERS. All Rights Reserved.</p>
+
+    <img
+      src="Logo.png"
+      alt="Suvarna Jewellers"
+    >
+
+    <h3>
+      SUVARNA JEWELLERS
+    </h3>
+
+    <p>
+      Gold &amp; Silver Jewellery Manufacturer ·
+      Trusted Since 2003 · Pan India Supply
+    </p>
+
+    <p>
+      Surat, Gujarat · India
+    </p>
+
+    <p class="footer-copy">
+      © 2003–2026 SUVARNA JEWELLERS.
+      All Rights Reserved.
+    </p>
+
   </div>
+
 </footer>
 
-<a class="floating-whatsapp"
-   href="https://wa.me/917777991118"
-   target="_blank"
-   rel="noopener"
-   aria-label="WhatsApp">
+
+<!-- FLOATING WHATSAPP -->
+
+<a
+  class="floating-whatsapp"
+  href="https://wa.me/917777991118"
+  target="_blank"
+  rel="noopener"
+  aria-label="WhatsApp"
+>
   <i class="fa-brands fa-whatsapp"></i>
 </a>
 
-<a class="back-to-top" id="backToTop" href="#top" aria-label="Back to top">
+
+<!-- BACK TO TOP -->
+
+<a
+  class="back-to-top"
+  id="backToTop"
+  href="#top"
+  aria-label="Back to top"
+>
   <i class="fa-solid fa-chevron-up"></i>
 </a>
 
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
 <script>
+
 (function(){
-  const loader=document.getElementById('page-loader');
-  const toggle=document.getElementById('menuToggle');
-  const nav=document.getElementById('navbar');
-  const start=Date.now();
-  const min=900;
 
-  function hideLoader(){
-    if(!loader)return;
-    const wait=Math.max(0,min-(Date.now()-start));
-    setTimeout(()=>loader.classList.add('hide'),wait);
-  }
+  const toggle = document.getElementById("menuToggle");
+  const nav = document.getElementById("navbar");
 
-  if(document.readyState==='complete') hideLoader();
-  else window.addEventListener('load',hideLoader,{once:true});
+  if(toggle && nav){
 
-  setTimeout(()=>loader&&loader.classList.add('hide'),5000);
+    toggle.addEventListener("click",function(){
 
-  if(toggle&&nav){
-    toggle.addEventListener('click',function(){
-      const open=nav.classList.toggle('open');
-      toggle.setAttribute('aria-expanded',open?'true':'false');
-      toggle.setAttribute('aria-label',open?'Close Menu':'Open Menu');
-      toggle.innerHTML=open?'&times;':'☰';
+      const open = nav.classList.toggle("open");
+
+      toggle.setAttribute(
+        "aria-expanded",
+        open ? "true" : "false"
+      );
+
+      toggle.innerHTML = open ? "&times;" : "☰";
+
     });
 
-    nav.querySelectorAll('a').forEach(function(link){
-      link.addEventListener('click',function(){
-        nav.classList.remove('open');
-        toggle.setAttribute('aria-expanded','false');
-        toggle.setAttribute('aria-label','Open Menu');
-        toggle.innerHTML='☰';
-      });
-    });
   }
+
 })();
-</script>
 
-<script>
+
+/* Back To Top */
+
 (function(){
-  const b=document.getElementById('backToTop');
-  if(!b)return;
+
+  const button = document.getElementById("backToTop");
+
+  if(!button) return;
 
   function sync(){
-    b.classList.toggle('show',window.scrollY>520);
+
+    button.classList.toggle(
+      "show",
+      window.scrollY > 520
+    );
+
   }
 
-  window.addEventListener('scroll',sync,{passive:true});
+  window.addEventListener(
+    "scroll",
+    sync,
+    {passive:true}
+  );
+
   sync();
 
-  b.addEventListener('click',function(e){
+  button.addEventListener("click",function(e){
+
     e.preventDefault();
-    window.scrollTo({top:0,behavior:'smooth'});
+
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
+
   });
+
 })();
+
 </script>
 
 </body>
