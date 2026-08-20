@@ -1,6 +1,6 @@
 /* ==========================================
    SUVARNA JEWELLERS
-   PRODUCT.JS — PREMIUM PRODUCT PAGE
+   PRODUCT.JS — FINAL CLEAN VERSION
 ========================================== */
 
 let currentProduct = null;
@@ -9,16 +9,16 @@ let productImages = [];
 let currentImageIndex = 0;
 
 
-/* ==========================
+/* ==========================================
    INITIALIZE
-========================== */
+========================================== */
 
 document.addEventListener("DOMContentLoaded", initProductPage);
 
 
-async function initProductPage(){
+async function initProductPage() {
 
-    try{
+    try {
 
         const params = new URLSearchParams(
             window.location.search
@@ -27,11 +27,11 @@ async function initProductPage(){
         const productId = (params.get("id") || "").trim();
 
 
-        /* ==========================
-           MISSING PRODUCT ID
-        ========================== */
+        /* --------------------------------------
+           MISSING ID
+        -------------------------------------- */
 
-        if(!productId){
+        if (!productId) {
 
             showProductError(
                 "Product Not Found",
@@ -39,18 +39,17 @@ async function initProductPage(){
             );
 
             return;
-
         }
 
 
-        /* ==========================
+        /* --------------------------------------
            LOAD PRODUCTS
-        ========================== */
+        -------------------------------------- */
 
         products = await getProducts();
 
 
-        if(!Array.isArray(products) || !products.length){
+        if (!Array.isArray(products) || !products.length) {
 
             showProductError(
                 "Products Unavailable",
@@ -58,20 +57,19 @@ async function initProductPage(){
             );
 
             return;
-
         }
 
 
-        /* ==========================
+        /* --------------------------------------
            FIND PRODUCT
-        ========================== */
+        -------------------------------------- */
 
         currentProduct = products.find(product =>
             String(product.id).trim() === productId
         );
 
 
-        if(!currentProduct){
+        if (!currentProduct) {
 
             showProductError(
                 "Product Not Found",
@@ -79,13 +77,12 @@ async function initProductPage(){
             );
 
             return;
-
         }
 
 
-        /* ==========================
-           RENDER
-        ========================== */
+        /* --------------------------------------
+           RENDER PRODUCT
+        -------------------------------------- */
 
         renderProduct(currentProduct);
 
@@ -97,7 +94,7 @@ async function initProductPage(){
 
     }
 
-    catch(error){
+    catch (error) {
 
         console.error(
             "Product Page Error:",
@@ -114,22 +111,134 @@ async function initProductPage(){
 }
 
 
-/* ==========================
+/* ==========================================
    GET ELEMENT
-========================== */
+========================================== */
 
-function getEl(id){
+function getEl(id) {
 
     return document.getElementById(id);
 
 }
 
 
-/* ==========================
-   RENDER PRODUCT
-========================== */
+/* ==========================================
+   NORMALIZE IMAGE PATH
+   Prevents duplicate images caused by
+   slightly different paths.
+========================================== */
 
-function renderProduct(product){
+function normalizeImagePath(path) {
+
+    if (!path) {
+        return "";
+    }
+
+    return String(path)
+        .trim()
+        .replace(/^\.?\//, "")
+        .replace(/\\/g, "/")
+        .toLowerCase();
+
+}
+
+
+/* ==========================================
+   SAFE IMAGE PATH
+========================================== */
+
+function getSafeImagePath(path) {
+
+    if (typeof getImage === "function") {
+
+        return getImage(path);
+
+    }
+
+    return path ||
+        "assets/images/no-image.jpg";
+
+}
+
+
+/* ==========================================
+   BUILD UNIQUE IMAGE LIST
+========================================== */
+
+function buildProductImages(product) {
+
+    const images = [];
+
+    const seen = new Set();
+
+
+    /* --------------------------------------
+       MAIN PRODUCT IMAGE
+       ALWAYS COMES FIRST
+    -------------------------------------- */
+
+    if (product.image) {
+
+        const key =
+            normalizeImagePath(product.image);
+
+        if (key && !seen.has(key)) {
+
+            seen.add(key);
+
+            images.push(
+                product.image
+            );
+
+        }
+
+    }
+
+
+    /* --------------------------------------
+       GALLERY IMAGES
+       Duplicate main image automatically
+       removed.
+    -------------------------------------- */
+
+    if (Array.isArray(product.gallery)) {
+
+        product.gallery.forEach(image => {
+
+            if (!image) {
+                return;
+            }
+
+            const key =
+                normalizeImagePath(image);
+
+            if (!key) {
+                return;
+            }
+
+            if (seen.has(key)) {
+                return;
+            }
+
+            seen.add(key);
+
+            images.push(image);
+
+        });
+
+    }
+
+
+    return images;
+
+}
+
+
+/* ==========================================
+   RENDER PRODUCT
+========================================== */
+
+function renderProduct(product) {
 
     const mainImage =
         getEl("mainImage");
@@ -156,23 +265,25 @@ function renderProduct(product){
         getEl("productSize");
 
 
-    if(category){
+    if (category) {
 
         category.textContent =
-            product.category || "Jewellery";
+            product.category ||
+            "Jewellery";
 
     }
 
 
-    if(name){
+    if (name) {
 
         name.textContent =
-            product.name || "Suvarna Jewellers";
+            product.name ||
+            "Suvarna Jewellers";
 
     }
 
 
-    if(description){
+    if (description) {
 
         description.textContent =
             product.description ||
@@ -181,83 +292,62 @@ function renderProduct(product){
     }
 
 
-    if(metal){
+    if (metal) {
 
         metal.textContent =
-            product.metal || "-";
+            product.metal ||
+            "-";
 
     }
 
 
-    if(grossWeight){
+    if (grossWeight) {
 
         grossWeight.textContent =
-            product.grossWeight || "-";
+            product.grossWeight ||
+            "-";
 
     }
 
 
-    if(netWeight){
+    if (netWeight) {
 
         netWeight.textContent =
-            product.netWeight || "-";
+            product.netWeight ||
+            "-";
 
     }
 
 
-    if(size){
+    if (size) {
 
         size.textContent =
-            product.size || "-";
+            product.size ||
+            "-";
 
     }
 
 
-    /* ==========================
-       PRODUCT IMAGES
-    ========================== */
+    /* --------------------------------------
+       BUILD UNIQUE IMAGES
+    -------------------------------------- */
 
-    productImages = [];
-
-
-    if(product.image){
-
-        productImages.push(
-            product.image
-        );
-
-    }
-
-
-    if(Array.isArray(product.gallery)){
-
-        productImages.push(
-            ...product.gallery
-        );
-
-    }
-
-
-    productImages = [
-        ...new Set(
-            productImages
-                .filter(Boolean)
-                .map(image =>
-                    String(image).trim()
-                )
-                .filter(Boolean)
-        )
-    ];
+    productImages =
+        buildProductImages(product);
 
 
     currentImageIndex = 0;
 
 
-    if(mainImage){
+    /* --------------------------------------
+       MAIN IMAGE
+    -------------------------------------- */
+
+    if (mainImage) {
 
         mainImage.alt =
             product.name ||
-            "Jewellery product";
+            "Jewellery Product";
 
         mainImage.loading =
             "eager";
@@ -266,7 +356,7 @@ function renderProduct(product){
             "async";
 
 
-        if(productImages.length){
+        if (productImages.length) {
 
             mainImage.style.cursor =
                 "zoom-in";
@@ -278,7 +368,7 @@ function renderProduct(product){
 
         }
 
-        else{
+        else {
 
             setImageFallback(
                 mainImage
@@ -289,63 +379,43 @@ function renderProduct(product){
     }
 
 
+    /* --------------------------------------
+       THUMBNAILS
+    -------------------------------------- */
+
     createThumbnails();
 
-    createWhatsappButton(
-        product
-    );
 
-    createCallButton(
-        product
-    );
+    /* --------------------------------------
+       ACTION BUTTONS
+    -------------------------------------- */
 
-}
+    createWhatsappButton(product);
 
-
-/* ==========================
-   IMAGE PATH
-========================== */
-
-function getSafeImagePath(path){
-
-    if(typeof getImage === "function"){
-
-        return getImage(path);
-
-    }
-
-
-    if(path){
-
-        return path;
-
-    }
-
-
-    return "assets/images/no-image.jpg";
+    createCallButton(product);
 
 }
 
 
-/* ==========================
+/* ==========================================
    IMAGE FALLBACK
-========================== */
+========================================== */
 
 function setImageFallback(
     imageElement
-){
+) {
 
-    if(!imageElement){
-
+    if (!imageElement) {
         return;
-
     }
 
 
     imageElement.onerror = null;
 
+
     imageElement.src =
         "assets/images/no-image.jpg";
+
 
     imageElement.alt =
         "Image unavailable";
@@ -353,26 +423,25 @@ function setImageFallback(
 }
 
 
-/* ==========================
+/* ==========================================
    SET MAIN IMAGE
-========================== */
+========================================== */
 
 function setMainImage(
     index,
     animate = true
-){
+) {
 
     const mainImage =
         getEl("mainImage");
 
 
-    if(
+    if (
         !mainImage ||
         !productImages[index]
-    ){
+    ) {
 
         return;
-
     }
 
 
@@ -386,7 +455,7 @@ function setMainImage(
         );
 
 
-    if(animate){
+    if (animate) {
 
         mainImage.style.opacity =
             "0";
@@ -398,14 +467,14 @@ function setMainImage(
         new Image();
 
 
-    preloader.onload = function(){
+    preloader.onload = function () {
 
         mainImage.src =
             src;
 
         mainImage.alt =
             currentProduct?.name ||
-            "Jewellery product";
+            "Jewellery Product";
 
 
         mainImage.style.opacity =
@@ -417,14 +486,16 @@ function setMainImage(
     };
 
 
-    preloader.onerror = function(){
+    preloader.onerror = function () {
 
         setImageFallback(
             mainImage
         );
 
+
         mainImage.style.opacity =
             "1";
+
 
         updateThumbnailState();
 
@@ -437,27 +508,55 @@ function setMainImage(
 }
 
 
-/* ==========================
+/* ==========================================
    CREATE THUMBNAILS
-========================== */
+========================================== */
 
-function createThumbnails(){
+function createThumbnails() {
 
     const container =
         getEl("thumbnailContainer");
 
 
-    if(!container){
-
+    if (!container) {
         return;
-
     }
 
 
     container.innerHTML = "";
 
 
-    if(!productImages.length){
+    /* --------------------------------------
+       NO GALLERY
+    -------------------------------------- */
+
+    if (!productImages.length) {
+
+        container.hidden = true;
+
+        return;
+
+    }
+
+
+    /*
+       IMPORTANT:
+
+       Main image stays as the large image.
+
+       Thumbnail container only contains
+       additional UNIQUE gallery images.
+
+       Therefore the main image itself is NOT
+       repeated as a thumbnail.
+    */
+
+
+    const thumbnailImages =
+        productImages.slice(1);
+
+
+    if (!thumbnailImages.length) {
 
         container.hidden = true;
 
@@ -469,8 +568,12 @@ function createThumbnails(){
     container.hidden = false;
 
 
-    productImages.forEach(
-        (image,index)=>{
+    thumbnailImages.forEach(
+        (image, index) => {
+
+            const actualIndex =
+                index + 1;
+
 
             const button =
                 document.createElement(
@@ -488,7 +591,7 @@ function createThumbnails(){
 
             button.setAttribute(
                 "aria-label",
-                `View product image ${index + 1}`
+                `View product image ${actualIndex + 1}`
             );
 
 
@@ -505,13 +608,11 @@ function createThumbnails(){
 
 
             img.alt =
-                `${currentProduct?.name || "Product"} image ${index + 1}`;
+                `${currentProduct?.name || "Product"} image ${actualIndex + 1}`;
 
 
             img.loading =
-                index === 0
-                    ? "eager"
-                    : "lazy";
+                "lazy";
 
 
             img.decoding =
@@ -519,10 +620,9 @@ function createThumbnails(){
 
 
             img.onerror =
-                function(){
+                function () {
 
-                    button.hidden =
-                        true;
+                    button.remove();
 
                 };
 
@@ -534,10 +634,10 @@ function createThumbnails(){
 
             button.addEventListener(
                 "click",
-                function(){
+                function () {
 
                     setMainImage(
-                        index,
+                        actualIndex,
                         true
                     );
 
@@ -558,11 +658,11 @@ function createThumbnails(){
 }
 
 
-/* ==========================
-   UPDATE THUMBNAIL STATE
-========================== */
+/* ==========================================
+   THUMBNAIL ACTIVE STATE
+========================================== */
 
-function updateThumbnailState(){
+function updateThumbnailState() {
 
     const thumbnails =
         document.querySelectorAll(
@@ -570,11 +670,25 @@ function updateThumbnailState(){
         );
 
 
+    /*
+       Since main image is NOT displayed
+       as a thumbnail:
+
+       thumbnail 0 = productImages[1]
+       thumbnail 1 = productImages[2]
+       etc.
+    */
+
     thumbnails.forEach(
-        (button,index)=>{
+        (button, index) => {
+
+            const imageIndex =
+                index + 1;
+
 
             const active =
-                index === currentImageIndex;
+                imageIndex ===
+                currentImageIndex;
 
 
             button.classList.toggle(
@@ -596,33 +710,31 @@ function updateThumbnailState(){
 }
 
 
-/* ==========================
-   WHATSAPP
-========================== */
+/* ==========================================
+   WHATSAPP BUTTON
+========================================== */
 
 function createWhatsappButton(
     product
-){
+) {
 
     const button =
         getEl("whatsappButton");
 
 
-    if(!button){
-
+    if (!button) {
         return;
-
     }
 
 
     let phone = "";
 
 
-    if(
+    if (
         typeof CONFIG !== "undefined" &&
         CONFIG.BUSINESS &&
         CONFIG.BUSINESS.phone
-    ){
+    ) {
 
         phone =
             String(
@@ -635,7 +747,7 @@ function createWhatsappButton(
     }
 
 
-    if(!phone){
+    if (!phone) {
 
         phone =
             "917777991118";
@@ -655,12 +767,8 @@ Product ID: ${product.id || "-"}
 Please share price and availability.`;
 
 
-    const whatsappLink =
-        `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-
-
     button.href =
-        whatsappLink;
+        `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 
 
     button.target =
@@ -673,33 +781,31 @@ Please share price and availability.`;
 }
 
 
-/* ==========================
+/* ==========================================
    CALL BUTTON
-========================== */
+========================================== */
 
 function createCallButton(
     product
-){
+) {
 
     const button =
         getEl("callButton");
 
 
-    if(!button){
-
+    if (!button) {
         return;
-
     }
 
 
     let phone = "";
 
 
-    if(
+    if (
         typeof CONFIG !== "undefined" &&
         CONFIG.BUSINESS &&
         CONFIG.BUSINESS.phone
-    ){
+    ) {
 
         phone =
             String(
@@ -712,7 +818,7 @@ function createCallButton(
     }
 
 
-    if(!phone){
+    if (!phone) {
 
         phone =
             "917777991118";
@@ -732,24 +838,23 @@ function createCallButton(
 }
 
 
-/* ==========================
+/* ==========================================
    RELATED PRODUCTS
-========================== */
+========================================== */
 
-function renderRelatedProducts(){
+function renderRelatedProducts() {
 
     const container =
         getEl("relatedProducts");
 
 
-    if(
+    if (
         !container ||
         !currentProduct ||
         !Array.isArray(products)
-    ){
+    ) {
 
         return;
-
     }
 
 
@@ -759,7 +864,8 @@ function renderRelatedProducts(){
     const sameCategory =
         products.filter(
             product =>
-                product.id !== currentProduct.id &&
+                product.id !==
+                    currentProduct.id &&
                 product.category ===
                     currentProduct.category
         );
@@ -768,12 +874,14 @@ function renderRelatedProducts(){
     const sameMetal =
         products.filter(
             product =>
-                product.id !== currentProduct.id &&
+                product.id !==
+                    currentProduct.id &&
                 product.metal ===
                     currentProduct.metal &&
                 !sameCategory.some(
                     item =>
-                        item.id === product.id
+                        item.id ===
+                        product.id
                 )
         );
 
@@ -782,10 +890,13 @@ function renderRelatedProducts(){
         [
             ...sameCategory,
             ...sameMetal
-        ].slice(0,4);
+        ].slice(
+            0,
+            4
+        );
 
 
-    if(!items.length){
+    if (!items.length) {
 
         const empty =
             document.createElement(
@@ -852,7 +963,7 @@ function renderRelatedProducts(){
 
             image.alt =
                 product.name ||
-                "Jewellery product";
+                "Jewellery Product";
 
 
             image.loading =
@@ -864,7 +975,7 @@ function renderRelatedProducts(){
 
 
             image.onerror =
-                function(){
+                function () {
 
                     setImageFallback(
                         image
@@ -940,11 +1051,11 @@ function renderRelatedProducts(){
 }
 
 
-/* ==========================
+/* ==========================================
    LIGHTBOX
-========================== */
+========================================== */
 
-function bindLightbox(){
+function bindLightbox() {
 
     const mainImage =
         getEl("mainImage");
@@ -959,11 +1070,11 @@ function bindLightbox(){
         getEl("lightboxClose");
 
 
-    if(
+    if (
         !mainImage ||
         !lightbox ||
         !lightboxImage
-    ){
+    ) {
 
         return;
 
@@ -972,12 +1083,12 @@ function bindLightbox(){
 
     mainImage.addEventListener(
         "click",
-        function(){
+        function () {
 
-            if(
+            if (
                 !productImages.length ||
                 !mainImage.src
-            ){
+            ) {
 
                 return;
 
@@ -990,7 +1101,7 @@ function bindLightbox(){
 
             lightboxImage.alt =
                 mainImage.alt ||
-                "Jewellery product";
+                "Jewellery Product";
 
 
             lightbox.classList.add(
@@ -1006,7 +1117,7 @@ function bindLightbox(){
     );
 
 
-    if(close){
+    if (close) {
 
         close.addEventListener(
             "click",
@@ -1018,12 +1129,12 @@ function bindLightbox(){
 
     lightbox.addEventListener(
         "click",
-        function(event){
+        function (event) {
 
-            if(
+            if (
                 event.target ===
                 lightbox
-            ){
+            ) {
 
                 closeLightbox();
 
@@ -1035,34 +1146,34 @@ function bindLightbox(){
 
     document.addEventListener(
         "keydown",
-        function(event){
+        function (event) {
 
-            if(
+            if (
                 !lightbox.classList.contains(
                     "show"
                 )
-            ){
+            ) {
 
                 return;
 
             }
 
 
-            if(
+            if (
                 event.key ===
                 "Escape"
-            ){
+            ) {
 
                 closeLightbox();
 
             }
 
 
-            if(
+            if (
                 event.key ===
                 "ArrowLeft" &&
                 currentImageIndex > 0
-            ){
+            ) {
 
                 setMainImage(
                     currentImageIndex - 1,
@@ -1074,12 +1185,12 @@ function bindLightbox(){
             }
 
 
-            if(
+            if (
                 event.key ===
                 "ArrowRight" &&
                 currentImageIndex <
                     productImages.length - 1
-            ){
+            ) {
 
                 setMainImage(
                     currentImageIndex + 1,
@@ -1096,11 +1207,11 @@ function bindLightbox(){
 }
 
 
-/* ==========================
-   SYNC LIGHTBOX
-========================== */
+/* ==========================================
+   LIGHTBOX SYNC
+========================================== */
 
-function syncLightboxImage(){
+function syncLightboxImage() {
 
     const mainImage =
         getEl("mainImage");
@@ -1109,10 +1220,10 @@ function syncLightboxImage(){
         getEl("lightboxImage");
 
 
-    if(
+    if (
         mainImage &&
         lightboxImage
-    ){
+    ) {
 
         lightboxImage.src =
             mainImage.src;
@@ -1126,17 +1237,17 @@ function syncLightboxImage(){
 }
 
 
-/* ==========================
+/* ==========================================
    CLOSE LIGHTBOX
-========================== */
+========================================== */
 
-function closeLightbox(){
+function closeLightbox() {
 
     const lightbox =
         getEl("imageLightbox");
 
 
-    if(lightbox){
+    if (lightbox) {
 
         lightbox.classList.remove(
             "show"
@@ -1152,14 +1263,14 @@ function closeLightbox(){
 }
 
 
-/* ==========================
-   PRODUCT ERROR
-========================== */
+/* ==========================================
+   ERROR STATE
+========================================== */
 
 function showProductError(
     title,
     message
-){
+) {
 
     const pageShell =
         document.querySelector(
@@ -1167,10 +1278,8 @@ function showProductError(
         );
 
 
-    if(!pageShell){
-
+    if (!pageShell) {
         return;
-
     }
 
 
@@ -1266,18 +1375,16 @@ function showProductError(
 }
 
 
-/* ==========================
-   META
-========================== */
+/* ==========================================
+   UPDATE META
+========================================== */
 
 function updatePageMeta(
     product
-){
+) {
 
-    if(!product){
-
+    if (!product) {
         return;
-
     }
 
 
@@ -1306,7 +1413,7 @@ function updatePageMeta(
         );
 
 
-    if(!meta){
+    if (!meta) {
 
         meta =
             document.createElement(
@@ -1331,4 +1438,4 @@ function updatePageMeta(
             160
         );
 
-                }
+}
