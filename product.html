@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Product Details | SUVARNA JEWELLERS</title>
+<meta name="description" content="View premium jewellery product details and enquire directly with Suvarna Jewellers.">
+<meta name="theme-color" content="#2b0015">
+<link rel="icon" href="Logo.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="sj-product-page-body">
+<header class="header">
+  <div class="container header-container">
+    <a class="logo" href="index.html" aria-label="SUVARNA JEWELLERS Home">
+      <img src="Logo.png" alt="SUVARNA JEWELLERS" width="42" height="42">
+      <div class="logo-text">
+        <h1>SUVARNA JEWELLERS</h1>
+        <span>Trusted Since 2003</span>
+      </div>
+    </a>
+    <nav class="navbar" id="navbar" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="collections.html" class="active">Collections</a>
+      <a href="ready-stock.html">Ready Stock</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="header-right">
+      <a class="header-whatsapp" href="https://wa.me/917777991118" target="_blank" rel="noopener">WhatsApp</a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<main id="productPage" class="sj-product-page">
+  <div class="sj-product-wrap">
+    <div id="productContent">
+      <nav class="sj-product-breadcrumb" aria-label="Breadcrumb">
+        <a href="collections.html">Collections</a><span class="sep">/</span><span id="breadcrumbCategory">Product</span>
+      </nav>
+      <a class="sj-product-back" href="collections.html"><span aria-hidden="true">←</span> Back to Collections</a>
+
+      <section class="sj-product-layout" aria-label="Product details">
+        <div class="sj-product-media">
+          <div class="sj-product-main-frame">
+            <img id="mainImage" class="sj-product-main-image" src="" alt="" draggable="false">
+            <span class="sj-product-zoom-hint">Tap to enlarge</span>
+          </div>
+          <div id="thumbnailContainer" class="sj-product-gallery" aria-label="Product image gallery"></div>
+          <div id="galleryCount" class="sj-product-gallery-count"></div>
+        </div>
+
+        <div class="sj-product-details">
+          <span id="productCategory" class="sj-product-kicker"></span>
+          <h1 id="productName" class="sj-product-title"></h1>
+          <div class="sj-product-rule"></div>
+          <p id="productDescription" class="sj-product-description"></p>
+
+          <div class="sj-product-specs" aria-label="Product specifications">
+            <div class="sj-product-spec"><span class="sj-product-spec-label">Metal</span><strong id="productMetal" class="sj-product-spec-value">—</strong></div>
+            <div class="sj-product-spec"><span class="sj-product-spec-label">Gross Weight</span><strong id="productGrossWeight" class="sj-product-spec-value">—</strong></div>
+            <div class="sj-product-spec"><span class="sj-product-spec-label">Net Weight</span><strong id="productNetWeight" class="sj-product-spec-value">—</strong></div>
+            <div class="sj-product-spec"><span class="sj-product-spec-label">Size</span><strong id="productSize" class="sj-product-spec-value">—</strong></div>
+          </div>
+
+          <div class="sj-product-actions">
+            <a id="whatsappButton" class="btn sj-product-action sj-product-action-whatsapp" target="_blank" rel="noopener">WhatsApp Enquiry</a>
+            <a id="callButton" class="btn sj-product-action sj-product-action-call">Call for Enquiry</a>
+            <a class="btn sj-product-action sj-product-action-collection" href="collections.html">View More Collections</a>
+          </div>
+          <p class="sj-product-note">Product availability, pricing and specifications can be confirmed directly with Suvarna Jewellers.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<section class="sj-related-section section" id="relatedSection">
+  <div class="container">
+    <div class="sj-related-head">
+      <span class="eyebrow">RELATED COLLECTION</span>
+      <h2>Explore Similar Designs</h2>
+      <p>More premium designs selected from the same collection.</p>
+    </div>
+    <div id="relatedProducts" class="sj-related-grid"></div>
+  </div>
+</section>
+
+<div class="sj-lightbox" id="imageLightbox" aria-hidden="true" role="dialog" aria-label="Product image viewer">
+  <button class="sj-lightbox-close" id="lightboxClose" type="button" aria-label="Close image viewer">×</button>
+  <button class="sj-lightbox-nav sj-lightbox-prev" id="lightboxPrev" type="button" aria-label="Previous image">‹</button>
+  <img id="lightboxImage" class="sj-lightbox-image" src="" alt="">
+  <button class="sj-lightbox-nav sj-lightbox-next" id="lightboxNext" type="button" aria-label="Next image">›</button>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <img src="Logo.png" alt="Suvarna Jewellers" width="58" height="58">
+    <h3>SUVARNA JEWELLERS</h3>
+    <p>Gold &amp; Silver Jewellery Manufacturer · Trusted Since 2003 · Pan India Supply</p>
+    <p class="footer-copy">© 2003–2026 SUVARNA JEWELLERS. All Rights Reserved.</p>
+  </div>
+</footer>
+<a class="floating-whatsapp" href="https://wa.me/917777991118" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
+
+<script>
+(function(){
+  const button=document.getElementById('menuToggle');
+  const nav=document.getElementById('navbar');
+  if(!button||!nav)return;
+  button.addEventListener('click',function(){
+    const open=nav.classList.toggle('open');
+    button.setAttribute('aria-expanded',String(open));
+    button.setAttribute('aria-label',open?'Close menu':'Open menu');
+  });
+  nav.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click',function(){
+      nav.classList.remove('open');
+      button.setAttribute('aria-expanded','false');
+      button.setAttribute('aria-label','Open menu');
+    });
+  });
+})();
+</script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/utilities.js"></script>
+<script src="assets/js/api.js"></script>
+<script src="assets/js/product.js"></script>
+</body>
+</html>
