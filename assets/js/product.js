@@ -1,7 +1,13 @@
-/* ==========================================
+/* =========================================================
    SUVARNA JEWELLERS
-   PRODUCT.JS — FINAL CLEAN VERSION
-========================================== */
+   PRODUCT.JS — FINAL VERSION
+   Product Page + Source-aware Back Navigation
+========================================================= */
+
+
+/* =========================================================
+   GLOBAL VARIABLES
+========================================================= */
 
 let currentProduct = null;
 let products = [];
@@ -9,748 +15,975 @@ let productImages = [];
 let currentImageIndex = 0;
 
 
-/* ==========================================
+/* =========================================================
+   DOM ELEMENTS
+========================================================= */
+
+const mainImage = document.getElementById("mainImage");
+const thumbnailContainer = document.getElementById("thumbnailContainer");
+
+const productCategory = document.getElementById("productCategory");
+const productName = document.getElementById("productName");
+const productDescription = document.getElementById("productDescription");
+
+const productMetal = document.getElementById("productMetal");
+const productGrossWeight = document.getElementById("productGrossWeight");
+const productNetWeight = document.getElementById("productNetWeight");
+const productSize = document.getElementById("productSize");
+
+const whatsappButton = document.getElementById("whatsappButton");
+const callButton = document.getElementById("callButton");
+
+const relatedProducts = document.getElementById("relatedProducts");
+
+const imageLightbox = document.getElementById("imageLightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const lightboxClose = document.getElementById("lightboxClose");
+const lightboxPrev = document.getElementById("lightboxPrev");
+const lightboxNext = document.getElementById("lightboxNext");
+
+const breadcrumbCategory =
+    document.getElementById("breadcrumbCategory");
+
+const productBack =
+    document.querySelector(".sj-product-back");
+
+const relatedSection =
+    document.getElementById("relatedSection");
+
+
+/* =========================================================
+   PRODUCT SOURCE
+========================================================= */
+
+let productSource = {
+    type: "collections",
+    label: "Back to Collections",
+    url: "collections.html"
+};
+
+
+/* =========================================================
    INITIALIZE
-========================================== */
+========================================================= */
 
-document.addEventListener("DOMContentLoaded", initProductPage);
-
-
-async function initProductPage() {
-
-    try {
-
-        const params = new URLSearchParams(
-            window.location.search
-        );
-
-        const productId = (params.get("id") || "").trim();
+document.addEventListener(
+    "DOMContentLoaded",
+    initProductPage
+);
 
 
-        /* --------------------------------------
-           MISSING ID
-        -------------------------------------- */
+async function initProductPage(){
 
-        if (!productId) {
+    detectProductSource();
 
-            showProductError(
-                "Product Not Found",
-                "No product was selected."
-            );
+    updateBackNavigation();
 
-            return;
-        }
+    const params =
+        new URLSearchParams(window.location.search);
 
+    const productId =
+        params.get("id");
 
-        /* --------------------------------------
-           LOAD PRODUCTS
-        -------------------------------------- */
-
-        products = await getProducts();
-
-
-        if (!Array.isArray(products) || !products.length) {
-
-            showProductError(
-                "Products Unavailable",
-                "We could not load the product catalogue right now."
-            );
-
-            return;
-        }
-
-
-        /* --------------------------------------
-           FIND PRODUCT
-        -------------------------------------- */
-
-        currentProduct = products.find(product =>
-            String(product.id).trim() === productId
-        );
-
-
-        if (!currentProduct) {
-
-            showProductError(
-                "Product Not Found",
-                "The requested jewellery product could not be found."
-            );
-
-            return;
-        }
-
-
-        /* --------------------------------------
-           RENDER PRODUCT
-        -------------------------------------- */
-
-        renderProduct(currentProduct);
-
-        renderRelatedProducts();
-
-        updatePageMeta(currentProduct);
-
-        bindLightbox();
-
-    }
-
-    catch (error) {
-
-        console.error(
-            "Product Page Error:",
-            error
-        );
+    if(!productId){
 
         showProductError(
-            "Something Went Wrong",
-            "Please return to the collections and try again."
+            "Product not found",
+            "No product was selected."
         );
 
+        return;
     }
 
-}
+
+    products = await getProducts();
 
 
-/* ==========================================
-   GET ELEMENT
-========================================== */
+    if(!Array.isArray(products) || !products.length){
 
-function getEl(id) {
+        showProductError(
+            "Unable to load product",
+            "Please try again or return to the product list."
+        );
 
-    return document.getElementById(id);
-
-}
-
-
-/* ==========================================
-   NORMALIZE IMAGE PATH
-   Prevents duplicate images caused by
-   slightly different paths.
-========================================== */
-
-function normalizeImagePath(path) {
-
-    if (!path) {
-        return "";
+        return;
     }
 
-    return String(path)
-        .trim()
-        .replace(/^\.?\//, "")
-        .replace(/\\/g, "/")
-        .toLowerCase();
 
-}
+    currentProduct =
+        products.find(
+            product =>
+                String(product.id) === String(productId)
+        );
 
 
-/* ==========================================
-   SAFE IMAGE PATH
-========================================== */
+    if(!currentProduct){
 
-function getSafeImagePath(path) {
+        showProductError(
+            "Product not found",
+            "The requested product could not be found."
+        );
 
-    if (typeof getImage === "function") {
-
-        return getImage(path);
-
+        return;
     }
 
-    return path ||
-        "assets/images/no-image.jpg";
+
+    renderProduct(currentProduct);
+
+    renderRelatedProducts();
 
 }
 
 
-/* ==========================================
-   BUILD UNIQUE IMAGE LIST
-========================================== */
+/* =========================================================
+   DETECT WHERE PRODUCT WAS OPENED FROM
+========================================================= */
 
-function buildProductImages(product) {
+function detectProductSource(){
 
-    const images = [];
+    /*
+        Priority:
 
-    const seen = new Set();
+        1. Explicit ?source=ready-stock
+        2. Explicit ?source=collections
+        3. Referrer URL
+        4. Default = Collections
+    */
 
 
-    /* --------------------------------------
-       MAIN PRODUCT IMAGE
-       ALWAYS COMES FIRST
-    -------------------------------------- */
+    const params =
+        new URLSearchParams(window.location.search);
 
-    if (product.image) {
+    const source =
+        (params.get("source") || "")
+        .toLowerCase()
+        .trim();
 
-        const key =
-            normalizeImagePath(product.image);
 
-        if (key && !seen.has(key)) {
+    /* Explicit Ready Stock */
 
-            seen.add(key);
+    if(
+        source === "ready-stock" ||
+        source === "readystock" ||
+        source === "ready_stock"
+    ){
 
-            images.push(
-                product.image
-            );
+        setProductSource(
+            "ready-stock",
+            "Back to Ready Stock",
+            "ready-stock.html"
+        );
+
+        return;
+    }
+
+
+    /* Explicit Collections */
+
+    if(source === "collections"){
+
+        setProductSource(
+            "collections",
+            "Back to Collections",
+            "collections.html"
+        );
+
+        return;
+    }
+
+
+    /* Detect from referrer */
+
+    const referrer =
+        document.referrer || "";
+
+    const referrerUrl =
+        referrer.toLowerCase();
+
+
+    if(
+        referrerUrl.includes("ready-stock.html") ||
+        referrerUrl.includes("ready-stock")
+    ){
+
+        setProductSource(
+            "ready-stock",
+            "Back to Ready Stock",
+            "ready-stock.html"
+        );
+
+        return;
+    }
+
+
+    /* Default */
+
+    setProductSource(
+        "collections",
+        "Back to Collections",
+        "collections.html"
+    );
+
+}
+
+
+/* =========================================================
+   SET PRODUCT SOURCE
+========================================================= */
+
+function setProductSource(
+    type,
+    label,
+    url
+){
+
+    productSource = {
+        type: type,
+        label: label,
+        url: url
+    };
+
+}
+
+
+/* =========================================================
+   UPDATE BACK NAVIGATION
+========================================================= */
+
+function updateBackNavigation(){
+
+    if(productBack){
+
+        productBack.href =
+            productSource.url;
+
+        productBack.innerHTML =
+            `<span aria-hidden="true">←</span>
+             ${productSource.label}`;
+    }
+
+
+    /*
+       Breadcrumb
+    */
+
+    if(breadcrumbCategory){
+
+        if(productSource.type === "ready-stock"){
+
+            breadcrumbCategory.textContent =
+                "Ready Stock";
+
+        }else{
+
+            breadcrumbCategory.textContent =
+                "Collections";
 
         }
 
     }
 
 
-    /* --------------------------------------
-       GALLERY IMAGES
-       Duplicate main image automatically
-       removed.
-    -------------------------------------- */
+    /*
+       Optional collection CTA
+    */
 
-    if (Array.isArray(product.gallery)) {
+    const collectionButton =
+        document.querySelector(
+            ".sj-product-action-collection"
+        );
 
-        product.gallery.forEach(image => {
 
-            if (!image) {
-                return;
-            }
+    if(collectionButton){
 
-            const key =
-                normalizeImagePath(image);
+        if(productSource.type === "ready-stock"){
 
-            if (!key) {
-                return;
-            }
+            collectionButton.href =
+                "ready-stock.html";
 
-            if (seen.has(key)) {
-                return;
-            }
+            collectionButton.textContent =
+                "Back To Ready Stock";
 
-            seen.add(key);
+        }else{
 
-            images.push(image);
+            collectionButton.href =
+                "collections.html";
 
-        });
+            collectionButton.textContent =
+                "View More Collections";
+
+        }
 
     }
-
-
-    return images;
 
 }
 
 
-/* ==========================================
+/* =========================================================
    RENDER PRODUCT
-========================================== */
+========================================================= */
 
-function renderProduct(product) {
+function renderProduct(product){
 
-    const mainImage =
-        getEl("mainImage");
+    if(productCategory){
 
-    const category =
-        getEl("productCategory");
-
-    const name =
-        getEl("productName");
-
-    const description =
-        getEl("productDescription");
-
-    const metal =
-        getEl("productMetal");
-
-    const grossWeight =
-        getEl("productGrossWeight");
-
-    const netWeight =
-        getEl("productNetWeight");
-
-    const size =
-        getEl("productSize");
-
-
-    if (category) {
-
-        category.textContent =
-            product.category ||
-            "Jewellery";
-
+        productCategory.textContent =
+            product.category || "";
     }
 
 
-    if (name) {
+    if(productName){
 
-        name.textContent =
-            product.name ||
-            "Suvarna Jewellers";
-
+        productName.textContent =
+            product.name || "Jewellery Product";
     }
 
 
-    if (description) {
+    if(productDescription){
 
-        description.textContent =
+        productDescription.textContent =
             product.description ||
-            "Premium jewellery crafted by Suvarna Jewellers.";
+            "Premium jewellery design by Suvarna Jewellers.";
+    }
+
+
+    if(productMetal){
+
+        productMetal.textContent =
+            product.metal || "—";
+    }
+
+
+    if(productGrossWeight){
+
+        productGrossWeight.textContent =
+            product.grossWeight || "—";
+    }
+
+
+    if(productNetWeight){
+
+        productNetWeight.textContent =
+            product.netWeight || "—";
+    }
+
+
+    if(productSize){
+
+        productSize.textContent =
+            product.size || "—";
+    }
+
+
+    /*
+       Product Images
+    */
+
+    productImages = [];
+
+
+    if(product.image){
+
+        productImages.push(
+            product.image
+        );
 
     }
 
 
-    if (metal) {
+    if(Array.isArray(product.gallery)){
 
-        metal.textContent =
-            product.metal ||
-            "-";
-
-    }
-
-
-    if (grossWeight) {
-
-        grossWeight.textContent =
-            product.grossWeight ||
-            "-";
+        productImages.push(
+            ...product.gallery
+        );
 
     }
 
 
-    if (netWeight) {
-
-        netWeight.textContent =
-            product.netWeight ||
-            "-";
-
-    }
-
-
-    if (size) {
-
-        size.textContent =
-            product.size ||
-            "-";
-
-    }
-
-
-    /* --------------------------------------
-       BUILD UNIQUE IMAGES
-    -------------------------------------- */
+    /*
+       Remove duplicate images
+    */
 
     productImages =
-        buildProductImages(product);
+        productImages.filter(
+            (image,index,array) =>
+                image &&
+                array.indexOf(image) === index
+        );
 
 
     currentImageIndex = 0;
 
 
-    /* --------------------------------------
-       MAIN IMAGE
-    -------------------------------------- */
+    if(productImages.length){
 
-    if (mainImage) {
+        setMainImage(
+            productImages[0],
+            0
+        );
 
-        mainImage.alt =
-            product.name ||
-            "Jewellery Product";
+    }else{
 
-        mainImage.loading =
-            "eager";
-
-        mainImage.decoding =
-            "async";
-
-
-        if (productImages.length) {
-
-            mainImage.style.cursor =
-                "zoom-in";
-
-            setMainImage(
-                0,
-                false
-            );
-
-        }
-
-        else {
-
-            setImageFallback(
-                mainImage
-            );
-
-        }
+        showImageFallback();
 
     }
 
 
-    /* --------------------------------------
-       THUMBNAILS
-    -------------------------------------- */
-
     createThumbnails();
-
-
-    /* --------------------------------------
-       ACTION BUTTONS
-    -------------------------------------- */
 
     createWhatsappButton(product);
 
     createCallButton(product);
 
-}
-
-
-/* ==========================================
-   IMAGE FALLBACK
-========================================== */
-
-function setImageFallback(
-    imageElement
-) {
-
-    if (!imageElement) {
-        return;
-    }
-
-
-    imageElement.onerror = null;
-
-
-    imageElement.src =
-        "assets/images/no-image.jpg";
-
-
-    imageElement.alt =
-        "Image unavailable";
+    setupMainImage();
 
 }
 
 
-/* ==========================================
+/* =========================================================
    SET MAIN IMAGE
-========================================== */
+========================================================= */
 
 function setMainImage(
-    index,
-    animate = true
-) {
+    image,
+    index = 0
+){
 
-    const mainImage =
-        getEl("mainImage");
-
-
-    if (
-        !mainImage ||
-        !productImages[index]
-    ) {
+    if(!mainImage){
 
         return;
     }
 
 
-    currentImageIndex =
-        index;
+    const imagePath =
+        getImage(image);
 
 
-    const src =
-        getSafeImagePath(
-            productImages[index]
-        );
+    currentImageIndex = index;
 
 
-    if (animate) {
-
-        mainImage.style.opacity =
-            "0";
-
-    }
+    mainImage.style.opacity = "0";
 
 
     const preloader =
         new Image();
 
 
-    preloader.onload = function () {
+    preloader.onload = function(){
 
         mainImage.src =
-            src;
+            imagePath;
 
         mainImage.alt =
             currentProduct?.name ||
-            "Jewellery Product";
-
+            "Suvarna Jewellers Jewellery";
 
         mainImage.style.opacity =
             "1";
-
-
-        updateThumbnailState();
 
     };
 
 
-    preloader.onerror = function () {
+    preloader.onerror = function(){
 
-        setImageFallback(
-            mainImage
-        );
-
-
-        mainImage.style.opacity =
-            "1";
-
-
-        updateThumbnailState();
+        showImageFallback();
 
     };
 
 
     preloader.src =
-        src;
+        imagePath;
+
+
+    updateActiveThumbnail();
 
 }
 
 
-/* ==========================================
+/* =========================================================
+   IMAGE FALLBACK
+========================================================= */
+
+function showImageFallback(){
+
+    if(!mainImage){
+
+        return;
+    }
+
+
+    mainImage.onerror = null;
+
+
+    mainImage.src =
+        getImage("");
+
+
+    mainImage.alt =
+        "Product image unavailable";
+
+
+    mainImage.style.opacity =
+        "1";
+
+}
+
+
+/* =========================================================
    CREATE THUMBNAILS
-========================================== */
+========================================================= */
 
-function createThumbnails() {
+function createThumbnails(){
 
-    const container =
-        getEl("thumbnailContainer");
+    if(!thumbnailContainer){
 
-
-    if (!container) {
         return;
     }
 
 
-    container.innerHTML = "";
+    thumbnailContainer.innerHTML =
+        "";
 
 
-    /* --------------------------------------
-       NO GALLERY
-    -------------------------------------- */
-
-    if (!productImages.length) {
-
-        container.hidden = true;
+    if(productImages.length <= 1){
 
         return;
-
     }
 
 
-    /*
-       IMPORTANT:
-
-       Main image stays as the large image.
-
-       Thumbnail container only contains
-       additional UNIQUE gallery images.
-
-       Therefore the main image itself is NOT
-       repeated as a thumbnail.
-    */
-
-
-    const thumbnailImages =
-        productImages.slice(1);
-
-
-    if (!thumbnailImages.length) {
-
-        container.hidden = true;
-
-        return;
-
-    }
-
-
-    container.hidden = false;
-
-
-    thumbnailImages.forEach(
-        (image, index) => {
-
-            const actualIndex =
-                index + 1;
-
-
-            const button =
-                document.createElement(
-                    "button"
-                );
-
-
-            button.type =
-                "button";
-
-
-            button.className =
-                "product-thumbnail";
-
-
-            button.setAttribute(
-                "aria-label",
-                `View product image ${actualIndex + 1}`
-            );
-
+    productImages.forEach(
+        (image,index)=>{
 
             const img =
-                document.createElement(
-                    "img"
-                );
+                document.createElement("img");
 
 
             img.src =
-                getSafeImagePath(
-                    image
-                );
+                getImage(image);
 
 
             img.alt =
-                `${currentProduct?.name || "Product"} image ${actualIndex + 1}`;
+                `${currentProduct?.name || "Product"} image ${index + 1}`;
 
 
             img.loading =
                 "lazy";
 
 
-            img.decoding =
-                "async";
+            img.draggable =
+                false;
 
 
-            img.onerror =
-                function () {
-
-                    button.remove();
-
-                };
+            img.dataset.index =
+                String(index);
 
 
-            button.appendChild(
-                img
-            );
-
-
-            button.addEventListener(
+            img.addEventListener(
                 "click",
-                function () {
+                ()=>{
 
                     setMainImage(
-                        actualIndex,
-                        true
+                        image,
+                        index
                     );
 
                 }
             );
 
 
-            container.appendChild(
-                button
+            img.addEventListener(
+                "error",
+                ()=>{
+
+                    img.style.display =
+                        "none";
+
+                }
+            );
+
+
+            thumbnailContainer.appendChild(
+                img
             );
 
         }
     );
 
 
-    updateThumbnailState();
+    updateActiveThumbnail();
 
 }
 
 
-/* ==========================================
-   THUMBNAIL ACTIVE STATE
-========================================== */
+/* =========================================================
+   ACTIVE THUMBNAIL
+========================================================= */
 
-function updateThumbnailState() {
+function updateActiveThumbnail(){
 
-    const thumbnails =
-        document.querySelectorAll(
-            "#thumbnailContainer .product-thumbnail"
-        );
+    if(!thumbnailContainer){
 
-
-    /*
-       Since main image is NOT displayed
-       as a thumbnail:
-
-       thumbnail 0 = productImages[1]
-       thumbnail 1 = productImages[2]
-       etc.
-    */
-
-    thumbnails.forEach(
-        (button, index) => {
-
-            const imageIndex =
-                index + 1;
-
-
-            const active =
-                imageIndex ===
-                currentImageIndex;
-
-
-            button.classList.toggle(
-                "active",
-                active
-            );
-
-
-            button.setAttribute(
-                "aria-current",
-                active
-                    ? "true"
-                    : "false"
-            );
-
-        }
-    );
-
-}
-
-
-/* ==========================================
-   WHATSAPP BUTTON
-========================================== */
-
-function createWhatsappButton(
-    product
-) {
-
-    const button =
-        getEl("whatsappButton");
-
-
-    if (!button) {
         return;
     }
 
 
-    let phone = "";
+    thumbnailContainer
+        .querySelectorAll("img")
+        .forEach(
+            (img,index)=>{
+
+                img.classList.toggle(
+                    "active",
+                    index === currentImageIndex
+                );
+
+            }
+        );
+
+}
 
 
-    if (
-        typeof CONFIG !== "undefined" &&
-        CONFIG.BUSINESS &&
-        CONFIG.BUSINESS.phone
-    ) {
+/* =========================================================
+   MAIN IMAGE CLICK / LIGHTBOX
+========================================================= */
 
-        phone =
-            String(
-                CONFIG.BUSINESS.phone
-            ).replace(
-                /\D/g,
-                ""
+function setupMainImage(){
+
+    if(!mainImage){
+
+        return;
+    }
+
+
+    mainImage.onclick =
+        function(){
+
+            if(
+                !productImages.length ||
+                !mainImage.src
+            ){
+
+                return;
+            }
+
+
+            openLightbox(
+                currentImageIndex
             );
+
+        };
+
+
+    mainImage.onerror =
+        function(){
+
+            showImageFallback();
+
+        };
+
+}
+
+
+/* =========================================================
+   OPEN LIGHTBOX
+========================================================= */
+
+function openLightbox(index){
+
+    if(
+        !imageLightbox ||
+        !lightboxImage ||
+        !productImages.length
+    ){
+
+        return;
+    }
+
+
+    currentImageIndex =
+        Math.max(
+            0,
+            Math.min(
+                index,
+                productImages.length - 1
+            )
+        );
+
+
+    lightboxImage.src =
+        getImage(
+            productImages[currentImageIndex]
+        );
+
+
+    lightboxImage.alt =
+        currentProduct?.name ||
+        "Product image";
+
+
+    imageLightbox.classList.add(
+        "show"
+    );
+
+
+    imageLightbox.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+
+    updateLightboxButtons();
+
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+/* =========================================================
+   CLOSE LIGHTBOX
+========================================================= */
+
+function closeLightbox(){
+
+    if(!imageLightbox){
+
+        return;
+    }
+
+
+    imageLightbox.classList.remove(
+        "show"
+    );
+
+
+    imageLightbox.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+/* =========================================================
+   LIGHTBOX IMAGE CHANGE
+========================================================= */
+
+function changeLightboxImage(direction){
+
+    if(productImages.length <= 1){
+
+        return;
+    }
+
+
+    let nextIndex =
+        currentImageIndex + direction;
+
+
+    if(nextIndex < 0){
+
+        nextIndex =
+            productImages.length - 1;
 
     }
 
 
-    if (!phone) {
+    if(nextIndex >= productImages.length){
+
+        nextIndex = 0;
+
+    }
+
+
+    currentImageIndex =
+        nextIndex;
+
+
+    if(lightboxImage){
+
+        lightboxImage.src =
+            getImage(
+                productImages[currentImageIndex]
+            );
+    }
+
+
+    setMainImage(
+        productImages[currentImageIndex],
+        currentImageIndex
+    );
+
+
+    updateLightboxButtons();
+
+}
+
+
+/* =========================================================
+   LIGHTBOX BUTTON STATE
+========================================================= */
+
+function updateLightboxButtons(){
+
+    const hasMultiple =
+        productImages.length > 1;
+
+
+    if(lightboxPrev){
+
+        lightboxPrev.style.display =
+            hasMultiple ? "grid" : "none";
+    }
+
+
+    if(lightboxNext){
+
+        lightboxNext.style.display =
+            hasMultiple ? "grid" : "none";
+    }
+
+}
+
+
+/* =========================================================
+   LIGHTBOX EVENTS
+========================================================= */
+
+if(lightboxClose){
+
+    lightboxClose.addEventListener(
+        "click",
+        closeLightbox
+    );
+
+}
+
+
+if(lightboxPrev){
+
+    lightboxPrev.addEventListener(
+        "click",
+        function(event){
+
+            event.stopPropagation();
+
+            changeLightboxImage(-1);
+
+        }
+    );
+
+}
+
+
+if(lightboxNext){
+
+    lightboxNext.addEventListener(
+        "click",
+        function(event){
+
+            event.stopPropagation();
+
+            changeLightboxImage(1);
+
+        }
+    );
+
+}
+
+
+if(imageLightbox){
+
+    imageLightbox.addEventListener(
+        "click",
+        function(event){
+
+            if(
+                event.target === imageLightbox
+            ){
+
+                closeLightbox();
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   KEYBOARD CONTROLS
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            !imageLightbox ||
+            !imageLightbox.classList.contains("show")
+        ){
+
+            return;
+        }
+
+
+        if(event.key === "Escape"){
+
+            closeLightbox();
+
+        }
+
+
+        if(event.key === "ArrowLeft"){
+
+            changeLightboxImage(-1);
+
+        }
+
+
+        if(event.key === "ArrowRight"){
+
+            changeLightboxImage(1);
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   WHATSAPP BUTTON
+========================================================= */
+
+function createWhatsappButton(product){
+
+    if(!whatsappButton){
+
+        return;
+    }
+
+
+    let phone =
+        "917777991118";
+
+
+    if(
+        typeof CONFIG !== "undefined" &&
+        CONFIG.BUSINESS &&
+        CONFIG.BUSINESS.phone
+    ){
 
         phone =
-            "917777991118";
+            String(
+                CONFIG.BUSINESS.phone
+            ).replace(/\D/g,"");
 
     }
 
@@ -760,165 +993,119 @@ function createWhatsappButton(
 
 I am interested in this product.
 
-Product: ${product.name || "-"}
-Category: ${product.category || "-"}
-Product ID: ${product.id || "-"}
+Product : ${product.name || ""}
+Category : ${product.category || ""}
 
-Please share price and availability.`;
+Please share more details and price.`;
 
 
-    button.href =
+    whatsappButton.href =
         `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-
-
-    button.target =
-        "_blank";
-
-
-    button.rel =
-        "noopener noreferrer";
 
 }
 
 
-/* ==========================================
+/* =========================================================
    CALL BUTTON
-========================================== */
+========================================================= */
 
-function createCallButton(
-    product
-) {
+function createCallButton(product){
 
-    const button =
-        getEl("callButton");
+    if(!callButton){
 
-
-    if (!button) {
         return;
     }
 
 
-    let phone = "";
+    let phone =
+        "7777991118";
 
 
-    if (
+    if(
         typeof CONFIG !== "undefined" &&
         CONFIG.BUSINESS &&
         CONFIG.BUSINESS.phone
-    ) {
+    ){
 
         phone =
             String(
                 CONFIG.BUSINESS.phone
-            ).replace(
-                /\D/g,
-                ""
-            );
+            ).replace(/\D/g,"");
 
     }
 
 
-    if (!phone) {
+    /*
+       Indian number safety
+    */
+
+    if(phone.startsWith("91")){
 
         phone =
-            "917777991118";
+            phone.substring(2);
 
     }
 
 
-    button.href =
-        `tel:+${phone}`;
-
-
-    button.setAttribute(
-        "aria-label",
-        `Call Suvarna Jewellers about ${product.name || "this product"}`
-    );
+    callButton.href =
+        `tel:+91${phone}`;
 
 }
 
 
-/* ==========================================
+/* =========================================================
    RELATED PRODUCTS
-========================================== */
+========================================================= */
 
-function renderRelatedProducts() {
+function renderRelatedProducts(){
 
-    const container =
-        getEl("relatedProducts");
-
-
-    if (
-        !container ||
-        !currentProduct ||
-        !Array.isArray(products)
-    ) {
+    if(!relatedProducts){
 
         return;
     }
 
 
-    container.innerHTML = "";
+    relatedProducts.innerHTML =
+        "";
 
 
-    const sameCategory =
-        products.filter(
-            product =>
-                product.id !==
-                    currentProduct.id &&
-                product.category ===
-                    currentProduct.category
-        );
+    if(
+        !currentProduct ||
+        !Array.isArray(products)
+    ){
 
-
-    const sameMetal =
-        products.filter(
-            product =>
-                product.id !==
-                    currentProduct.id &&
-                product.metal ===
-                    currentProduct.metal &&
-                !sameCategory.some(
-                    item =>
-                        item.id ===
-                        product.id
-                )
-        );
+        return;
+    }
 
 
     const items =
-        [
-            ...sameCategory,
-            ...sameMetal
-        ].slice(
-            0,
-            4
-        );
+        products
+        .filter(
+            item =>
+                String(item.id) !==
+                    String(currentProduct.id)
+                &&
+                (
+                    item.category ===
+                        currentProduct.category
+                    ||
+                    item.metal ===
+                        currentProduct.metal
+                )
+        )
+        .slice(0,4);
 
 
-    if (!items.length) {
+    if(!items.length){
 
-        const empty =
-            document.createElement(
-                "p"
-            );
+        if(relatedSection){
 
+            relatedSection.style.display =
+                "none";
 
-        empty.className =
-            "no-products";
-
-
-        empty.textContent =
-            "No related products available.";
-
-
-        container.appendChild(
-            empty
-        );
-
+        }
 
         return;
-
     }
 
 
@@ -926,122 +1113,51 @@ function renderRelatedProducts() {
         product => {
 
             const card =
-                document.createElement(
-                    "a"
-                );
+                document.createElement("a");
 
 
             card.href =
-                `product.html?id=${encodeURIComponent(product.id)}`;
+                `product.html?id=${encodeURIComponent(product.id)}&source=${encodeURIComponent(productSource.type)}`;
 
 
             card.className =
                 "product-card";
 
 
-            const imageWrap =
-                document.createElement(
-                    "div"
-                );
-
-
-            imageWrap.className =
-                "card-image";
-
-
             const image =
-                document.createElement(
-                    "img"
-                );
-
-
-            image.src =
-                getSafeImagePath(
+                getImage(
                     product.image
                 );
 
 
-            image.alt =
+            const name =
                 product.name ||
                 "Jewellery Product";
 
 
-            image.loading =
-                "lazy";
-
-
-            image.decoding =
-                "async";
-
-
-            image.onerror =
-                function () {
-
-                    setImageFallback(
-                        image
-                    );
-
-                };
-
-
-            const content =
-                document.createElement(
-                    "div"
-                );
-
-
-            content.className =
-                "card-content";
-
-
-            const title =
-                document.createElement(
-                    "h3"
-                );
-
-
-            title.textContent =
-                product.name ||
-                "Jewellery";
-
-
             const category =
-                document.createElement(
-                    "p"
-                );
-
-
-            category.textContent =
                 product.category ||
                 "";
 
 
-            imageWrap.appendChild(
-                image
-            );
+            card.innerHTML =
+`
+<div class="card-image">
+    <img
+        src="${escapeHtml(image)}"
+        alt="${escapeHtml(name)}"
+        loading="lazy"
+    >
+</div>
+
+<div class="card-content">
+    <h3>${escapeHtml(name)}</h3>
+    <p>${escapeHtml(category)}</p>
+</div>
+`;
 
 
-            content.appendChild(
-                title
-            );
-
-
-            content.appendChild(
-                category
-            );
-
-
-            card.appendChild(
-                imageWrap
-            );
-
-
-            card.appendChild(
-                content
-            );
-
-
-            container.appendChild(
+            relatedProducts.appendChild(
                 card
             );
 
@@ -1051,391 +1167,91 @@ function renderRelatedProducts() {
 }
 
 
-/* ==========================================
-   LIGHTBOX
-========================================== */
-
-function bindLightbox() {
-
-    const mainImage =
-        getEl("mainImage");
-
-    const lightbox =
-        getEl("imageLightbox");
-
-    const lightboxImage =
-        getEl("lightboxImage");
-
-    const close =
-        getEl("lightboxClose");
-
-
-    if (
-        !mainImage ||
-        !lightbox ||
-        !lightboxImage
-    ) {
-
-        return;
-
-    }
-
-
-    mainImage.addEventListener(
-        "click",
-        function () {
-
-            if (
-                !productImages.length ||
-                !mainImage.src
-            ) {
-
-                return;
-
-            }
-
-
-            lightboxImage.src =
-                mainImage.src;
-
-
-            lightboxImage.alt =
-                mainImage.alt ||
-                "Jewellery Product";
-
-
-            lightbox.classList.add(
-                "show"
-            );
-
-
-            document.body.classList.add(
-                "lightbox-open"
-            );
-
-        }
-    );
-
-
-    if (close) {
-
-        close.addEventListener(
-            "click",
-            closeLightbox
-        );
-
-    }
-
-
-    lightbox.addEventListener(
-        "click",
-        function (event) {
-
-            if (
-                event.target ===
-                lightbox
-            ) {
-
-                closeLightbox();
-
-            }
-
-        }
-    );
-
-
-    document.addEventListener(
-        "keydown",
-        function (event) {
-
-            if (
-                !lightbox.classList.contains(
-                    "show"
-                )
-            ) {
-
-                return;
-
-            }
-
-
-            if (
-                event.key ===
-                "Escape"
-            ) {
-
-                closeLightbox();
-
-            }
-
-
-            if (
-                event.key ===
-                "ArrowLeft" &&
-                currentImageIndex > 0
-            ) {
-
-                setMainImage(
-                    currentImageIndex - 1,
-                    true
-                );
-
-                syncLightboxImage();
-
-            }
-
-
-            if (
-                event.key ===
-                "ArrowRight" &&
-                currentImageIndex <
-                    productImages.length - 1
-            ) {
-
-                setMainImage(
-                    currentImageIndex + 1,
-                    true
-                );
-
-                syncLightboxImage();
-
-            }
-
-        }
-    );
-
-}
-
-
-/* ==========================================
-   LIGHTBOX SYNC
-========================================== */
-
-function syncLightboxImage() {
-
-    const mainImage =
-        getEl("mainImage");
-
-    const lightboxImage =
-        getEl("lightboxImage");
-
-
-    if (
-        mainImage &&
-        lightboxImage
-    ) {
-
-        lightboxImage.src =
-            mainImage.src;
-
-
-        lightboxImage.alt =
-            mainImage.alt;
-
-    }
-
-}
-
-
-/* ==========================================
-   CLOSE LIGHTBOX
-========================================== */
-
-function closeLightbox() {
-
-    const lightbox =
-        getEl("imageLightbox");
-
-
-    if (lightbox) {
-
-        lightbox.classList.remove(
-            "show"
-        );
-
-    }
-
-
-    document.body.classList.remove(
-        "lightbox-open"
-    );
-
-}
-
-
-/* ==========================================
+/* =========================================================
    ERROR STATE
-========================================== */
+========================================================= */
 
 function showProductError(
     title,
     message
-) {
+){
 
-    const pageShell =
-        document.querySelector(
-            ".product-page-shell"
+    const productContent =
+        document.getElementById(
+            "productContent"
         );
 
 
-    if (!pageShell) {
+    if(!productContent){
+
         return;
     }
 
 
-    pageShell.innerHTML = "";
+    productContent.innerHTML =
+`
+<div style="
+    min-height:420px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:40px 20px;
+">
 
+    <div style="
+        color:#d4af37;
+        font-size:11px;
+        letter-spacing:2px;
+        text-transform:uppercase;
+        margin-bottom:15px;
+    ">
+        SUVARNA JEWELLERS
+    </div>
 
-    const errorBox =
-        document.createElement(
-            "div"
-        );
+    <h1 style="
+        margin:0 0 12px;
+        color:#f7f2e8;
+        font-family:Cinzel,Georgia,serif;
+        font-size:32px;
+    ">
+        ${escapeHtml(title)}
+    </h1>
 
+    <p style="
+        margin:0 0 25px;
+        color:rgba(247,242,232,.60);
+        font-size:13px;
+    ">
+        ${escapeHtml(message)}
+    </p>
 
-    errorBox.className =
-        "product-error-state";
+    <a
+        href="${productSource.url}"
+        class="btn btn-primary"
+        style="text-decoration:none;"
+    >
+        ${escapeHtml(productSource.label)}
+    </a>
 
-
-    const eyebrow =
-        document.createElement(
-            "span"
-        );
-
-
-    eyebrow.className =
-        "product-error-eyebrow";
-
-
-    eyebrow.textContent =
-        "SUVARNA JEWELLERS";
-
-
-    const heading =
-        document.createElement(
-            "h1"
-        );
-
-
-    heading.textContent =
-        title;
-
-
-    const text =
-        document.createElement(
-            "p"
-        );
-
-
-    text.textContent =
-        message;
-
-
-    const link =
-        document.createElement(
-            "a"
-        );
-
-
-    link.href =
-        "collections.html";
-
-
-    link.className =
-        "btn btn-primary";
-
-
-    link.textContent =
-        "Back To Collections";
-
-
-    errorBox.appendChild(
-        eyebrow
-    );
-
-
-    errorBox.appendChild(
-        heading
-    );
-
-
-    errorBox.appendChild(
-        text
-    );
-
-
-    errorBox.appendChild(
-        link
-    );
-
-
-    pageShell.appendChild(
-        errorBox
-    );
+</div>
+`;
 
 }
 
 
-/* ==========================================
-   UPDATE META
-========================================== */
+/* =========================================================
+   SAFE HTML ESCAPE
+========================================================= */
 
-function updatePageMeta(
-    product
-) {
+function escapeHtml(value){
 
-    if (!product) {
-        return;
-    }
-
-
-    const name =
-        product.name ||
-        "Jewellery Product";
-
-
-    const category =
-        product.category ||
-        "Jewellery";
-
-
-    document.title =
-        `${name} | SUVARNA JEWELLERS`;
-
-
-    const description =
-        product.description ||
-        `View ${name} from the ${category} collection at Suvarna Jewellers.`;
-
-
-    let meta =
-        document.querySelector(
-            'meta[name="description"]'
-        );
-
-
-    if (!meta) {
-
-        meta =
-            document.createElement(
-                "meta"
-            );
-
-
-        meta.name =
-            "description";
-
-
-        document.head.appendChild(
-            meta
-        );
-
-    }
-
-
-    meta.content =
-        description.slice(
-            0,
-            160
-        );
+    return String(value ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
 
 }
