@@ -274,7 +274,7 @@ function renderProducts(products){
             <div class="product-buttons">
 
                 <a
-                    href="product.html?id=${product.id}"
+                    href="product.html?id=${encodeURIComponent(product.id)}&source=ready-stock"
                     class="btn btn-primary">
 
                     View Product
