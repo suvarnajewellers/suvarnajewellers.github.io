@@ -52,6 +52,36 @@ const relatedSection =
     document.getElementById("relatedSection");
 
 
+/* ==========================
+   BACK BUTTON SOURCE
+========================== */
+
+const urlParams =
+    new URLSearchParams(window.location.search);
+
+const fromPage =
+    urlParams.get("from");
+
+if(productBack){
+
+    if(fromPage === "ready-stock"){
+
+        productBack.href = "ready-stock.html";
+
+        productBack.innerHTML =
+            '<span aria-hidden="true">←</span> Back to Ready Stock';
+
+    }else{
+
+        productBack.href = "collections.html";
+
+        productBack.innerHTML =
+            '<span aria-hidden="true">←</span> Back to Collections';
+
+    }
+
+}
+
 /* =========================================================
    PRODUCT SOURCE
 ========================================================= */
@@ -79,12 +109,10 @@ async function initProductPage(){
 
     updateBackNavigation();
 
-    const params =
-        new URLSearchParams(window.location.search);
+    const params = new URLSearchParams(window.location.search);
 
-    const productId =
-        params.get("id");
-
+const productId = params.get("id");
+const fromPage = params.get("from");
     if(!productId){
 
         showProductError(
