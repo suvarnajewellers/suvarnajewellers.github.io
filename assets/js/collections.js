@@ -21,8 +21,8 @@ async function initCollectionPage(){
 
     products.forEach(product => {
 
-        grid.innerHTML += `
-        <a href="../product.html?id=${product.id}" class="collection-link">
+   grid.innerHTML += `
+    <a href="../product.html?id=${encodeURIComponent(product.id)}&source=collections" class="collection-link">
 
             <div class="collection-card">
 
