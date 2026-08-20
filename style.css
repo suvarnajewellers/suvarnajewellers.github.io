@@ -5802,3 +5802,52 @@ body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
     }
 
 }
+/* ==========================================
+   PRODUCT PAGE — WHATSAPP ICON FIX
+========================================== */
+
+#whatsappButton.whatsapp-product-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+}
+
+#whatsappButton .whatsapp-svg-icon{
+    width:20px;
+    height:20px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    flex:0 0 20px;
+    line-height:0;
+}
+
+#whatsappButton .whatsapp-svg-icon svg{
+    width:20px;
+    height:20px;
+    display:block;
+}
+
+#whatsappButton .whatsapp-svg-icon svg path{
+    fill:currentColor;
+}
+
+@media(max-width:700px){
+
+    #whatsappButton.whatsapp-product-btn{
+        min-height:52px;
+    }
+
+    #whatsappButton .whatsapp-svg-icon{
+        width:21px;
+        height:21px;
+        flex-basis:21px;
+    }
+
+    #whatsappButton .whatsapp-svg-icon svg{
+        width:21px;
+        height:21px;
+    }
+
+}
