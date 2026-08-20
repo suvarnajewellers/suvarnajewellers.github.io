@@ -1192,36 +1192,80 @@
       }
 
       .navbar {
-        position: absolute;
+  position: absolute;
 
-        left: 14px;
-        right: 14px;
-        top: 100%;
+  left: 50%;
+  right: auto;
+  top: calc(100% + 10px);
 
-        display: none;
+  width: min(340px, calc(100% - 28px));
 
-        flex-direction: column;
-        align-items: stretch;
+  transform: translateX(-50%);
 
-        gap: 0;
+  display: none;
 
-        background: rgba(18, 0, 8, 0.98);
+  flex-direction: column;
+  align-items: center;
 
-        border: 1px solid var(--line);
+  gap: 0;
 
-        padding: 7px;
-      }
+  background:
+    linear-gradient(
+      145deg,
+      rgba(38, 0, 18, 0.98),
+      rgba(12, 0, 6, 0.99)
+    );
+
+  border: 1px solid rgba(212, 175, 55, 0.28);
+
+  box-shadow:
+    0 20px 55px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.035);
+
+  padding: 8px;
+
+  border-radius: 3px;
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
 
       .navbar.open {
         display: flex;
       }
 
       .navbar a {
-        padding: 14px;
+  width: 100%;
 
-        border-bottom:
-          1px solid rgba(255, 255, 255, 0.05);
-      }
+  padding: 15px 12px;
+
+  text-align: center;
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.055);
+
+  color: rgba(255, 255, 255, 0.78);
+
+  font-size: 10px;
+  letter-spacing: 1.5px;
+
+  transition:
+    color 0.25s ease,
+    background 0.25s ease;
+}
+
+.navbar a:hover,
+.navbar a.active {
+  color: var(--gold2);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(212, 175, 55, 0.07),
+      transparent
+    );
+}
 
       .navbar a:last-child {
         border-bottom: 0;
