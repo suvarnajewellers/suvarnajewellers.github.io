@@ -5753,3 +5753,52 @@ body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
 @media(prefers-reduced-motion:reduce){
   .sj-product-back,.sj-product-thumb,.sj-related-card,.sj-related-media img,.sj-product-action{transition:none!important;}
 }
+/* ==========================================
+   PRODUCT WHATSAPP BUTTON
+========================================== */
+
+.whatsapp-product-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+}
+
+.whatsapp-product-btn .whatsapp-icon{
+    width:19px;
+    height:19px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    flex:0 0 19px;
+}
+
+.whatsapp-product-btn .whatsapp-icon svg{
+    width:19px;
+    height:19px;
+    display:block;
+    fill:currentColor;
+}
+
+.whatsapp-product-btn:hover .whatsapp-icon{
+    transform:scale(1.08);
+}
+
+@media(max-width:700px){
+
+    .whatsapp-product-btn{
+        min-height:52px;
+    }
+
+    .whatsapp-product-btn .whatsapp-icon{
+        width:20px;
+        height:20px;
+        flex-basis:20px;
+    }
+
+    .whatsapp-product-btn .whatsapp-icon svg{
+        width:20px;
+        height:20px;
+    }
+
+}
