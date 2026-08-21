@@ -1281,7 +1281,7 @@
     "size": "24 Inch",
     "description": "Premium Tulsi Mala.",
     "image": "gold/RMG0047.jpg",
-    "readyStock": true
+    "readyStock": false 
   },
   {
     "id": "T001",
