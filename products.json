@@ -153,7 +153,7 @@
     "size": "24 Inch",
     "description": "Premium Gold Rudraksha Mala.",
     "image": "gold/RMG0008.jpg",
-    "readyStock": true 
+    "readyStock": false 
   }, 
   {
     "id": "RMG0010",
@@ -213,7 +213,7 @@
     "size": "24 Inch",
     "description": "Premium Gold Rudraksha Mala.",
     "image": "gold/RMG0015.jpg",
-    "readyStock": true 
+    "readyStock": false 
   },  
   {
     "id": "RMG0017",
@@ -237,7 +237,7 @@
     "size": "24 Inch",
     "description": "Premium Gold Rudraksha Mala.",
     "image": "gold/RMG0035.jpg",
-    "readyStock": true 
+    "readyStock": false 
   }, 
   {
     "id": "RMG0036",
@@ -741,7 +741,7 @@
     "size": "8 Inch",
     "description": "Premium Gold Rudraksha Bracelet.",
     "image": "gold/BRG0052.jpg",
-    "readyStock": true
+    "readyStock": false 
   }, 
   {
     "id": "BRG0053",
@@ -753,7 +753,7 @@
     "size": "8 Inch",
     "description": "Premium Gold Rudraksha Bracelet.",
     "image": "gold/BRG0053.jpg",
-    "readyStock": true
+    "readyStock": false 
   },  
   {
     "id": "BRG0054",
@@ -813,7 +813,7 @@
     "size": "8 Inch",
     "description": "Premium Gold Rudraksha Bracelet.",
     "image": "gold/BRG0059.jpg",
-    "readyStock": true
+    "readyStock": false 
   },  
   {
     "id": "BRG0061",
