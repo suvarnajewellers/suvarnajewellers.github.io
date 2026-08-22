@@ -66,28 +66,47 @@
 <style>
 
 /* =========================================================
-   SUVARNA JEWELLERS V9
-   HOMEPAGE — CREAM / CHAMPAGNE LUXURY SYSTEM
+   SUVARNA JEWELLERS
+   PREMIUM INTERNATIONAL LUXURY HOMEPAGE
+   CREAM / CHAMPAGNE / BURGUNDY
    ========================================================= */
 
 :root{
     --cream:#F7F1E5;
-    --cream-light:#FBF8F1;
-    --champagne:#E9D8B5;
-    --champagne-soft:#F1E5CC;
+    --cream-light:#FCFAF5;
+    --cream-deep:#F0E5D2;
+    --champagne:#E8D5B3;
+    --champagne-light:#F2E7D2;
+
     --gold:#C9A227;
-    --gold-deep:#A78317;
+    --gold-soft:#D8BC70;
+    --gold-deep:#A8841A;
+
     --burgundy:#2B0015;
-    --burgundy-soft:#4A1830;
-    --ink:#261C18;
-    --muted:#74685D;
-    --line:rgba(75,48,28,.14);
-    --white:#fffdf8;
-    --shadow:0 18px 55px rgba(57,36,20,.10);
-    --shadow-soft:0 10px 30px rgba(57,36,20,.07);
+    --burgundy-soft:#46152C;
+
+    --ink:#2A211C;
+    --muted:#75685C;
+    --muted-light:#978878;
+
+    --line:rgba(73,47,28,.12);
+    --line-gold:rgba(201,162,39,.25);
+
+    --white:#FFFDF8;
+
+    --shadow-soft:0 12px 38px rgba(55,35,19,.055);
+    --shadow:0 24px 65px rgba(55,35,19,.10);
 }
 
-/* ---------- RESET ---------- */
+/* =========================================================
+   RESET
+   ========================================================= */
+
+*,
+*::before,
+*::after{
+    box-sizing:border-box;
+}
 
 html{
     scroll-behavior:smooth;
@@ -104,12 +123,6 @@ body{
     text-rendering:optimizeLegibility;
 }
 
-*,
-*::before,
-*::after{
-    box-sizing:border-box;
-}
-
 img,
 video{
     max-width:100%;
@@ -119,26 +132,47 @@ a{
     color:inherit;
 }
 
+button{
+    font-family:inherit;
+}
+
 .container{
     width:min(1220px,calc(100% - 64px));
     margin:0 auto;
 }
 
-/* ---------- LOADER ---------- */
+/* =========================================================
+   LUXURY LOADER
+   ========================================================= */
 
 #page-loader{
     position:fixed!important;
     inset:0!important;
     z-index:2147483647!important;
+
     display:flex!important;
     align-items:center!important;
     justify-content:center!important;
+
     background:
-        radial-gradient(circle at 50% 42%,rgba(201,162,39,.12),transparent 28%),
-        var(--burgundy)!important;
+        radial-gradient(
+            circle at 50% 43%,
+            rgba(201,162,39,.11),
+            transparent 28%
+        ),
+        linear-gradient(
+            145deg,
+            #FBF8F1 0%,
+            #F5EBD9 52%,
+            #EAD9BB 100%
+        )!important;
+
     opacity:1;
     visibility:visible;
-    transition:opacity .55s ease,visibility .55s ease;
+
+    transition:
+        opacity .8s cubic-bezier(.2,.7,.2,1),
+        visibility .8s ease;
 }
 
 #page-loader.v9-loader-hide{
@@ -147,30 +181,31 @@ a{
     pointer-events:none!important;
 }
 
-#page-loader::before,
+#page-loader::before{
+    content:"";
+    position:absolute;
+    width:330px;
+    height:330px;
+    border:1px solid rgba(168,132,26,.16);
+    border-radius:50%;
+    animation:loaderRing 3.4s ease-in-out infinite;
+}
+
 #page-loader::after{
     content:"";
     position:absolute;
-    border:1px solid rgba(233,216,181,.18);
+    width:430px;
+    height:430px;
+    border:1px solid rgba(168,132,26,.07);
     border-radius:50%;
-}
-
-#page-loader::before{
-    width:300px;
-    height:300px;
-    animation:loaderPulse 2.8s ease-in-out infinite;
-}
-
-#page-loader::after{
-    width:390px;
-    height:390px;
-    opacity:.4;
 }
 
 .v9-loader-inner{
     position:relative;
     z-index:2;
-    width:min(300px,76vw);
+
+    width:min(340px,80vw);
+
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -178,135 +213,282 @@ a{
 }
 
 .v9-loader-logo{
-    width:230px;
-    max-height:135px;
+    width:205px;
+    max-height:130px;
     object-fit:contain;
-    filter:drop-shadow(0 8px 18px rgba(0,0,0,.35));
+
+    filter:
+        drop-shadow(0 10px 20px rgba(54,34,16,.13));
+
+    animation:
+        loaderLogoIn 1.1s cubic-bezier(.2,.7,.2,1) both;
+}
+
+.v9-loader-brand{
+    margin-top:20px;
+
+    color:var(--burgundy);
+
+    font-family:Cinzel,Georgia,serif;
+    font-size:14px;
+    font-weight:600;
+
+    letter-spacing:3px;
+
+    animation:
+        loaderTextIn 1.1s .15s ease both;
 }
 
 .v9-loader-line{
-    width:72px;
+    width:76px;
     height:1px;
-    margin:23px 0 15px;
-    background:linear-gradient(90deg,transparent,#D4AF37,transparent);
+
+    margin:18px 0 14px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold),
+            transparent
+        );
+
+    animation:
+        loaderLineIn 1s .3s ease both;
 }
 
 .v9-loader-text{
-    color:#E7CE88;
+    color:#8A6D2A;
+
     font-family:Cinzel,Georgia,serif;
-    font-size:10px;
+
+    font-size:8px;
     font-weight:600;
+
     letter-spacing:3.5px;
+
+    animation:
+        loaderTextIn 1.1s .35s ease both;
 }
 
-.v9-loader-spinner{
-    width:29px;
-    height:29px;
-    margin-top:24px;
-    border:1px solid rgba(212,175,55,.25);
-    border-top-color:#D4AF37;
-    border-right-color:#D4AF37;
-    border-radius:50%;
-    animation:loaderSpin .9s linear infinite;
+.v9-loader-progress{
+    position:relative;
+
+    width:120px;
+    height:1px;
+
+    margin-top:25px;
+
+    background:rgba(117,91,40,.13);
+
+    overflow:hidden;
+
+    animation:
+        loaderTextIn 1.1s .45s ease both;
 }
 
-@keyframes loaderSpin{
-    to{transform:rotate(360deg)}
+.v9-loader-progress::after{
+    content:"";
+
+    position:absolute;
+    left:0;
+    top:0;
+
+    width:42%;
+    height:100%;
+
+    background:var(--gold);
+
+    animation:
+        loaderProgress 2.1s cubic-bezier(.4,0,.2,1) forwards;
 }
 
-@keyframes loaderPulse{
-    0%,100%{transform:scale(.96);opacity:.5}
-    50%{transform:scale(1.02);opacity:1}
+@keyframes loaderLogoIn{
+    from{
+        opacity:0;
+        transform:translateY(12px) scale(.97);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
 }
 
-/* ---------- HEADER ---------- */
+@keyframes loaderTextIn{
+    from{
+        opacity:0;
+        transform:translateY(7px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes loaderLineIn{
+    from{
+        opacity:0;
+        transform:scaleX(.2);
+    }
+    to{
+        opacity:1;
+        transform:scaleX(1);
+    }
+}
+
+@keyframes loaderProgress{
+    from{
+        left:-45%;
+    }
+    to{
+        left:110%;
+    }
+}
+
+@keyframes loaderRing{
+    0%,100%{
+        transform:scale(.975);
+        opacity:.55;
+    }
+
+    50%{
+        transform:scale(1.025);
+        opacity:1;
+    }
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
 
 .header{
     position:fixed!important;
+
     top:0;
     left:0;
+
     width:100%;
+
     z-index:5000;
+
     min-height:82px;
-    background:rgba(251,248,241,.92)!important;
-    border-bottom:1px solid rgba(75,48,28,.13)!important;
-    box-shadow:0 7px 30px rgba(57,36,20,.06)!important;
+
+    background:rgba(252,250,245,.93)!important;
+
+    border-bottom:
+        1px solid rgba(73,47,28,.10)!important;
+
+    box-shadow:
+        0 8px 28px rgba(55,35,19,.045)!important;
+
     backdrop-filter:blur(18px);
     -webkit-backdrop-filter:blur(18px);
 }
 
 .header.v9-scrolled{
-    background:rgba(251,248,241,.98)!important;
-    border-bottom-color:rgba(201,162,39,.28)!important;
+    background:rgba(252,250,245,.98)!important;
+
+    border-bottom-color:
+        rgba(201,162,39,.23)!important;
 }
 
 .header-container{
     min-height:82px;
+
     display:flex;
     align-items:center;
+
     gap:30px;
 }
 
 .header .logo{
     display:flex;
     align-items:center;
+
     gap:12px;
-    text-decoration:none;
+
     min-width:0;
+
+    text-decoration:none;
 }
 
 .header .logo img{
-    width:52px;
-    height:52px;
+    width:51px;
+    height:51px;
+
     object-fit:contain;
 }
 
 .header .logo-text h1{
     margin:0;
+
     color:var(--burgundy);
+
     font-family:Cinzel,Georgia,serif;
-    font-size:17px;
+
+    font-size:16px;
     line-height:1.15;
-    letter-spacing:1.5px;
+
+    letter-spacing:1.6px;
+
     white-space:nowrap;
 }
 
 .header .logo-text span{
     display:block;
+
     margin-top:5px;
-    color:#8B7764;
-    font-size:7.5px;
-    letter-spacing:2.7px;
+
+    color:#8A7764;
+
+    font-size:7px;
+
+    letter-spacing:2.8px;
+
     text-transform:uppercase;
 }
 
 .header .navbar{
     margin-left:auto;
+
     display:flex;
     align-items:center;
-    gap:28px;
+
+    gap:29px;
 }
 
 .header .navbar a{
     position:relative;
+
     padding:31px 0 27px;
-    color:#4F433B;
+
+    color:#53473E;
+
     text-decoration:none;
-    font-size:11px;
+
+    font-size:10px;
     font-weight:600;
-    letter-spacing:1px;
+
+    letter-spacing:1.1px;
+
     transition:color .25s ease;
 }
 
 .header .navbar a::after{
     content:"";
+
     position:absolute;
+
     left:50%;
     bottom:17px;
+
     width:0;
     height:1px;
+
     transform:translateX(-50%);
+
     background:var(--gold);
+
     transition:width .25s ease;
 }
 
@@ -317,262 +499,364 @@ a{
 
 .header .navbar a:hover::after,
 .header .navbar a.active::after{
-    width:25px;
+    width:24px;
 }
 
-.header .header-right{
+.header-right{
     display:flex;
     align-items:center;
 }
 
-.header .header-whatsapp{
+.header-whatsapp{
     display:inline-flex;
+
     align-items:center;
     justify-content:center;
+
     min-width:122px;
-    height:40px;
+    height:39px;
+
     padding:0 18px;
-    border:1px solid var(--burgundy);
-    border-radius:2px;
+
+    border:1px solid rgba(43,0,21,.75);
+
     color:var(--burgundy);
+
     text-decoration:none;
-    font-size:10px;
+
+    font-size:9px;
     font-weight:700;
-    letter-spacing:1.2px;
+
+    letter-spacing:1.25px;
+
     text-transform:uppercase;
+
     transition:all .25s ease;
 }
 
-.header .header-whatsapp:hover{
+.header-whatsapp:hover{
     background:var(--burgundy);
     color:#fff;
 }
 
-.header .menu-toggle{
+.menu-toggle{
     display:none;
+
     width:42px;
     height:42px;
+
     padding:0;
-    border:1px solid rgba(43,0,21,.28);
-    border-radius:3px;
+
+    border:1px solid rgba(43,0,21,.25);
+
+    border-radius:2px;
+
     background:transparent;
+
     color:var(--burgundy);
-    font-size:21px;
+
+    font-size:20px;
+
     cursor:pointer;
 }
 
-/* ---------- HERO ---------- */
+/* =========================================================
+   HERO
+   ========================================================= */
 
 .premium-hero{
     position:relative;
+
     min-height:760px;
-    padding:142px 0 82px;
+
     margin-top:82px;
+
+    padding:120px 0 90px;
+
     background:
-        radial-gradient(circle at 15% 30%,rgba(233,216,181,.45),transparent 30%),
-        linear-gradient(135deg,#FBF8F1 0%,#F5EDDE 55%,#EEE0C8 100%);
+        radial-gradient(
+            circle at 12% 30%,
+            rgba(232,213,179,.45),
+            transparent 30%
+        ),
+        linear-gradient(
+            120deg,
+            #FCFAF5 0%,
+            #F7EFE0 55%,
+            #EDDFC6 100%
+        );
+
     overflow:hidden;
 }
 
 .premium-hero::before{
     content:"";
+
     position:absolute;
-    width:480px;
-    height:480px;
-    right:-220px;
-    top:-180px;
-    border:1px solid rgba(201,162,39,.16);
+
+    width:580px;
+    height:580px;
+
+    right:-290px;
+    top:-260px;
+
+    border:1px solid rgba(168,132,26,.14);
+
     border-radius:50%;
 }
 
 .premium-hero::after{
     content:"";
+
     position:absolute;
-    width:330px;
-    height:330px;
-    left:-180px;
-    bottom:-180px;
-    border:1px solid rgba(201,162,39,.10);
+
+    width:420px;
+    height:420px;
+
+    left:-270px;
+    bottom:-260px;
+
+    border:1px solid rgba(168,132,26,.09);
+
     border-radius:50%;
 }
 
 .premium-hero .container{
     position:relative;
     z-index:3;
+
+    min-height:550px;
+
+    display:flex;
+    align-items:center;
 }
 
-.premium-hero .hero-video{
-    position:absolute!important;
-    z-index:1!important;
-    top:50%;
-    right:max(32px,calc((100vw - 1220px)/2));
-    width:47%;
-    height:72%;
-    transform:translateY(-50%);
-    object-fit:cover;
-    object-position:center;
-    border:1px solid rgba(201,162,39,.30);
-    border-radius:2px;
-    box-shadow:0 30px 80px rgba(57,36,20,.18);
-    opacity:1!important;
-    visibility:visible!important;
-    filter:saturate(.88) contrast(.98);
-}
-
-.premium-hero .hero-video::after{
-    display:none;
-}
-
-.premium-hero .hero-overlay,
-.premium-hero .hero-vignette{
-    display:none!important;
-}
-
-.premium-hero .hero-content{
+.hero-content{
     position:relative;
     z-index:4;
-    width:52%;
-    max-width:620px;
-    padding:38px 0;
-    text-align:left;
+
+    width:50%;
+    max-width:610px;
+
+    padding:35px 0;
 }
 
-.premium-hero .hero-eyebrow{
+.hero-eyebrow{
     display:inline-flex;
     align-items:center;
+
     gap:12px;
-    margin-bottom:22px;
+
+    margin-bottom:23px;
+
     color:var(--gold-deep);
-    font-size:9px;
+
+    font-size:8px;
     font-weight:700;
-    letter-spacing:3.7px;
+
+    letter-spacing:3.8px;
 }
 
-.premium-hero .hero-eyebrow::before{
+.hero-eyebrow::before{
     content:"";
+
     width:34px;
     height:1px;
+
     background:var(--gold);
 }
 
 .premium-hero h1{
     margin:0;
+
     color:var(--burgundy)!important;
+
     font-family:Cinzel,Georgia,serif;
+
     font-size:clamp(48px,6vw,78px);
+
     font-weight:500;
-    line-height:1.08;
-    letter-spacing:-1.2px;
+
+    line-height:1.07;
+
+    letter-spacing:-1.5px;
 }
 
 .premium-hero h1 span{
     color:var(--gold-deep)!important;
 }
 
-.premium-hero .hero-description{
-    max-width:530px;
-    margin:25px 0 32px;
-    color:#65584D!important;
-    font-size:14px;
-    line-height:1.85;
+.hero-description{
+    max-width:510px;
+
+    margin:25px 0 31px;
+
+    color:#66594E!important;
+
+    font-size:13px;
+
+    line-height:1.9;
 }
 
-.premium-hero .hero-buttons{
+.hero-buttons{
     display:flex;
     align-items:center;
-    justify-content:flex-start;
+
     flex-wrap:wrap;
+
     gap:11px;
 }
 
-.premium-hero .hero-buttons .btn{
-    min-width:196px;
-    min-height:50px;
-    border-radius:2px!important;
-}
-
-.premium-hero .hero-signature{
-    display:flex;
-    align-items:center;
-    justify-content:flex-start;
-    gap:12px;
-    margin-top:28px;
-    color:#927F6B!important;
-    font-size:7px!important;
-    font-weight:700;
-    letter-spacing:2.8px;
-}
-
-.premium-hero .hero-signature i{
-    width:3px;
-    height:3px;
-    background:var(--gold);
-    border-radius:50%;
-}
-
-/* ---------- BUTTONS ---------- */
-
 .btn{
     display:inline-flex;
+
     align-items:center;
     justify-content:center;
+
+    min-height:49px;
+
+    padding:0 24px;
+
+    border-radius:1px!important;
+
     text-decoration:none;
-    border-radius:2px!important;
-    font-size:10px!important;
+
+    font-size:9px!important;
     font-weight:700!important;
-    letter-spacing:1.1px!important;
+
+    letter-spacing:1.25px!important;
+
     text-transform:uppercase;
-    transition:all .25s ease;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        background .25s ease,
+        color .25s ease;
 }
 
 .btn-primary{
     background:var(--burgundy)!important;
+
     border:1px solid var(--burgundy)!important;
+
     color:#fff!important;
 }
 
 .btn-primary:hover{
-    background:#42001F!important;
-    border-color:#42001F!important;
     transform:translateY(-2px);
-    box-shadow:0 12px 25px rgba(43,0,21,.16);
+
+    background:#42001F!important;
+
+    box-shadow:
+        0 12px 25px rgba(43,0,21,.15);
 }
 
 .btn-outline{
     background:transparent!important;
-    border:1px solid rgba(43,0,21,.35)!important;
+
+    border:1px solid rgba(43,0,21,.32)!important;
+
     color:var(--burgundy)!important;
 }
 
 .btn-outline:hover{
-    background:var(--burgundy)!important;
-    color:#fff!important;
     transform:translateY(-2px);
+
+    background:var(--burgundy)!important;
+
+    color:#fff!important;
 }
 
-/* ---------- TRUST ---------- */
+.hero-signature{
+    display:flex;
+    align-items:center;
+
+    gap:12px;
+
+    margin-top:28px;
+
+    color:#917F6D;
+
+    font-size:7px;
+    font-weight:700;
+
+    letter-spacing:2.8px;
+}
+
+.hero-signature i{
+    width:3px;
+    height:3px;
+
+    background:var(--gold);
+
+    border-radius:50%;
+}
+
+.hero-video{
+    position:absolute!important;
+
+    z-index:2!important;
+
+    top:50%;
+    right:0;
+
+    width:47%;
+    height:75%;
+
+    transform:translateY(-50%);
+
+    object-fit:cover;
+    object-position:center;
+
+    border:
+        1px solid rgba(201,162,39,.32);
+
+    box-shadow:
+        0 30px 75px rgba(55,35,19,.15);
+
+    background:#E5D3B4;
+
+    filter:
+        saturate(.88)
+        contrast(.98);
+}
+
+/* =========================================================
+   TRUST BAR
+   ========================================================= */
 
 .trust-bar{
-    padding:15px 0;
+    position:relative;
+
+    padding:12px 0;
+
     background:var(--burgundy)!important;
-    border:0;
 }
 
 .trust-bar .container{
     display:grid;
+
     grid-template-columns:repeat(4,1fr);
-    gap:10px;
+
+    gap:0;
 }
 
 .trust-item{
-    min-height:62px;
+    min-height:61px;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    gap:11px;
-    padding:12px;
-    border-right:1px solid rgba(255,255,255,.10);
-    color:#F4E7CF;
+
+    gap:10px;
+
+    padding:10px 14px;
+
+    border-right:
+        1px solid rgba(255,255,255,.09);
+
+    color:#F2E5CE;
 }
 
 .trust-item:last-child{
@@ -581,17 +865,22 @@ a{
 
 .trust-item i{
     color:#D9B94E;
-    font-size:16px;
+
+    font-size:14px;
 }
 
 .trust-item span{
-    font-size:9px;
+    font-size:8px;
     font-weight:600;
-    letter-spacing:1.2px;
+
+    letter-spacing:1.1px;
+
     text-transform:uppercase;
 }
 
-/* ---------- GENERAL SECTIONS ---------- */
+/* =========================================================
+   GENERAL SECTION SYSTEM
+   ========================================================= */
 
 .features,
 .collections,
@@ -600,34 +889,47 @@ a{
 .about,
 .contact{
     position:relative;
-    background:var(--cream)!important;
 }
 
 .features{
-    padding:105px 0;
+    padding:118px 0;
+
+    background:var(--cream)!important;
 }
 
 .collections{
-    padding:112px 0;
+    padding:120px 0;
+
     background:var(--cream-light)!important;
 }
 
 .ready-stock{
-    padding:112px 0;
+    padding:120px 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #F3E9D7 0%,
+            #F7F1E5 100%
+        )!important;
 }
 
 .manufacturer{
-    padding:112px 0;
-    background:#EFE3D0!important;
+    padding:120px 0;
+
+    background:#EFE2CE!important;
 }
 
 .about{
-    padding:112px 0;
+    padding:120px 0;
+
     background:var(--cream-light)!important;
 }
 
 .contact{
-    padding:112px 0;
+    padding:120px 0;
+
+    background:var(--cream)!important;
 }
 
 .features::before,
@@ -637,126 +939,206 @@ a{
 .about::before,
 .contact::before{
     content:"";
+
     position:absolute;
+
     top:0;
     left:50%;
-    width:min(760px,75%);
+
+    width:min(760px,72%);
+
     height:1px;
+
     transform:translateX(-50%);
-    background:linear-gradient(90deg,transparent,rgba(201,162,39,.25),transparent);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(201,162,39,.24),
+            transparent
+        );
 }
+
+/* =========================================================
+   SECTION TITLES
+   ========================================================= */
 
 .section-heading,
 .section-title{
     position:relative;
-    text-align:center;
+
     max-width:760px;
-    margin:0 auto 48px;
+
+    margin:0 auto 58px;
+
+    text-align:center;
 }
 
 .section-heading .section-tag,
 .section-title>span{
     display:block;
+
     margin-bottom:14px;
+
     color:var(--gold-deep);
-    font-size:9px;
+
+    font-size:8px;
     font-weight:700;
-    letter-spacing:3.5px;
+
+    letter-spacing:3.8px;
 }
 
 .section-heading h2,
 .section-title h2{
     margin:0;
+
     color:var(--burgundy);
+
     font-family:Cinzel,Georgia,serif;
+
     font-size:clamp(32px,4vw,48px);
+
     font-weight:500;
-    line-height:1.2;
+
+    line-height:1.18;
 }
 
 .section-heading p,
 .section-title p{
-    max-width:650px;
-    margin:18px auto 0;
+    max-width:640px;
+
+    margin:19px auto 0;
+
     color:var(--muted);
-    font-size:13px;
-    line-height:1.8;
+
+    font-size:12px;
+
+    line-height:1.85;
 }
 
-/* ---------- WHY SUVARNA ---------- */
+/* =========================================================
+   WHY SUVARNA
+   ========================================================= */
 
 .features .container{
     display:grid;
+
     grid-template-columns:repeat(4,minmax(0,1fr));
-    gap:16px;
+
+    gap:0;
+
+    border-top:1px solid var(--line);
+    border-left:1px solid var(--line);
 }
 
 .features .section-heading{
     grid-column:1/-1;
+
+    border:0;
 }
 
 .feature-card{
-    min-height:240px;
-    padding:32px 24px;
+    min-height:245px;
+
+    padding:38px 26px;
+
     text-align:center;
-    background:rgba(255,255,255,.58)!important;
-    border:1px solid var(--line)!important;
-    border-radius:2px!important;
-    box-shadow:var(--shadow-soft)!important;
-    transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease;
+
+    background:
+        rgba(255,255,255,.28)!important;
+
+    border-right:1px solid var(--line)!important;
+    border-bottom:1px solid var(--line)!important;
+
+    border-radius:0!important;
+
+    box-shadow:none!important;
+
+    transition:
+        background .3s ease,
+        transform .3s ease;
 }
 
 .feature-card:hover{
-    transform:translateY(-6px);
-    border-color:rgba(201,162,39,.42)!important;
-    box-shadow:var(--shadow)!important;
+    background:rgba(255,255,255,.68)!important;
+
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 18px 42px rgba(55,35,19,.06)!important;
 }
 
 .feature-card i{
     display:block;
-    margin-bottom:19px;
+
+    margin-bottom:20px;
+
     color:var(--gold-deep);
-    font-size:27px;
+
+    font-size:25px;
 }
 
 .feature-card h3{
-    margin:0 0 10px;
+    margin:0 0 11px;
+
     color:var(--burgundy);
+
     font-family:Cinzel,Georgia,serif;
-    font-size:19px;
+
+    font-size:18px;
+
     font-weight:600;
 }
 
 .feature-card p{
     margin:0;
+
     color:var(--muted)!important;
-    font-size:12px;
-    line-height:1.75;
+
+    font-size:11px;
+
+    line-height:1.8;
 }
 
-/* ---------- COLLECTIONS ---------- */
+/* =========================================================
+   COLLECTIONS
+   ========================================================= */
 
 .collection-grid{
     display:grid;
+
     grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:17px;
+
+    gap:18px;
 }
 
 .collection-card{
     position:relative;
+
     min-height:470px;
+
     overflow:hidden;
-    border:1px solid rgba(201,162,39,.22)!important;
-    border-radius:2px!important;
-    background:#E8D8BE;
-    box-shadow:var(--shadow);
+
+    background:#E7D5B8;
+
+    border:
+        1px solid rgba(201,162,39,.22)!important;
+
+    border-radius:1px!important;
+
+    box-shadow:
+        0 18px 48px rgba(55,35,19,.08);
 }
 
 .collection-card img{
     width:100%;
     height:100%;
+
     object-fit:cover;
-    transition:transform .7s cubic-bezier(.2,.7,.2,1);
+
+    transition:
+        transform .8s cubic-bezier(.2,.7,.2,1);
 }
 
 .collection-card:hover img{
@@ -765,107 +1147,165 @@ a{
 
 .collection-card::after{
     content:"";
+
     position:absolute;
+
     inset:0;
+
     background:
-        linear-gradient(180deg,transparent 35%,rgba(43,0,21,.78) 100%);
-    pointer-events:none;
+        linear-gradient(
+            180deg,
+            transparent 30%,
+            rgba(43,0,21,.80) 100%
+        );
 }
 
 .collection-overlay{
     position:absolute;
+
     z-index:2;
+
     left:0;
     right:0;
     bottom:0;
-    padding:29px;
+
+    padding:30px;
 }
 
 .collection-overlay h3{
     margin:0 0 7px;
-    color:#fffaf0;
+
+    color:#FFF9EF;
+
     font-family:Cinzel,Georgia,serif;
-    font-size:24px;
+
+    font-size:23px;
+
     font-weight:500;
 }
 
 .collection-overlay p{
     margin:0;
-    color:rgba(255,250,240,.72);
-    font-size:11px;
+
+    color:rgba(255,249,239,.72);
+
+    font-size:10px;
+
+    line-height:1.6;
 }
 
-/* ---------- READY STOCK ---------- */
-
-.ready-stock{
-    background:#F2E9D9!important;
-}
+/* =========================================================
+   READY STOCK
+   ========================================================= */
 
 .ready-stock-grid{
     display:grid;
+
     grid-template-columns:repeat(4,minmax(0,1fr));
-    gap:16px;
+
+    gap:15px;
 }
 
 .ready-stock-card{
     overflow:hidden;
-    background:#FBF8F1!important;
-    border:1px solid var(--line)!important;
-    border-radius:2px!important;
-    box-shadow:var(--shadow-soft)!important;
+
+    background:#FCFAF5!important;
+
+    border:
+        1px solid rgba(73,47,28,.10)!important;
+
+    border-radius:1px!important;
+
+    box-shadow:
+        0 10px 32px rgba(55,35,19,.055)!important;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        border-color .3s ease;
 }
 
 .ready-stock-card:hover{
-    border-color:rgba(201,162,39,.42)!important;
-    box-shadow:var(--shadow)!important;
+    transform:translateY(-5px);
+
+    border-color:
+        rgba(201,162,39,.32)!important;
+
+    box-shadow:
+        0 20px 50px rgba(55,35,19,.09)!important;
 }
 
 .ready-stock-card img{
+    display:block;
+
     width:100%;
+
     aspect-ratio:1/1;
+
     object-fit:cover;
 }
 
 .ready-stock-info{
-    padding:18px;
+    padding:17px;
 }
 
 .ready-stock-info h3{
     margin:0;
+
     color:var(--burgundy);
+
     font-family:Cinzel,Georgia,serif;
+
+    font-size:15px;
 }
 
 .section-button{
-    margin-top:38px;
+    margin-top:43px;
+
     text-align:center;
 }
 
-/* ---------- MANUFACTURER / ABOUT ---------- */
+/* =========================================================
+   MANUFACTURER / ABOUT
+   ========================================================= */
 
 .manufacturer-wrapper,
 .about-wrapper{
     display:grid;
-    grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);
-    gap:72px;
+
+    grid-template-columns:
+        minmax(0,.95fr)
+        minmax(0,1.05fr);
+
+    gap:75px;
+
     align-items:center;
 }
 
 .manufacturer-image,
 .about-image{
     position:relative;
+
     overflow:hidden;
-    border:1px solid rgba(201,162,39,.30)!important;
-    box-shadow:0 25px 65px rgba(57,36,20,.14)!important;
+
+    border:
+        1px solid rgba(201,162,39,.28)!important;
+
+    box-shadow:
+        0 25px 65px rgba(55,35,19,.12)!important;
 }
 
 .manufacturer-image img,
 .about-image img{
     display:block;
+
     width:100%;
+
     aspect-ratio:1/1.04;
+
     object-fit:cover;
-    transition:transform .7s ease;
+
+    transition:transform .8s ease;
 }
 
 .manufacturer-image:hover img,
@@ -876,242 +1316,364 @@ a{
 .manufacturer-image::after,
 .about-image::after{
     content:"";
+
     position:absolute;
-    inset:14px;
-    border:1px solid rgba(255,255,255,.42);
+
+    inset:15px;
+
+    border:
+        1px solid rgba(255,255,255,.42);
+
     pointer-events:none;
 }
 
 .manufacturer-badge,
 .about-established{
     position:absolute;
+
     z-index:3;
+
     right:22px;
     bottom:22px;
-    width:105px;
-    height:105px;
+
+    width:104px;
+    height:104px;
+
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
-    background:rgba(43,0,21,.92);
-    border:1px solid rgba(212,175,55,.55);
+
+    background:rgba(43,0,21,.93);
+
+    border:
+        1px solid rgba(212,175,55,.55);
+
     color:#F5E8C8;
 }
 
 .manufacturer-badge span,
 .about-established span,
 .about-established small{
-    font-size:7px;
+    font-size:6.5px;
+
     letter-spacing:2px;
 }
 
 .manufacturer-badge strong,
 .about-established strong{
     margin:4px 0;
+
     color:#D9B94E;
+
     font-family:Cinzel,Georgia,serif;
-    font-size:27px;
+
+    font-size:26px;
+
     font-weight:500;
 }
 
 .manufacturer-content .section-tag,
 .about-content .section-tag{
     color:var(--gold-deep);
-    font-size:9px;
+
+    font-size:8px;
     font-weight:700;
-    letter-spacing:3.5px;
+
+    letter-spacing:3.8px;
 }
 
 .manufacturer-content h2,
 .about-content h2{
     margin:16px 0 22px;
+
     color:var(--burgundy);
+
     font-family:Cinzel,Georgia,serif;
+
     font-size:clamp(35px,4vw,54px);
+
     font-weight:500;
+
     line-height:1.16;
 }
 
 .manufacturer-content p,
 .about-content p{
     margin:0 0 18px;
+
     color:var(--muted);
-    font-size:13px;
-    line-height:1.9;
+
+    font-size:12px;
+
+    line-height:1.95;
 }
 
 .manufacturer-features{
     display:grid;
+
     grid-template-columns:repeat(2,1fr);
+
     gap:1px;
+
     margin:30px 0;
-    background:rgba(75,48,28,.12);
-    border:1px solid rgba(75,48,28,.10);
+
+    background:rgba(73,47,28,.10);
+
+    border:1px solid rgba(73,47,28,.09);
 }
 
 .manufacturer-feature{
     display:flex;
+
     align-items:center;
+
     gap:13px;
+
     padding:17px;
-    background:rgba(251,248,241,.58)!important;
+
+    background:
+        rgba(252,250,245,.58)!important;
 }
 
 .manufacturer-feature-icon{
     width:37px;
     height:37px;
+
     flex:0 0 37px;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    border:1px solid rgba(201,162,39,.32);
+
+    border:
+        1px solid rgba(201,162,39,.30);
+
     color:var(--gold-deep);
 }
 
 .manufacturer-feature strong{
     display:block;
+
     color:var(--burgundy);
-    font-size:10px;
+
+    font-size:9px;
+
     letter-spacing:.5px;
 }
 
 .manufacturer-feature small{
     display:block;
+
     margin-top:4px;
+
     color:#8A7A6B;
-    font-size:9px;
+
+    font-size:8px;
 }
 
 .manufacturer-actions,
 .about-actions{
     display:flex;
+
     align-items:center;
+
     gap:20px;
+
     margin-top:27px;
 }
 
 .manufacturer-link,
 .about-text-link{
     color:var(--burgundy);
+
     text-decoration:none;
-    font-size:10px;
+
+    font-size:9px;
     font-weight:700;
+
     letter-spacing:1.2px;
+
     text-transform:uppercase;
 }
 
 .manufacturer-link i,
 .about-text-link i{
     margin-left:7px;
+
     color:var(--gold-deep);
 }
 
 .about-stats{
     display:grid;
+
     grid-template-columns:repeat(3,1fr);
-    gap:10px;
-    margin-top:28px;
+
+    gap:0;
+
+    margin-top:29px;
+
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
 }
 
 .stat-box{
-    padding:18px 12px;
+    padding:19px 12px;
+
     text-align:center;
-    background:rgba(255,255,255,.62);
-    border:1px solid var(--line);
+
+    background:transparent;
+
+    border-right:1px solid var(--line);
+}
+
+.stat-box:last-child{
+    border-right:0;
 }
 
 .stat-number{
     display:block;
+
     color:var(--burgundy);
+
     font-family:Cinzel,Georgia,serif;
-    font-size:24px;
+
+    font-size:23px;
 }
 
 .stat-label{
     display:block;
+
     margin-top:5px;
+
     color:#8A7A6B;
-    font-size:8px;
+
+    font-size:7px;
     font-weight:600;
-    letter-spacing:1.2px;
+
+    letter-spacing:1.3px;
+
     text-transform:uppercase;
 }
 
-/* ---------- CONTACT ---------- */
+/* =========================================================
+   CONTACT
+   ========================================================= */
 
 .premium-contact-grid{
     display:grid;
+
     grid-template-columns:repeat(4,minmax(0,1fr));
-    gap:14px;
+
+    gap:0;
+
+    border-top:1px solid var(--line);
+    border-left:1px solid var(--line);
 }
 
 .premium-contact-card{
-    min-height:265px;
-    padding:31px 24px;
+    min-height:260px;
+
+    padding:34px 24px;
+
     text-align:center;
-    background:#FBF8F1!important;
-    border:1px solid var(--line)!important;
-    border-radius:2px!important;
-    box-shadow:var(--shadow-soft)!important;
-    transition:transform .3s ease,border-color .3s ease;
+
+    background:
+        rgba(255,255,255,.27)!important;
+
+    border-right:1px solid var(--line)!important;
+    border-bottom:1px solid var(--line)!important;
+
+    border-radius:0!important;
+
+    box-shadow:none!important;
+
+    transition:
+        background .3s ease,
+        transform .3s ease;
 }
 
 .premium-contact-card:hover{
-    transform:translateY(-5px);
-    border-color:rgba(201,162,39,.40)!important;
+    background:rgba(255,255,255,.67)!important;
+
+    transform:translateY(-4px);
 }
 
 .contact-icon{
-    width:58px;
-    height:58px;
+    width:56px;
+    height:56px;
+
     margin:0 auto 20px;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    border:1px solid rgba(201,162,39,.28);
+
+    border:
+        1px solid rgba(201,162,39,.28);
+
     color:var(--gold-deep);
-    font-size:23px;
+
+    font-size:21px;
 }
 
 .contact-label{
     display:block;
+
     color:#9A836D;
-    font-size:7px;
+
+    font-size:6.5px;
     font-weight:700;
-    letter-spacing:2px;
+
+    letter-spacing:2.2px;
 }
 
 .premium-contact-card h3{
     margin:9px 0 10px;
+
     color:var(--burgundy);
+
     font-family:Cinzel,Georgia,serif;
-    font-size:22px;
+
+    font-size:20px;
+
     font-weight:500;
 }
 
 .premium-contact-card p{
     margin:0;
+
     color:var(--muted);
-    font-size:11px;
-    line-height:1.7;
+
+    font-size:10px;
+
+    line-height:1.75;
 }
 
-.premium-contact-card > a:last-child{
+.premium-contact-card>a:last-child{
     display:inline-flex;
+
     align-items:center;
+
     gap:8px;
+
     margin-top:15px;
+
     color:var(--burgundy);
+
     text-decoration:none;
-    font-size:9px;
+
+    font-size:8px;
     font-weight:700;
+
     letter-spacing:1px;
+
     text-transform:uppercase;
 }
 
 .location-link{
     color:inherit;
+
     text-decoration:none;
 }
 
@@ -1119,62 +1681,77 @@ a{
     color:var(--gold-deep);
 }
 
-/* ---------- FOOTER ---------- */
+/* =========================================================
+   FOOTER
+   ========================================================= */
 
 .footer{
-    padding:75px 0 0;
+    padding:78px 0 0;
+
     background:var(--burgundy)!important;
+
     color:#F2E7D4;
+
     text-align:center;
 }
 
 .footer-grid{
     display:grid;
-    grid-template-columns:1.5fr 1fr 1fr 1fr;
-    gap:45px;
-    text-align:left;
-}
 
-.footer-about,
-.footer-links,
-.footer-products,
-.footer-social{
-    min-width:0;
+    grid-template-columns:1.5fr 1fr 1fr 1fr;
+
+    gap:45px;
+
+    text-align:left;
 }
 
 .footer-logo{
     width:62px;
     height:auto;
+
     margin-bottom:15px;
 }
 
 .footer h3{
     margin:0 0 12px;
+
     color:#D9B94E;
+
     font-family:Cinzel,Georgia,serif;
+
     font-size:15px;
+
     letter-spacing:1px;
 }
 
 .footer h4{
     margin:5px 0 18px;
+
     color:#E8D5AE;
+
     font-family:Cinzel,Georgia,serif;
-    font-size:14px;
+
+    font-size:13px;
+
     font-weight:500;
 }
 
 .footer p{
     max-width:340px;
+
     margin:0;
-    color:rgba(242,231,212,.62);
-    font-size:11px;
-    line-height:1.8;
+
+    color:rgba(242,231,212,.60);
+
+    font-size:10px;
+
+    line-height:1.85;
 }
 
 .footer ul{
     margin:0;
     padding:0;
+
     list-style:none;
 }
 
@@ -1183,9 +1760,12 @@ a{
 }
 
 .footer li a{
-    color:rgba(242,231,212,.64);
+    color:rgba(242,231,212,.62);
+
     text-decoration:none;
-    font-size:10px;
+
+    font-size:9px;
+
     transition:color .2s ease;
 }
 
@@ -1195,65 +1775,97 @@ a{
 
 .social-icons{
     display:flex;
+
     gap:9px;
 }
 
 .social-icons a{
-    width:39px;
-    height:39px;
+    width:38px;
+    height:38px;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    border:1px solid rgba(212,175,55,.25);
+
+    border:
+        1px solid rgba(212,175,55,.23);
+
     color:#D9B94E;
+
     text-decoration:none;
+
     transition:all .25s ease;
 }
 
 .social-icons a:hover{
     background:#D4AF37;
+
     color:var(--burgundy);
 }
 
 .footer-bottom{
     margin-top:55px;
+
     padding:18px 15px;
-    border-top:1px solid rgba(212,175,55,.12);
-    color:rgba(242,231,212,.42);
-    font-size:9px;
-    letter-spacing:.5px;
+
+    border-top:
+        1px solid rgba(212,175,55,.12);
+
+    color:rgba(242,231,212,.40);
+
+    font-size:8px;
+
+    letter-spacing:.6px;
 }
 
-/* ---------- FLOATING BUTTONS ---------- */
+/* =========================================================
+   FLOATING BUTTONS
+   ========================================================= */
 
 .floating-whatsapp,
 .back-to-top{
     position:fixed!important;
+
     right:18px!important;
-    width:56px!important;
-    height:56px!important;
+
+    width:55px!important;
+    height:55px!important;
+
     z-index:9999!important;
+
     display:flex!important;
+
     align-items:center;
     justify-content:center;
+
     border-radius:50%!important;
-    box-shadow:0 12px 30px rgba(43,0,21,.20)!important;
+
+    box-shadow:
+        0 12px 30px rgba(43,0,21,.18)!important;
 }
 
 .floating-whatsapp{
     bottom:18px!important;
+
     background:#25D366!important;
+
     color:#fff!important;
 }
 
 .back-to-top{
-    bottom:87px!important;
+    bottom:86px!important;
+
     background:var(--burgundy)!important;
+
     color:#D9B94E!important;
-    border:1px solid rgba(212,175,55,.35)!important;
+
+    border:
+        1px solid rgba(212,175,55,.34)!important;
 }
 
-/* ---------- MOBILE ---------- */
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
 @media(max-width:900px){
 
@@ -1267,6 +1879,7 @@ a{
 
     .header-container{
         min-height:72px;
+
         gap:12px;
     }
 
@@ -1280,28 +1893,41 @@ a{
     }
 
     .header .logo-text span{
-        font-size:6.5px;
-        letter-spacing:1.9px;
+        font-size:6px;
+        letter-spacing:2px;
     }
 
     .header .navbar{
         position:absolute;
+
         top:100%;
         left:12px;
         right:12px;
+
         display:flex;
+
         flex-direction:column;
         align-items:stretch;
+
         gap:0;
+
         margin:0;
         padding:8px;
-        background:#FBF8F1;
-        border:1px solid rgba(201,162,39,.22);
-        box-shadow:0 20px 45px rgba(43,0,21,.14);
+
+        background:#FCFAF5;
+
+        border:
+            1px solid rgba(201,162,39,.20);
+
+        box-shadow:
+            0 20px 45px rgba(43,0,21,.12);
+
         opacity:0;
         visibility:hidden;
         pointer-events:none;
+
         transform:translateY(-7px);
+
         transition:.22s ease;
     }
 
@@ -1310,122 +1936,163 @@ a{
         opacity:1;
         visibility:visible;
         pointer-events:auto;
+
         transform:translateY(0);
     }
 
     .header .navbar a{
         padding:14px;
-        border-bottom:1px solid rgba(75,48,28,.08);
+
+        border-bottom:
+            1px solid rgba(73,47,28,.07);
     }
 
     .header .navbar a::after{
         display:none;
     }
 
-    .header .header-whatsapp{
+    .header-whatsapp{
         display:none;
     }
 
-    .header .menu-toggle{
+    .menu-toggle{
         display:inline-flex;
+
         align-items:center;
         justify-content:center;
     }
 
-    /* Hero */
+    /* HERO */
 
     .premium-hero{
         min-height:auto;
+
         margin-top:72px;
-        padding:70px 0 48px;
+
+        padding:68px 0 48px;
     }
 
     .premium-hero .container{
         width:calc(100% - 28px);
+
+        min-height:auto;
+
+        display:block;
     }
 
-    .premium-hero .hero-content{
+    .hero-content{
         width:100%;
+
         max-width:none;
+
         padding:0;
+
         text-align:center;
     }
 
-    .premium-hero .hero-eyebrow{
+    .hero-eyebrow{
         justify-content:center;
-        font-size:8px;
+
+        font-size:7px;
+
         letter-spacing:2.7px;
     }
 
-    .premium-hero .hero-eyebrow::before{
+    .hero-eyebrow::before{
         width:22px;
     }
 
     .premium-hero h1{
         font-size:clamp(36px,10.5vw,52px);
+
         line-height:1.07;
     }
 
-    .premium-hero .hero-description{
+    .hero-description{
         max-width:520px;
+
         margin:20px auto 25px;
-        font-size:13px;
-        line-height:1.75;
+
+        font-size:12px;
+
+        line-height:1.8;
     }
 
-    .premium-hero .hero-buttons{
+    .hero-buttons{
         max-width:410px;
+
         margin:0 auto;
+
         flex-direction:column;
+
         align-items:stretch;
     }
 
-    .premium-hero .hero-buttons .btn{
+    .hero-buttons .btn{
         width:100%;
-        min-width:0;
-        min-height:54px;
+
+        min-height:53px;
     }
 
-    .premium-hero .hero-signature{
+    .hero-signature{
         justify-content:center;
+
         flex-wrap:wrap;
     }
 
-    .premium-hero .hero-video{
+    .hero-video{
         position:relative!important;
+
         top:auto;
         right:auto;
+
         width:100%;
         height:310px;
+
         transform:none;
+
         margin:38px auto 0;
+
         display:block;
     }
 
+    /* TRUST */
+
     .trust-bar{
-        padding:9px 0;
+        padding:8px 0;
     }
 
     .trust-bar .container{
         width:calc(100% - 22px);
+
         grid-template-columns:repeat(2,1fr);
-        gap:7px;
+
+        gap:5px;
     }
 
     .trust-item{
-        min-height:68px;
+        min-height:67px;
+
         flex-direction:column;
+
         gap:6px;
+
         padding:9px 5px;
+
         border-right:0;
+
         text-align:center;
     }
 
     .trust-item span{
-        font-size:7.5px;
-        letter-spacing:1px;
+        font-size:7px;
+
+        letter-spacing:.8px;
+
         line-height:1.35;
     }
+
+    /* SECTIONS */
 
     .features,
     .collections,
@@ -1433,12 +2100,12 @@ a{
     .manufacturer,
     .about,
     .contact{
-        padding:76px 0;
+        padding:78px 0;
     }
 
     .section-heading,
     .section-title{
-        margin-bottom:35px;
+        margin-bottom:38px;
     }
 
     .section-heading h2,
@@ -1448,34 +2115,34 @@ a{
 
     .section-heading p,
     .section-title p{
-        font-size:12px;
+        font-size:11px;
     }
+
+    /* FEATURES */
 
     .features .container{
-        display:grid;
         grid-template-columns:repeat(2,minmax(0,1fr));
-        gap:10px;
-    }
-
-    .features .section-heading{
-        grid-column:1/-1;
     }
 
     .feature-card{
         min-height:215px;
+
         padding:25px 17px;
     }
 
     .feature-card h3{
-        font-size:17px;
+        font-size:16px;
     }
 
     .feature-card p{
-        font-size:11px;
+        font-size:10px;
     }
+
+    /* COLLECTIONS */
 
     .collection-grid{
         grid-template-columns:1fr;
+
         gap:13px;
     }
 
@@ -1483,8 +2150,11 @@ a{
         min-height:430px;
     }
 
+    /* READY STOCK */
+
     .ready-stock-grid{
         grid-template-columns:repeat(2,minmax(0,1fr));
+
         gap:10px;
     }
 
@@ -1492,10 +2162,13 @@ a{
         padding:13px;
     }
 
+    /* ABOUT / MANUFACTURER */
+
     .manufacturer-wrapper,
     .about-wrapper{
         grid-template-columns:1fr;
-        gap:42px;
+
+        gap:43px;
     }
 
     .manufacturer-content,
@@ -1510,24 +2183,29 @@ a{
 
     .manufacturer-features{
         grid-template-columns:1fr;
+
         text-align:left;
     }
 
     .manufacturer-actions,
     .about-actions{
         flex-direction:column;
+
         align-items:stretch;
     }
 
     .manufacturer-actions .btn,
     .about-actions .btn{
         width:100%;
+
         min-height:52px;
     }
 
     .about-stats{
         grid-template-columns:repeat(3,1fr);
     }
+
+    /* CONTACT */
 
     .premium-contact-grid{
         grid-template-columns:repeat(2,minmax(0,1fr));
@@ -1537,13 +2215,17 @@ a{
         min-height:250px;
     }
 
+    /* FOOTER */
+
     .footer{
-        padding-top:58px;
+        padding-top:60px;
     }
 
     .footer-grid{
         grid-template-columns:1fr 1fr;
+
         text-align:center;
+
         gap:35px 20px;
     }
 
@@ -1561,6 +2243,10 @@ a{
     }
 }
 
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
 @media(max-width:600px){
 
     .container{
@@ -1575,12 +2261,13 @@ a{
         font-size:35px;
     }
 
-    .premium-hero .hero-description{
-        font-size:12.5px;
+    .hero-description{
+        font-size:12px;
     }
 
-    .premium-hero .hero-video{
+    .hero-video{
         height:275px;
+
         margin-top:32px;
     }
 
@@ -1609,12 +2296,23 @@ a{
         grid-template-columns:1fr;
     }
 
+    .stat-box{
+        border-right:0;
+
+        border-bottom:1px solid var(--line);
+    }
+
+    .stat-box:last-child{
+        border-bottom:0;
+    }
+
     .premium-contact-grid{
         grid-template-columns:1fr;
     }
 
     .premium-contact-card{
         min-height:auto;
+
         padding:29px 22px;
     }
 
@@ -1630,6 +2328,7 @@ a{
     .back-to-top{
         width:53px!important;
         height:53px!important;
+
         right:13px!important;
     }
 
@@ -1653,7 +2352,7 @@ a{
     }
 
     .header .logo-text span{
-        font-size:5.8px;
+        font-size:5.5px;
     }
 
     .premium-hero h1{
@@ -1661,9 +2360,13 @@ a{
     }
 
     .trust-item span{
-        font-size:7px;
+        font-size:6.8px;
     }
 }
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
 
 @media(prefers-reduced-motion:reduce){
 
@@ -1687,7 +2390,7 @@ a{
 <body>
 
 <!-- =====================================================
-     PAGE LOADER
+     PREMIUM PAGE LOADER
 ===================================================== -->
 
 <div id="page-loader" aria-label="Loading Suvarna Jewellers">
@@ -1699,16 +2402,20 @@ a{
             alt="Suvarna Jewellers"
             class="v9-loader-logo">
 
+        <div class="v9-loader-brand">
+            SUVARNA JEWELLERS
+        </div>
+
         <div class="v9-loader-line"></div>
 
         <span class="v9-loader-text">
             TRUSTED SINCE 2003
         </span>
 
-        <span
-            class="v9-loader-spinner"
+        <div
+            class="v9-loader-progress"
             aria-hidden="true">
-        </span>
+        </div>
 
     </div>
 
@@ -1718,7 +2425,7 @@ a{
 (function(){
 
     var loaderStart = Date.now();
-    var MIN_LOADER_TIME = 1800;
+    var MIN_LOADER_TIME = 2100;
     var MAX_LOADER_TIME = 5000;
     var finished = false;
 
@@ -1728,39 +2435,50 @@ a{
 
         finished = true;
 
-        var loader = document.getElementById("page-loader");
+        var loader =
+            document.getElementById("page-loader");
 
         if(!loader) return;
 
-        loader.classList.add("v9-loader-hide");
+        loader.classList.add(
+            "v9-loader-hide"
+        );
 
-        window.setTimeout(function(){
+        window.setTimeout(
+            function(){
 
-            if(loader && loader.parentNode){
-                loader.parentNode.removeChild(loader);
-            }
+                if(
+                    loader &&
+                    loader.parentNode
+                ){
+                    loader.parentNode.removeChild(loader);
+                }
 
-        },550);
-
+            },
+            850
+        );
     }
 
     function finishAfterMinimumTime(){
 
-        var elapsed = Date.now() - loaderStart;
+        var elapsed =
+            Date.now() - loaderStart;
 
-        var remaining = Math.max(
-            0,
-            MIN_LOADER_TIME - elapsed
-        );
+        var remaining =
+            Math.max(
+                0,
+                MIN_LOADER_TIME - elapsed
+            );
 
         window.setTimeout(
             finishLoader,
             remaining
         );
-
     }
 
-    if(document.readyState === "complete"){
+    if(
+        document.readyState === "complete"
+    ){
 
         finishAfterMinimumTime();
 
@@ -1814,7 +2532,6 @@ a{
 
         </a>
 
-
         <nav
             class="navbar"
             id="navbar">
@@ -1842,7 +2559,6 @@ a{
             </a>
 
         </nav>
-
 
         <div class="header-right">
 
@@ -1873,13 +2589,11 @@ a{
 
 </header>
 
-
 <!-- =====================================================
      MAIN
 ===================================================== -->
 
 <main id="home">
-
 
 <!-- =====================================================
      HERO
@@ -1901,13 +2615,10 @@ a{
             </h1>
 
             <p class="hero-description">
-
                 Premium Gold &amp; Silver Jewellery,
                 thoughtfully crafted for discerning jewellery
                 businesses across India.
-
             </p>
-
 
             <div class="hero-buttons">
 
@@ -1931,7 +2642,6 @@ a{
 
             </div>
 
-
             <div class="hero-signature">
 
                 <span>GOLD</span>
@@ -1947,7 +2657,6 @@ a{
             </div>
 
         </div>
-
 
         <video
             class="hero-video"
@@ -1969,7 +2678,6 @@ a{
 
 </section>
 
-
 <!-- =====================================================
      TRUST BAR
 ===================================================== -->
@@ -1988,7 +2696,6 @@ a{
 
         </div>
 
-
         <div class="trust-item">
 
             <i class="fas fa-gem"></i>
@@ -1999,7 +2706,6 @@ a{
 
         </div>
 
-
         <div class="trust-item">
 
             <i class="fas fa-industry"></i>
@@ -2009,7 +2715,6 @@ a{
             </span>
 
         </div>
-
 
         <div class="trust-item">
 
@@ -2024,7 +2729,6 @@ a{
     </div>
 
 </section>
-
 
 <!-- =====================================================
      WHY SUVARNA
@@ -2051,7 +2755,6 @@ a{
 
         </div>
 
-
         <div class="feature-card">
 
             <i class="fa-solid fa-medal"></i>
@@ -2066,7 +2769,6 @@ a{
             </p>
 
         </div>
-
 
         <div class="feature-card">
 
@@ -2083,7 +2785,6 @@ a{
 
         </div>
 
-
         <div class="feature-card">
 
             <i class="fa-solid fa-truck-fast"></i>
@@ -2098,7 +2799,6 @@ a{
             </p>
 
         </div>
-
 
         <div class="feature-card">
 
@@ -2118,7 +2818,6 @@ a{
     </div>
 
 </section>
-
 
 <!-- =====================================================
      COLLECTIONS
@@ -2147,13 +2846,6 @@ a{
 
         </div>
 
-
-        <!--
-          IMPORTANT:
-          collections-home.js dynamically renders
-          the collection cards here.
-        -->
-
         <div
             id="collectionsGrid"
             class="collection-grid">
@@ -2162,7 +2854,6 @@ a{
     </div>
 
 </section>
-
 
 <!-- =====================================================
      READY STOCK
@@ -2192,18 +2883,10 @@ a{
 
         </div>
 
-
-        <!--
-          IMPORTANT:
-          ready-stock.js dynamically renders
-          ready-stock products here.
-        -->
-
         <div
             id="readyStockGrid"
             class="ready-stock-grid">
         </div>
-
 
         <div class="section-button">
 
@@ -2221,7 +2904,6 @@ a{
 
 </section>
 
-
 <!-- =====================================================
      MANUFACTURER
 ===================================================== -->
@@ -2232,19 +2914,13 @@ a{
 
     <div class="container manufacturer-wrapper">
 
-
         <div class="manufacturer-image">
 
-            <div class="manufacturer-image-frame">
-
-                <img
-                    src="assets/images/manufacturer.jpg"
-                    alt="Suvarna Jewellers Gold and Silver Jewellery Manufacturing"
-                    loading="lazy"
-                    decoding="async">
-
-            </div>
-
+            <img
+                src="assets/images/manufacturer.jpg"
+                alt="Suvarna Jewellers Gold and Silver Jewellery Manufacturing"
+                loading="lazy"
+                decoding="async">
 
             <div class="manufacturer-badge">
 
@@ -2260,7 +2936,6 @@ a{
 
         </div>
 
-
         <div class="manufacturer-content">
 
             <span class="section-tag">
@@ -2272,29 +2947,21 @@ a{
                 Finished With Excellence.
             </h2>
 
-
-            <p class="manufacturer-lead">
-
+            <p>
                 Suvarna Jewellers is a trusted Gold &amp; Silver
                 Jewellery Manufacturer delivering refined
                 craftsmanship, consistent quality and premium
                 finishing to jewellery businesses across India.
-
             </p>
 
-
             <p>
-
                 From Gold and Silver Jewellery to Rudraksha Malas,
                 Pendants and Bracelets, every collection is developed
                 with attention to detail and a commitment to
                 dependable manufacturing standards.
-
             </p>
 
-
             <div class="manufacturer-features">
-
 
                 <div class="manufacturer-feature">
 
@@ -2316,7 +2983,6 @@ a{
 
                 </div>
 
-
                 <div class="manufacturer-feature">
 
                     <span class="manufacturer-feature-icon">
@@ -2337,7 +3003,6 @@ a{
 
                 </div>
 
-
                 <div class="manufacturer-feature">
 
                     <span class="manufacturer-feature-icon">
@@ -2357,7 +3022,6 @@ a{
                     </div>
 
                 </div>
-
 
                 <div class="manufacturer-feature">
 
@@ -2381,7 +3045,6 @@ a{
 
             </div>
 
-
             <div class="manufacturer-actions">
 
                 <a
@@ -2393,7 +3056,6 @@ a{
                     Enquire on WhatsApp
 
                 </a>
-
 
                 <a
                     href="#contact"
@@ -2413,7 +3075,6 @@ a{
 
 </section>
 
-
 <!-- =====================================================
      ABOUT
 ===================================================== -->
@@ -2424,19 +3085,13 @@ a{
 
     <div class="container about-wrapper">
 
+        <div class="about-image">
 
-        <div class="about-image about-image-premium">
-
-            <div class="about-image-frame">
-
-                <img
-                    src="hero.jpg"
-                    alt="Suvarna Jewellers premium jewellery craftsmanship"
-                    loading="lazy"
-                    decoding="async">
-
-            </div>
-
+            <img
+                src="hero.jpg"
+                alt="Suvarna Jewellers premium jewellery craftsmanship"
+                loading="lazy"
+                decoding="async">
 
             <div class="about-established">
 
@@ -2456,39 +3111,30 @@ a{
 
         </div>
 
-
-        <div class="about-content about-content-premium">
+        <div class="about-content">
 
             <span class="section-tag">
                 ABOUT SUVARNA
             </span>
-
 
             <h2>
                 A Legacy of Trust.<br>
                 A Standard of Excellence.
             </h2>
 
-
-            <p class="about-lead">
-
+            <p>
                 Suvarna Jewellers is a trusted Gold &amp; Silver
                 Jewellery Manufacturer committed to refined
                 craftsmanship, premium finishing and dependable
                 business relationships.
-
             </p>
 
-
             <p>
-
                 We serve wholesalers, retailers and jewellery
                 businesses across India with carefully developed
                 Gold, Silver, Rudraksha, Pendant and Bracelet
                 collections.
-
             </p>
-
 
             <div class="about-stats">
 
@@ -2504,7 +3150,6 @@ a{
 
                 </div>
 
-
                 <div class="stat-box">
 
                     <span class="stat-number">
@@ -2516,7 +3161,6 @@ a{
                     </span>
 
                 </div>
-
 
                 <div class="stat-box">
 
@@ -2532,7 +3176,6 @@ a{
 
             </div>
 
-
             <div class="about-actions">
 
                 <a
@@ -2542,7 +3185,6 @@ a{
                     Explore Collections
 
                 </a>
-
 
                 <a
                     href="#contact"
@@ -2562,7 +3204,6 @@ a{
 
 </section>
 
-
 <!-- =====================================================
      CONTACT
 ===================================================== -->
@@ -2573,8 +3214,7 @@ a{
 
     <div class="container">
 
-
-        <div class="section-title premium-contact-title">
+        <div class="section-title">
 
             <span>
                 CONTACT SUVARNA
@@ -2592,13 +3232,9 @@ a{
 
         </div>
 
-
         <div class="premium-contact-grid">
 
-
-            <!-- WHATSAPP -->
-
-            <div class="contact-card premium-contact-card">
+            <div class="premium-contact-card">
 
                 <div class="contact-icon">
                     <i class="fa-brands fa-whatsapp"></i>
@@ -2629,10 +3265,7 @@ a{
 
             </div>
 
-
-            <!-- CALL -->
-
-            <div class="contact-card premium-contact-card">
+            <div class="premium-contact-card">
 
                 <div class="contact-icon">
                     <i class="fa-solid fa-phone"></i>
@@ -2660,10 +3293,7 @@ a{
 
             </div>
 
-
-            <!-- EMAIL -->
-
-            <div class="contact-card premium-contact-card">
+            <div class="premium-contact-card">
 
                 <div class="contact-icon">
                     <i class="fa-solid fa-envelope"></i>
@@ -2691,10 +3321,7 @@ a{
 
             </div>
 
-
-            <!-- LOCATION -->
-
-            <div class="contact-card premium-contact-card">
+            <div class="premium-contact-card">
 
                 <div class="contact-icon">
                     <i class="fa-solid fa-location-dot"></i>
@@ -2747,7 +3374,6 @@ a{
 
 </main>
 
-
 <!-- =====================================================
      FOOTER
 ===================================================== -->
@@ -2755,7 +3381,6 @@ a{
 <footer class="footer">
 
     <div class="container footer-grid">
-
 
         <div class="footer-about">
 
@@ -2775,7 +3400,6 @@ a{
             </p>
 
         </div>
-
 
         <div class="footer-links">
 
@@ -2819,7 +3443,6 @@ a{
 
         </div>
 
-
         <div class="footer-products">
 
             <h4>
@@ -2862,7 +3485,6 @@ a{
 
         </div>
 
-
         <div class="footer-social">
 
             <h4>
@@ -2881,7 +3503,6 @@ a{
 
                 </a>
 
-
                 <a
                     href="https://www.facebook.com/share/1DQnSxg6UL/"
                     aria-label="Facebook"
@@ -2892,7 +3513,6 @@ a{
 
                 </a>
 
-
                 <a
                     href="https://youtube.com/@suvarnajewellers2003"
                     aria-label="YouTube"
@@ -2902,7 +3522,6 @@ a{
                     <i class="fab fa-youtube"></i>
 
                 </a>
-
 
                 <a
                     href="https://wa.me/917777991118"
@@ -2920,7 +3539,6 @@ a{
 
     </div>
 
-
     <div class="footer-bottom">
 
         © 2003–2026 SUVARNA JEWELLERS.
@@ -2929,7 +3547,6 @@ a{
     </div>
 
 </footer>
-
 
 <!-- =====================================================
      FLOATING WHATSAPP
@@ -2946,7 +3563,6 @@ a{
 
 </a>
 
-
 <!-- =====================================================
      BACK TO TOP
 ===================================================== -->
@@ -2961,10 +3577,8 @@ a{
 
 </button>
 
-
 <!-- =====================================================
      EXISTING JAVASCRIPT
-     KEPT INTACT
 ===================================================== -->
 
 <script src="assets/js/config.js"></script>
@@ -2974,7 +3588,6 @@ a{
 <script src="assets/js/ready-stock.js"></script>
 <script src="assets/js/search.js"></script>
 <script src="assets/js/main.js"></script>
-
 
 <!-- =====================================================
      MOBILE MENU FIX
@@ -3002,7 +3615,6 @@ a{
 
         toggle.dataset.v12Bound = "1";
 
-
         function closeMenu(){
 
             menu.classList.remove(
@@ -3021,9 +3633,7 @@ a{
             );
 
             toggle.innerHTML = "&#9776;";
-
         }
-
 
         function openMenu(){
 
@@ -3043,9 +3653,7 @@ a{
             );
 
             toggle.innerHTML = "&times;";
-
         }
-
 
         toggle.addEventListener(
             "click",
@@ -3071,7 +3679,6 @@ a{
             true
         );
 
-
         menu.querySelectorAll("a").forEach(
             function(a){
 
@@ -3088,22 +3695,18 @@ a{
             }
         );
 
-
         window.addEventListener(
             "resize",
             function(){
 
                 if(window.innerWidth > 900){
-
                     closeMenu();
-
                 }
 
             }
         );
 
     }
-
 
     if(
         document.readyState === "loading"
@@ -3124,7 +3727,6 @@ a{
 
 </script>
 
-
 <!-- =====================================================
      HEADER SCROLL STATE
 ===================================================== -->
@@ -3137,7 +3739,6 @@ a{
         document.querySelector(".header");
 
     if(!header) return;
-
 
     function updateHeader(){
 
@@ -3156,7 +3757,6 @@ a{
         }
 
     }
-
 
     window.addEventListener(
         "scroll",
