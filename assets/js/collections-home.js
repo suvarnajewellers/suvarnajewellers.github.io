@@ -1,7 +1,7 @@
 /* ==========================================
-   SUVARNA JEWELLERS
+   SUVARNA JEWELLERS V9
    COLLECTIONS-HOME.JS
-   PREMIUM V2
+   PREMIUM + STABLE VERSION
 ========================================== */
 
 document.addEventListener("DOMContentLoaded", initCollectionsHome);
@@ -18,24 +18,51 @@ async function initCollectionsHome(){
     const grid = document.getElementById("collectionsGrid");
 
     if(!grid){
-        console.warn("collectionsGrid not found.");
+        console.warn("Collections grid not found.");
         return;
     }
 
+    /* Loading state */
+
+    grid.innerHTML = `
+        <div class="empty-state">
+            <h3>Loading Collections...</h3>
+            <p>Please wait...</p>
+        </div>
+    `;
+
     try{
 
-        // Load products safely
-        allProducts = await getProducts();
+        /* Make sure product API exists */
 
-        // Make sure we always have an array
-        if(!Array.isArray(allProducts)){
-            allProducts = [];
+        if(typeof getProducts !== "function"){
+
+            throw new Error(
+                "getProducts() is not available. Check api.js loading order."
+            );
+
         }
 
-        // Render products
+        /* Load products */
+
+        allProducts = await getProducts();
+
+        /* Validate response */
+
+        if(!Array.isArray(allProducts)){
+
+            throw new Error(
+                "Invalid products data."
+            );
+
+        }
+
+        /* Render */
+
         renderCollections(allProducts);
 
-        // Initialize search
+        /* Search */
+
         initSearch();
 
     }
@@ -43,11 +70,26 @@ async function initCollectionsHome(){
     catch(error){
 
         console.error(
-            "Collections Products Loading Error:",
+            "Collections Loading Error:",
             error
         );
 
-        showCollectionsError(grid);
+        grid.innerHTML = `
+            <div class="empty-state">
+                <h3>Collections Temporarily Unavailable</h3>
+                <p>
+                    We are unable to load the collection right now.
+                    Please refresh the page and try again.
+                </p>
+
+                <button
+                    type="button"
+                    class="card-btn"
+                    onclick="location.reload()">
+                    Retry
+                </button>
+            </div>
+        `;
 
     }
 
@@ -69,9 +111,7 @@ function renderCollections(products){
     if(!grid) return;
 
 
-    /* --------------------------------------
-       PRODUCT COUNT
-    -------------------------------------- */
+    /* Product count */
 
     if(count){
 
@@ -83,31 +123,25 @@ function renderCollections(products){
     }
 
 
-    /* --------------------------------------
-       CLEAR GRID
-    -------------------------------------- */
+    /* Clear grid */
 
     grid.innerHTML = "";
 
 
-    /* --------------------------------------
-       EMPTY STATE
-    -------------------------------------- */
+    /* Empty state */
 
-    if(!Array.isArray(products) || products.length === 0){
+    if(
+        !Array.isArray(products) ||
+        products.length === 0
+    ){
 
         grid.innerHTML = `
-
             <div class="empty-state">
-
                 <h3>No Products Found</h3>
-
                 <p>
-                    Please try another search.
+                    Please check back soon for our latest collection.
                 </p>
-
             </div>
-
         `;
 
         return;
@@ -115,35 +149,43 @@ function renderCollections(products){
     }
 
 
-    /* --------------------------------------
-       CREATE PRODUCT CARDS
-    -------------------------------------- */
+    /* Render products */
 
     products.forEach(product => {
 
         if(!product) return;
 
 
-        const productId =
+        const id =
             product.id ?? "";
 
-
-        const productName =
+        const name =
             product.name ?? "Suvarna Jewellery";
 
+        const category =
+            product.category ?? "Jewellery";
 
-        const productCategory =
-            product.category ?? "Collection";
 
+        /* Safe image handling */
 
-        let productImage = "";
+        let image = "";
 
         try{
 
-            productImage =
-                typeof getImage === "function"
-                    ? getImage(product.image)
-                    : (product.image || "");
+            if(typeof getImage === "function"){
+
+                image =
+                    getImage(product.image);
+
+            }
+
+            else{
+
+                image =
+                    product.image ||
+                    "assets/images/placeholder.jpg";
+
+            }
 
         }
 
@@ -151,24 +193,22 @@ function renderCollections(products){
 
             console.warn(
                 "Product image error:",
-                product,
                 error
             );
 
-            productImage =
-                product.image || "";
+            image =
+                product.image ||
+                "assets/images/placeholder.jpg";
 
         }
 
 
-        /* ----------------------------------
-           PRODUCT CARD
-        ---------------------------------- */
+        /* Create card */
 
         const card = document.createElement("a");
 
         card.href =
-            `product.html?id=${encodeURIComponent(productId)}`;
+            `product.html?id=${encodeURIComponent(id)}`;
 
         card.className =
             "collection-link";
@@ -181,26 +221,22 @@ function renderCollections(products){
                 <div class="card-image">
 
                     <img
-                        src="${productImage}"
-                        alt="${escapeHTML(productName)}"
+                        src="${image}"
+                        alt="${name}"
                         loading="lazy"
                         onerror="
-                            this.style.display='none';
+                            this.onerror=null;
+                            this.src='assets/images/placeholder.jpg';
                         "
                     >
 
                 </div>
 
-
                 <div class="card-content">
 
-                    <h3>
-                        ${escapeHTML(productName)}
-                    </h3>
+                    <h3>${name}</h3>
 
-                    <p>
-                        ${escapeHTML(productCategory)}
-                    </p>
+                    <p>${category}</p>
 
                     <div class="card-btn">
                         View Product
@@ -232,131 +268,86 @@ function initSearch(){
     if(!search) return;
 
 
-    search.addEventListener("input", function(){
+    /* Prevent duplicate listeners */
 
-        const keyword =
-            this.value
-                .trim()
-                .toLowerCase();
+    if(search.dataset.initialized === "true"){
+        return;
+    }
+
+    search.dataset.initialized = "true";
 
 
-        /* ----------------------------------
-           SHOW ALL PRODUCTS
-        ---------------------------------- */
+    search.addEventListener(
+        "input",
+        function(){
 
-        if(!keyword){
+            const keyword =
+                this.value
+                    .trim()
+                    .toLowerCase();
 
-            renderCollections(allProducts);
 
-            return;
+            /* Show all products */
+
+            if(!keyword){
+
+                renderCollections(allProducts);
+
+                return;
+
+            }
+
+
+            /* Filter */
+
+            const filtered =
+                allProducts.filter(product => {
+
+                    if(!product) return false;
+
+
+                    const name =
+                        String(
+                            product.name || ""
+                        ).toLowerCase();
+
+
+                    const category =
+                        String(
+                            product.category || ""
+                        ).toLowerCase();
+
+
+                    const metal =
+                        String(
+                            product.metal || ""
+                        ).toLowerCase();
+
+
+                    return (
+                        name.includes(keyword) ||
+                        category.includes(keyword) ||
+                        metal.includes(keyword)
+                    );
+
+                });
+
+
+            renderCollections(filtered);
 
         }
-
-
-        /* ----------------------------------
-           FILTER PRODUCTS
-        ---------------------------------- */
-
-        const filtered =
-            allProducts.filter(product => {
-
-                if(!product) return false;
-
-
-                const name =
-                    String(product.name || "")
-                        .toLowerCase();
-
-
-                const category =
-                    String(product.category || "")
-                        .toLowerCase();
-
-
-                const metal =
-                    String(product.metal || "")
-                        .toLowerCase();
-
-
-                const description =
-                    String(product.description || "")
-                        .toLowerCase();
-
-
-                return (
-
-                    name.includes(keyword) ||
-
-                    category.includes(keyword) ||
-
-                    metal.includes(keyword) ||
-
-                    description.includes(keyword)
-
-                );
-
-            });
-
-
-        renderCollections(filtered);
-
-    });
+    );
 
 }
 
 
 /* ==========================================
-   ERROR STATE
+   RETRY FUNCTION
 ========================================== */
 
-function showCollectionsError(grid){
+window.retryCollections =
+    function(){
 
-    grid.innerHTML = `
+        initCollectionsHome();
 
-        <div class="empty-state">
-
-            <h3>
-                Collection Temporarily Unavailable
-            </h3>
-
-            <p>
-                Please refresh the page and try again.
-            </p>
-
-        </div>
-
-    `;
-
-}
-
-
-/* ==========================================
-   SAFE HTML
-========================================== */
-
-function escapeHTML(value){
-
-    return String(value)
-
-        .replace(/&/g, "&amp;")
-
-        .replace(/</g, "&lt;")
-
-        .replace(/>/g, "&gt;")
-
-        .replace(/"/g, "&quot;")
-
-        .replace(/'/g, "&#039;");
-
-}
-
-
-/* ==========================================
-   GLOBAL
-========================================== */
-
-window.initCollectionsHome =
-    initCollectionsHome;
-
-window.renderCollections =
-    renderCollections;
+    };
