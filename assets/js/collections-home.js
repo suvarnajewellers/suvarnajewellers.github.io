@@ -1,110 +1,53 @@
 /* ==========================================
-   SUVARNA JEWELLERS V9
+   SUVARNA JEWELLERS
    COLLECTIONS-HOME.JS
-   PREMIUM + SAFE VERSION
+   PREMIUM V2
 ========================================== */
 
-document.addEventListener(
-    "DOMContentLoaded",
-    initCollectionsHome
-);
+document.addEventListener("DOMContentLoaded", initCollectionsHome);
 
 let allProducts = [];
 
 
 /* ==========================================
-   INIT COLLECTIONS
+   INITIALIZE COLLECTIONS
 ========================================== */
 
 async function initCollectionsHome(){
 
-    const grid =
-        document.getElementById("collectionsGrid");
+    const grid = document.getElementById("collectionsGrid");
 
     if(!grid){
-
+        console.warn("collectionsGrid not found.");
         return;
-
     }
 
     try{
 
-        /* --------------------------------------
-           CHECK API
-        -------------------------------------- */
+        // Load products safely
+        allProducts = await getProducts();
 
-        if(typeof getProducts !== "function"){
-
-            throw new Error(
-                "getProducts() function is not available. Check api.js."
-            );
-
+        // Make sure we always have an array
+        if(!Array.isArray(allProducts)){
+            allProducts = [];
         }
 
+        // Render products
+        renderCollections(allProducts);
 
-        /* --------------------------------------
-           LOAD PRODUCTS
-        -------------------------------------- */
-
-        const products =
-            await getProducts();
-
-
-        /* --------------------------------------
-           VALIDATE RESULT
-        -------------------------------------- */
-
-        if(!Array.isArray(products)){
-
-            throw new Error(
-                "Products data is not an array."
-            );
-
-        }
-
-
-        allProducts = products;
-
-
-        /* --------------------------------------
-           RENDER
-        -------------------------------------- */
-
-        renderCollections(
-            allProducts
-        );
-
-
-        /* --------------------------------------
-           SEARCH
-        -------------------------------------- */
-
+        // Initialize search
         initSearch();
 
+    }
 
-    }catch(error){
+    catch(error){
 
         console.error(
-            "Collections Loading Error:",
+            "Collections Products Loading Error:",
             error
         );
 
-
-        grid.innerHTML = `
-
-            <div class="empty-state">
-
-                <h3>
-                    Unable to Load Products
-                </h3>
-
-                <p>
-                    Please refresh the page and try again.
-                </p>
-
-            </div>
-
-        `;
+        showCollectionsError(grid);
 
     }
 
@@ -118,27 +61,17 @@ async function initCollectionsHome(){
 function renderCollections(products){
 
     const grid =
-        document.getElementById(
-            "collectionsGrid"
-        );
+        document.getElementById("collectionsGrid");
 
+    const count =
+        document.getElementById("productCount");
 
-    if(!grid){
-
-        return;
-
-    }
+    if(!grid) return;
 
 
     /* --------------------------------------
        PRODUCT COUNT
     -------------------------------------- */
-
-    const count =
-        document.getElementById(
-            "productCount"
-        );
-
 
     if(count){
 
@@ -161,22 +94,16 @@ function renderCollections(products){
        EMPTY STATE
     -------------------------------------- */
 
-    if(
-        !Array.isArray(products) ||
-        products.length === 0
-    ){
+    if(!Array.isArray(products) || products.length === 0){
 
         grid.innerHTML = `
 
             <div class="empty-state">
 
-                <h3>
-                    No Products Found
-                </h3>
+                <h3>No Products Found</h3>
 
                 <p>
-                    Please check back soon for our
-                    latest collections.
+                    Please try another search.
                 </p>
 
             </div>
@@ -189,104 +116,90 @@ function renderCollections(products){
 
 
     /* --------------------------------------
-       CREATE CARDS
+       CREATE PRODUCT CARDS
     -------------------------------------- */
 
-    products.forEach(
-        (product) => {
+    products.forEach(product => {
 
-            if(!product){
-
-                return;
-
-            }
+        if(!product) return;
 
 
-            /* ----------------------------------
-               SAFE PRODUCT VALUES
-            ---------------------------------- */
-
-            const id =
-                product.id ?? "";
+        const productId =
+            product.id ?? "";
 
 
-            const name =
-                product.name ||
-                "Suvarna Jewellery";
+        const productName =
+            product.name ?? "Suvarna Jewellery";
 
 
-            const category =
-                product.category ||
-                "Premium Collection";
+        const productCategory =
+            product.category ?? "Collection";
 
 
-            const image =
+        let productImage = "";
+
+        try{
+
+            productImage =
+                typeof getImage === "function"
+                    ? getImage(product.image)
+                    : (product.image || "");
+
+        }
+
+        catch(error){
+
+            console.warn(
+                "Product image error:",
+                product,
+                error
+            );
+
+            productImage =
                 product.image || "";
 
-
-            /* ----------------------------------
-               IMAGE HANDLING
-            ---------------------------------- */
-
-            let imageSrc = image;
-
-            try{
-
-                if(
-                    typeof getImage === "function"
-                ){
-
-                    imageSrc =
-                        getImage(image);
-
-                }
-
-            }catch(error){
-
-                console.warn(
-                    "Image path error:",
-                    error
-                );
-
-                imageSrc = image;
-
-            }
+        }
 
 
-            /* ----------------------------------
-               CARD
-            ---------------------------------- */
+        /* ----------------------------------
+           PRODUCT CARD
+        ---------------------------------- */
 
-            const card =
-                document.createElement("a");
+        const card = document.createElement("a");
 
+        card.href =
+            `product.html?id=${encodeURIComponent(productId)}`;
 
-            card.href =
-                `product.html?id=${encodeURIComponent(id)}`;
-
-
-            card.className =
-                "collection-link";
+        card.className =
+            "collection-link";
 
 
-            card.innerHTML = `
+        card.innerHTML = `
 
-                <div class="card">
+            <div class="card">
+
+                <div class="card-image">
 
                     <img
-                        src="${imageSrc}"
-                        alt="${escapeHTML(name)}"
+                        src="${productImage}"
+                        alt="${escapeHTML(productName)}"
                         loading="lazy"
-                        decoding="async"
-                        onerror="this.style.opacity='0.35';"
+                        onerror="
+                            this.style.display='none';
+                        "
                     >
 
+                </div>
+
+
+                <div class="card-content">
+
                     <h3>
-                        ${escapeHTML(name)}
+                        ${escapeHTML(productName)}
                     </h3>
 
                     <p>
-                        ${escapeHTML(category)}
+                        ${escapeHTML(productCategory)}
                     </p>
 
                     <div class="card-btn">
@@ -295,155 +208,155 @@ function renderCollections(products){
 
                 </div>
 
-            `;
+            </div>
+
+        `;
 
 
-            grid.appendChild(card);
+        grid.appendChild(card);
 
-        }
-    );
+    });
 
 }
 
 
 /* ==========================================
-   SEARCH
+   COLLECTION SEARCH
 ========================================== */
 
 function initSearch(){
 
     const search =
-        document.getElementById(
-            "collectionSearch"
-        );
+        document.getElementById("collectionSearch");
+
+    if(!search) return;
 
 
-    if(!search){
+    search.addEventListener("input", function(){
 
-        return;
-
-    }
-
-
-    /* --------------------------------------
-       PREVENT DUPLICATE LISTENER
-    -------------------------------------- */
-
-    if(search.dataset.collectionsSearchBound){
-
-        return;
-
-    }
+        const keyword =
+            this.value
+                .trim()
+                .toLowerCase();
 
 
-    search.dataset.collectionsSearchBound =
-        "true";
+        /* ----------------------------------
+           SHOW ALL PRODUCTS
+        ---------------------------------- */
 
+        if(!keyword){
 
-    search.addEventListener(
-        "input",
-        function(){
+            renderCollections(allProducts);
 
-            const keyword =
-                this.value
-                    .trim()
-                    .toLowerCase();
-
-
-            /* ----------------------------------
-               EMPTY SEARCH
-            ---------------------------------- */
-
-            if(!keyword){
-
-                renderCollections(
-                    allProducts
-                );
-
-                return;
-
-            }
-
-
-            /* ----------------------------------
-               FILTER
-            ---------------------------------- */
-
-            const filtered =
-                allProducts.filter(
-                    (product) => {
-
-                        if(!product){
-
-                            return false;
-
-                        }
-
-
-                        const name =
-                            String(
-                                product.name || ""
-                            ).toLowerCase();
-
-
-                        const category =
-                            String(
-                                product.category || ""
-                            ).toLowerCase();
-
-
-                        const metal =
-                            String(
-                                product.metal || ""
-                            ).toLowerCase();
-
-
-                        return (
-                            name.includes(keyword) ||
-                            category.includes(keyword) ||
-                            metal.includes(keyword)
-                        );
-
-                    }
-                );
-
-
-            renderCollections(
-                filtered
-            );
+            return;
 
         }
-    );
+
+
+        /* ----------------------------------
+           FILTER PRODUCTS
+        ---------------------------------- */
+
+        const filtered =
+            allProducts.filter(product => {
+
+                if(!product) return false;
+
+
+                const name =
+                    String(product.name || "")
+                        .toLowerCase();
+
+
+                const category =
+                    String(product.category || "")
+                        .toLowerCase();
+
+
+                const metal =
+                    String(product.metal || "")
+                        .toLowerCase();
+
+
+                const description =
+                    String(product.description || "")
+                        .toLowerCase();
+
+
+                return (
+
+                    name.includes(keyword) ||
+
+                    category.includes(keyword) ||
+
+                    metal.includes(keyword) ||
+
+                    description.includes(keyword)
+
+                );
+
+            });
+
+
+        renderCollections(filtered);
+
+    });
 
 }
 
 
 /* ==========================================
-   HTML SAFETY
+   ERROR STATE
+========================================== */
+
+function showCollectionsError(grid){
+
+    grid.innerHTML = `
+
+        <div class="empty-state">
+
+            <h3>
+                Collection Temporarily Unavailable
+            </h3>
+
+            <p>
+                Please refresh the page and try again.
+            </p>
+
+        </div>
+
+    `;
+
+}
+
+
+/* ==========================================
+   SAFE HTML
 ========================================== */
 
 function escapeHTML(value){
 
-    return String(value ?? "")
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-        .replace(
-            /</g,
-            "&lt;"
-        )
-        .replace(
-            />/g,
-            "&gt;"
-        )
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-        .replace(
-            /'/g,
-            "&#039;"
-        );
+    return String(value)
+
+        .replace(/&/g, "&amp;")
+
+        .replace(/</g, "&lt;")
+
+        .replace(/>/g, "&gt;")
+
+        .replace(/"/g, "&quot;")
+
+        .replace(/'/g, "&#039;");
 
 }
+
+
+/* ==========================================
+   GLOBAL
+========================================== */
+
+window.initCollectionsHome =
+    initCollectionsHome;
+
+window.renderCollections =
+    renderCollections;
