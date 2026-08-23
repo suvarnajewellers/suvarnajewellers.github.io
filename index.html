@@ -4419,18 +4419,21 @@ a{
 ===================================================== -->
 
 <script>
-
 (function(){
 
     var loaderStart = Date.now();
 
-    var MIN_LOADER_TIME = 2500;
-    var MAX_LOADER_TIME = 5500;
+    /* Loader will stay visible for at least 3 seconds */
+    var MIN_LOADER_TIME = 3000;
+
+    /* Absolute safety limit */
+    var MAX_LOADER_TIME = 6000;
 
     var finished = false;
+    var pageLoaded = false;
 
 
-    function finishLoader(){
+    function hideLoader(){
 
         if(finished) return;
 
@@ -4441,32 +4444,23 @@ a{
 
         if(!loader) return;
 
-        loader.classList.add(
-            "v9-loader-hide"
-        );
+        loader.classList.add("v9-loader-hide");
 
-        window.setTimeout(
-            function(){
+        window.setTimeout(function(){
 
-                if(
-                    loader &&
-                    loader.parentNode
-                ){
+            if(
+                loader &&
+                loader.parentNode
+            ){
+                loader.parentNode.removeChild(loader);
+            }
 
-                    loader.parentNode.removeChild(
-                        loader
-                    );
-
-                }
-
-            },
-            650
-        );
+        },700);
 
     }
 
 
-    function finishAfterMinimumTime(){
+    function finishLoader(){
 
         var elapsed =
             Date.now() - loaderStart;
@@ -4478,39 +4472,59 @@ a{
             );
 
         window.setTimeout(
-            finishLoader,
+            hideLoader,
             remaining
         );
 
     }
 
 
-    if(
-        document.readyState === "complete"
-    ){
+    /*
+     * Wait for the complete page load.
+     * Then respect the 3-second minimum.
+     */
 
-        finishAfterMinimumTime();
+    if(document.readyState === "complete"){
+
+        pageLoaded = true;
+        finishLoader();
 
     }else{
 
         window.addEventListener(
             "load",
-            finishAfterMinimumTime,
+            function(){
+
+                if(pageLoaded) return;
+
+                pageLoaded = true;
+
+                finishLoader();
+
+            },
             {once:true}
         );
 
     }
 
 
+    /*
+     * Safety fallback.
+     * Even if some external resource hangs,
+     * loader will never remain forever.
+     */
+
     window.setTimeout(
-        finishLoader,
+        function(){
+
+            hideLoader();
+
+        },
         MAX_LOADER_TIME
     );
 
 })();
-
 </script>
-
 
 </body>
 </html>
