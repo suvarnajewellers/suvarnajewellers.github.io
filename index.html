@@ -45,7 +45,7 @@
   "@type":"JewelryStore",
   "name":"Suvarna Jewellers",
   "url":"https://suvarnajewellers.co.in/",
-  "logo":"https://suvarnajewellers.co.in/Logo.png",
+  "logo":"https://suvarnajewellers.co.in/logo-1.png",
   "image":"https://suvarnajewellers.co.in/hero.jpg",
   "description":"Premium Gold & Silver Jewellery Manufacturer",
   "telephone":"+917777991118",
@@ -292,25 +292,277 @@ a{
     }
 
     .v9-loader-logo{
-        width:185px;
-        max-height:110px;
+/* =========================================================
+   PREMIUM LOADER — SUVARNA JEWELLERS
+   ========================================================= */
+
+#page-loader{
+    position:fixed!important;
+    inset:0!important;
+    z-index:2147483647!important;
+
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+
+    background:
+        radial-gradient(
+            circle at 50% 42%,
+            rgba(212,175,55,.16),
+            transparent 34%
+        ),
+        #2B0015!important;
+
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+
+    transition:
+        opacity .8s ease,
+        visibility .8s ease;
+}
+
+#page-loader.v9-loader-hide{
+    opacity:0!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+}
+
+
+/* ---------- SUBTLE LUXURY RINGS ---------- */
+
+#page-loader::before,
+#page-loader::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:50%;
+    border:1px solid rgba(212,175,55,.16);
+    border-radius:50%;
+    transform:translate(-50%,-50%);
+    pointer-events:none;
+}
+
+#page-loader::before{
+    width:340px;
+    height:340px;
+    animation:loaderPulse 3.5s ease-in-out infinite;
+}
+
+#page-loader::after{
+    width:440px;
+    height:440px;
+    border-color:rgba(212,175,55,.08);
+}
+
+
+/* ---------- LOADER CONTENT ---------- */
+
+.v9-loader-inner{
+    position:relative;
+    z-index:5;
+
+    width:min(360px,86vw);
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+}
+
+
+/* ---------- LOGO ---------- */
+
+.v9-loader-logo{
+    display:block;
+
+    width:300px;
+    max-width:82vw;
+    height:auto;
+
+    max-height:180px;
+    object-fit:contain;
+
+    filter:
+        drop-shadow(0 12px 28px rgba(0,0,0,.38));
+
+    transform:scale(1);
+}
+
+
+/* ---------- BRAND NAME ---------- */
+
+.v9-loader-brand{
+    margin-top:18px;
+
+    color:#F3DFA4;
+
+    font-family:Cinzel,Georgia,serif;
+
+    font-size:24px;
+    font-weight:600;
+
+    line-height:1.15;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    text-shadow:
+        0 3px 15px rgba(0,0,0,.30);
+}
+
+
+/* ---------- SINCE ---------- */
+
+.v9-loader-since{
+    margin-top:8px;
+
+    color:#D4AF37;
+
+    font-family:Inter,Arial,sans-serif;
+
+    font-size:9px;
+    font-weight:600;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    opacity:.95;
+}
+
+
+/* ---------- GOLD LINE ---------- */
+
+.v9-loader-line{
+    width:90px;
+    height:1px;
+
+    margin-top:22px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #D4AF37,
+            transparent
+        );
+}
+
+
+/* ---------- LOADING TEXT ---------- */
+
+.v9-loader-text{
+    margin-top:16px;
+
+    color:rgba(245,232,200,.72);
+
+    font-family:Inter,Arial,sans-serif;
+
+    font-size:8px;
+    font-weight:500;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+}
+
+
+/* ---------- SPINNER ---------- */
+
+.v9-loader-spinner{
+    width:27px;
+    height:27px;
+
+    margin-top:22px;
+
+    border:1px solid rgba(212,175,55,.22);
+    border-top-color:#D4AF37;
+    border-right-color:#D4AF37;
+
+    border-radius:50%;
+
+    animation:
+        loaderSpin 1s linear infinite;
+}
+
+
+/* ---------- ANIMATIONS ---------- */
+
+@keyframes loaderSpin{
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+@keyframes loaderPulse{
+
+    0%,
+    100%{
+        transform:translate(-50%,-50%) scale(.96);
+        opacity:.45;
+    }
+
+    50%{
+        transform:translate(-50%,-50%) scale(1.02);
+        opacity:1;
+    }
+
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media(max-width:600px){
+
+    .v9-loader-logo{
+        width:270px;
+        max-width:84vw;
+        max-height:165px;
+    }
+
+    .v9-loader-brand{
+        font-size:20px;
+        letter-spacing:2.5px;
+        margin-top:16px;
+    }
+
+    .v9-loader-since{
+        font-size:8px;
+        letter-spacing:3.2px;
     }
 
     #page-loader::before{
-        width:275px;
-        height:275px;
+        width:290px;
+        height:290px;
     }
 
     #page-loader::after{
-        width:350px;
-        height:350px;
+        width:370px;
+        height:370px;
     }
 
-    .v9-loader-text{
-        font-size:8px;
-        letter-spacing:2.8px;
-    }
 }
+
+
+/* ---------- SMALL PHONES ---------- */
+
+@media(max-width:380px){
+
+    .v9-loader-logo{
+        width:245px;
+    }
+
+    .v9-loader-brand{
+        font-size:18px;
+    }
+
+      }
     
 /* =========================================================
    HEADER
@@ -2671,26 +2923,41 @@ a{
 
 <body>
 
-
 <!-- =====================================================
-     PAGE LOADER
+     PREMIUM SUVARNA LOADER
 ===================================================== -->
 
-<div id="page-loader" aria-label="Loading Suvarna Jewellers">
+<div
+    id="page-loader"
+    aria-label="Loading Suvarna Jewellers">
 
     <div class="v9-loader-inner">
 
+        <!-- LOGO -->
         <img
-            src="Logo.png"
+            src="logo-1.png"
             alt="Suvarna Jewellers"
             class="v9-loader-logo">
 
+        <!-- BRAND NAME -->
+        <div class="v9-loader-brand">
+            SUVARNA JEWELLERS
+        </div>
+
+        <!-- ESTABLISHED -->
+        <div class="v9-loader-since">
+            TRUSTED SINCE 2003
+        </div>
+
+        <!-- GOLD DIVIDER -->
         <div class="v9-loader-line"></div>
 
+        <!-- LOADING -->
         <span class="v9-loader-text">
-            TRUSTED SINCE 2003
+            CRAFTED WITH PRECISION
         </span>
 
+        <!-- SPINNER -->
         <span
             class="v9-loader-spinner"
             aria-hidden="true">
@@ -2717,7 +2984,7 @@ a{
             class="logo">
 
             <img
-                src="Logo.png"
+                src="logo-1.png"
                 alt="SUVARNA JEWELLERS">
 
             <div class="logo-text">
