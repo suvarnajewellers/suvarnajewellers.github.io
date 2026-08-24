@@ -1,7 +1,7 @@
 /* ==========================================
    SUVARNA JEWELLERS V9
    COLLECTIONS-HOME.JS
-   PREMIUM + STABLE VERSION
+   PREMIUM + STABLE + GRACEFUL FALLBACK
 ========================================== */
 
 document.addEventListener("DOMContentLoaded", initCollectionsHome);
@@ -10,19 +10,62 @@ let allProducts = [];
 
 
 /* ==========================================
+   STATIC COLLECTION FALLBACK
+   Used only when product data is unavailable.
+========================================== */
+
+const COLLECTION_FALLBACK = [
+    {
+        name: "Gold Jewellery",
+        category: "Gold Jewellery",
+        image: "assets/images/gold-jewellery-1.jpg",
+        link: "gold-jewellery.html"
+    },
+    {
+        name: "Silver Jewellery",
+        category: "Silver Jewellery",
+        image: "assets/images/silver-jewellery-1.jpg",
+        link: "silver-jewellery.html"
+    },
+    {
+        name: "Rudraksha Mala",
+        category: "Rudraksha Mala",
+        image: "assets/images/rudraksha-mala-1.jpg",
+        link: "rudraksha-mala.html"
+    },
+    {
+        name: "Pendants",
+        category: "Pendant",
+        image: "assets/images/pendant-1.jpg",
+        link: "pendant-collection.html"
+    },
+    {
+        name: "Bracelets",
+        category: "Rudraksha Bracelet",
+        image: "assets/images/bracelet-1.jpg",
+        link: "bracelet-collection.html"
+    }
+];
+
+
+/* ==========================================
    INITIALIZE COLLECTIONS
 ========================================== */
 
 async function initCollectionsHome(){
 
-    const grid = document.getElementById("collectionsGrid");
+    const grid =
+        document.getElementById("collectionsGrid");
 
     if(!grid){
         console.warn("Collections grid not found.");
         return;
     }
 
-    /* Loading state */
+
+    /* ------------------------------------------
+       Loading state
+    ------------------------------------------ */
 
     grid.innerHTML = `
         <div class="empty-state">
@@ -31,37 +74,75 @@ async function initCollectionsHome(){
         </div>
     `;
 
+
     try{
 
-        /* Make sure product API exists */
+        /* ------------------------------------------
+           Existing API ONLY
+           No duplicate product loading
+        ------------------------------------------ */
 
         if(typeof getProducts !== "function"){
 
-            throw new Error(
-                "getProducts() is not available. Check api.js loading order."
+            console.warn(
+                "getProducts() is not available."
             );
+
+            renderFallbackCollections();
+            return;
 
         }
 
-        /* Load products */
 
-        allProducts = await getProducts();
+        /* ------------------------------------------
+           Load through existing api.js system
+        ------------------------------------------ */
 
-        /* Validate response */
+        const products = await getProducts();
 
-        if(!Array.isArray(allProducts)){
 
-            throw new Error(
-                "Invalid products data."
+        /* ------------------------------------------
+           Validate response
+        ------------------------------------------ */
+
+        if(!Array.isArray(products)){
+
+            console.warn(
+                "Collections received invalid product data."
             );
+
+            renderFallbackCollections();
+            return;
 
         }
 
-        /* Render */
 
-        renderCollections(allProducts);
+        allProducts = products;
 
-        /* Search */
+
+        /* ------------------------------------------
+           Product data available
+        ------------------------------------------ */
+
+        if(products.length > 0){
+
+            renderCollections(products);
+
+        }
+
+        else{
+
+            /*
+             * IMPORTANT:
+             * Do NOT show "Temporarily Unavailable".
+             * api.js intentionally returns [] on loading
+             * failure, so homepage gets a graceful fallback.
+             */
+
+            renderFallbackCollections();
+
+        }
+
 
         initSearch();
 
@@ -69,27 +150,20 @@ async function initCollectionsHome(){
 
     catch(error){
 
+        /*
+         * Collections must NEVER break the homepage.
+         */
+
         console.error(
             "Collections Loading Error:",
             error
         );
 
-        grid.innerHTML = `
-            <div class="empty-state">
-                <h3>Collections Temporarily Unavailable</h3>
-                <p>
-                    We are unable to load the collection right now.
-                    Please refresh the page and try again.
-                </p>
+        allProducts = [];
 
-                <button
-                    type="button"
-                    class="card-btn"
-                    onclick="location.reload()">
-                    Retry
-                </button>
-            </div>
-        `;
+        renderFallbackCollections();
+
+        initSearch();
 
     }
 
@@ -97,7 +171,7 @@ async function initCollectionsHome(){
 
 
 /* ==========================================
-   RENDER COLLECTIONS
+   RENDER PRODUCT COLLECTIONS
 ========================================== */
 
 function renderCollections(products){
@@ -123,33 +197,23 @@ function renderCollections(products){
     }
 
 
-    /* Clear grid */
-
     grid.innerHTML = "";
 
-
-    /* Empty state */
 
     if(
         !Array.isArray(products) ||
         products.length === 0
     ){
 
-        grid.innerHTML = `
-            <div class="empty-state">
-                <h3>No Products Found</h3>
-                <p>
-                    Please check back soon for our latest collection.
-                </p>
-            </div>
-        `;
-
+        renderFallbackCollections();
         return;
 
     }
 
 
-    /* Render products */
+    /* ------------------------------------------
+       Render products
+    ------------------------------------------ */
 
     products.forEach(product => {
 
@@ -160,35 +224,35 @@ function renderCollections(products){
             product.id ?? "";
 
         const name =
-            product.name ?? "Suvarna Jewellery";
+            product.name || "Suvarna Jewellery";
 
         const category =
-            product.category ?? "Jewellery";
+            product.category || "Jewellery";
 
 
-        /* Safe image handling */
+        /* Safe image */
 
-        let image = "";
+        let image =
+            "assets/images/placeholder.jpg";
+
 
         try{
 
-            if(typeof getImage === "function"){
+            if(
+                product.image &&
+                typeof getImage === "function"
+            ){
 
-                image =
-                    getImage(product.image);
+                image = getImage(product.image);
 
             }
+            else if(product.image){
 
-            else{
-
-                image =
-                    product.image ||
-                    "assets/images/placeholder.jpg";
+                image = product.image;
 
             }
 
         }
-
         catch(error){
 
             console.warn(
@@ -196,16 +260,13 @@ function renderCollections(products){
                 error
             );
 
-            image =
-                product.image ||
-                "assets/images/placeholder.jpg";
-
         }
 
 
-        /* Create card */
+        /* Product link */
 
-        const card = document.createElement("a");
+        const card =
+            document.createElement("a");
 
         card.href =
             `product.html?id=${encodeURIComponent(id)}`;
@@ -221,9 +282,10 @@ function renderCollections(products){
                 <div class="card-image">
 
                     <img
-                        src="${image}"
-                        alt="${name}"
+                        src="${escapeHtml(image)}"
+                        alt="${escapeHtml(name)}"
                         loading="lazy"
+                        decoding="async"
                         onerror="
                             this.onerror=null;
                             this.src='assets/images/placeholder.jpg';
@@ -234,12 +296,100 @@ function renderCollections(products){
 
                 <div class="card-content">
 
-                    <h3>${name}</h3>
+                    <h3>
+                        ${escapeHtml(name)}
+                    </h3>
 
-                    <p>${category}</p>
+                    <p>
+                        ${escapeHtml(category)}
+                    </p>
 
                     <div class="card-btn">
                         View Product
+                    </div>
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        grid.appendChild(card);
+
+    });
+
+}
+
+
+/* ==========================================
+   GRACEFUL STATIC COLLECTION FALLBACK
+========================================== */
+
+function renderFallbackCollections(){
+
+    const grid =
+        document.getElementById("collectionsGrid");
+
+    const count =
+        document.getElementById("productCount");
+
+    if(!grid) return;
+
+
+    if(count){
+
+        count.textContent = "5";
+
+    }
+
+
+    grid.innerHTML = "";
+
+
+    COLLECTION_FALLBACK.forEach(collection => {
+
+        const card =
+            document.createElement("a");
+
+        card.href =
+            collection.link;
+
+        card.className =
+            "collection-link";
+
+
+        card.innerHTML = `
+
+            <div class="card">
+
+                <div class="card-image">
+
+                    <img
+                        src="${escapeHtml(collection.image)}"
+                        alt="${escapeHtml(collection.name)}"
+                        loading="lazy"
+                        decoding="async"
+                        onerror="
+                            this.onerror=null;
+                            this.src='assets/images/placeholder.jpg';
+                        "
+                    >
+
+                </div>
+
+                <div class="card-content">
+
+                    <h3>
+                        ${escapeHtml(collection.name)}
+                    </h3>
+
+                    <p>
+                        ${escapeHtml(collection.category)}
+                    </p>
+
+                    <div class="card-btn">
+                        Explore Collection
                     </div>
 
                 </div>
@@ -287,18 +437,39 @@ function initSearch(){
                     .toLowerCase();
 
 
-            /* Show all products */
+            /* ------------------------------------------
+               No search keyword
+            ------------------------------------------ */
 
             if(!keyword){
 
-                renderCollections(allProducts);
+                if(allProducts.length){
+
+                    renderCollections(allProducts);
+
+                }
+                else{
+
+                    renderFallbackCollections();
+
+                }
 
                 return;
 
             }
 
 
-            /* Filter */
+            /* ------------------------------------------
+               Search product data
+            ------------------------------------------ */
+
+            if(!allProducts.length){
+
+                renderFallbackSearch(keyword);
+                return;
+
+            }
+
 
             const filtered =
                 allProducts.filter(product => {
@@ -342,7 +513,130 @@ function initSearch(){
 
 
 /* ==========================================
-   RETRY FUNCTION
+   FALLBACK SEARCH
+========================================== */
+
+function renderFallbackSearch(keyword){
+
+    const grid =
+        document.getElementById("collectionsGrid");
+
+    if(!grid) return;
+
+
+    const filtered =
+        COLLECTION_FALLBACK.filter(collection => {
+
+            const name =
+                collection.name.toLowerCase();
+
+            const category =
+                collection.category.toLowerCase();
+
+            return (
+                name.includes(keyword) ||
+                category.includes(keyword)
+            );
+
+        });
+
+
+    if(!filtered.length){
+
+        grid.innerHTML = `
+            <div class="empty-state">
+                <h3>No Collection Found</h3>
+                <p>
+                    Try another collection name.
+                </p>
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    grid.innerHTML = "";
+
+
+    filtered.forEach(collection => {
+
+        const card =
+            document.createElement("a");
+
+        card.href =
+            collection.link;
+
+        card.className =
+            "collection-link";
+
+
+        card.innerHTML = `
+
+            <div class="card">
+
+                <div class="card-image">
+
+                    <img
+                        src="${escapeHtml(collection.image)}"
+                        alt="${escapeHtml(collection.name)}"
+                        loading="lazy"
+                        decoding="async"
+                        onerror="
+                            this.onerror=null;
+                            this.src='assets/images/placeholder.jpg';
+                        "
+                    >
+
+                </div>
+
+                <div class="card-content">
+
+                    <h3>
+                        ${escapeHtml(collection.name)}
+                    </h3>
+
+                    <p>
+                        ${escapeHtml(collection.category)}
+                    </p>
+
+                    <div class="card-btn">
+                        Explore Collection
+                    </div>
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        grid.appendChild(card);
+
+    });
+
+}
+
+
+/* ==========================================
+   SAFE HTML ESCAPE
+========================================== */
+
+function escapeHtml(value){
+
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* ==========================================
+   RETRY
 ========================================== */
 
 window.retryCollections =
