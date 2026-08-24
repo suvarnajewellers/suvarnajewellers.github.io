@@ -1,13 +1,25 @@
 /* =========================================================
    SUVARNA JEWELLERS
-   PRODUCT.JS — FINAL CLEAN VERSION
-   Product Page + Source-aware Back Navigation
-   Ready Stock / Collections flow unified
+   PRODUCT.JS — FINAL PREMIUM + STABLE VERSION
+
+   Features:
+   • Product loading through existing getProducts()
+   • Collections / Ready Stock source-aware navigation
+   • Legacy ?from= compatibility
+   • Product gallery
+   • Thumbnail navigation
+   • Lightbox
+   • Keyboard controls
+   • WhatsApp CTA
+   • Call CTA
+   • Related Products
+   • Graceful error state
+   • No duplicate product-loading logic
 ========================================================= */
 
 
 /* =========================================================
-   GLOBAL VARIABLES
+   GLOBAL STATE
 ========================================================= */
 
 let currentProduct = null;
@@ -17,45 +29,40 @@ let currentImageIndex = 0;
 
 
 /* =========================================================
-   DOM ELEMENTS
+   DOM REFERENCES
+   Initialized AFTER DOM is ready
 ========================================================= */
 
-const mainImage = document.getElementById("mainImage");
-const thumbnailContainer = document.getElementById("thumbnailContainer");
+let mainImage = null;
+let thumbnailContainer = null;
 
-const productCategory = document.getElementById("productCategory");
-const productName = document.getElementById("productName");
-const productDescription = document.getElementById("productDescription");
+let productCategory = null;
+let productName = null;
+let productDescription = null;
 
-const productMetal = document.getElementById("productMetal");
-const productGrossWeight = document.getElementById("productGrossWeight");
-const productNetWeight = document.getElementById("productNetWeight");
-const productSize = document.getElementById("productSize");
+let productMetal = null;
+let productGrossWeight = null;
+let productNetWeight = null;
+let productSize = null;
 
-const whatsappButton = document.getElementById("whatsappButton");
-const callButton = document.getElementById("callButton");
+let whatsappButton = null;
+let callButton = null;
 
-const relatedProducts = document.getElementById("relatedProducts");
+let relatedProducts = null;
 
-const imageLightbox = document.getElementById("imageLightbox");
-const lightboxImage = document.getElementById("lightboxImage");
-const lightboxClose = document.getElementById("lightboxClose");
-const lightboxPrev = document.getElementById("lightboxPrev");
-const lightboxNext = document.getElementById("lightboxNext");
+let imageLightbox = null;
+let lightboxImage = null;
+let lightboxClose = null;
+let lightboxPrev = null;
+let lightboxNext = null;
 
-const breadcrumbCategory =
-    document.getElementById("breadcrumbCategory");
-
-const productBack =
-    document.querySelector(".sj-product-back");
-
-const relatedSection =
-    document.getElementById("relatedSection");
+let breadcrumbCategory = null;
+let productBack = null;
+let relatedSection = null;
 
 
 /* =========================================================
    PRODUCT SOURCE
-   Single source of truth
 ========================================================= */
 
 let productSource = {
@@ -66,7 +73,122 @@ let productSource = {
 
 
 /* =========================================================
-   INITIALIZE
+   DOM INITIALIZATION
+========================================================= */
+
+function initializeDOMReferences(){
+
+    mainImage =
+        document.getElementById("mainImage");
+
+    thumbnailContainer =
+        document.getElementById(
+            "thumbnailContainer"
+        );
+
+
+    productCategory =
+        document.getElementById(
+            "productCategory"
+        );
+
+    productName =
+        document.getElementById(
+            "productName"
+        );
+
+    productDescription =
+        document.getElementById(
+            "productDescription"
+        );
+
+
+    productMetal =
+        document.getElementById(
+            "productMetal"
+        );
+
+    productGrossWeight =
+        document.getElementById(
+            "productGrossWeight"
+        );
+
+    productNetWeight =
+        document.getElementById(
+            "productNetWeight"
+        );
+
+    productSize =
+        document.getElementById(
+            "productSize"
+        );
+
+
+    whatsappButton =
+        document.getElementById(
+            "whatsappButton"
+        );
+
+    callButton =
+        document.getElementById(
+            "callButton"
+        );
+
+
+    relatedProducts =
+        document.getElementById(
+            "relatedProducts"
+        );
+
+
+    imageLightbox =
+        document.getElementById(
+            "imageLightbox"
+        );
+
+    lightboxImage =
+        document.getElementById(
+            "lightboxImage"
+        );
+
+    lightboxClose =
+        document.getElementById(
+            "lightboxClose"
+        );
+
+    lightboxPrev =
+        document.getElementById(
+            "lightboxPrev"
+        );
+
+    lightboxNext =
+        document.getElementById(
+            "lightboxNext"
+        );
+
+
+    breadcrumbCategory =
+        document.getElementById(
+            "breadcrumbCategory"
+        );
+
+
+    productBack =
+        document.querySelector(
+            ".sj-product-back"
+        );
+
+
+    relatedSection =
+        document.getElementById(
+            "relatedSection"
+        );
+
+}
+
+
+/* =========================================================
+   INITIALIZE PRODUCT PAGE
 ========================================================= */
 
 document.addEventListener(
@@ -77,13 +199,20 @@ document.addEventListener(
 
 async function initProductPage(){
 
+    initializeDOMReferences();
+
     detectProductSource();
 
     updateBackNavigation();
 
+    setupLightboxEvents();
+
 
     const params =
-        new URLSearchParams(window.location.search);
+        new URLSearchParams(
+            window.location.search
+        );
+
 
     const productId =
         params.get("id");
@@ -92,19 +221,44 @@ async function initProductPage(){
     if(!productId){
 
         showProductError(
-            "Product not found",
+            "Product Not Found",
             "No product was selected."
         );
 
         return;
+
+    }
+
+
+    /* -----------------------------------------
+       Existing API system ONLY
+    ----------------------------------------- */
+
+    if(
+        typeof getProducts !== "function"
+    ){
+
+        console.error(
+            "Suvarna Jewellers: getProducts() unavailable."
+        );
+
+        showProductError(
+            "Unable to Load Product",
+            "Please return to the product list and try again."
+        );
+
+        return;
+
     }
 
 
     try{
 
-        products = await getProducts();
+        products =
+            await getProducts();
 
-    }catch(error){
+    }
+    catch(error){
 
         console.error(
             "Suvarna Jewellers: Unable to load products.",
@@ -112,44 +266,54 @@ async function initProductPage(){
         );
 
         showProductError(
-            "Unable to load product",
-            "Please try again or return to the product list."
+            "Unable to Load Product",
+            "Please return to the product list and try again."
         );
 
         return;
+
     }
 
 
-    if(!Array.isArray(products) || !products.length){
+    if(
+        !Array.isArray(products) ||
+        products.length === 0
+    ){
 
         showProductError(
-            "Unable to load product",
-            "Please try again or return to the product list."
+            "Unable to Load Product",
+            "Please return to the product list and try again."
         );
 
         return;
+
     }
 
 
     currentProduct =
         products.find(
             product =>
-                String(product.id) === String(productId)
+                String(product.id) ===
+                String(productId)
         );
 
 
     if(!currentProduct){
 
         showProductError(
-            "Product not found",
+            "Product Not Found",
             "The requested product could not be found."
         );
 
         return;
+
     }
 
 
-    renderProduct(currentProduct);
+    renderProduct(
+        currentProduct
+    );
+
 
     renderRelatedProducts();
 
@@ -157,30 +321,14 @@ async function initProductPage(){
 
 
 /* =========================================================
-   DETECT PRODUCT SOURCE
-
-   Priority:
-   1. ?source=
-   2. ?from=  (old links compatibility)
-   3. Referrer
-   4. Collections
+   PRODUCT SOURCE DETECTION
 ========================================================= */
 
 function detectProductSource(){
 
     const params =
-        new URLSearchParams(window.location.search);
-
-
-    const source =
-        normalizeSource(
-            params.get("source")
-        );
-
-
-    const oldSource =
-        normalizeSource(
-            params.get("from")
+        new URLSearchParams(
+            window.location.search
         );
 
 
@@ -188,24 +336,41 @@ function detectProductSource(){
        New source parameter
     ----------------------------------------- */
 
+    const source =
+        normalizeSource(
+            params.get("source")
+        );
+
+
     if(source){
 
-        applyProductSource(source);
+        applyProductSource(
+            source
+        );
 
         return;
+
     }
 
 
     /* -----------------------------------------
-       Old from parameter
-       Keeps existing links working
+       Legacy from parameter
     ----------------------------------------- */
 
-    if(oldSource){
+    const legacySource =
+        normalizeSource(
+            params.get("from")
+        );
 
-        applyProductSource(oldSource);
+
+    if(legacySource){
+
+        applyProductSource(
+            legacySource
+        );
 
         return;
+
     }
 
 
@@ -220,8 +385,12 @@ function detectProductSource(){
 
 
     if(
-        referrer.includes("ready-stock.html") ||
-        referrer.includes("ready-stock")
+        referrer.includes(
+            "ready-stock.html"
+        ) ||
+        referrer.includes(
+            "ready-stock"
+        )
     ){
 
         applyProductSource(
@@ -229,6 +398,7 @@ function detectProductSource(){
         );
 
         return;
+
     }
 
 
@@ -250,9 +420,11 @@ function detectProductSource(){
 function normalizeSource(value){
 
     const source =
-        String(value || "")
-            .toLowerCase()
-            .trim();
+        String(
+            value || ""
+        )
+        .toLowerCase()
+        .trim();
 
 
     if(
@@ -262,60 +434,66 @@ function normalizeSource(value){
     ){
 
         return "ready-stock";
+
     }
 
 
-    if(source === "collections"){
+    if(
+        source === "collections" ||
+        source === "collection"
+    ){
 
         return "collections";
+
     }
 
 
     return "";
+
 }
 
 
 /* =========================================================
-   APPLY PRODUCT SOURCE
+   APPLY SOURCE
 ========================================================= */
 
-function applyProductSource(type){
+function applyProductSource(
+    type
+){
 
-    if(type === "ready-stock"){
+    if(
+        type === "ready-stock"
+    ){
 
-        setProductSource(
-            "ready-stock",
-            "Back to Ready Stock",
-            "ready-stock.html"
-        );
+        productSource = {
+
+            type:
+                "ready-stock",
+
+            label:
+                "Back to Ready Stock",
+
+            url:
+                "ready-stock.html"
+
+        };
 
         return;
+
     }
 
 
-    setProductSource(
-        "collections",
-        "Back to Collections",
-        "collections.html"
-    );
-
-}
-
-
-/* =========================================================
-   SET PRODUCT SOURCE
-========================================================= */
-
-function setProductSource(
-    type,
-    label,
-    url
-){
-
     productSource = {
-        type: type,
-        label: label,
-        url: url
+
+        type:
+            "collections",
+
+        label:
+            "Back to Collections",
+
+        url:
+            "collections.html"
+
     };
 
 }
@@ -328,7 +506,7 @@ function setProductSource(
 function updateBackNavigation(){
 
     /* -----------------------------------------
-       Main Back Button
+       Top Back Button
     ----------------------------------------- */
 
     if(productBack){
@@ -336,9 +514,15 @@ function updateBackNavigation(){
         productBack.href =
             productSource.url;
 
-        productBack.innerHTML =
-            `<span aria-hidden="true">←</span>
-             ${escapeHtml(productSource.label)}`;
+
+        productBack.innerHTML = `
+            <span aria-hidden="true">
+                ←
+            </span>
+            ${escapeHtml(
+                productSource.label
+            )}
+        `;
 
     }
 
@@ -350,7 +534,8 @@ function updateBackNavigation(){
     if(breadcrumbCategory){
 
         breadcrumbCategory.textContent =
-            productSource.type === "ready-stock"
+            productSource.type ===
+                "ready-stock"
                 ? "Ready Stock"
                 : "Collections";
 
@@ -358,7 +543,7 @@ function updateBackNavigation(){
 
 
     /* -----------------------------------------
-       Bottom CTA
+       Bottom Collection CTA
     ----------------------------------------- */
 
     const collectionButton =
@@ -369,7 +554,10 @@ function updateBackNavigation(){
 
     if(collectionButton){
 
-        if(productSource.type === "ready-stock"){
+        if(
+            productSource.type ===
+            "ready-stock"
+        ){
 
             collectionButton.href =
                 "ready-stock.html";
@@ -377,7 +565,8 @@ function updateBackNavigation(){
             collectionButton.textContent =
                 "Back To Ready Stock";
 
-        }else{
+        }
+        else{
 
             collectionButton.href =
                 "collections.html";
@@ -396,7 +585,9 @@ function updateBackNavigation(){
    RENDER PRODUCT
 ========================================================= */
 
-function renderProduct(product){
+function renderProduct(
+    product
+){
 
     if(productCategory){
 
@@ -472,7 +663,11 @@ function renderProduct(product){
     }
 
 
-    if(Array.isArray(product.gallery)){
+    if(
+        Array.isArray(
+            product.gallery
+        )
+    ){
 
         productImages.push(
             ...product.gallery
@@ -481,15 +676,47 @@ function renderProduct(product){
     }
 
 
+    /*
+       Also support images[] if ever used
+       by the CMS without breaking the
+       existing image/gallery structure.
+    */
+
+    if(
+        Array.isArray(
+            product.images
+        )
+    ){
+
+        productImages.push(
+            ...product.images
+        );
+
+    }
+
+
     /* -----------------------------------------
-       Remove duplicates
+       Remove empty + duplicate images
     ----------------------------------------- */
 
     productImages =
         productImages.filter(
-            (image,index,array) =>
-                image &&
-                array.indexOf(image) === index
+            (image, index, array) => {
+
+                if(!image){
+
+                    return false;
+
+                }
+
+
+                return (
+                    array.indexOf(
+                        image
+                    ) === index
+                );
+
+            }
         );
 
 
@@ -503,7 +730,8 @@ function renderProduct(product){
             0
         );
 
-    }else{
+    }
+    else{
 
         showImageFallback();
 
@@ -512,9 +740,13 @@ function renderProduct(product){
 
     createThumbnails();
 
-    createWhatsappButton(product);
+    createWhatsappButton(
+        product
+    );
 
-    createCallButton(product);
+    createCallButton(
+        product
+    );
 
     setupMainImage();
 
@@ -533,11 +765,41 @@ function setMainImage(
     if(!mainImage){
 
         return;
+
     }
 
 
-    const imagePath =
-        getImage(image);
+    let imagePath = "";
+
+
+    try{
+
+        imagePath =
+            typeof getImage === "function"
+                ? getImage(image)
+                : image;
+
+    }
+    catch(error){
+
+        console.warn(
+            "Image resolver error:",
+            error
+        );
+
+        imagePath =
+            image || "";
+
+    }
+
+
+    if(!imagePath){
+
+        showImageFallback();
+
+        return;
+
+    }
 
 
     currentImageIndex =
@@ -558,12 +820,17 @@ function setMainImage(
             mainImage.src =
                 imagePath;
 
+
             mainImage.alt =
                 currentProduct?.name ||
                 "Suvarna Jewellers Jewellery";
 
+
             mainImage.style.opacity =
                 "1";
+
+
+            updateActiveThumbnail();
 
         };
 
@@ -579,9 +846,6 @@ function setMainImage(
     preloader.src =
         imagePath;
 
-
-    updateActiveThumbnail();
-
 }
 
 
@@ -594,6 +858,7 @@ function showImageFallback(){
     if(!mainImage){
 
         return;
+
     }
 
 
@@ -601,8 +866,37 @@ function showImageFallback(){
         null;
 
 
-    mainImage.src =
-        getImage("");
+    let fallback = "";
+
+
+    try{
+
+        fallback =
+            typeof getImage === "function"
+                ? getImage("")
+                : "";
+
+    }
+    catch(error){
+
+        fallback = "";
+
+    }
+
+
+    if(fallback){
+
+        mainImage.src =
+            fallback;
+
+    }
+    else{
+
+        mainImage.removeAttribute(
+            "src"
+        );
+
+    }
 
 
     mainImage.alt =
@@ -624,6 +918,7 @@ function createThumbnails(){
     if(!thumbnailContainer){
 
         return;
+
     }
 
 
@@ -631,21 +926,45 @@ function createThumbnails(){
         "";
 
 
-    if(productImages.length <= 1){
+    if(
+        productImages.length <= 1
+    ){
 
         return;
+
     }
 
 
     productImages.forEach(
-        (image,index)=>{
+        (image, index) => {
 
             const img =
-                document.createElement("img");
+                document.createElement(
+                    "img"
+                );
+
+
+            let imagePath = "";
+
+
+            try{
+
+                imagePath =
+                    typeof getImage === "function"
+                        ? getImage(image)
+                        : image;
+
+            }
+            catch(error){
+
+                imagePath =
+                    image || "";
+
+            }
 
 
             img.src =
-                getImage(image);
+                imagePath;
 
 
             img.alt =
@@ -654,6 +973,10 @@ function createThumbnails(){
 
             img.loading =
                 "lazy";
+
+
+            img.decoding =
+                "async";
 
 
             img.draggable =
@@ -666,7 +989,7 @@ function createThumbnails(){
 
             img.addEventListener(
                 "click",
-                ()=>{
+                function(){
 
                     setMainImage(
                         image,
@@ -679,11 +1002,14 @@ function createThumbnails(){
 
             img.addEventListener(
                 "error",
-                ()=>{
+                function(){
 
-                    img.style.display =
+                    this.style.display =
                         "none";
 
+                },
+                {
+                    once: true
                 }
             );
 
@@ -710,17 +1036,19 @@ function updateActiveThumbnail(){
     if(!thumbnailContainer){
 
         return;
+
     }
 
 
     thumbnailContainer
         .querySelectorAll("img")
         .forEach(
-            (img,index)=>{
+            (img, index) => {
 
                 img.classList.toggle(
                     "active",
-                    index === currentImageIndex
+                    index ===
+                    currentImageIndex
                 );
 
             }
@@ -730,7 +1058,7 @@ function updateActiveThumbnail(){
 
 
 /* =========================================================
-   MAIN IMAGE / LIGHTBOX
+   MAIN IMAGE
 ========================================================= */
 
 function setupMainImage(){
@@ -738,6 +1066,7 @@ function setupMainImage(){
     if(!mainImage){
 
         return;
+
     }
 
 
@@ -745,11 +1074,11 @@ function setupMainImage(){
         function(){
 
             if(
-                !productImages.length ||
-                !mainImage.src
+                !productImages.length
             ){
 
                 return;
+
             }
 
 
@@ -771,10 +1100,87 @@ function setupMainImage(){
 
 
 /* =========================================================
+   LIGHTBOX EVENTS
+========================================================= */
+
+function setupLightboxEvents(){
+
+    if(lightboxClose){
+
+        lightboxClose.onclick =
+            closeLightbox;
+
+    }
+
+
+    if(lightboxPrev){
+
+        lightboxPrev.onclick =
+            function(event){
+
+                event.stopPropagation();
+
+                changeLightboxImage(
+                    -1
+                );
+
+            };
+
+    }
+
+
+    if(lightboxNext){
+
+        lightboxNext.onclick =
+            function(event){
+
+                event.stopPropagation();
+
+                changeLightboxImage(
+                    1
+                );
+
+            };
+
+    }
+
+
+    if(imageLightbox){
+
+        imageLightbox.addEventListener(
+            "click",
+            function(event){
+
+                if(
+                    event.target ===
+                    imageLightbox
+                ){
+
+                    closeLightbox();
+
+                }
+
+            }
+        );
+
+    }
+
+
+    document.addEventListener(
+        "keydown",
+        handleLightboxKeyboard
+    );
+
+}
+
+
+/* =========================================================
    OPEN LIGHTBOX
 ========================================================= */
 
-function openLightbox(index){
+function openLightbox(
+    index
+){
 
     if(
         !imageLightbox ||
@@ -783,6 +1189,7 @@ function openLightbox(index){
     ){
 
         return;
+
     }
 
 
@@ -796,10 +1203,35 @@ function openLightbox(index){
         );
 
 
+    let imagePath = "";
+
+
+    try{
+
+        imagePath =
+            typeof getImage === "function"
+                ? getImage(
+                    productImages[
+                        currentImageIndex
+                    ]
+                )
+                : productImages[
+                    currentImageIndex
+                ];
+
+    }
+    catch(error){
+
+        imagePath =
+            productImages[
+                currentImageIndex
+            ] || "";
+
+    }
+
+
     lightboxImage.src =
-        getImage(
-            productImages[currentImageIndex]
-        );
+        imagePath;
 
 
     lightboxImage.alt =
@@ -836,6 +1268,7 @@ function closeLightbox(){
     if(!imageLightbox){
 
         return;
+
     }
 
 
@@ -860,16 +1293,22 @@ function closeLightbox(){
    CHANGE LIGHTBOX IMAGE
 ========================================================= */
 
-function changeLightboxImage(direction){
+function changeLightboxImage(
+    direction
+){
 
-    if(productImages.length <= 1){
+    if(
+        productImages.length <= 1
+    ){
 
         return;
+
     }
 
 
     let nextIndex =
-        currentImageIndex + direction;
+        currentImageIndex +
+        direction;
 
 
     if(nextIndex < 0){
@@ -880,7 +1319,10 @@ function changeLightboxImage(direction){
     }
 
 
-    if(nextIndex >= productImages.length){
+    if(
+        nextIndex >=
+        productImages.length
+    ){
 
         nextIndex = 0;
 
@@ -891,18 +1333,45 @@ function changeLightboxImage(direction){
         nextIndex;
 
 
+    let imagePath = "";
+
+
+    try{
+
+        imagePath =
+            typeof getImage === "function"
+                ? getImage(
+                    productImages[
+                        currentImageIndex
+                    ]
+                )
+                : productImages[
+                    currentImageIndex
+                ];
+
+    }
+    catch(error){
+
+        imagePath =
+            productImages[
+                currentImageIndex
+            ] || "";
+
+    }
+
+
     if(lightboxImage){
 
         lightboxImage.src =
-            getImage(
-                productImages[currentImageIndex]
-            );
+            imagePath;
 
     }
 
 
     setMainImage(
-        productImages[currentImageIndex],
+        productImages[
+            currentImageIndex
+        ],
         currentImageIndex
     );
 
@@ -918,14 +1387,16 @@ function changeLightboxImage(direction){
 
 function updateLightboxButtons(){
 
-    const hasMultiple =
+    const multiple =
         productImages.length > 1;
 
 
     if(lightboxPrev){
 
         lightboxPrev.style.display =
-            hasMultiple ? "grid" : "none";
+            multiple
+                ? "grid"
+                : "none";
 
     }
 
@@ -933,7 +1404,9 @@ function updateLightboxButtons(){
     if(lightboxNext){
 
         lightboxNext.style.display =
-            hasMultiple ? "grid" : "none";
+            multiple
+                ? "grid"
+                : "none";
 
     }
 
@@ -941,121 +1414,78 @@ function updateLightboxButtons(){
 
 
 /* =========================================================
-   LIGHTBOX EVENTS
+   KEYBOARD
 ========================================================= */
 
-if(lightboxClose){
+function handleLightboxKeyboard(
+    event
+){
 
-    lightboxClose.addEventListener(
-        "click",
-        closeLightbox
-    );
+    if(
+        !imageLightbox ||
+        !imageLightbox.classList.contains(
+            "show"
+        )
+    ){
 
-}
-
-
-if(lightboxPrev){
-
-    lightboxPrev.addEventListener(
-        "click",
-        function(event){
-
-            event.stopPropagation();
-
-            changeLightboxImage(-1);
-
-        }
-    );
-
-}
-
-
-if(lightboxNext){
-
-    lightboxNext.addEventListener(
-        "click",
-        function(event){
-
-            event.stopPropagation();
-
-            changeLightboxImage(1);
-
-        }
-    );
-
-}
-
-
-if(imageLightbox){
-
-    imageLightbox.addEventListener(
-        "click",
-        function(event){
-
-            if(
-                event.target === imageLightbox
-            ){
-
-                closeLightbox();
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   KEYBOARD CONTROLS
-========================================================= */
-
-document.addEventListener(
-    "keydown",
-    function(event){
-
-        if(
-            !imageLightbox ||
-            !imageLightbox.classList.contains("show")
-        ){
-
-            return;
-        }
-
-
-        if(event.key === "Escape"){
-
-            closeLightbox();
-
-        }
-
-
-        if(event.key === "ArrowLeft"){
-
-            changeLightboxImage(-1);
-
-        }
-
-
-        if(event.key === "ArrowRight"){
-
-            changeLightboxImage(1);
-
-        }
+        return;
 
     }
-);
+
+
+    if(
+        event.key === "Escape"
+    ){
+
+        closeLightbox();
+
+        return;
+
+    }
+
+
+    if(
+        event.key === "ArrowLeft"
+    ){
+
+        event.preventDefault();
+
+        changeLightboxImage(
+            -1
+        );
+
+        return;
+
+    }
+
+
+    if(
+        event.key === "ArrowRight"
+    ){
+
+        event.preventDefault();
+
+        changeLightboxImage(
+            1
+        );
+
+    }
+
+}
 
 
 /* =========================================================
-   WHATSAPP BUTTON
+   WHATSAPP
 ========================================================= */
 
-function createWhatsappButton(product){
+function createWhatsappButton(
+    product
+){
 
     if(!whatsappButton){
 
         return;
+
     }
 
 
@@ -1072,7 +1502,10 @@ function createWhatsappButton(product){
         phone =
             String(
                 CONFIG.BUSINESS.phone
-            ).replace(/\D/g,"");
+            ).replace(
+                /\D/g,
+                ""
+            );
 
     }
 
@@ -1089,20 +1522,25 @@ Please share more details and price.`;
 
 
     whatsappButton.href =
-        `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+        `https://wa.me/${phone}?text=${encodeURIComponent(
+            message
+        )}`;
 
 }
 
 
 /* =========================================================
-   CALL BUTTON
+   CALL
 ========================================================= */
 
-function createCallButton(product){
+function createCallButton(
+    product
+){
 
     if(!callButton){
 
         return;
+
     }
 
 
@@ -1119,12 +1557,17 @@ function createCallButton(product){
         phone =
             String(
                 CONFIG.BUSINESS.phone
-            ).replace(/\D/g,"");
+            ).replace(
+                /\D/g,
+                ""
+            );
 
     }
 
 
-    if(phone.startsWith("91")){
+    if(
+        phone.startsWith("91")
+    ){
 
         phone =
             phone.substring(2);
@@ -1147,6 +1590,7 @@ function renderRelatedProducts(){
     if(!relatedProducts){
 
         return;
+
     }
 
 
@@ -1160,23 +1604,43 @@ function renderRelatedProducts(){
     ){
 
         return;
+
     }
 
 
     const items =
         products
             .filter(
-                item =>
-                    String(item.id) !==
-                        String(currentProduct.id)
-                    &&
-                    (
+                item => {
+
+                    if(!item){
+
+                        return false;
+
+                    }
+
+
+                    if(
+                        String(item.id) ===
+                        String(
+                            currentProduct.id
+                        )
+                    ){
+
+                        return false;
+
+                    }
+
+
+                    return (
                         item.category ===
                             currentProduct.category
                         ||
                         item.metal ===
                             currentProduct.metal
-                    )
+                    );
+
+                }
             )
             .slice(0,4);
 
@@ -1191,6 +1655,15 @@ function renderRelatedProducts(){
         }
 
         return;
+
+    }
+
+
+    if(relatedSection){
+
+        relatedSection.style.display =
+            "";
+
     }
 
 
@@ -1198,26 +1671,46 @@ function renderRelatedProducts(){
         product => {
 
             const card =
-                document.createElement("a");
+                document.createElement(
+                    "a"
+                );
 
 
             /*
-               Keep the same source when opening
-               a related product.
-            */
+             * Preserve current source.
+             */
 
             card.href =
-                `product.html?id=${encodeURIComponent(product.id)}&source=${encodeURIComponent(productSource.type)}`;
+                `product.html?id=${encodeURIComponent(
+                    product.id
+                )}&source=${encodeURIComponent(
+                    productSource.type
+                )}`;
 
 
             card.className =
                 "product-card";
 
 
-            const image =
-                getImage(
-                    product.image
-                );
+            let image = "";
+
+
+            try{
+
+                image =
+                    typeof getImage === "function"
+                        ? getImage(
+                            product.image
+                        )
+                        : product.image || "";
+
+            }
+            catch(error){
+
+                image =
+                    product.image || "";
+
+            }
 
 
             const name =
@@ -1230,21 +1723,57 @@ function renderRelatedProducts(){
                 "";
 
 
-            card.innerHTML =
-`
-<div class="card-image">
-    <img
-        src="${escapeHtml(image)}"
-        alt="${escapeHtml(name)}"
-        loading="lazy"
-    >
-</div>
+            card.innerHTML = `
 
-<div class="card-content">
-    <h3>${escapeHtml(name)}</h3>
-    <p>${escapeHtml(category)}</p>
-</div>
-`;
+                <div class="card-image">
+
+                    <img
+                        src="${escapeHtml(image)}"
+                        alt="${escapeHtml(name)}"
+                        loading="lazy"
+                        decoding="async"
+                    >
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>
+                        ${escapeHtml(name)}
+                    </h3>
+
+                    <p>
+                        ${escapeHtml(category)}
+                    </p>
+
+                </div>
+
+            `;
+
+
+            const relatedImage =
+                card.querySelector(
+                    "img"
+                );
+
+
+            if(relatedImage){
+
+                relatedImage.addEventListener(
+                    "error",
+                    function(){
+
+                        this.style.display =
+                            "none";
+
+                    },
+                    {
+                        once: true
+                    }
+                );
+
+            }
 
 
             relatedProducts.appendChild(
@@ -1275,58 +1804,79 @@ function showProductError(
     if(!productContent){
 
         return;
+
     }
 
 
-    productContent.innerHTML =
-`
-<div style="
-    min-height:420px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:40px 20px;
-">
+    productContent.innerHTML = `
 
-    <div style="
-        color:#d4af37;
-        font-size:11px;
-        letter-spacing:2px;
-        text-transform:uppercase;
-        margin-bottom:15px;
-    ">
-        SUVARNA JEWELLERS
-    </div>
+        <div
+            class="sj-product-error"
+            style="
+                min-height:420px;
+                display:flex;
+                flex-direction:column;
+                align-items:center;
+                justify-content:center;
+                text-align:center;
+                padding:40px 20px;
+            "
+        >
 
-    <h1 style="
-        margin:0 0 12px;
-        color:#f7f2e8;
-        font-family:Cinzel,Georgia,serif;
-        font-size:32px;
-    ">
-        ${escapeHtml(title)}
-    </h1>
+            <div
+                style="
+                    color:#d4af37;
+                    font-size:10px;
+                    letter-spacing:3px;
+                    text-transform:uppercase;
+                    margin-bottom:15px;
+                "
+            >
+                SUVARNA JEWELLERS
+            </div>
 
-    <p style="
-        margin:0 0 25px;
-        color:rgba(247,242,232,.60);
-        font-size:13px;
-    ">
-        ${escapeHtml(message)}
-    </p>
 
-    <a
-        href="${escapeHtml(productSource.url)}"
-        class="btn btn-primary"
-        style="text-decoration:none;"
-    >
-        ${escapeHtml(productSource.label)}
-    </a>
+            <h1
+                style="
+                    margin:0 0 12px;
+                    color:#f7f2e8;
+                    font-family:Cinzel,Georgia,serif;
+                    font-size:32px;
+                "
+            >
+                ${escapeHtml(title)}
+            </h1>
 
-</div>
-`;
+
+            <p
+                style="
+                    margin:0 0 25px;
+                    color:rgba(247,242,232,.60);
+                    font-size:13px;
+                    line-height:1.7;
+                "
+            >
+                ${escapeHtml(message)}
+            </p>
+
+
+            <a
+                href="${escapeHtml(
+                    productSource.url
+                )}"
+                class="btn btn-primary"
+                style="
+                    text-decoration:none;
+                "
+            >
+                ${escapeHtml(
+                    productSource.label
+                )}
+            </a>
+
+        </div>
+
+    `;
 
 }
 
@@ -1335,13 +1885,32 @@ function showProductError(
    SAFE HTML ESCAPE
 ========================================================= */
 
-function escapeHtml(value){
+function escapeHtml(
+    value
+){
 
-    return String(value ?? "")
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
+    return String(
+        value ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
 
 }
