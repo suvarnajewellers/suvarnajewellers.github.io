@@ -1,12 +1,13 @@
 /* =========================================================
    SUVARNA JEWELLERS
-   PRODUCT.JS — FINAL VERSION
-   Product Page + Source-aware Back Navigation
+   PRODUCT.JS — FINAL CLEAN VERSION
+   Product Page + Source-aware Navigation
+   Gallery + Lightbox + Related Products
 ========================================================= */
 
 
 /* =========================================================
-   GLOBAL VARIABLES
+   GLOBAL STATE
 ========================================================= */
 
 let currentProduct = null;
@@ -14,33 +15,58 @@ let products = [];
 let productImages = [];
 let currentImageIndex = 0;
 
+let productSource = {
+    type: "collections",
+    label: "Back to Collections",
+    url: "collections.html"
+};
+
 
 /* =========================================================
    DOM ELEMENTS
 ========================================================= */
 
-const mainImage = document.getElementById("mainImage");
-const thumbnailContainer = document.getElementById("thumbnailContainer");
+const mainImage =
+    document.getElementById("mainImage");
 
-const productCategory = document.getElementById("productCategory");
-const productName = document.getElementById("productName");
-const productDescription = document.getElementById("productDescription");
+const thumbnailContainer =
+    document.getElementById("thumbnailContainer");
 
-const productMetal = document.getElementById("productMetal");
-const productGrossWeight = document.getElementById("productGrossWeight");
-const productNetWeight = document.getElementById("productNetWeight");
-const productSize = document.getElementById("productSize");
+const galleryCount =
+    document.getElementById("galleryCount");
 
-const whatsappButton = document.getElementById("whatsappButton");
-const callButton = document.getElementById("callButton");
+const productCategory =
+    document.getElementById("productCategory");
 
-const relatedProducts = document.getElementById("relatedProducts");
+const productName =
+    document.getElementById("productName");
 
-const imageLightbox = document.getElementById("imageLightbox");
-const lightboxImage = document.getElementById("lightboxImage");
-const lightboxClose = document.getElementById("lightboxClose");
-const lightboxPrev = document.getElementById("lightboxPrev");
-const lightboxNext = document.getElementById("lightboxNext");
+const productDescription =
+    document.getElementById("productDescription");
+
+const productMetal =
+    document.getElementById("productMetal");
+
+const productGrossWeight =
+    document.getElementById("productGrossWeight");
+
+const productNetWeight =
+    document.getElementById("productNetWeight");
+
+const productSize =
+    document.getElementById("productSize");
+
+const whatsappButton =
+    document.getElementById("whatsappButton");
+
+const callButton =
+    document.getElementById("callButton");
+
+const relatedProducts =
+    document.getElementById("relatedProducts");
+
+const relatedSection =
+    document.getElementById("relatedSection");
 
 const breadcrumbCategory =
     document.getElementById("breadcrumbCategory");
@@ -48,49 +74,20 @@ const breadcrumbCategory =
 const productBack =
     document.querySelector(".sj-product-back");
 
-const relatedSection =
-    document.getElementById("relatedSection");
+const imageLightbox =
+    document.getElementById("imageLightbox");
 
+const lightboxImage =
+    document.getElementById("lightboxImage");
 
-/* ==========================
-   BACK BUTTON SOURCE
-========================== */
+const lightboxClose =
+    document.getElementById("lightboxClose");
 
-const urlParams =
-    new URLSearchParams(window.location.search);
+const lightboxPrev =
+    document.getElementById("lightboxPrev");
 
-const fromPage =
-    urlParams.get("from");
-
-if(productBack){
-
-    if(fromPage === "ready-stock"){
-
-        productBack.href = "ready-stock.html";
-
-        productBack.innerHTML =
-            '<span aria-hidden="true">←</span> Back to Ready Stock';
-
-    }else{
-
-        productBack.href = "collections.html";
-
-        productBack.innerHTML =
-            '<span aria-hidden="true">←</span> Back to Collections';
-
-    }
-
-}
-
-/* =========================================================
-   PRODUCT SOURCE
-========================================================= */
-
-let productSource = {
-    type: "collections",
-    label: "Back to Collections",
-    url: "collections.html"
-};
+const lightboxNext =
+    document.getElementById("lightboxNext");
 
 
 /* =========================================================
@@ -109,10 +106,17 @@ async function initProductPage(){
 
     updateBackNavigation();
 
-    const params = new URLSearchParams(window.location.search);
 
-const productId = params.get("id");
-const fromPage = params.get("from");
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+
+    const productId =
+        params.get("id");
+
+
     if(!productId){
 
         showProductError(
@@ -124,10 +128,31 @@ const fromPage = params.get("from");
     }
 
 
-    products = await getProducts();
+    try{
+
+        products =
+            await getProducts();
+
+    }catch(error){
+
+        console.error(
+            "Product loading error:",
+            error
+        );
+
+        showProductError(
+            "Unable to load product",
+            "Please try again or return to the product list."
+        );
+
+        return;
+    }
 
 
-    if(!Array.isArray(products) || !products.length){
+    if(
+        !Array.isArray(products) ||
+        !products.length
+    ){
 
         showProductError(
             "Unable to load product",
@@ -141,7 +166,8 @@ const fromPage = params.get("from");
     currentProduct =
         products.find(
             product =>
-                String(product.id) === String(productId)
+                String(product.id) ===
+                String(productId)
         );
 
 
@@ -156,7 +182,10 @@ const fromPage = params.get("from");
     }
 
 
-    renderProduct(currentProduct);
+    renderProduct(
+        currentProduct
+    );
+
 
     renderRelatedProducts();
 
@@ -164,36 +193,49 @@ const fromPage = params.get("from");
 
 
 /* =========================================================
-   DETECT WHERE PRODUCT WAS OPENED FROM
+   DETECT PRODUCT SOURCE
 ========================================================= */
 
 function detectProductSource(){
 
-    /*
-        Priority:
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
 
-        1. Explicit ?source=ready-stock
-        2. Explicit ?source=collections
-        3. Referrer URL
-        4. Default = Collections
+
+    /*
+       Primary:
+       ?source=ready-stock
+       ?source=collections
+
+       Legacy support:
+       ?from=ready-stock
+       ?from=collections
+
+       Final fallback:
+       document.referrer
     */
 
 
-    const params =
-        new URLSearchParams(window.location.search);
-
-    const source =
-        (params.get("source") || "")
+    const sourceParam =
+        (
+            params.get("source") ||
+            params.get("from") ||
+            ""
+        )
         .toLowerCase()
         .trim();
 
 
-    /* Explicit Ready Stock */
+    /* -----------------------------------------
+       READY STOCK
+    ----------------------------------------- */
 
     if(
-        source === "ready-stock" ||
-        source === "readystock" ||
-        source === "ready_stock"
+        sourceParam === "ready-stock" ||
+        sourceParam === "readystock" ||
+        sourceParam === "ready_stock"
     ){
 
         setProductSource(
@@ -206,9 +248,14 @@ function detectProductSource(){
     }
 
 
-    /* Explicit Collections */
+    /* -----------------------------------------
+       COLLECTIONS
+    ----------------------------------------- */
 
-    if(source === "collections"){
+    if(
+        sourceParam === "collections" ||
+        sourceParam === "collection"
+    ){
 
         setProductSource(
             "collections",
@@ -220,18 +267,20 @@ function detectProductSource(){
     }
 
 
-    /* Detect from referrer */
+    /* -----------------------------------------
+       REFERRER FALLBACK
+    ----------------------------------------- */
 
     const referrer =
-        document.referrer || "";
-
-    const referrerUrl =
-        referrer.toLowerCase();
+        (
+            document.referrer ||
+            ""
+        ).toLowerCase();
 
 
     if(
-        referrerUrl.includes("ready-stock.html") ||
-        referrerUrl.includes("ready-stock")
+        referrer.includes("ready-stock.html") ||
+        referrer.includes("ready-stock")
     ){
 
         setProductSource(
@@ -244,7 +293,9 @@ function detectProductSource(){
     }
 
 
-    /* Default */
+    /* -----------------------------------------
+       DEFAULT
+    ----------------------------------------- */
 
     setProductSource(
         "collections",
@@ -266,9 +317,9 @@ function setProductSource(
 ){
 
     productSource = {
-        type: type,
-        label: label,
-        url: url
+        type,
+        label,
+        url
     };
 
 }
@@ -280,41 +331,39 @@ function setProductSource(
 
 function updateBackNavigation(){
 
+    /* -----------------------------------------
+       Back Button
+    ----------------------------------------- */
+
     if(productBack){
 
         productBack.href =
             productSource.url;
 
         productBack.innerHTML =
-            `<span aria-hidden="true">←</span>
-             ${productSource.label}`;
+            `
+            <span aria-hidden="true">←</span>
+            ${escapeHtml(productSource.label)}
+            `;
     }
 
 
-    /*
+    /* -----------------------------------------
        Breadcrumb
-    */
+    ----------------------------------------- */
 
     if(breadcrumbCategory){
 
-        if(productSource.type === "ready-stock"){
-
-            breadcrumbCategory.textContent =
-                "Ready Stock";
-
-        }else{
-
-            breadcrumbCategory.textContent =
-                "Collections";
-
-        }
-
+        breadcrumbCategory.textContent =
+            productSource.type === "ready-stock"
+                ? "Ready Stock"
+                : "Collections";
     }
 
 
-    /*
-       Optional collection CTA
-    */
+    /* -----------------------------------------
+       Bottom CTA
+    ----------------------------------------- */
 
     const collectionButton =
         document.querySelector(
@@ -324,7 +373,10 @@ function updateBackNavigation(){
 
     if(collectionButton){
 
-        if(productSource.type === "ready-stock"){
+        if(
+            productSource.type ===
+            "ready-stock"
+        ){
 
             collectionButton.href =
                 "ready-stock.html";
@@ -353,6 +405,10 @@ function updateBackNavigation(){
 
 function renderProduct(product){
 
+    /* -----------------------------------------
+       Text
+    ----------------------------------------- */
+
     if(productCategory){
 
         productCategory.textContent =
@@ -363,7 +419,8 @@ function renderProduct(product){
     if(productName){
 
         productName.textContent =
-            product.name || "Jewellery Product";
+            product.name ||
+            "Jewellery Product";
     }
 
 
@@ -374,6 +431,10 @@ function renderProduct(product){
             "Premium jewellery design by Suvarna Jewellers.";
     }
 
+
+    /* -----------------------------------------
+       Specifications
+    ----------------------------------------- */
 
     if(productMetal){
 
@@ -403,9 +464,9 @@ function renderProduct(product){
     }
 
 
-    /*
-       Product Images
-    */
+    /* -----------------------------------------
+       Images
+    ----------------------------------------- */
 
     productImages = [];
 
@@ -415,11 +476,12 @@ function renderProduct(product){
         productImages.push(
             product.image
         );
-
     }
 
 
-    if(Array.isArray(product.gallery)){
+    if(
+        Array.isArray(product.gallery)
+    ){
 
         productImages.push(
             ...product.gallery
@@ -429,12 +491,12 @@ function renderProduct(product){
 
 
     /*
-       Remove duplicate images
+       Remove empty + duplicate images
     */
 
     productImages =
         productImages.filter(
-            (image,index,array) =>
+            (image, index, array) =>
                 image &&
                 array.indexOf(image) === index
         );
@@ -459,12 +521,46 @@ function renderProduct(product){
 
     createThumbnails();
 
-    createWhatsappButton(product);
+    updateGalleryCount();
 
-    createCallButton(product);
+    createWhatsappButton(
+        product
+    );
+
+    createCallButton(
+        product
+    );
 
     setupMainImage();
 
+}
+
+
+/* =========================================================
+   GALLERY COUNT
+========================================================= */
+
+function updateGalleryCount(){
+
+    if(!galleryCount){
+
+        return;
+    }
+
+
+    if(productImages.length <= 1){
+
+        galleryCount.textContent =
+            productImages.length
+                ? "1 Image"
+                : "";
+
+        return;
+    }
+
+
+    galleryCount.textContent =
+        `${productImages.length} Images`;
 }
 
 
@@ -487,36 +583,40 @@ function setMainImage(
         getImage(image);
 
 
-    currentImageIndex = index;
+    currentImageIndex =
+        index;
 
 
-    mainImage.style.opacity = "0";
+    mainImage.style.opacity =
+        "0";
 
 
     const preloader =
         new Image();
 
 
-    preloader.onload = function(){
+    preloader.onload =
+        function(){
 
-        mainImage.src =
-            imagePath;
+            mainImage.src =
+                imagePath;
 
-        mainImage.alt =
-            currentProduct?.name ||
-            "Suvarna Jewellers Jewellery";
+            mainImage.alt =
+                currentProduct?.name ||
+                "Suvarna Jewellers Jewellery";
 
-        mainImage.style.opacity =
-            "1";
+            mainImage.style.opacity =
+                "1";
 
-    };
+        };
 
 
-    preloader.onerror = function(){
+    preloader.onerror =
+        function(){
 
-        showImageFallback();
+            showImageFallback();
 
-    };
+        };
 
 
     preloader.src =
@@ -524,6 +624,8 @@ function setMainImage(
 
 
     updateActiveThumbnail();
+
+    updateGalleryCount();
 
 }
 
@@ -553,7 +655,6 @@ function showImageFallback(){
 
     mainImage.style.opacity =
         "1";
-
 }
 
 
@@ -580,7 +681,7 @@ function createThumbnails(){
 
 
     productImages.forEach(
-        (image,index)=>{
+        (image, index) => {
 
             const img =
                 document.createElement("img");
@@ -608,7 +709,7 @@ function createThumbnails(){
 
             img.addEventListener(
                 "click",
-                ()=>{
+                function(){
 
                     setMainImage(
                         image,
@@ -621,7 +722,7 @@ function createThumbnails(){
 
             img.addEventListener(
                 "error",
-                ()=>{
+                function(){
 
                     img.style.display =
                         "none";
@@ -658,7 +759,7 @@ function updateActiveThumbnail(){
     thumbnailContainer
         .querySelectorAll("img")
         .forEach(
-            (img,index)=>{
+            (img, index) => {
 
                 img.classList.toggle(
                     "active",
@@ -672,7 +773,7 @@ function updateActiveThumbnail(){
 
 
 /* =========================================================
-   MAIN IMAGE CLICK / LIGHTBOX
+   MAIN IMAGE / LIGHTBOX
 ========================================================= */
 
 function setupMainImage(){
@@ -687,8 +788,7 @@ function setupMainImage(){
         function(){
 
             if(
-                !productImages.length ||
-                !mainImage.src
+                !productImages.length
             ){
 
                 return;
@@ -740,7 +840,9 @@ function openLightbox(index){
 
     lightboxImage.src =
         getImage(
-            productImages[currentImageIndex]
+            productImages[
+                currentImageIndex
+            ]
         );
 
 
@@ -761,6 +863,9 @@ function openLightbox(index){
 
 
     updateLightboxButtons();
+
+
+    updateActiveThumbnail();
 
 
     document.body.style.overflow =
@@ -799,10 +904,12 @@ function closeLightbox(){
 
 
 /* =========================================================
-   LIGHTBOX IMAGE CHANGE
+   CHANGE LIGHTBOX IMAGE
 ========================================================= */
 
-function changeLightboxImage(direction){
+function changeLightboxImage(
+    direction
+){
 
     if(productImages.length <= 1){
 
@@ -811,21 +918,23 @@ function changeLightboxImage(direction){
 
 
     let nextIndex =
-        currentImageIndex + direction;
+        currentImageIndex +
+        direction;
 
 
     if(nextIndex < 0){
 
         nextIndex =
             productImages.length - 1;
-
     }
 
 
-    if(nextIndex >= productImages.length){
+    if(
+        nextIndex >=
+        productImages.length
+    ){
 
         nextIndex = 0;
-
     }
 
 
@@ -837,13 +946,18 @@ function changeLightboxImage(direction){
 
         lightboxImage.src =
             getImage(
-                productImages[currentImageIndex]
+                productImages[
+                    currentImageIndex
+                ]
             );
+
     }
 
 
     setMainImage(
-        productImages[currentImageIndex],
+        productImages[
+            currentImageIndex
+        ],
         currentImageIndex
     );
 
@@ -866,14 +980,18 @@ function updateLightboxButtons(){
     if(lightboxPrev){
 
         lightboxPrev.style.display =
-            hasMultiple ? "grid" : "none";
+            hasMultiple
+                ? "grid"
+                : "none";
     }
 
 
     if(lightboxNext){
 
         lightboxNext.style.display =
-            hasMultiple ? "grid" : "none";
+            hasMultiple
+                ? "grid"
+                : "none";
     }
 
 }
@@ -901,7 +1019,9 @@ if(lightboxPrev){
 
             event.stopPropagation();
 
-            changeLightboxImage(-1);
+            changeLightboxImage(
+                -1
+            );
 
         }
     );
@@ -917,7 +1037,9 @@ if(lightboxNext){
 
             event.stopPropagation();
 
-            changeLightboxImage(1);
+            changeLightboxImage(
+                1
+            );
 
         }
     );
@@ -932,7 +1054,8 @@ if(imageLightbox){
         function(event){
 
             if(
-                event.target === imageLightbox
+                event.target ===
+                imageLightbox
             ){
 
                 closeLightbox();
@@ -955,7 +1078,9 @@ document.addEventListener(
 
         if(
             !imageLightbox ||
-            !imageLightbox.classList.contains("show")
+            !imageLightbox.classList.contains(
+                "show"
+            )
         ){
 
             return;
@@ -966,19 +1091,25 @@ document.addEventListener(
 
             closeLightbox();
 
+            return;
         }
 
 
         if(event.key === "ArrowLeft"){
 
-            changeLightboxImage(-1);
+            changeLightboxImage(
+                -1
+            );
 
+            return;
         }
 
 
         if(event.key === "ArrowRight"){
 
-            changeLightboxImage(1);
+            changeLightboxImage(
+                1
+            );
 
         }
 
@@ -990,7 +1121,9 @@ document.addEventListener(
    WHATSAPP BUTTON
 ========================================================= */
 
-function createWhatsappButton(product){
+function createWhatsappButton(
+    product
+){
 
     if(!whatsappButton){
 
@@ -1011,7 +1144,10 @@ function createWhatsappButton(product){
         phone =
             String(
                 CONFIG.BUSINESS.phone
-            ).replace(/\D/g,"");
+            ).replace(
+                /\D/g,
+                ""
+            );
 
     }
 
@@ -1037,7 +1173,9 @@ Please share more details and price.`;
    CALL BUTTON
 ========================================================= */
 
-function createCallButton(product){
+function createCallButton(
+    product
+){
 
     if(!callButton){
 
@@ -1058,13 +1196,16 @@ function createCallButton(product){
         phone =
             String(
                 CONFIG.BUSINESS.phone
-            ).replace(/\D/g,"");
+            ).replace(
+                /\D/g,
+                ""
+            );
 
     }
 
 
     /*
-       Indian number safety
+       Prevent duplicate +91
     */
 
     if(phone.startsWith("91")){
@@ -1108,20 +1249,20 @@ function renderRelatedProducts(){
 
     const items =
         products
-        .filter(
-            item =>
-                String(item.id) !==
-                    String(currentProduct.id)
-                &&
-                (
-                    item.category ===
-                        currentProduct.category
-                    ||
-                    item.metal ===
-                        currentProduct.metal
-                )
-        )
-        .slice(0,4);
+            .filter(
+                item =>
+                    String(item.id) !==
+                        String(currentProduct.id)
+                    &&
+                    (
+                        item.category ===
+                            currentProduct.category
+                        ||
+                        item.metal ===
+                            currentProduct.metal
+                    )
+            )
+            .slice(0,4);
 
 
     if(!items.length){
@@ -1137,12 +1278,23 @@ function renderRelatedProducts(){
     }
 
 
+    if(relatedSection){
+
+        relatedSection.style.display =
+            "";
+    }
+
+
     items.forEach(
         product => {
 
             const card =
                 document.createElement("a");
 
+
+            /*
+               Preserve current source
+            */
 
             card.href =
                 `product.html?id=${encodeURIComponent(product.id)}&source=${encodeURIComponent(productSource.type)}`;
@@ -1171,16 +1323,25 @@ function renderRelatedProducts(){
             card.innerHTML =
 `
 <div class="card-image">
+
     <img
         src="${escapeHtml(image)}"
         alt="${escapeHtml(name)}"
         loading="lazy"
     >
+
 </div>
 
 <div class="card-content">
-    <h3>${escapeHtml(name)}</h3>
-    <p>${escapeHtml(category)}</p>
+
+    <h3>
+        ${escapeHtml(name)}
+    </h3>
+
+    <p>
+        ${escapeHtml(category)}
+    </p>
+
 </div>
 `;
 
@@ -1256,7 +1417,7 @@ function showProductError(
     </p>
 
     <a
-        href="${productSource.url}"
+        href="${escapeHtml(productSource.url)}"
         class="btn btn-primary"
         style="text-decoration:none;"
     >
@@ -1273,13 +1434,32 @@ function showProductError(
    SAFE HTML ESCAPE
 ========================================================= */
 
-function escapeHtml(value){
+function escapeHtml(
+    value
+){
 
-    return String(value ?? "")
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
+    return String(
+        value ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
 
 }
