@@ -15,12 +15,6 @@ let products = [];
 let productImages = [];
 let currentImageIndex = 0;
 
-let productSource = {
-    type: "collections",
-    label: "Back to Collections",
-    url: "collections.html"
-};
-
 
 /* =========================================================
    DOM ELEMENTS
@@ -31,9 +25,6 @@ const mainImage =
 
 const thumbnailContainer =
     document.getElementById("thumbnailContainer");
-
-const galleryCount =
-    document.getElementById("galleryCount");
 
 const productCategory =
     document.getElementById("productCategory");
@@ -68,12 +59,6 @@ const relatedProducts =
 const relatedSection =
     document.getElementById("relatedSection");
 
-const breadcrumbCategory =
-    document.getElementById("breadcrumbCategory");
-
-const productBack =
-    document.querySelector(".sj-product-back");
-
 const imageLightbox =
     document.getElementById("imageLightbox");
 
@@ -89,6 +74,23 @@ const lightboxPrev =
 const lightboxNext =
     document.getElementById("lightboxNext");
 
+const breadcrumbCategory =
+    document.getElementById("breadcrumbCategory");
+
+const productBack =
+    document.querySelector(".sj-product-back");
+
+
+/* =========================================================
+   PRODUCT SOURCE
+========================================================= */
+
+let productSource = {
+    type: "collections",
+    label: "Back to Collections",
+    url: "collections.html"
+};
+
 
 /* =========================================================
    INITIALIZE
@@ -100,7 +102,7 @@ document.addEventListener(
 );
 
 
-async function initProductPage(){
+async function initProductPage() {
 
     detectProductSource();
 
@@ -117,10 +119,14 @@ async function initProductPage(){
         params.get("id");
 
 
-    if(!productId){
+    /* -----------------------------------------
+       PRODUCT ID CHECK
+    ----------------------------------------- */
+
+    if (!productId) {
 
         showProductError(
-            "Product not found",
+            "Product Not Found",
             "No product was selected."
         );
 
@@ -128,12 +134,16 @@ async function initProductPage(){
     }
 
 
-    try{
+    /* -----------------------------------------
+       LOAD PRODUCTS
+    ----------------------------------------- */
+
+    try {
 
         products =
             await getProducts();
 
-    }catch(error){
+    } catch (error) {
 
         console.error(
             "Product loading error:",
@@ -141,7 +151,7 @@ async function initProductPage(){
         );
 
         showProductError(
-            "Unable to load product",
+            "Unable to Load Product",
             "Please try again or return to the product list."
         );
 
@@ -149,19 +159,27 @@ async function initProductPage(){
     }
 
 
-    if(
+    /* -----------------------------------------
+       VALIDATE PRODUCT DATA
+    ----------------------------------------- */
+
+    if (
         !Array.isArray(products) ||
         !products.length
-    ){
+    ) {
 
         showProductError(
-            "Unable to load product",
+            "Unable to Load Product",
             "Please try again or return to the product list."
         );
 
         return;
     }
 
+
+    /* -----------------------------------------
+       FIND PRODUCT
+    ----------------------------------------- */
 
     currentProduct =
         products.find(
@@ -171,16 +189,20 @@ async function initProductPage(){
         );
 
 
-    if(!currentProduct){
+    if (!currentProduct) {
 
         showProductError(
-            "Product not found",
+            "Product Not Found",
             "The requested product could not be found."
         );
 
         return;
     }
 
+
+    /* -----------------------------------------
+       RENDER
+    ----------------------------------------- */
 
     renderProduct(
         currentProduct
@@ -193,10 +215,10 @@ async function initProductPage(){
 
 
 /* =========================================================
-   DETECT PRODUCT SOURCE
+   SOURCE DETECTION
 ========================================================= */
 
-function detectProductSource(){
+function detectProductSource() {
 
     const params =
         new URLSearchParams(
@@ -205,18 +227,16 @@ function detectProductSource(){
 
 
     /*
-       Primary:
+       Preferred parameter:
+
        ?source=ready-stock
        ?source=collections
 
-       Legacy support:
+       Backward compatibility:
+
        ?from=ready-stock
        ?from=collections
-
-       Final fallback:
-       document.referrer
     */
-
 
     const sourceParam =
         (
@@ -232,11 +252,11 @@ function detectProductSource(){
        READY STOCK
     ----------------------------------------- */
 
-    if(
+    if (
         sourceParam === "ready-stock" ||
         sourceParam === "readystock" ||
         sourceParam === "ready_stock"
-    ){
+    ) {
 
         setProductSource(
             "ready-stock",
@@ -252,10 +272,10 @@ function detectProductSource(){
        COLLECTIONS
     ----------------------------------------- */
 
-    if(
+    if (
         sourceParam === "collections" ||
         sourceParam === "collection"
-    ){
+    ) {
 
         setProductSource(
             "collections",
@@ -278,10 +298,14 @@ function detectProductSource(){
         ).toLowerCase();
 
 
-    if(
-        referrer.includes("ready-stock.html") ||
-        referrer.includes("ready-stock")
-    ){
+    if (
+        referrer.includes(
+            "ready-stock.html"
+        ) ||
+        referrer.includes(
+            "ready-stock"
+        )
+    ) {
 
         setProductSource(
             "ready-stock",
@@ -314,12 +338,12 @@ function setProductSource(
     type,
     label,
     url
-){
+) {
 
     productSource = {
-        type,
-        label,
-        url
+        type: type,
+        label: label,
+        url: url
     };
 
 }
@@ -329,13 +353,13 @@ function setProductSource(
    UPDATE BACK NAVIGATION
 ========================================================= */
 
-function updateBackNavigation(){
+function updateBackNavigation() {
 
     /* -----------------------------------------
-       Back Button
+       BACK BUTTON
     ----------------------------------------- */
 
-    if(productBack){
+    if (productBack) {
 
         productBack.href =
             productSource.url;
@@ -345,24 +369,26 @@ function updateBackNavigation(){
             <span aria-hidden="true">←</span>
             ${escapeHtml(productSource.label)}
             `;
+
     }
 
 
     /* -----------------------------------------
-       Breadcrumb
+       BREADCRUMB
     ----------------------------------------- */
 
-    if(breadcrumbCategory){
+    if (breadcrumbCategory) {
 
         breadcrumbCategory.textContent =
             productSource.type === "ready-stock"
                 ? "Ready Stock"
                 : "Collections";
+
     }
 
 
     /* -----------------------------------------
-       Bottom CTA
+       THIRD CTA
     ----------------------------------------- */
 
     const collectionButton =
@@ -371,12 +397,12 @@ function updateBackNavigation(){
         );
 
 
-    if(collectionButton){
+    if (collectionButton) {
 
-        if(
+        if (
             productSource.type ===
             "ready-stock"
-        ){
+        ) {
 
             collectionButton.href =
                 "ready-stock.html";
@@ -384,7 +410,7 @@ function updateBackNavigation(){
             collectionButton.textContent =
                 "Back To Ready Stock";
 
-        }else{
+        } else {
 
             collectionButton.href =
                 "collections.html";
@@ -403,85 +429,160 @@ function updateBackNavigation(){
    RENDER PRODUCT
 ========================================================= */
 
-function renderProduct(product){
+function renderProduct(product) {
 
     /* -----------------------------------------
-       Text
+       CATEGORY
     ----------------------------------------- */
 
-    if(productCategory){
+    if (productCategory) {
 
         productCategory.textContent =
-            product.category || "";
+            product.category ||
+            "";
+
     }
 
 
-    if(productName){
+    /* -----------------------------------------
+       NAME
+    ----------------------------------------- */
+
+    if (productName) {
 
         productName.textContent =
             product.name ||
             "Jewellery Product";
+
     }
 
 
-    if(productDescription){
+    /* -----------------------------------------
+       DESCRIPTION
+    ----------------------------------------- */
+
+    if (productDescription) {
 
         productDescription.textContent =
             product.description ||
             "Premium jewellery design by Suvarna Jewellers.";
+
     }
 
 
     /* -----------------------------------------
-       Specifications
+       SPECIFICATIONS
     ----------------------------------------- */
 
-    if(productMetal){
+    if (productMetal) {
 
         productMetal.textContent =
-            product.metal || "—";
+            product.metal ||
+            "—";
+
     }
 
 
-    if(productGrossWeight){
+    if (productGrossWeight) {
 
         productGrossWeight.textContent =
-            product.grossWeight || "—";
+            product.grossWeight ||
+            "—";
+
     }
 
 
-    if(productNetWeight){
+    if (productNetWeight) {
 
         productNetWeight.textContent =
-            product.netWeight || "—";
+            product.netWeight ||
+            "—";
+
     }
 
 
-    if(productSize){
+    if (productSize) {
 
         productSize.textContent =
-            product.size || "—";
+            product.size ||
+            "—";
+
     }
 
 
     /* -----------------------------------------
-       Images
+       IMAGES
     ----------------------------------------- */
+
+    buildProductImages(
+        product
+    );
+
+
+    if (productImages.length) {
+
+        setMainImage(
+            productImages[0],
+            0
+        );
+
+    } else {
+
+        showImageFallback();
+
+    }
+
+
+    createThumbnails();
+
+    createWhatsappButton(
+        product
+    );
+
+    createCallButton(
+        product
+    );
+
+    setupMainImage();
+
+}
+
+
+/* =========================================================
+   BUILD PRODUCT IMAGE ARRAY
+========================================================= */
+
+function buildProductImages(product) {
 
     productImages = [];
 
 
-    if(product.image){
+    /*
+       Main image
+    */
+
+    if (
+        product &&
+        product.image
+    ) {
 
         productImages.push(
             product.image
         );
+
     }
 
 
-    if(
-        Array.isArray(product.gallery)
-    ){
+    /*
+       Gallery
+    */
+
+    if (
+        product &&
+        Array.isArray(
+            product.gallery
+        )
+    ) {
 
         productImages.push(
             ...product.gallery
@@ -504,63 +605,6 @@ function renderProduct(product){
 
     currentImageIndex = 0;
 
-
-    if(productImages.length){
-
-        setMainImage(
-            productImages[0],
-            0
-        );
-
-    }else{
-
-        showImageFallback();
-
-    }
-
-
-    createThumbnails();
-
-    updateGalleryCount();
-
-    createWhatsappButton(
-        product
-    );
-
-    createCallButton(
-        product
-    );
-
-    setupMainImage();
-
-}
-
-
-/* =========================================================
-   GALLERY COUNT
-========================================================= */
-
-function updateGalleryCount(){
-
-    if(!galleryCount){
-
-        return;
-    }
-
-
-    if(productImages.length <= 1){
-
-        galleryCount.textContent =
-            productImages.length
-                ? "1 Image"
-                : "";
-
-        return;
-    }
-
-
-    galleryCount.textContent =
-        `${productImages.length} Images`;
 }
 
 
@@ -571,9 +615,9 @@ function updateGalleryCount(){
 function setMainImage(
     image,
     index = 0
-){
+) {
 
-    if(!mainImage){
+    if (!mainImage) {
 
         return;
     }
@@ -596,7 +640,7 @@ function setMainImage(
 
 
     preloader.onload =
-        function(){
+        function () {
 
             mainImage.src =
                 imagePath;
@@ -612,7 +656,7 @@ function setMainImage(
 
 
     preloader.onerror =
-        function(){
+        function () {
 
             showImageFallback();
 
@@ -625,8 +669,6 @@ function setMainImage(
 
     updateActiveThumbnail();
 
-    updateGalleryCount();
-
 }
 
 
@@ -634,15 +676,16 @@ function setMainImage(
    IMAGE FALLBACK
 ========================================================= */
 
-function showImageFallback(){
+function showImageFallback() {
 
-    if(!mainImage){
+    if (!mainImage) {
 
         return;
     }
 
 
-    mainImage.onerror = null;
+    mainImage.onerror =
+        null;
 
 
     mainImage.src =
@@ -655,6 +698,7 @@ function showImageFallback(){
 
     mainImage.style.opacity =
         "1";
+
 }
 
 
@@ -662,9 +706,9 @@ function showImageFallback(){
    CREATE THUMBNAILS
 ========================================================= */
 
-function createThumbnails(){
+function createThumbnails() {
 
-    if(!thumbnailContainer){
+    if (!thumbnailContainer) {
 
         return;
     }
@@ -674,7 +718,14 @@ function createThumbnails(){
         "";
 
 
-    if(productImages.length <= 1){
+    /*
+       No need to show thumbnail
+       gallery when only one image exists.
+    */
+
+    if (
+        productImages.length <= 1
+    ) {
 
         return;
     }
@@ -684,7 +735,9 @@ function createThumbnails(){
         (image, index) => {
 
             const img =
-                document.createElement("img");
+                document.createElement(
+                    "img"
+                );
 
 
             img.src =
@@ -709,7 +762,7 @@ function createThumbnails(){
 
             img.addEventListener(
                 "click",
-                function(){
+                function () {
 
                     setMainImage(
                         image,
@@ -722,7 +775,7 @@ function createThumbnails(){
 
             img.addEventListener(
                 "error",
-                function(){
+                function () {
 
                     img.style.display =
                         "none";
@@ -748,9 +801,9 @@ function createThumbnails(){
    ACTIVE THUMBNAIL
 ========================================================= */
 
-function updateActiveThumbnail(){
+function updateActiveThumbnail() {
 
-    if(!thumbnailContainer){
+    if (!thumbnailContainer) {
 
         return;
     }
@@ -776,20 +829,21 @@ function updateActiveThumbnail(){
    MAIN IMAGE / LIGHTBOX
 ========================================================= */
 
-function setupMainImage(){
+function setupMainImage() {
 
-    if(!mainImage){
+    if (!mainImage) {
 
         return;
     }
 
 
     mainImage.onclick =
-        function(){
+        function () {
 
-            if(
-                !productImages.length
-            ){
+            if (
+                !productImages.length ||
+                !mainImage.src
+            ) {
 
                 return;
             }
@@ -803,7 +857,7 @@ function setupMainImage(){
 
 
     mainImage.onerror =
-        function(){
+        function () {
 
             showImageFallback();
 
@@ -816,13 +870,13 @@ function setupMainImage(){
    OPEN LIGHTBOX
 ========================================================= */
 
-function openLightbox(index){
+function openLightbox(index) {
 
-    if(
+    if (
         !imageLightbox ||
         !lightboxImage ||
         !productImages.length
-    ){
+    ) {
 
         return;
     }
@@ -865,9 +919,6 @@ function openLightbox(index){
     updateLightboxButtons();
 
 
-    updateActiveThumbnail();
-
-
     document.body.style.overflow =
         "hidden";
 
@@ -878,9 +929,9 @@ function openLightbox(index){
    CLOSE LIGHTBOX
 ========================================================= */
 
-function closeLightbox(){
+function closeLightbox() {
 
-    if(!imageLightbox){
+    if (!imageLightbox) {
 
         return;
     }
@@ -909,9 +960,11 @@ function closeLightbox(){
 
 function changeLightboxImage(
     direction
-){
+) {
 
-    if(productImages.length <= 1){
+    if (
+        productImages.length <= 1
+    ) {
 
         return;
     }
@@ -922,19 +975,21 @@ function changeLightboxImage(
         direction;
 
 
-    if(nextIndex < 0){
+    if (nextIndex < 0) {
 
         nextIndex =
             productImages.length - 1;
+
     }
 
 
-    if(
+    if (
         nextIndex >=
         productImages.length
-    ){
+    ) {
 
         nextIndex = 0;
+
     }
 
 
@@ -942,7 +997,7 @@ function changeLightboxImage(
         nextIndex;
 
 
-    if(lightboxImage){
+    if (lightboxImage) {
 
         lightboxImage.src =
             getImage(
@@ -971,27 +1026,29 @@ function changeLightboxImage(
    LIGHTBOX BUTTON STATE
 ========================================================= */
 
-function updateLightboxButtons(){
+function updateLightboxButtons() {
 
-    const hasMultiple =
+    const multipleImages =
         productImages.length > 1;
 
 
-    if(lightboxPrev){
+    if (lightboxPrev) {
 
         lightboxPrev.style.display =
-            hasMultiple
+            multipleImages
                 ? "grid"
                 : "none";
+
     }
 
 
-    if(lightboxNext){
+    if (lightboxNext) {
 
         lightboxNext.style.display =
-            hasMultiple
+            multipleImages
                 ? "grid"
                 : "none";
+
     }
 
 }
@@ -1001,7 +1058,7 @@ function updateLightboxButtons(){
    LIGHTBOX EVENTS
 ========================================================= */
 
-if(lightboxClose){
+if (lightboxClose) {
 
     lightboxClose.addEventListener(
         "click",
@@ -1011,11 +1068,11 @@ if(lightboxClose){
 }
 
 
-if(lightboxPrev){
+if (lightboxPrev) {
 
     lightboxPrev.addEventListener(
         "click",
-        function(event){
+        function (event) {
 
             event.stopPropagation();
 
@@ -1029,11 +1086,11 @@ if(lightboxPrev){
 }
 
 
-if(lightboxNext){
+if (lightboxNext) {
 
     lightboxNext.addEventListener(
         "click",
-        function(event){
+        function (event) {
 
             event.stopPropagation();
 
@@ -1047,16 +1104,16 @@ if(lightboxNext){
 }
 
 
-if(imageLightbox){
+if (imageLightbox) {
 
     imageLightbox.addEventListener(
         "click",
-        function(event){
+        function (event) {
 
-            if(
+            if (
                 event.target ===
                 imageLightbox
-            ){
+            ) {
 
                 closeLightbox();
 
@@ -1069,25 +1126,28 @@ if(imageLightbox){
 
 
 /* =========================================================
-   KEYBOARD CONTROLS
+   KEYBOARD LIGHTBOX CONTROLS
 ========================================================= */
 
 document.addEventListener(
     "keydown",
-    function(event){
+    function (event) {
 
-        if(
+        if (
             !imageLightbox ||
             !imageLightbox.classList.contains(
                 "show"
             )
-        ){
+        ) {
 
             return;
         }
 
 
-        if(event.key === "Escape"){
+        if (
+            event.key ===
+            "Escape"
+        ) {
 
             closeLightbox();
 
@@ -1095,7 +1155,10 @@ document.addEventListener(
         }
 
 
-        if(event.key === "ArrowLeft"){
+        if (
+            event.key ===
+            "ArrowLeft"
+        ) {
 
             changeLightboxImage(
                 -1
@@ -1105,7 +1168,10 @@ document.addEventListener(
         }
 
 
-        if(event.key === "ArrowRight"){
+        if (
+            event.key ===
+            "ArrowRight"
+        ) {
 
             changeLightboxImage(
                 1
@@ -1123,9 +1189,9 @@ document.addEventListener(
 
 function createWhatsappButton(
     product
-){
+) {
 
-    if(!whatsappButton){
+    if (!whatsappButton) {
 
         return;
     }
@@ -1135,19 +1201,45 @@ function createWhatsappButton(
         "917777991118";
 
 
-    if(
-        typeof CONFIG !== "undefined" &&
+    if (
+        typeof CONFIG !==
+        "undefined" &&
         CONFIG.BUSINESS &&
         CONFIG.BUSINESS.phone
-    ){
+    ) {
 
         phone =
             String(
                 CONFIG.BUSINESS.phone
-            ).replace(
+            )
+            .replace(
                 /\D/g,
                 ""
             );
+
+    }
+
+
+    /*
+       Ensure Indian country code
+    */
+
+    if (
+        phone.startsWith("0")
+    ) {
+
+        phone =
+            phone.substring(1);
+
+    }
+
+
+    if (
+        !phone.startsWith("91")
+    ) {
+
+        phone =
+            "91" + phone;
 
     }
 
@@ -1175,9 +1267,9 @@ Please share more details and price.`;
 
 function createCallButton(
     product
-){
+) {
 
-    if(!callButton){
+    if (!callButton) {
 
         return;
     }
@@ -1187,16 +1279,18 @@ function createCallButton(
         "7777991118";
 
 
-    if(
-        typeof CONFIG !== "undefined" &&
+    if (
+        typeof CONFIG !==
+        "undefined" &&
         CONFIG.BUSINESS &&
         CONFIG.BUSINESS.phone
-    ){
+    ) {
 
         phone =
             String(
                 CONFIG.BUSINESS.phone
-            ).replace(
+            )
+            .replace(
                 /\D/g,
                 ""
             );
@@ -1204,14 +1298,22 @@ function createCallButton(
     }
 
 
-    /*
-       Prevent duplicate +91
-    */
-
-    if(phone.startsWith("91")){
+    if (
+        phone.startsWith("91")
+    ) {
 
         phone =
             phone.substring(2);
+
+    }
+
+
+    if (
+        phone.startsWith("0")
+    ) {
+
+        phone =
+            phone.substring(1);
 
     }
 
@@ -1226,9 +1328,9 @@ function createCallButton(
    RELATED PRODUCTS
 ========================================================= */
 
-function renderRelatedProducts(){
+function renderRelatedProducts() {
 
-    if(!relatedProducts){
+    if (!relatedProducts) {
 
         return;
     }
@@ -1238,36 +1340,54 @@ function renderRelatedProducts(){
         "";
 
 
-    if(
+    if (
         !currentProduct ||
         !Array.isArray(products)
-    ){
+    ) {
 
         return;
     }
 
 
-    const items =
-        products
-            .filter(
-                item =>
-                    String(item.id) !==
-                        String(currentProduct.id)
-                    &&
-                    (
-                        item.category ===
-                            currentProduct.category
-                        ||
-                        item.metal ===
-                            currentProduct.metal
-                    )
-            )
-            .slice(0,4);
+    /*
+       Same category first.
+    */
+
+    const sameCategory =
+        products.filter(
+            item =>
+                String(item.id) !==
+                String(currentProduct.id) &&
+                item.category ===
+                currentProduct.category
+        );
 
 
-    if(!items.length){
+    /*
+       Then same metal if required.
+    */
 
-        if(relatedSection){
+    const sameMetal =
+        products.filter(
+            item =>
+                String(item.id) !==
+                String(currentProduct.id) &&
+                item.category !==
+                currentProduct.category &&
+                item.metal ===
+                currentProduct.metal
+        );
+
+
+    const items = [
+        ...sameCategory,
+        ...sameMetal
+    ].slice(0, 4);
+
+
+    if (!items.length) {
+
+        if (relatedSection) {
 
             relatedSection.style.display =
                 "none";
@@ -1278,10 +1398,11 @@ function renderRelatedProducts(){
     }
 
 
-    if(relatedSection){
+    if (relatedSection) {
 
         relatedSection.style.display =
             "";
+
     }
 
 
@@ -1289,11 +1410,13 @@ function renderRelatedProducts(){
         product => {
 
             const card =
-                document.createElement("a");
+                document.createElement(
+                    "a"
+                );
 
 
             /*
-               Preserve current source
+               Preserve source.
             */
 
             card.href =
@@ -1357,13 +1480,13 @@ function renderRelatedProducts(){
 
 
 /* =========================================================
-   ERROR STATE
+   PRODUCT ERROR STATE
 ========================================================= */
 
 function showProductError(
     title,
     message
-){
+) {
 
     const productContent =
         document.getElementById(
@@ -1371,7 +1494,7 @@ function showProductError(
         );
 
 
-    if(!productContent){
+    if (!productContent) {
 
         return;
     }
@@ -1399,6 +1522,7 @@ function showProductError(
         SUVARNA JEWELLERS
     </div>
 
+
     <h1 style="
         margin:0 0 12px;
         color:#f7f2e8;
@@ -1408,6 +1532,7 @@ function showProductError(
         ${escapeHtml(title)}
     </h1>
 
+
     <p style="
         margin:0 0 25px;
         color:rgba(247,242,232,.60);
@@ -1415,6 +1540,7 @@ function showProductError(
     ">
         ${escapeHtml(message)}
     </p>
+
 
     <a
         href="${escapeHtml(productSource.url)}"
@@ -1434,9 +1560,7 @@ function showProductError(
    SAFE HTML ESCAPE
 ========================================================= */
 
-function escapeHtml(
-    value
-){
+function escapeHtml(value) {
 
     return String(
         value ?? ""
