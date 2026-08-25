@@ -974,11 +974,8 @@ section{
     }
 
     .premium-hero .hero-content{
-        width:100% !important;
-        max-width:100% !important;
-        padding:82px 0 54px !important;
-        margin:0 !important;
-        text-align:center !important;
+        padding-top:48px !important;
+        padding-bottom:12px !important;
     }
 
     .premium-hero .hero-eyebrow{
@@ -1026,12 +1023,11 @@ section{
     }
 
     .premium-hero .hero-signature{
-        width:100% !important;
-        justify-content:center !important;
-        margin-top:27px !important;
-        flex-wrap:wrap !important;
-        font-size:7px !important;
-        letter-spacing:2px !important;
+        margin-top:16px !important;
+        gap:12px !important;
+
+        font-size:9.5px !important;
+        letter-spacing:2.2px !important;
     }
 
     /* Trust */
@@ -1789,109 +1785,174 @@ img,video,svg{
 
 <style id="suvarna-marquee-mobile-premium-fix">
 /* =========================================================
-   SUVARNA JEWELLERS — MARQUEE + HERO SPACING POLISH
-   Larger typography, tighter hierarchy, premium mobile balance
+   SUVARNA — LUXURY MARQUEE
+   Premium + Readable Mobile Version
 ========================================================= */
 
 .sj-luxury-marquee{
-    background:linear-gradient(180deg,#120008 0%,#0d0006 100%) !important;
-    border-top:1px solid rgba(212,175,55,.20) !important;
-    border-bottom:1px solid rgba(212,175,55,.20) !important;
+    position:relative;
+    z-index:5;
+    width:100%;
+    overflow:hidden;
+    background:#100007;
+    border-top:1px solid rgba(212,175,55,.16);
+    border-bottom:1px solid rgba(212,175,55,.16);
+
+    /* Hero અને marquee વચ્ચે extra gap નહીં */
+    margin-top:0;
+}
+
+.sj-marquee-track{
+    display:flex;
+    width:max-content;
+
+    animation:sjMarquee 34s linear infinite;
+    will-change:transform;
 }
 
 .sj-marquee-group{
-    gap:30px !important;
-    min-height:54px !important;
-    padding:0 28px !important;
+    display:flex;
+    align-items:center;
+    flex:0 0 auto;
+
+    gap:22px;
+
+    min-height:52px;
+
+    padding:0 24px;
 }
 
 .sj-marquee-group span{
-    color:rgba(248,244,234,.82) !important;
-    font-size:10px !important;
-    font-weight:500 !important;
-    letter-spacing:2.35px !important;
+    color:rgba(248,244,234,.92);
+
+    font-family:Inter,Arial,sans-serif;
+
+    /* પહેલાં કરતાં સ્પષ્ટ મોટું */
+    font-size:10.5px;
+
+    font-weight:600;
+
+    /* Premium પરંતુ વાંચી શકાય એવું */
+    letter-spacing:1.65px;
+
+    line-height:1.2;
+
+    white-space:nowrap;
 }
 
 .sj-marquee-group b{
-    color:#d4af37 !important;
-    font-size:8px !important;
-    opacity:.90 !important;
+    color:#d4af37;
+
+    font-size:8px;
+
+    font-weight:400;
+
+    opacity:.95;
 }
 
-/* Bring the hero signature and marquee visually closer. */
+
+/* =========================================================
+   MOVEMENT
+========================================================= */
+
+@keyframes sjMarquee{
+
+    from{
+        transform:translateX(0);
+    }
+
+    to{
+        transform:translateX(-50%);
+    }
+
+}
+
+
+/* Pause on desktop hover */
+
+.sj-luxury-marquee:hover
+.sj-marquee-track{
+
+    animation-play-state:paused;
+
+}
+
+
+/* =========================================================
+   TABLET / MOBILE
+========================================================= */
+
 @media(max-width:820px){
-    .premium-hero{
-        min-height:calc(100svh - 82px) !important;
-    }
-
-    .premium-hero .container{
-        display:flex !important;
-        align-items:flex-end !important;
-        min-height:calc(100svh - 82px) !important;
-    }
-
-    .premium-hero .hero-content{
-        padding-top:64px !important;
-        padding-bottom:20px !important;
-        transform:translateY(8px);
-    }
-
-    .premium-hero .hero-signature{
-        margin-top:24px !important;
-        gap:13px !important;
-        font-size:9px !important;
-        letter-spacing:3.1px !important;
-    }
-
-    .premium-hero .hero-signature i{
-        width:4px !important;
-        height:4px !important;
-        background:#d4af37 !important;
-    }
 
     .sj-marquee-group{
-        gap:24px !important;
-        min-height:50px !important;
-        padding:0 22px !important;
+
+        gap:20px;
+
+        min-height:52px;
+
+        padding:0 20px;
+
     }
 
     .sj-marquee-group span{
-        font-size:9px !important;
-        letter-spacing:1.85px !important;
+
+        font-size:10px;
+
+        letter-spacing:1.45px;
+
     }
 
     .sj-marquee-group b{
-        font-size:7px !important;
+
+        font-size:7.5px;
+
     }
+
+    .sj-marquee-track{
+
+        animation-duration:29s;
+
+    }
+
 }
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
 
 @media(max-width:420px){
-    .premium-hero .hero-content{
-        padding-bottom:16px !important;
-        transform:translateY(10px);
-    }
-
-    .premium-hero .hero-signature{
-        margin-top:21px !important;
-        gap:11px !important;
-        font-size:8.5px !important;
-        letter-spacing:2.6px !important;
-    }
 
     .sj-marquee-group{
-        gap:20px !important;
-        min-height:48px !important;
-        padding:0 18px !important;
+
+        gap:17px;
+
+        min-height:50px;
+
+        padding:0 18px;
+
     }
 
     .sj-marquee-group span{
-        font-size:8.5px !important;
-        letter-spacing:1.55px !important;
+
+        font-size:9.5px;
+
+        letter-spacing:1.3px;
+
     }
 
     .sj-marquee-group b{
-        font-size:6.5px !important;
+
+        font-size:7px;
+
     }
+
+    .sj-marquee-track{
+
+        animation-duration:26s;
+
+    }
+
 }
 </style>
 
