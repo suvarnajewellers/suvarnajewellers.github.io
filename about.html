@@ -1,759 +1,1699 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>About Suvarna Jewellers | Gold & Silver Jewellery Manufacturer</title>
-
-    <meta
-        name="description"
-        content="Discover Suvarna Jewellers — a trusted Gold & Silver Jewellery Manufacturer, serving wholesalers, retailers and jewellery businesses across India since 2003.">
-
-    <meta name="theme-color" content="#2B0015">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
-        rel="stylesheet">
-
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-    <link rel="stylesheet" href="style.css">
-
-    <style>
-
-        /* =========================================================
-           SUVARNA — PREMIUM ABOUT PAGE
-           ========================================================= */
-
-        .about-page {
-            background:
-                radial-gradient(
-                    circle at 50% 0%,
-                    rgba(212,175,55,.08),
-                    transparent 38%
-                ),
-                #2B0015;
-            color: #fff;
-            min-height: 100vh;
-        }
-
-        .about-hero {
-            padding: 150px 20px 90px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .about-hero::before,
-        .about-hero::after {
-            content: "";
-            position: absolute;
-            border: 1px solid rgba(212,175,55,.14);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        .about-hero::before {
-            width: 420px;
-            height: 420px;
-            top: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .about-hero::after {
-            width: 560px;
-            height: 560px;
-            top: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .about-hero-inner {
-            position: relative;
-            z-index: 2;
-            max-width: 900px;
-            margin: auto;
-        }
-
-        .about-eyebrow {
-            display: inline-block;
-            color: #D4AF37;
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 22px;
-        }
-
-        .about-hero h1 {
-            margin: 0;
-            font-family: "Cinzel", serif;
-            font-size: clamp(38px, 6vw, 68px);
-            line-height: 1.12;
-            font-weight: 600;
-            color: #fff;
-        }
-
-        .about-hero h1 span {
-            color: #D4AF37;
-        }
-
-        .about-hero p {
-            max-width: 700px;
-            margin: 26px auto 0;
-            color: #e8dcc4;
-            font-size: 16px;
-            line-height: 1.9;
-        }
-
-        .about-content-section {
-            padding: 80px 20px;
-        }
-
-        .about-content-grid {
-            max-width: 1180px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 70px;
-            align-items: center;
-        }
-
-        .about-image-box {
-            position: relative;
-        }
-
-        .about-image-frame {
-            padding: 10px;
-            border: 1px solid rgba(212,175,55,.35);
-            background: rgba(255,255,255,.025);
-        }
-
-        .about-image-frame img {
-            width: 100%;
-            height: 520px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .about-established {
-            position: absolute;
-            right: -20px;
-            bottom: 28px;
-
-            width: 125px;
-            height: 125px;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-
-            border-radius: 50%;
-            border: 1px solid #D4AF37;
-            background: #2B0015;
-
-            box-shadow: 0 15px 40px rgba(0,0,0,.35);
-        }
-
-        .about-established span {
-            font-size: 9px;
-            letter-spacing: 2px;
-            color: #D4AF37;
-        }
-
-        .about-established strong {
-            font-family: "Cinzel", serif;
-            font-size: 27px;
-            color: #fff;
-            line-height: 1.1;
-            margin: 4px 0;
-        }
-
-        .about-established small {
-            font-size: 8px;
-            letter-spacing: 2px;
-            color: #d9cba8;
-        }
-
-        .about-copy .section-tag {
-            display: inline-block;
-            margin-bottom: 18px;
-            color: #D4AF37;
-            font-size: 11px;
-            letter-spacing: 3px;
-            font-weight: 600;
-        }
-
-        .about-copy h2 {
-            margin: 0 0 24px;
-            font-family: "Cinzel", serif;
-            font-size: clamp(30px, 4vw, 48px);
-            line-height: 1.25;
-            font-weight: 600;
-        }
-
-        .about-copy p {
-            margin: 0 0 18px;
-            color: #d9cfbd;
-            font-size: 15px;
-            line-height: 1.9;
-        }
-
-        .about-highlight {
-            margin-top: 30px;
-            padding: 24px 26px;
-            border-left: 2px solid #D4AF37;
-            background: rgba(212,175,55,.055);
-        }
-
-        .about-highlight strong {
-            display: block;
-            font-family: "Cinzel", serif;
-            color: #D4AF37;
-            font-size: 19px;
-            margin-bottom: 7px;
-        }
-
-        .about-highlight span {
-            color: #ddd2bd;
-            font-size: 14px;
-            line-height: 1.7;
-        }
-
-        /* TRUST STRIP */
-
-        .about-trust {
-            padding: 25px 20px;
-            border-top: 1px solid rgba(212,175,55,.16);
-            border-bottom: 1px solid rgba(212,175,55,.16);
-            background: rgba(0,0,0,.12);
-        }
-
-        .about-trust-grid {
-            max-width: 1100px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-        }
-
-        .about-trust-item {
-            padding: 20px;
-            text-align: center;
-            border-right: 1px solid rgba(212,175,55,.13);
-        }
-
-        .about-trust-item:last-child {
-            border-right: 0;
-        }
-
-        .about-trust-item i {
-            color: #D4AF37;
-            font-size: 20px;
-            margin-bottom: 12px;
-        }
-
-        .about-trust-item strong {
-            display: block;
-            font-family: "Cinzel", serif;
-            font-size: 15px;
-            color: #fff;
-        }
-
-        .about-trust-item span {
-            display: block;
-            margin-top: 6px;
-            font-size: 11px;
-            color: #c9bda7;
-            letter-spacing: .5px;
-        }
-
-        /* PAN INDIA */
-
-        .pan-india-section {
-            padding: 100px 20px;
-            text-align: center;
-        }
-
-        .pan-india-inner {
-            max-width: 900px;
-            margin: auto;
-            padding: 65px 35px;
-
-            border: 1px solid rgba(212,175,55,.3);
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(212,175,55,.07),
-                    rgba(255,255,255,.015)
-                );
-        }
-
-        .pan-india-icon {
-            width: 65px;
-            height: 65px;
-            margin: 0 auto 22px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border: 1px solid #D4AF37;
-            border-radius: 50%;
-
-            color: #D4AF37;
-            font-size: 22px;
-        }
-
-        .pan-india-inner h2 {
-            margin: 0 0 17px;
-            font-family: "Cinzel", serif;
-            font-size: clamp(28px, 4vw, 43px);
-        }
-
-        .pan-india-inner h2 span {
-            color: #D4AF37;
-        }
-
-        .pan-india-inner p {
-            max-width: 690px;
-            margin: auto;
-            color: #d7cbb6;
-            line-height: 1.9;
-            font-size: 15px;
-        }
-
-        /* CTA */
-
-        .about-cta {
-            padding: 30px 20px 100px;
-            text-align: center;
-        }
-
-        .about-cta h2 {
-            font-family: "Cinzel", serif;
-            font-size: clamp(27px, 4vw, 42px);
-            margin: 0 0 15px;
-        }
-
-        .about-cta p {
-            color: #d2c5af;
-            margin-bottom: 30px;
-        }
-
-        .about-cta-actions {
-            display: flex;
-            justify-content: center;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-
-        .about-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 9px;
-
-            padding: 14px 25px;
-
-            text-decoration: none;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 1px;
-
-            transition: .25s ease;
-        }
-
-        .about-btn-primary {
-            background: #D4AF37;
-            color: #2B0015;
-        }
-
-        .about-btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(212,175,55,.18);
-        }
-
-        .about-btn-outline {
-            border: 1px solid rgba(212,175,55,.55);
-            color: #D4AF37;
-        }
-
-        .about-btn-outline:hover {
-            background: rgba(212,175,55,.08);
-        }
-
-        /* MOBILE */
-
-        @media (max-width: 800px) {
-
-            .about-hero {
-                padding-top: 125px;
-            }
-
-            .about-hero::before {
-                width: 280px;
-                height: 280px;
-            }
-
-            .about-hero::after {
-                width: 360px;
-                height: 360px;
-            }
-
-            .about-content-grid {
-                grid-template-columns: 1fr;
-                gap: 45px;
-            }
-
-            .about-image-frame img {
-                height: 400px;
-            }
-
-            .about-established {
-                right: 10px;
-                bottom: 15px;
-            }
-
-            .about-trust-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .about-trust-item:nth-child(2) {
-                border-right: 0;
-            }
-
-            .about-trust-item:nth-child(-n+2) {
-                border-bottom: 1px solid rgba(212,175,55,.13);
-            }
-        }
-
-        @media (max-width: 500px) {
-
-            .about-content-section {
-                padding: 60px 17px;
-            }
-
-            .about-image-frame img {
-                height: 330px;
-            }
-
-            .about-established {
-                width: 105px;
-                height: 105px;
-            }
-
-            .about-established strong {
-                font-size: 23px;
-            }
-
-            .pan-india-section {
-                padding: 70px 17px;
-            }
-
-            .pan-india-inner {
-                padding: 45px 20px;
-            }
-
-            .about-trust {
-                padding: 15px 10px;
-            }
-
-            .about-trust-item {
-                padding: 17px 8px;
-            }
-
-        }
-
-    </style>
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+<title>About Suvarna Jewellers | Gold & Silver Jewellery Manufacturer</title>
+
+<meta
+    name="description"
+    content="Discover Suvarna Jewellers — a trusted Gold & Silver Jewellery Manufacturer from Surat, Gujarat, serving jewellery businesses across India since 2003.">
+
+<meta
+    name="keywords"
+    content="Suvarna Jewellers, Gold Jewellery Manufacturer, Silver Jewellery Manufacturer, Jewellery Manufacturer Surat, Pan India Jewellery Supply">
+
+<meta name="author" content="Suvarna Jewellers">
+
+<meta name="theme-color" content="#2b0015">
+
+<link rel="canonical" href="https://suvarnajewellers.co.in/about.html">
+
+
+<!-- FONTS -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+
+<!-- FONT AWESOME -->
+
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+<!-- MAIN WEBSITE CSS -->
+
+<link rel="stylesheet" href="style.css">
+
+
+<style>
+
+/* =========================================================
+   SUVARNA JEWELLERS
+   PREMIUM ABOUT PAGE
+========================================================= */
+
+.about-page{
+    background:
+        radial-gradient(
+            circle at 80% 10%,
+            rgba(212,175,55,.08),
+            transparent 28%
+        ),
+        linear-gradient(
+            180deg,
+            #140008 0%,
+            #21000f 45%,
+            #2b0015 100%
+        );
+}
+
+
+/* =========================================================
+   ABOUT HERO
+========================================================= */
+
+.about-hero{
+    min-height:72vh;
+
+    display:flex;
+    align-items:center;
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:150px 0 120px;
+
+    border-bottom:1px solid rgba(212,175,55,.12);
+}
+
+
+.about-hero::before{
+    content:"";
+
+    position:absolute;
+
+    width:520px;
+    height:520px;
+
+    border:1px solid rgba(212,175,55,.10);
+
+    border-radius:50%;
+
+    right:-180px;
+    top:-180px;
+}
+
+
+.about-hero::after{
+    content:"";
+
+    position:absolute;
+
+    width:360px;
+    height:360px;
+
+    border:1px solid rgba(212,175,55,.07);
+
+    border-radius:50%;
+
+    right:-90px;
+    top:-90px;
+}
+
+
+.about-hero-content{
+    max-width:900px;
+
+    position:relative;
+
+    z-index:2;
+}
+
+
+.about-eyebrow{
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    color:var(--gold);
+
+    font-size:13px;
+
+    font-weight:600;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    margin-bottom:28px;
+}
+
+
+.about-eyebrow::before{
+    content:"";
+
+    width:42px;
+    height:1px;
+
+    background:var(--gold);
+}
+
+
+.about-hero h1{
+    font-size:clamp(46px,7vw,86px);
+
+    line-height:1.08;
+
+    margin-bottom:28px;
+
+    letter-spacing:-1px;
+}
+
+
+.about-hero h1 span{
+    display:block;
+
+    color:var(--white);
+
+    font-weight:400;
+}
+
+
+.about-hero-text{
+    max-width:700px;
+
+    font-size:18px;
+
+    line-height:2;
+
+    color:var(--text-light);
+}
+
+
+.about-hero-signature{
+    margin-top:38px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    color:var(--gold-light);
+
+    font-size:12px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+}
+
+
+.about-hero-signature::before{
+    content:"";
+
+    width:55px;
+    height:1px;
+
+    background:var(--gold);
+}
+
+
+/* =========================================================
+   ESTABLISHED MARK
+========================================================= */
+
+.about-established-mark{
+    position:absolute;
+
+    right:8%;
+    bottom:80px;
+
+    width:150px;
+    height:150px;
+
+    border:1px solid rgba(212,175,55,.35);
+
+    border-radius:50%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    z-index:2;
+}
+
+
+.about-established-mark::before{
+    content:"";
+
+    position:absolute;
+
+    inset:9px;
+
+    border:1px solid rgba(212,175,55,.15);
+
+    border-radius:50%;
+}
+
+
+.about-established-mark small{
+    font-size:9px;
+
+    letter-spacing:3px;
+
+    color:var(--gold);
+
+    text-transform:uppercase;
+}
+
+
+.about-established-mark strong{
+    font-family:var(--heading);
+
+    font-size:28px;
+
+    color:var(--gold-light);
+
+    line-height:1.2;
+
+    margin:4px 0;
+}
+
+
+/* =========================================================
+   INTRODUCTION
+========================================================= */
+
+.about-introduction{
+    padding:120px 0;
+}
+
+
+.about-intro-grid{
+    display:grid;
+
+    grid-template-columns:
+        minmax(0, .85fr)
+        minmax(0, 1.15fr);
+
+    gap:90px;
+
+    align-items:center;
+}
+
+
+.about-intro-label{
+    color:var(--gold);
+
+    font-size:12px;
+
+    letter-spacing:4px;
+
+    font-weight:600;
+
+    text-transform:uppercase;
+
+    margin-bottom:18px;
+}
+
+
+.about-intro-title{
+    font-size:clamp(32px,4vw,54px);
+
+    margin-bottom:28px;
+}
+
+
+.about-intro-title span{
+    color:var(--white);
+
+    font-weight:400;
+}
+
+
+.about-intro-copy p{
+    margin-bottom:22px;
+
+    max-width:680px;
+}
+
+
+.about-intro-copy p:last-child{
+    margin-bottom:0;
+}
+
+
+/* =========================================================
+   PAN INDIA FEATURE
+========================================================= */
+
+.pan-india-section{
+    padding:0 0 120px;
+}
+
+
+.pan-india-card{
+    position:relative;
+
+    overflow:hidden;
+
+    padding:70px 80px;
+
+    border:1px solid rgba(212,175,55,.25);
+
+    border-radius:30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(212,175,55,.08),
+            rgba(255,255,255,.025)
+        );
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.28);
+}
+
+
+.pan-india-card::before{
+    content:"";
+
+    position:absolute;
+
+    width:320px;
+    height:320px;
+
+    border:1px solid rgba(212,175,55,.10);
+
+    border-radius:50%;
+
+    right:-120px;
+    top:-120px;
+}
+
+
+.pan-india-card::after{
+    content:"";
+
+    position:absolute;
+
+    width:200px;
+    height:200px;
+
+    border:1px solid rgba(212,175,55,.08);
+
+    border-radius:50%;
+
+    right:-60px;
+    top:-60px;
+}
+
+
+.pan-india-content{
+    position:relative;
+
+    z-index:2;
+
+    max-width:850px;
+}
+
+
+.pan-india-icon{
+    width:58px;
+    height:58px;
+
+    border:1px solid rgba(212,175,55,.45);
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    color:var(--gold);
+
+    font-size:20px;
+
+    margin-bottom:28px;
+}
+
+
+.pan-india-card h2{
+    font-size:clamp(30px,4vw,48px);
+
+    margin-bottom:20px;
+}
+
+
+.pan-india-card h2 span{
+    color:var(--white);
+
+    font-weight:400;
+}
+
+
+.pan-india-card p{
+    max-width:760px;
+
+    font-size:17px;
+
+    line-height:2;
+}
+
+
+/* =========================================================
+   VALUES
+========================================================= */
+
+.about-values{
+    padding:120px 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.08),
+            rgba(0,0,0,.18)
+        );
+}
+
+
+.about-section-heading{
+    max-width:760px;
+
+    margin:0 auto 65px;
+
+    text-align:center;
+}
+
+
+.about-section-heading span{
+    display:block;
+
+    color:var(--gold);
+
+    font-size:12px;
+
+    letter-spacing:4px;
+
+    font-weight:600;
+
+    text-transform:uppercase;
+
+    margin-bottom:16px;
+}
+
+
+.about-section-heading h2{
+    font-size:clamp(32px,4vw,50px);
+
+    margin-bottom:18px;
+}
+
+
+.about-section-heading p{
+    max-width:650px;
+
+    margin:auto;
+}
+
+
+.values-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:24px;
+}
+
+
+.value-card{
+    padding:42px 34px;
+
+    min-height:260px;
+
+    border:1px solid rgba(212,175,55,.15);
+
+    border-radius:22px;
+
+    background:rgba(255,255,255,.035);
+
+    transition:.35s ease;
+}
+
+
+.value-card:hover{
+    transform:translateY(-7px);
+
+    border-color:rgba(212,175,55,.40);
+
+    background:rgba(255,255,255,.055);
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.22);
+}
+
+
+.value-number{
+    font-family:var(--heading);
+
+    color:rgba(212,175,55,.25);
+
+    font-size:15px;
+
+    letter-spacing:3px;
+
+    margin-bottom:28px;
+}
+
+
+.value-icon{
+    color:var(--gold);
+
+    font-size:22px;
+
+    margin-bottom:22px;
+}
+
+
+.value-card h3{
+    font-size:23px;
+
+    margin-bottom:14px;
+}
+
+
+.value-card p{
+    font-size:14px;
+
+    line-height:1.9;
+}
+
+
+/* =========================================================
+   BUSINESS SECTION
+========================================================= */
+
+.business-section{
+    padding:120px 0;
+}
+
+
+.business-grid{
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:90px;
+
+    align-items:center;
+}
+
+
+.business-content h2{
+    font-size:clamp(32px,4vw,50px);
+
+    margin-bottom:24px;
+}
+
+
+.business-content h2 span{
+    color:var(--white);
+
+    font-weight:400;
+}
+
+
+.business-content p{
+    margin-bottom:22px;
+
+    max-width:680px;
+}
+
+
+.business-list{
+    margin-top:32px;
+
+    display:grid;
+
+    gap:14px;
+}
+
+
+.business-list li{
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    color:var(--text-light);
+
+    font-size:15px;
+}
+
+
+.business-list i{
+    color:var(--gold);
+
+    font-size:13px;
+}
+
+
+/* =========================================================
+   BUSINESS VISUAL
+========================================================= */
+
+.business-visual{
+    position:relative;
+
+    min-height:430px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+}
+
+
+.business-frame{
+    width:100%;
+
+    max-width:500px;
+
+    aspect-ratio:1/1;
+
+    border:1px solid rgba(212,175,55,.25);
+
+    border-radius:30px;
+
+    padding:14px;
+
+    position:relative;
+}
+
+
+.business-frame-inner{
+    width:100%;
+    height:100%;
+
+    border-radius:22px;
+
+    border:1px solid rgba(212,175,55,.12);
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(212,175,55,.12),
+            transparent 45%
+        ),
+        linear-gradient(
+            145deg,
+            #3a071d,
+            #170008
+        );
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+}
+
+
+.business-frame-inner img{
+    width:130px;
+
+    max-width:45%;
+
+    height:auto;
+
+    object-fit:contain;
+
+    margin-bottom:26px;
+
+    filter:
+        drop-shadow(
+            0 15px 30px rgba(0,0,0,.35)
+        );
+}
+
+
+.business-frame-inner span{
+    color:var(--gold);
+
+    font-size:11px;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    margin-bottom:10px;
+}
+
+
+.business-frame-inner strong{
+    font-family:var(--heading);
+
+    font-size:27px;
+
+    color:var(--gold-light);
+
+    font-weight:500;
+}
+
+
+/* =========================================================
+   CLOSING STATEMENT
+========================================================= */
+
+.about-closing{
+    padding:130px 0 140px;
+
+    text-align:center;
+
+    border-top:1px solid rgba(212,175,55,.10);
+}
+
+
+.about-closing-inner{
+    max-width:900px;
+
+    margin:auto;
+}
+
+
+.about-closing-mark{
+    color:var(--gold);
+
+    font-size:20px;
+
+    margin-bottom:28px;
+}
+
+
+.about-closing h2{
+    font-size:clamp(32px,5vw,58px);
+
+    line-height:1.25;
+
+    margin-bottom:25px;
+}
+
+
+.about-closing h2 span{
+    color:var(--white);
+
+    font-weight:400;
+}
+
+
+.about-closing p{
+    max-width:680px;
+
+    margin:0 auto 36px;
+}
+
+
+.about-actions{
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:18px;
+
+    flex-wrap:wrap;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:900px){
+
+    .about-hero{
+        min-height:auto;
+
+        padding:130px 0 100px;
+    }
+
+
+    .about-established-mark{
+        position:relative;
+
+        right:auto;
+        bottom:auto;
+
+        margin-top:50px;
+    }
+
+
+    .about-intro-grid,
+    .business-grid{
+        grid-template-columns:1fr;
+
+        gap:50px;
+    }
+
+
+    .values-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+
+    .pan-india-card{
+        padding:55px 45px;
+    }
+
+}
+
+
+@media(max-width:600px){
+
+    .about-hero{
+        padding:115px 0 80px;
+    }
+
+
+    .about-hero h1{
+        font-size:43px;
+    }
+
+
+    .about-hero-text{
+        font-size:15px;
+
+        line-height:1.9;
+    }
+
+
+    .about-introduction,
+    .about-values,
+    .business-section{
+        padding:85px 0;
+    }
+
+
+    .pan-india-section{
+        padding-bottom:85px;
+    }
+
+
+    .pan-india-card{
+        padding:42px 26px;
+
+        border-radius:22px;
+    }
+
+
+    .values-grid{
+        grid-template-columns:1fr;
+    }
+
+
+    .value-card{
+        min-height:auto;
+
+        padding:35px 28px;
+    }
+
+
+    .business-visual{
+        min-height:330px;
+    }
+
+
+    .business-frame{
+        max-width:360px;
+    }
+
+
+    .business-frame-inner img{
+        width:100px;
+    }
+
+
+    .about-closing{
+        padding:90px 0 100px;
+    }
+
+
+    .about-actions{
+        flex-direction:column;
+
+        width:100%;
+    }
+
+
+    .about-actions .btn{
+        width:100%;
+    }
+
+}
+
+</style>
 
 </head>
 
-<body>
 
-    <!-- HEADER -->
-    <header class="site-header">
+<body class="about-page">
 
-        <div class="container">
 
-            <a href="index.html" class="logo">
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="site-header">
+
+    <div class="container header-container">
+
+        <a href="index.html" class="logo">
+
+            <img
+                src="Logo.png"
+                alt="Suvarna Jewellers">
+
+            <div class="logo-text">
+
+                <h1>SUVARNA</h1>
+
+                <span>JEWELLERS</span>
+
+            </div>
+
+        </a>
+
+
+        <nav class="main-nav" id="main-nav">
+
+            <a href="index.html">Home</a>
+
+            <a href="about.html" class="active">About</a>
+
+            <a href="collections.html">Collections</a>
+
+            <a href="ready-stock.html">Ready Stock</a>
+
+            <a href="contact.html">Contact</a>
+
+        </nav>
+
+
+        <button
+            class="menu-toggle"
+            id="menu-toggle"
+            aria-label="Open menu"
+            aria-expanded="false">
+
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<main>
+
+<section class="about-hero">
+
+    <div class="container">
+
+        <div class="about-hero-content">
+
+            <div class="about-eyebrow">
+                About Suvarna
+            </div>
+
+
+            <h1>
+
+                A Legacy of Trust.
+
+                <span>
+                    A Standard of Excellence.
+                </span>
+
+            </h1>
+
+
+            <p class="about-hero-text">
+
+                Suvarna Jewellers is a Gold &amp; Silver Jewellery
+                Manufacturer built around craftsmanship, consistency
+                and long-term business relationships.
+
+                From Surat, Gujarat, we serve jewellery businesses
+                across India with carefully developed collections
+                and dependable supply.
+
+            </p>
+
+
+            <div class="about-hero-signature">
+
+                Trusted Since 2003
+
+            </div>
+
+        </div>
+
+
+        <div class="about-established-mark">
+
+            <small>Trusted</small>
+
+            <strong>2003</strong>
+
+            <small>Since</small>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     INTRODUCTION
+===================================================== -->
+
+<section class="about-introduction">
+
+    <div class="container about-intro-grid">
+
+
+        <div>
+
+            <div class="about-intro-label">
+                The Suvarna Story
+            </div>
+
+
+            <h2 class="about-intro-title">
+
+                Jewellery is more than
+                <span>what is seen.</span>
+
+            </h2>
+
+        </div>
+
+
+        <div class="about-intro-copy">
+
+            <p>
+
+                It is the precision behind every detail,
+                the discipline behind every finish and the
+                confidence a business places in its supplier.
+
+            </p>
+
+
+            <p>
+
+                Since 2003, Suvarna Jewellers has been focused
+                on creating and supplying jewellery with a clear
+                commitment to quality, refined finishing and
+                dependable business service.
+
+            </p>
+
+
+            <p>
+
+                Our approach combines traditional understanding
+                of jewellery with a modern focus on presentation,
+                consistency and professional supply.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PAN INDIA SUPPLY
+===================================================== -->
+
+<section class="pan-india-section">
+
+    <div class="container">
+
+        <div class="pan-india-card">
+
+            <div class="pan-india-content">
+
+                <div class="pan-india-icon">
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                </div>
+
+
+                <h2>
+
+                    Pan India Supply.
+
+                    <span>
+                        Built for Business.
+                    </span>
+
+                </h2>
+
+
+                <p>
+
+                    From our base in Surat, Gujarat,
+                    Suvarna Jewellers supplies jewellery
+                    businesses across India.
+
+                    Our focus is simple — dependable
+                    products, consistent quality and
+                    professional service that helps our
+                    business partners grow with confidence.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     VALUES
+===================================================== -->
+
+<section class="about-values">
+
+    <div class="container">
+
+
+        <div class="about-section-heading">
+
+            <span>
+                What Defines Suvarna
+            </span>
+
+            <h2>
+                The Standards Behind
+                The Brand
+            </h2>
+
+            <p>
+
+                Every collection and every business relationship
+                is guided by a few principles that remain central
+                to the Suvarna identity.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="values-grid">
+
+
+            <article class="value-card">
+
+                <div class="value-number">
+                    01
+                </div>
+
+                <div class="value-icon">
+                    <i class="fa-solid fa-gem"></i>
+                </div>
+
+                <h3>
+                    Refined Craftsmanship
+                </h3>
+
+                <p>
+
+                    Attention to detail, proportion and finishing
+                    remain at the heart of how we approach jewellery.
+
+                </p>
+
+            </article>
+
+
+
+            <article class="value-card">
+
+                <div class="value-number">
+                    02
+                </div>
+
+                <div class="value-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+
+                <h3>
+                    Quality Focus
+                </h3>
+
+                <p>
+
+                    We believe quality is not a feature added
+                    at the end. It is part of the process from
+                    the beginning.
+
+                </p>
+
+            </article>
+
+
+
+            <article class="value-card">
+
+                <div class="value-number">
+                    03
+                </div>
+
+                <div class="value-icon">
+                    <i class="fa-solid fa-handshake"></i>
+                </div>
+
+                <h3>
+                    Trusted Relationships
+                </h3>
+
+                <p>
+
+                    Long-term relationships are built through
+                    consistency, communication and dependable
+                    business service.
+
+                </p>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     BUSINESS
+===================================================== -->
+
+<section class="business-section">
+
+    <div class="container business-grid">
+
+
+        <div class="business-content">
+
+            <div class="about-intro-label">
+                Made For Jewellery Businesses
+            </div>
+
+
+            <h2>
+
+                From Manufacturer
+
+                <span>
+                    to Your Business.
+                </span>
+
+            </h2>
+
+
+            <p>
+
+                Suvarna Jewellers works with wholesalers,
+                retailers and jewellery businesses looking
+                for a reliable manufacturing and supply partner.
+
+            </p>
+
+
+            <p>
+
+                Our collections include Gold Jewellery,
+                Silver Jewellery, Rudraksha Mala,
+                Rudraksha Bracelet, Pendants and Tulsi Mala,
+                along with Ready Stock offerings.
+
+            </p>
+
+
+            <ul class="business-list">
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Gold &amp; Silver Jewellery
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Professional Jewellery Supply
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Pan India Business Reach
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Ready Stock Collections
+                </li>
+
+            </ul>
+
+        </div>
+
+
+
+        <div class="business-visual">
+
+            <div class="business-frame">
+
+                <div class="business-frame-inner">
+
+                    <img
+                        src="Logo.png"
+                        alt="Suvarna Jewellers logo">
+
+                    <span>
+                        Trusted Since
+                    </span>
+
+                    <strong>
+                        2003
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CLOSING
+===================================================== -->
+
+<section class="about-closing">
+
+    <div class="container">
+
+        <div class="about-closing-inner">
+
+            <div class="about-closing-mark">
+                ✦
+            </div>
+
+
+            <h2>
+
+                Built on Trust.
+
+                <span>
+                    Defined by Craft.
+                </span>
+
+            </h2>
+
+
+            <p>
+
+                Discover the Suvarna Jewellers collection
+                and experience a jewellery partner focused
+                on quality, consistency and long-term value.
+
+            </p>
+
+
+            <div class="about-actions">
+
+                <a
+                    href="collections.html"
+                    class="btn btn-primary">
+
+                    Explore Collections
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+
+                <a
+                    href="contact.html"
+                    class="btn btn-outline">
+
+                    Contact Suvarna
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="site-footer">
+
+    <div class="container">
+
+        <div class="footer-content">
+
+            <div class="footer-brand">
 
                 <img
                     src="Logo.png"
                     alt="Suvarna Jewellers">
 
-                <div class="logo-text">
-                    <h1>SUVARNA</h1>
-                    <span>JEWELLERS</span>
-                </div>
-
-            </a>
-
-            <nav class="navbar">
-
-                <a href="index.html">Home</a>
-                <a href="collections.html">Collections</a>
-                <a href="ready-stock.html">Ready Stock</a>
-                <a href="about.html" class="active">About</a>
-                <a href="contact.html">Contact</a>
-
-            </nav>
-
-        </div>
-
-    </header>
-
-
-    <main class="about-page">
-
-        <!-- HERO -->
-
-        <section class="about-hero">
-
-            <div class="about-hero-inner">
-
-                <span class="about-eyebrow">
-                    ABOUT SUVARNA
-                </span>
-
-                <h1>
-                    A Legacy of Trust.<br>
-                    <span>A Standard of Excellence.</span>
-                </h1>
+                <h3>
+                    SUVARNA JEWELLERS
+                </h3>
 
                 <p>
-                    Suvarna Jewellers is a trusted Gold &amp; Silver Jewellery
-                    Manufacturer dedicated to refined craftsmanship, premium
-                    finishing and dependable business relationships.
+                    Premium Gold &amp; Silver Jewellery Manufacturer
                 </p>
 
             </div>
 
-        </section>
 
+            <div class="footer-links">
 
-        <!-- STORY -->
+                <a href="index.html">
+                    Home
+                </a>
 
-        <section class="about-content-section">
+                <a href="about.html">
+                    About
+                </a>
 
-            <div class="about-content-grid">
+                <a href="collections.html">
+                    Collections
+                </a>
 
-                <div class="about-image-box">
+                <a href="ready-stock.html">
+                    Ready Stock
+                </a>
 
-                    <div class="about-image-frame">
-
-                        <img
-                            src="hero.jpg"
-                            alt="Suvarna Jewellers craftsmanship"
-                            loading="lazy">
-
-                    </div>
-
-                    <div class="about-established">
-
-                        <span>TRUSTED</span>
-                        <strong>2003</strong>
-                        <small>SINCE</small>
-
-                    </div>
-
-                </div>
-
-
-                <div class="about-copy">
-
-                    <span class="section-tag">
-                        OUR STORY
-                    </span>
-
-                    <h2>
-                        Built on Trust.<br>
-                        Crafted with Purpose.
-                    </h2>
-
-                    <p>
-                        Since 2003, Suvarna Jewellers has been focused on
-                        building lasting relationships through quality
-                        jewellery, reliable service and consistent business
-                        values.
-                    </p>
-
-                    <p>
-                        As a Gold &amp; Silver Jewellery Manufacturer, we
-                        serve wholesalers, retailers and jewellery businesses
-                        with carefully developed collections designed for
-                        today's jewellery market.
-                    </p>
-
-                    <div class="about-highlight">
-
-                        <strong>
-                            Manufacturer. Supplier. Long-Term Partner.
-                        </strong>
-
-                        <span>
-                            Our focus goes beyond creating jewellery. We aim
-                            to deliver dependable quality and professional
-                            service at every stage of the relationship.
-                        </span>
-
-                    </div>
-
-                </div>
+                <a href="contact.html">
+                    Contact
+                </a>
 
             </div>
 
-        </section>
 
-
-        <!-- TRUST -->
-
-        <section class="about-trust">
-
-            <div class="about-trust-grid">
-
-                <div class="about-trust-item">
-
-                    <i class="fa-solid fa-award"></i>
-
-                    <strong>Since 2003</strong>
-
-                    <span>Years of trusted experience</span>
-
-                </div>
-
-
-                <div class="about-trust-item">
-
-                    <i class="fa-solid fa-gem"></i>
-
-                    <strong>Quality Focus</strong>
-
-                    <span>Refined jewellery craftsmanship</span>
-
-                </div>
-
-
-                <div class="about-trust-item">
-
-                    <i class="fa-solid fa-building"></i>
-
-                    <strong>Manufacturer</strong>
-
-                    <span>Gold &amp; Silver Jewellery</span>
-
-                </div>
-
-
-                <div class="about-trust-item">
-
-                    <i class="fa-solid fa-truck-fast"></i>
-
-                    <strong>PAN India Supply</strong>
-
-                    <span>Serving businesses across India</span>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- PAN INDIA -->
-
-        <section class="pan-india-section">
-
-            <div class="pan-india-inner">
-
-                <div class="pan-india-icon">
-                    <i class="fa-solid fa-location-dot"></i>
-                </div>
-
-                <h2>
-                    Serving Jewellery Businesses
-                    <span>Across India</span>
-                </h2>
+            <div class="footer-contact">
 
                 <p>
-                    From our manufacturing base in Surat, Gujarat, we serve
-                    wholesalers, retailers and jewellery businesses across
-                    India with dependable supply, carefully developed
-                    collections and professional service.
+                    Surat, Gujarat, India
                 </p>
 
-            </div>
-
-        </section>
-
-
-        <!-- CTA -->
-
-        <section class="about-cta">
-
-            <h2>
-                Discover the Suvarna Collection
-            </h2>
-
-            <p>
-                Explore our jewellery collections or connect with our team
-                for business enquiries.
-            </p>
-
-            <div class="about-cta-actions">
-
-                <a
-                    href="collections.html"
-                    class="about-btn about-btn-primary">
-
-                    Explore Collections
-                    <i class="fa-solid fa-arrow-right"></i>
-
-                </a>
-
-                <a
-                    href="contact.html"
-                    class="about-btn about-btn-outline">
-
-                    Contact Suvarna
-                    <i class="fa-solid fa-arrow-right"></i>
-
-                </a>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- FOOTER -->
-
-    <footer class="site-footer">
-
-        <div class="container">
-
-            <div class="footer-bottom">
+                <p>
+                    +91 77779 91118
+                </p>
 
                 <p>
-                    © 2003–2026 Suvarna Jewellers. All Rights Reserved.
+                    suvarna2003@hotmail.com
                 </p>
 
             </div>
 
         </div>
 
-    </footer>
+
+        <div class="footer-bottom">
+
+            <span>
+                © Suvarna Jewellers
+            </span>
+
+            <span>
+                Trusted Since 2003
+            </span>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     MOBILE MENU
+===================================================== -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function(){
+
+    const toggle =
+        document.getElementById("menu-toggle");
+
+    const nav =
+        document.getElementById("main-nav");
+
+
+    if(toggle && nav){
+
+        toggle.addEventListener("click", function(){
+
+            nav.classList.toggle("active");
+
+            const expanded =
+                nav.classList.contains("active");
+
+            toggle.setAttribute(
+                "aria-expanded",
+                expanded
+            );
+
+        });
+
+
+        nav.querySelectorAll("a").forEach(function(link){
+
+            link.addEventListener("click", function(){
+
+                nav.classList.remove("active");
+
+                toggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            });
+
+        });
+
+    }
+
+});
+
+</script>
+
+
+
+<!-- =====================================================
+     ORGANIZATION / JEWELRY STORE SCHEMA
+===================================================== -->
+
+<script type="application/ld+json">
+
+{
+    "@context":"https://schema.org",
+    "@type":"JewelryStore",
+
+    "name":"Suvarna Jewellers",
+
+    "url":"https://suvarnajewellers.co.in/",
+
+    "logo":"https://suvarnajewellers.co.in/Logo.png",
+
+    "image":"https://suvarnajewellers.co.in/hero.jpg",
+
+    "description":"Suvarna Jewellers is a Gold & Silver Jewellery Manufacturer based in Surat, Gujarat, serving jewellery businesses across India since 2003.",
+
+    "foundingDate":"2003",
+
+    "address":{
+        "@type":"PostalAddress",
+        "addressLocality":"Surat",
+        "addressRegion":"Gujarat",
+        "addressCountry":"IN"
+    },
+
+    "telephone":"+917777991118",
+
+    "email":"suvarna2003@hotmail.com"
+
+}
+
+</script>
 
 
 </body>
+
 </html>
