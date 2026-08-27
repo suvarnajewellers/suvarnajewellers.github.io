@@ -121,6 +121,7 @@ async function getProductById(id){
 
 /* ==========================
    SEARCH PRODUCTS
+   PREMIUM FULL PRODUCT SEARCH
 ========================== */
 
 async function searchProducts(keyword){
@@ -133,20 +134,59 @@ async function searchProducts(keyword){
 
     }
 
-    keyword = keyword.toLowerCase();
 
-    return products.filter(product =>
+    /* --------------------------------
+       NORMALIZE SEARCH KEYWORD
+    -------------------------------- */
 
-        product.name?.toLowerCase().includes(keyword) ||
+    const searchTerm = String(keyword)
+        .trim()
+        .toLowerCase();
 
-        product.category?.toLowerCase().includes(keyword) ||
 
-        product.metal?.toLowerCase().includes(keyword)
+    if(!searchTerm){
 
-    );
+        return products;
+
+    }
+
+
+    /* --------------------------------
+       SEARCH ALL IMPORTANT PRODUCT DATA
+    -------------------------------- */
+
+    return products.filter(product => {
+
+        const searchableText = [
+
+            product.id,
+            product.name,
+            product.category,
+            product.metal,
+            product.description,
+            product.size,
+            product.grossWeight,
+            product.netWeight
+
+        ]
+
+        .filter(value =>
+            value !== undefined &&
+            value !== null
+        )
+
+        .map(value =>
+            String(value).toLowerCase()
+        )
+
+        .join(" ");
+
+
+        return searchableText.includes(searchTerm);
+
+    });
 
 }
-
 
 /* ==========================
    EXPORT GLOBAL
