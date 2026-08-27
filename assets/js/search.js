@@ -93,9 +93,7 @@ async function performSearch(keyword){
 
     }
 
-    results
-    .slice(0,8)
-    .forEach(product=>{
+    results.forEach(product=>{
 
         resultBox.innerHTML += `
 
