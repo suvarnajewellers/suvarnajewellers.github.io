@@ -127,16 +127,53 @@ function renderCollection() {
      * Filter by current collection/category.
      */
 
-    let filteredProducts = allCollectionProducts.filter(product => {
+    let filteredProducts;
 
-        if (!currentCategory) {
-            return true;
-        }
+if (searchTerm) {
+
+    /*
+     * SEARCH ACTIVE:
+     * Search ALL categories.
+     */
+
+    filteredProducts = allCollectionProducts.filter(product => {
+
+        const searchableText = [
+            product.id,
+            product.name,
+            product.category,
+            product.metal,
+            product.description,
+            product.size,
+            product.grossWeight,
+            product.netWeight
+        ]
+        .filter(value =>
+            value !== undefined &&
+            value !== null
+        )
+        .join(" ")
+        .toLowerCase();
+
+        return searchableText.includes(searchTerm);
+
+    });
+
+} else {
+
+    /*
+     * NO SEARCH:
+     * Show only this collection.
+     */
+
+    filteredProducts = allCollectionProducts.filter(product => {
 
         return normalize(product.category) ===
                normalize(currentCategory);
 
     });
+
+}
 
 
     /*
