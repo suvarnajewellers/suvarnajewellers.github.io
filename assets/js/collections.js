@@ -127,24 +127,12 @@ function renderCollectionProducts(products) {
 
 function initCollectionSearch() {
 
-    /*
-       Try the common search selectors used
-       across the Suvarna website.
-    */
-
-    const searchInput =
-        document.querySelector("#productSearch") ||
-        document.querySelector("#searchInput") ||
-        document.querySelector(".search-input") ||
-        document.querySelector('input[type="search"]') ||
-        document.querySelector('input[placeholder*="Search"]') ||
-        document.querySelector('input[placeholder*="search"]');
+    const searchInput = document.querySelector(".premium-search");
 
     if (!searchInput) {
         console.warn("Collection search input not found.");
         return;
     }
-
 
     let searchTimer = null;
 
@@ -160,24 +148,13 @@ function initCollectionSearch() {
                     .toLowerCase();
 
             if (!searchTerm) {
-
                 renderCollectionProducts(collectionProducts);
                 return;
-
             }
-
-
-            /*
-               SEARCH ACROSS ALL IMPORTANT PRODUCT FIELDS.
-
-               A product matches if the entered text
-               exists in ANY of these fields.
-            */
 
             const filteredProducts = collectionProducts.filter(product => {
 
                 const searchableText = [
-
                     product.id,
                     product.name,
                     product.category,
@@ -186,7 +163,6 @@ function initCollectionSearch() {
                     product.size,
                     product.grossWeight,
                     product.netWeight
-
                 ]
                 .filter(value =>
                     value !== undefined &&
@@ -195,22 +171,14 @@ function initCollectionSearch() {
                 .join(" ")
                 .toLowerCase();
 
-
                 return searchableText.includes(searchTerm);
-
             });
-
 
             renderCollectionProducts(filteredProducts);
 
         }, 120);
-
     });
 
-
-    /*
-       Clear search with Escape
-    */
 
     searchInput.addEventListener("keydown", function (event) {
 
@@ -221,14 +189,10 @@ function initCollectionSearch() {
             renderCollectionProducts(collectionProducts);
 
             searchInput.blur();
-
         }
 
     });
-
 }
-
-
 /* ==========================================
    PRODUCT COUNT
 ========================================== */
