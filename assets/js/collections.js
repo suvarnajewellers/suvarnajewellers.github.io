@@ -1,13 +1,18 @@
 /* ==========================================
    SUVARNA JEWELLERS V9
    COLLECTIONS.JS
-   PREMIUM COLLECTION SEARCH + FILTER
+   GLOBAL COLLECTION SEARCH
 ========================================== */
 
 document.addEventListener("DOMContentLoaded", initCollectionPage);
 
-let collectionProducts = [];
-let collectionCategory = "";
+let allCollectionProducts = [];
+let currentCategory = "";
+
+
+/* ==========================================
+   INIT
+========================================== */
 
 async function initCollectionPage() {
 
@@ -15,20 +20,27 @@ async function initCollectionPage() {
 
     if (!grid) return;
 
-    collectionCategory = grid.dataset.category || "";
-
-    if (!collectionCategory) return;
+    currentCategory = (grid.dataset.category || "").trim();
 
     try {
 
-        collectionProducts = await getProductsByCategory(collectionCategory);
+        /*
+         * IMPORTANT:
+         * Load ALL products first.
+         * Do NOT use getProductsByCategory() here,
+         * otherwise global search cannot find products
+         * from other categories.
+         */
 
-        if (!Array.isArray(collectionProducts)) {
-            collectionProducts = [];
+        allCollectionProducts = await getProducts();
+
+        if (!Array.isArray(allCollectionProducts)) {
+            allCollectionProducts = [];
         }
 
-        renderCollectionProducts(collectionProducts);
         initCollectionSearch();
+
+        renderCollection();
 
     } catch (error) {
 
@@ -40,13 +52,140 @@ async function initCollectionPage() {
                 <p>Please try again later.</p>
             </div>
         `;
-
     }
 }
 
 
 /* ==========================================
-   RENDER PRODUCTS
+   SEARCH
+========================================== */
+
+function initCollectionSearch() {
+
+    const searchInput =
+        document.querySelector(".premium-search");
+
+    if (!searchInput) {
+        console.warn("Collection search input not found.");
+        return;
+    }
+
+    let searchTimer = null;
+
+    searchInput.addEventListener("input", function () {
+
+        clearTimeout(searchTimer);
+
+        searchTimer = setTimeout(() => {
+
+            renderCollection();
+
+        }, 100);
+
+    });
+
+
+    /* ESC = Clear Search */
+
+    searchInput.addEventListener("keydown", function (event) {
+
+        if (event.key === "Escape") {
+
+            searchInput.value = "";
+
+            renderCollection();
+
+            searchInput.blur();
+        }
+
+    });
+}
+
+
+/* ==========================================
+   MAIN FILTER
+========================================== */
+
+function renderCollection() {
+
+    const grid = document.getElementById("productsGrid");
+
+    if (!grid) return;
+
+
+    const searchInput =
+        document.querySelector(".premium-search");
+
+    const searchTerm =
+        searchInput
+            ? searchInput.value.trim().toLowerCase()
+            : "";
+
+
+    /*
+     * STEP 1
+     * Filter by current collection/category.
+     */
+
+    let filteredProducts = allCollectionProducts.filter(product => {
+
+        if (!currentCategory) {
+            return true;
+        }
+
+        return normalize(product.category) ===
+               normalize(currentCategory);
+
+    });
+
+
+    /*
+     * STEP 2
+     * Search inside the CURRENT collection.
+     *
+     * If the user searches "માળા", every product
+     * in the collection containing that word in
+     * any relevant field will be returned.
+     */
+
+    if (searchTerm) {
+
+        filteredProducts = filteredProducts.filter(product => {
+
+            const searchableText = [
+
+                product.id,
+                product.name,
+                product.category,
+                product.metal,
+                product.description,
+                product.size,
+                product.grossWeight,
+                product.netWeight
+
+            ]
+            .filter(value =>
+                value !== undefined &&
+                value !== null
+            )
+            .join(" ")
+            .toLowerCase();
+
+
+            return searchableText.includes(searchTerm);
+
+        });
+
+    }
+
+
+    renderCollectionProducts(filteredProducts);
+
+}
+
+
+/* ==========================================
+   RENDER PRODUCT CARDS
 ========================================== */
 
 function renderCollectionProducts(products) {
@@ -54,6 +193,7 @@ function renderCollectionProducts(products) {
     const grid = document.getElementById("productsGrid");
 
     if (!grid) return;
+
 
     if (!products.length) {
 
@@ -65,24 +205,25 @@ function renderCollectionProducts(products) {
         `;
 
         updateCollectionCount(0);
+
         return;
     }
 
 
-    /*
-       IMPORTANT:
-       Use one complete HTML build instead of
-       repeated innerHTML +=.
-       This prevents unnecessary DOM rebuilding
-       and avoids cards appearing to override each other.
-    */
-
     grid.innerHTML = products.map(product => {
 
-        const productId = encodeURIComponent(product.id || "");
-        const productName = escapeHTML(product.name || "Jewellery");
-        const productCategory = escapeHTML(product.category || "");
-        const image = getImage(product.image);
+        const productId =
+            encodeURIComponent(product.id || "");
+
+        const productName =
+            escapeHTML(product.name || "Jewellery");
+
+        const productCategory =
+            escapeHTML(product.category || "");
+
+        const image =
+            getImage(product.image);
+
 
         return `
             <a
@@ -102,9 +243,13 @@ function renderCollectionProducts(products) {
 
                         <div>
 
-                            <span>${productCategory}</span>
+                            <span>
+                                ${productCategory}
+                            </span>
 
-                            <h3>${productName}</h3>
+                            <h3>
+                                ${productName}
+                            </h3>
 
                         </div>
 
@@ -117,122 +262,39 @@ function renderCollectionProducts(products) {
 
     }).join("");
 
+
     updateCollectionCount(products.length);
 }
 
 
 /* ==========================================
-   SEARCH
+   NORMALIZE CATEGORY
 ========================================== */
 
-function initCollectionSearch() {
+function normalize(value) {
 
-    const searchInput = document.querySelector(".premium-search");
+    return String(value || "")
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, " ");
 
-    if (!searchInput) {
-        console.warn("Collection search input not found.");
-        return;
-    }
-
-    let searchTimer = null;
-
-    searchInput.addEventListener("input", function () {
-
-        clearTimeout(searchTimer);
-
-        searchTimer = setTimeout(() => {
-
-            const searchTerm =
-                searchInput.value
-                    .trim()
-                    .toLowerCase();
-
-            if (!searchTerm) {
-                renderCollectionProducts(collectionProducts);
-                return;
-            }
-
-            const filteredProducts = collectionProducts.filter(product => {
-
-                const searchableText = [
-                    product.id,
-                    product.name,
-                    product.category,
-                    product.metal,
-                    product.description,
-                    product.size,
-                    product.grossWeight,
-                    product.netWeight
-                ]
-                .filter(value =>
-                    value !== undefined &&
-                    value !== null
-                )
-                .join(" ")
-                .toLowerCase();
-
-                return searchableText.includes(searchTerm);
-            });
-
-            renderCollectionProducts(filteredProducts);
-
-        }, 120);
-    });
-
-
-    searchInput.addEventListener("keydown", function (event) {
-
-        if (event.key === "Escape") {
-
-            searchInput.value = "";
-
-            renderCollectionProducts(collectionProducts);
-
-            searchInput.blur();
-        }
-
-    });
 }
+
+
 /* ==========================================
    PRODUCT COUNT
 ========================================== */
 
 function updateCollectionCount(count) {
 
-    const countElements = [
+    const countElement =
+        document.querySelector(".product-count strong");
 
-        document.getElementById("productCount"),
-        document.getElementById("resultsCount"),
-        document.querySelector(".product-count"),
-        document.querySelector(".count-box")
+    if (countElement) {
 
-    ].filter(Boolean);
+        countElement.textContent = count;
 
-
-    countElements.forEach(element => {
-
-        /*
-           Do not destroy existing styling/content
-           if the element contains more complex markup.
-        */
-
-        const numberElement =
-            element.querySelector(".count-number") ||
-            element.querySelector("strong") ||
-            element.querySelector("span");
-
-
-        if (numberElement) {
-
-            numberElement.textContent = count;
-
-        } else {
-
-            element.textContent = count;
-
-        }
-
-    });
+    }
 
 }
 
@@ -244,6 +306,7 @@ function updateCollectionCount(count) {
 function escapeHTML(value) {
 
     return String(value)
+
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")
