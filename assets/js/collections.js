@@ -1,18 +1,10 @@
 /* ==========================================
-   SUVARNA JEWELLERS V9
-   COLLECTIONS.JS
-   GLOBAL COLLECTION SEARCH
+   SUVARNA JEWELLERS
+   COLLECTIONS.JS — FINAL SEARCH FIX
 ========================================== */
 
 document.addEventListener("DOMContentLoaded", initCollectionPage);
 
-let allCollectionProducts = [];
-let currentCategory = "";
-
-
-/* ==========================================
-   INIT
-========================================== */
 
 async function initCollectionPage() {
 
@@ -20,334 +12,172 @@ async function initCollectionPage() {
 
     if (!grid) return;
 
-    currentCategory = (grid.dataset.category || "").trim();
+    const category = grid.dataset.category || "";
 
-    try {
+    /* ------------------------------------------
+       LOAD ALL PRODUCTS
+       IMPORTANT:
+       Search must work across ALL collections
+    ------------------------------------------ */
 
-        /*
-         * IMPORTANT:
-         * Load ALL products first.
-         * Do NOT use getProductsByCategory() here,
-         * otherwise global search cannot find products
-         * from other categories.
-         */
+    const allProducts = await getProducts();
 
-        allCollectionProducts = await getProducts();
-
-        if (!Array.isArray(allCollectionProducts)) {
-            allCollectionProducts = [];
-        }
-
-        initCollectionSearch();
-
-        renderCollection();
-
-    } catch (error) {
-
-        console.error("Collections Error:", error);
-
-        grid.innerHTML = `
-            <div class="collection-empty">
-                <h3>Unable to load products</h3>
-                <p>Please try again later.</p>
-            </div>
-        `;
-    }
-}
-
-
-/* ==========================================
-   SEARCH
-========================================== */
-
-function initCollectionSearch() {
-
-    const searchInput =
-        document.querySelector(".premium-search");
-
-    if (!searchInput) {
-        console.warn("Collection search input not found.");
-        return;
-    }
-
-    let searchTimer = null;
-
-    searchInput.addEventListener("input", function () {
-
-        clearTimeout(searchTimer);
-
-        searchTimer = setTimeout(() => {
-
-            renderCollection();
-
-        }, 100);
-
-    });
-
-
-    /* ESC = Clear Search */
-
-    searchInput.addEventListener("keydown", function (event) {
-
-        if (event.key === "Escape") {
-
-            searchInput.value = "";
-
-            renderCollection();
-
-            searchInput.blur();
-        }
-
-    });
-}
-
-
-/* ==========================================
-   MAIN FILTER
-========================================== */
-
-function renderCollection() {
-
-    const grid = document.getElementById("productsGrid");
-
-    if (!grid) return;
-
-
-    const searchInput =
-        document.querySelector(".premium-search");
-
-    const searchTerm =
-        searchInput
-            ? searchInput.value.trim().toLowerCase()
-            : "";
-
-
-    /*
-     * STEP 1
-     * Filter by current collection/category.
-     */
-
-    let filteredProducts;
-
-if (searchTerm) {
-
-    /*
-     * SEARCH ACTIVE:
-     * Search ALL categories.
-     */
-
-    filteredProducts = allCollectionProducts.filter(product => {
-
-        const searchableText = [
-            product.id,
-            product.name,
-            product.category,
-            product.metal,
-            product.description,
-            product.size,
-            product.grossWeight,
-            product.netWeight
-        ]
-        .filter(value =>
-            value !== undefined &&
-            value !== null
+    let visibleProducts = category
+        ? allProducts.filter(product =>
+            String(product.category || "").toLowerCase() ===
+            String(category).toLowerCase()
         )
-        .join(" ")
-        .toLowerCase();
-
-        return searchableText.includes(searchTerm);
-
-    });
-
-} else {
-
-    /*
-     * NO SEARCH:
-     * Show only this collection.
-     */
-
-    filteredProducts = allCollectionProducts.filter(product => {
-
-        return normalize(product.category) ===
-               normalize(currentCategory);
-
-    });
-
-}
+        : allProducts;
 
 
-    /*
-     * STEP 2
-     * Search inside the CURRENT collection.
-     *
-     * If the user searches "માળા", every product
-     * in the collection containing that word in
-     * any relevant field will be returned.
-     */
+    /* ------------------------------------------
+       RENDER PRODUCTS
+    ------------------------------------------ */
 
-    if (searchTerm) {
+    function renderProducts(products) {
 
-        filteredProducts = filteredProducts.filter(product => {
+        grid.innerHTML = "";
 
-            const searchableText = [
+        if (!products.length) {
 
-                product.id,
-                product.name,
-                product.category,
-                product.metal,
-                product.description,
-                product.size,
-                product.grossWeight,
-                product.netWeight
+            grid.innerHTML = `
+                <div class="no-result">
+                    No jewellery found.
+                </div>
+            `;
 
-            ]
-            .filter(value =>
-                value !== undefined &&
-                value !== null
-            )
-            .join(" ")
-            .toLowerCase();
+            return;
+        }
 
 
-            return searchableText.includes(searchTerm);
+        products.forEach(product => {
+
+            grid.innerHTML += `
+
+                <a
+                    href="../product.html?id=${encodeURIComponent(product.id)}&source=collections"
+                    class="collection-link"
+                >
+
+                    <div class="collection-card">
+
+                        <img
+                            src="${getImage(product.image)}"
+                            alt="${product.name || "Suvarna Jewellers Jewellery"}"
+                            loading="lazy"
+                            decoding="async"
+                        >
+
+                        <div class="collection-overlay">
+
+                            <div>
+
+                                <span>
+                                    ${product.category || ""}
+                                </span>
+
+                                <h3>
+                                    ${product.name || ""}
+                                </h3>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </a>
+
+            `;
 
         });
 
     }
 
 
-    renderCollectionProducts(filteredProducts);
+    /* ------------------------------------------
+       INITIAL COLLECTION
+    ------------------------------------------ */
 
-}
-
-
-/* ==========================================
-   RENDER PRODUCT CARDS
-========================================== */
-
-function renderCollectionProducts(products) {
-
-    const grid = document.getElementById("productsGrid");
-
-    if (!grid) return;
+    renderProducts(visibleProducts);
 
 
-    if (!products.length) {
+    /* ------------------------------------------
+       COLLECTION SEARCH
+       SEARCHES ALL PRODUCTS
+       NOT ONLY CURRENT CATEGORY
+    ------------------------------------------ */
 
-        grid.innerHTML = `
-            <div class="collection-empty">
-                <h3>No Products Found</h3>
-                <p>Try another product name or category.</p>
-            </div>
-        `;
-
-        updateCollectionCount(0);
-
-        return;
-    }
+    const searchInput =
+        document.getElementById("searchInput");
 
 
-    grid.innerHTML = products.map(product => {
-
-        const productId =
-            encodeURIComponent(product.id || "");
-
-        const productName =
-            escapeHTML(product.name || "Jewellery");
-
-        const productCategory =
-            escapeHTML(product.category || "");
-
-        const image =
-            getImage(product.image);
+    if (!searchInput) return;
 
 
-        return `
-            <a
-                href="../product.html?id=${productId}&source=collections"
-                class="collection-link"
-                data-product-id="${productId}">
+    searchInput.addEventListener("input", function () {
 
-                <div class="collection-card">
-
-                    <img
-                        src="${image}"
-                        alt="${productName}"
-                        loading="lazy"
-                        decoding="async">
-
-                    <div class="collection-overlay">
-
-                        <div>
-
-                            <span>
-                                ${productCategory}
-                            </span>
-
-                            <h3>
-                                ${productName}
-                            </h3>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </a>
-        `;
-
-    }).join("");
+        const keyword =
+            this.value.trim().toLowerCase();
 
 
-    updateCollectionCount(products.length);
-}
+        /* Empty search = return to collection */
+
+        if (!keyword) {
+
+            visibleProducts = category
+                ? allProducts.filter(product =>
+                    String(product.category || "").toLowerCase() ===
+                    String(category).toLowerCase()
+                )
+                : allProducts;
+
+            renderProducts(visibleProducts);
+
+            return;
+        }
 
 
-/* ==========================================
-   NORMALIZE CATEGORY
-========================================== */
+        /* --------------------------------------
+           SEARCH ALL PRODUCTS
 
-function normalize(value) {
+           Example:
+           "માળા"
+           "mala"
+           "rudraksha"
+           "tulsi"
 
-    return String(value || "")
-        .trim()
-        .toLowerCase()
-        .replace(/\s+/g, " ");
+           will search name + category +
+           metal + description
+        -------------------------------------- */
 
-}
+        visibleProducts = allProducts.filter(product => {
 
+            const name =
+                String(product.name || "").toLowerCase();
 
-/* ==========================================
-   PRODUCT COUNT
-========================================== */
+            const productCategory =
+                String(product.category || "").toLowerCase();
 
-function updateCollectionCount(count) {
+            const metal =
+                String(product.metal || "").toLowerCase();
 
-    const countElement =
-        document.querySelector(".product-count strong");
-
-    if (countElement) {
-
-        countElement.textContent = count;
-
-    }
-
-}
+            const description =
+                String(product.description || "").toLowerCase();
 
 
-/* ==========================================
-   SAFE HTML
-========================================== */
+            return (
+                name.includes(keyword) ||
+                productCategory.includes(keyword) ||
+                metal.includes(keyword) ||
+                description.includes(keyword)
+            );
 
-function escapeHTML(value) {
+        });
 
-    return String(value)
 
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+        renderProducts(visibleProducts);
+
+    });
 
 }
