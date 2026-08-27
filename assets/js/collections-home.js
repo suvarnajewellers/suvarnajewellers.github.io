@@ -799,7 +799,6 @@ function renderGracefulFallback(){
 /* ==========================================
    SEARCH
 ========================================== */
-
 function initSearch(){
 
     const search =
@@ -807,23 +806,17 @@ function initSearch(){
             "collectionSearch"
         );
 
-
     if(!search) return;
-
 
     if(
         search.dataset.initialized ===
         "true"
     ){
-
         return;
-
     }
-
 
     search.dataset.initialized =
         "true";
-
 
     search.addEventListener(
         "input",
@@ -834,6 +827,9 @@ function initSearch(){
                     .trim()
                     .toLowerCase();
 
+            /* -----------------------------
+               EMPTY SEARCH
+            ----------------------------- */
 
             if(!keyword){
 
@@ -846,60 +842,57 @@ function initSearch(){
             }
 
 
+            /* -----------------------------
+               SEARCH ALL PRODUCTS
+               NAME + CATEGORY + METAL
+            ----------------------------- */
+
             const filtered =
                 allProducts.filter(
                     product => {
 
                         if(!product){
-
                             return false;
-
                         }
-
 
                         const name =
                             String(
                                 product.name || ""
-                            ).toLowerCase();
-
+                            )
+                            .toLowerCase()
+                            .trim();
 
                         const category =
                             String(
                                 product.category || ""
-                            ).toLowerCase();
-
+                            )
+                            .toLowerCase()
+                            .trim();
 
                         const metal =
                             String(
                                 product.metal || ""
-                            ).toLowerCase();
+                            )
+                            .toLowerCase()
+                            .trim();
 
 
                         return (
-
-                            name.includes(
-                                keyword
-                            )
-
-                            ||
-
-                            category.includes(
-                                keyword
-                            )
-
-                            ||
-
-                            metal.includes(
-                                keyword
-                            )
-
+                            name.includes(keyword) ||
+                            category.includes(keyword) ||
+                            metal.includes(keyword)
                         );
 
                     }
                 );
 
 
-            renderCollections(
+            /* -----------------------------
+               SHOW EVERY MATCHING PRODUCT
+               NOT ONLY COLLECTION CARD
+            ----------------------------- */
+
+            renderSearchProducts(
                 filtered
             );
 
@@ -907,8 +900,289 @@ function initSearch(){
     );
 
 }
+/* ==========================================
+   RENDER SEARCH RESULTS
+   SHOW ALL MATCHING PRODUCTS
+========================================== */
+
+function renderSearchProducts(products){
+
+    const grid =
+        document.getElementById(
+            "collectionsGrid"
+        );
+
+    if(!grid) return;
 
 
+    grid.innerHTML = "";
+
+
+    /* --------------------------------------
+       NO RESULTS
+    -------------------------------------- */
+
+    if(
+        !Array.isArray(products) ||
+        !products.length
+    ){
+
+        grid.innerHTML = `
+
+            <div class="collections-graceful-state">
+
+                <span>
+                    SUVARNA JEWELLERS
+                </span>
+
+                <h3>
+                    No Jewellery Found
+                </h3>
+
+                <p>
+                    No products match your search.
+                    Please try another product,
+                    category or metal.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    /* --------------------------------------
+       SHOW ALL MATCHING PRODUCTS
+       NO .slice()
+       NO 5 PRODUCT LIMIT
+    -------------------------------------- */
+
+    products.forEach(
+        product => {
+
+            if(!product) return;
+
+
+            const image =
+                getRealProductImage([
+                    product
+                ]);
+
+
+            const href =
+                product.id != null
+                    ?
+                    `product.html?id=${encodeURIComponent(
+                        product.id
+                    )}`
+                    :
+                    "#";
+
+
+            const card =
+                document.createElement(
+                    "a"
+                );
+
+
+            card.href =
+                href;
+
+            card.className =
+                "collection-link premium-collection-link";
+
+
+            card.innerHTML = `
+
+                <article
+                    class="card premium-collection-card"
+                >
+
+                    <div
+                        class="card-image premium-collection-image"
+                    >
+
+                        ${
+                            image
+                            ?
+                            `
+                            <img
+                                src="${escapeHtml(image)}"
+                                alt="${escapeHtml(
+                                    product.name || ""
+                                )}"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                            `
+                            :
+                            `
+                            <div
+                                class="collection-image-fallback"
+                            >
+                                <span>
+                                    SUVARNA JEWELLERS
+                                </span>
+
+                                <strong>
+                                    ${escapeHtml(
+                                        product.name || "Jewellery"
+                                    )}
+                                </strong>
+
+                            </div>
+                            `
+                        }
+
+                        <div
+                            class="collection-image-overlay"
+                        ></div>
+
+                        <span
+                            class="collection-category-label"
+                        >
+                            ${escapeHtml(
+                                product.category || ""
+                            )}
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="card-content premium-collection-content"
+                    >
+
+                        <span
+                            class="collection-number"
+                        >
+                            ${escapeHtml(
+                                product.metal || ""
+                            )}
+                        </span>
+
+
+                        <h3>
+                            ${escapeHtml(
+                                product.name || "Jewellery"
+                            )}
+                        </h3>
+
+
+                        <p>
+                            ${escapeHtml(
+                                product.category || ""
+                            )}
+                        </p>
+
+
+                        <span
+                            class="card-btn premium-collection-btn"
+                        >
+                            View Product
+
+                            <span
+                                aria-hidden="true"
+                            >
+                                →
+                            </span>
+
+                        </span>
+
+                    </div>
+
+                </article>
+
+            `;
+
+
+            /* ----------------------------------
+               IMAGE ERROR FALLBACK
+            ---------------------------------- */
+
+            const imageElement =
+                card.querySelector(
+                    "img"
+                );
+
+
+            if(imageElement){
+
+                imageElement.addEventListener(
+                    "error",
+                    function(){
+
+                        this.style.display =
+                            "none";
+
+
+                        const parent =
+                            this.parentElement;
+
+
+                        if(!parent) return;
+
+
+                        if(
+                            parent.querySelector(
+                                ".collection-image-fallback"
+                            )
+                        ){
+
+                            return;
+
+                        }
+
+
+                        const fallback =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        fallback.className =
+                            "collection-image-fallback";
+
+
+                        fallback.innerHTML = `
+
+                            <span>
+                                SUVARNA JEWELLERS
+                            </span>
+
+                            <strong>
+                                ${escapeHtml(
+                                    product.name || "Jewellery"
+                                )}
+                            </strong>
+
+                        `;
+
+
+                        parent.prepend(
+                            fallback
+                        );
+
+                    },
+                    {
+                        once: true
+                    }
+                );
+
+            }
+
+
+            grid.appendChild(
+                card
+            );
+
+        }
+    );
+
+}
 /* ==========================================
    PREMIUM COLLECTION STYLES
 ========================================== */
