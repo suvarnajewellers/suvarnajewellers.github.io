@@ -1632,7 +1632,339 @@ function injectPremiumStyles(){
 
 }
 
+/* ======================================
+   SEARCH PRODUCT GRID
+   110 PRODUCTS — PREMIUM CATALOG STYLE
+====================================== */
 
+
+/* Product cards used by Search */
+
+#collectionsGrid .premium-collection-card{
+
+    border-radius:22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fffdf9 0%,
+            #f7efe4 100%
+        );
+
+    border:
+        1px solid
+        rgba(180,145,75,.16);
+
+    box-shadow:
+        0 8px 24px
+        rgba(43,0,21,.065);
+
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease;
+
+}
+
+
+/* Product image — clean ivory display */
+
+#collectionsGrid .premium-collection-image{
+
+    aspect-ratio:1 / 1;
+
+    padding:12px;
+
+    background:
+        #f1e7d8;
+
+}
+
+
+/* Inner rounded product stage */
+
+#collectionsGrid .premium-collection-image::before{
+
+    inset:12px;
+
+    border-radius:
+        20px 20px 32px 32px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fffefa 0%,
+            #eee1cf 100%
+        );
+
+}
+
+
+/* Product itself */
+
+#collectionsGrid .premium-collection-image img{
+
+    padding:18px;
+
+    border-radius:
+        20px 20px 32px 32px;
+
+    object-fit:contain;
+
+}
+
+
+/* Keep overlay extremely subtle */
+
+#collectionsGrid .collection-image-overlay{
+
+    inset:12px;
+
+    border-radius:
+        20px 20px 32px 32px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.05),
+            transparent 55%,
+            rgba(43,0,21,.035)
+        );
+
+}
+
+
+/* Category pill */
+
+#collectionsGrid .collection-category-label{
+
+    left:23px;
+    bottom:23px;
+
+    padding:
+        5px 9px;
+
+    font-size:7px;
+
+    letter-spacing:
+        1.4px;
+
+    background:
+        rgba(43,0,21,.66);
+
+}
+
+
+/* Product information */
+
+#collectionsGrid .premium-collection-content{
+
+    padding:
+        15px
+        16px
+        17px;
+
+}
+
+
+/* Metal */
+
+#collectionsGrid .collection-number{
+
+    margin-bottom:5px;
+
+    color:#a27b2c;
+
+    font-size:8px;
+
+    letter-spacing:
+        1.7px;
+
+}
+
+
+/* Product name */
+
+#collectionsGrid .premium-collection-content h3{
+
+    margin:
+        0 0 5px;
+
+    font-size:16px;
+
+    line-height:1.3;
+
+    display:
+        -webkit-box;
+
+    -webkit-line-clamp:2;
+
+    -webkit-box-orient:vertical;
+
+    overflow:hidden;
+
+}
+
+
+/* Category */
+
+#collectionsGrid .premium-collection-content p{
+
+    margin:
+        0 0 12px;
+
+    color:#786b6e;
+
+    font-size:10px;
+
+    line-height:1.45;
+
+}
+
+
+/* View Product button */
+
+#collectionsGrid .premium-collection-btn{
+
+    min-height:32px;
+
+    padding:
+        0 12px;
+
+    font-size:7.5px;
+
+    letter-spacing:
+        1.15px;
+
+}
+
+
+/* ======================================
+   PRODUCT CARD HOVER
+====================================== */
+
+#collectionsGrid
+.premium-collection-link:hover
+.premium-collection-card{
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 17px 38px
+        rgba(43,0,21,.12);
+
+}
+
+
+#collectionsGrid
+.premium-collection-link:hover
+.premium-collection-image img{
+
+    transform:
+        scale(1.035);
+
+}
+
+
+/* ======================================
+   SEARCH RESULT MOBILE
+====================================== */
+
+@media(max-width:700px){
+
+    #collectionsGrid .premium-collection-card{
+
+        border-radius:18px;
+
+    }
+
+
+    #collectionsGrid .premium-collection-image{
+
+        padding:9px;
+
+    }
+
+
+    #collectionsGrid .premium-collection-image::before{
+
+        inset:9px;
+
+        border-radius:
+            17px 17px 27px 27px;
+
+    }
+
+
+    #collectionsGrid .premium-collection-image img{
+
+        padding:13px;
+
+        border-radius:
+            17px 17px 27px 27px;
+
+    }
+
+
+    #collectionsGrid .collection-image-overlay{
+
+        inset:9px;
+
+        border-radius:
+            17px 17px 27px 27px;
+
+    }
+
+
+    #collectionsGrid .collection-category-label{
+
+        left:18px;
+        bottom:18px;
+
+        padding:
+            5px 8px;
+
+        font-size:6.5px;
+
+    }
+
+
+    #collectionsGrid .premium-collection-content{
+
+        padding:
+            13px
+            13px
+            15px;
+
+    }
+
+
+    #collectionsGrid .premium-collection-content h3{
+
+        font-size:14px;
+
+    }
+
+
+    #collectionsGrid .premium-collection-content p{
+
+        font-size:9px;
+
+    }
+
+
+    #collectionsGrid .premium-collection-btn{
+
+        min-height:30px;
+
+        padding:
+            0 10px;
+
+        font-size:7px;
+
+    }
+
+}
 /* ======================================
    MOBILE
 ====================================== */
