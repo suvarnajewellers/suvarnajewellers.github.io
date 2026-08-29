@@ -1516,56 +1516,154 @@ function injectPremiumStyles(){
 
         }
 
+/* ======================================
+   PREMIUM EXPLORE / VIEW BUTTON
+====================================== */
 
-        /* ======================================
-           BUTTON
-        ====================================== */
+.premium-collection-btn{
 
-        .premium-collection-btn{
+    display:inline-flex;
 
-            display:inline-flex;
+    align-items:center;
+    justify-content:center;
 
-            align-items:center;
+    gap:10px;
 
-            gap:8px;
+    min-height:36px;
 
-            color:#8d6824;
+    padding:
+        0 15px;
 
-            font-family:
-                Inter,
-                sans-serif;
+    border:
+        1px solid
+        rgba(180,145,75,.45);
 
-            font-size:9px;
+    border-radius:999px;
 
-            font-weight:600;
+    color:#76551d;
 
-            letter-spacing:
-                1.25px;
+    background:
+        rgba(255,255,255,.48);
 
-            text-transform:
-                uppercase;
+    box-shadow:
+        0 3px 12px
+        rgba(43,0,21,.04);
 
-        }
+    font-family:
+        Inter,
+        sans-serif;
+
+    font-size:8.5px;
+
+    font-weight:600;
+
+    letter-spacing:
+        1.35px;
+
+    text-transform:
+        uppercase;
+
+    transition:
+        all .35s ease;
+
+}
 
 
-        .premium-collection-btn span{
+/* Arrow */
 
-            font-size:16px;
+.premium-collection-btn span{
 
-            line-height:1;
+    display:inline-flex;
 
-            transition:
-                transform .3s ease;
+    align-items:center;
+    justify-content:center;
 
-        }
+    width:20px;
+    height:20px;
+
+    border-radius:50%;
+
+    color:#fff;
+
+    background:
+        #2b0015;
+
+    font-size:13px;
+
+    line-height:1;
+
+    transition:
+        transform .35s ease,
+        background .35s ease;
+
+}
 
 
-        .premium-collection-link:hover
-        .premium-collection-btn span{
+/* Hover */
 
-            transform:
-                translateX(4px);
+.premium-collection-link:hover
+.premium-collection-btn{
 
+    color:#fff;
+
+    background:
+        #2b0015;
+
+    border-color:
+        #2b0015;
+
+    box-shadow:
+        0 7px 20px
+        rgba(43,0,21,.16);
+
+}
+
+
+.premium-collection-link:hover
+.premium-collection-btn span{
+
+    color:#2b0015;
+
+    background:
+        #d4af37;
+
+    transform:
+        translateX(3px);
+
+}
+
+
+/* ======================================
+   MOBILE
+====================================== */
+
+@media(max-width:700px){
+
+    .premium-collection-btn{
+
+        min-height:34px;
+
+        padding:
+            0 13px;
+
+        font-size:8px;
+
+        letter-spacing:
+            1.15px;
+
+    }
+
+
+    .premium-collection-btn span{
+
+        width:19px;
+        height:19px;
+
+        font-size:12px;
+
+    }
+
+}
         }
 
 
