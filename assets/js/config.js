@@ -17,7 +17,7 @@ const CONFIG = {
 
         website: "https://suvarnajewellers.co.in",
 
-        email: "suvarna2003@hotmail.com",
+        email: "jewellerssuvarna@gmail.com",
 
         phone: "+917777991118",
 
