@@ -1048,31 +1048,82 @@ a.contact-card:hover{
 
 
 <style id="suvarna-collections-footer-final">
-/* FINAL COLLECTIONS HEADER + FOOTER POLISH */
-.header .logo > img{
-  width:52px!important;
-  height:52px!important;
-  object-fit:contain!important;
-}
+
+/* =========================================================
+   SUVARNA COLLECTIONS — FINAL PREMIUM FOOTER
+========================================================= */
 
 .footer{
-  padding-top:58px!important;
-  padding-bottom:26px!important;
+  position:relative!important;
+  overflow:hidden!important;
+  padding:58px 0 26px!important;
+  text-align:center!important;
+  border-top:1px solid rgba(212,175,55,.15)!important;
+
+  background:
+    radial-gradient(
+      circle at 50% 0,
+      rgba(212,175,55,.065),
+      transparent 30%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(26,0,10,.76),
+      rgba(5,0,3,.98)
+    )!important;
 }
 
+/* Premium gold line at top */
+.footer:before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:50%;
+  width:min(680px,82vw);
+  height:1px;
+  transform:translateX(-50%);
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(212,175,55,.48),
+      transparent
+    );
+}
+
+/* =========================================================
+   CENTERED FOOTER CONTENT
+========================================================= */
+
 .footer-signature{
+  position:relative!important;
+  max-width:900px!important;
+  margin:0 auto!important;
+
   display:flex!important;
   flex-direction:column!important;
   align-items:center!important;
   justify-content:center!important;
+
   text-align:center!important;
 }
+
+/* =========================================================
+   FOOTER LOGO
+   No circle / no border / no extra line
+========================================================= */
 
 .footer-logo-wrap{
   width:auto!important;
   height:auto!important;
-  margin:0 auto 14px!important;
+
+  margin:0 auto 15px!important;
   padding:0!important;
+
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+
   border:0!important;
   border-radius:0!important;
   background:transparent!important;
@@ -1080,34 +1131,290 @@ a.contact-card:hover{
 }
 
 .footer-logo{
-  width:76px!important;
-  height:76px!important;
-  object-fit:contain!important;
+  display:block!important;
+
+  width:78px!important;
+  height:78px!important;
+
   margin:0 auto!important;
+
+  object-fit:contain!important;
+
+  filter:
+    drop-shadow(0 10px 24px rgba(0,0,0,.28));
 }
 
+/* =========================================================
+   BRAND NAME
+========================================================= */
+
 .footer-brand{
-  margin-top:0!important;
+  margin:0!important;
+
+  color:var(--s-gold2)!important;
+
+  font:
+    500 19px/1.2 Cinzel,
+    Georgia,
+    serif!important;
+
   letter-spacing:3.8px!important;
+  text-align:center!important;
 }
+
+/* =========================================================
+   TAGLINE
+========================================================= */
 
 .footer-tagline{
   margin-top:8px!important;
+
+  color:rgba(246,241,231,.44)!important;
+
+  font:
+    600 7.5px/1.4 Inter,
+    Arial,
+    sans-serif!important;
+
+  letter-spacing:2.4px!important;
+  text-align:center!important;
 }
 
+/* =========================================================
+   SERVICE STRIP
+========================================================= */
+
+.footer-service-row{
+  display:flex!important;
+  justify-content:center!important;
+  align-items:center!important;
+  flex-wrap:wrap!important;
+
+  gap:12px!important;
+
+  margin:23px auto 0!important;
+
+  color:rgba(234,217,163,.64)!important;
+
+  font:
+    600 7px/1.4 Inter,
+    Arial,
+    sans-serif!important;
+
+  letter-spacing:1.55px!important;
+
+  text-align:center!important;
+}
+
+.footer-service-row i{
+  width:3px!important;
+  height:3px!important;
+
+  flex:0 0 3px!important;
+
+  border-radius:50%!important;
+
+  background:var(--s-gold)!important;
+
+  opacity:.68!important;
+}
+
+/* =========================================================
+   YEARS
+========================================================= */
+
+.footer-years{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+
+  gap:12px!important;
+
+  margin-top:19px!important;
+
+  color:rgba(243,223,160,.76)!important;
+
+  font:
+    500 9px/1 Inter,
+    Arial,
+    sans-serif!important;
+
+  letter-spacing:2px!important;
+
+  text-align:center!important;
+}
+
+.footer-years i{
+  display:block!important;
+
+  width:24px!important;
+  height:1px!important;
+
+  background:rgba(212,175,55,.40)!important;
+}
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.footer-description{
+  margin:13px 0 10px!important;
+
+  color:rgba(251,247,239,.34)!important;
+
+  font:
+    400 8px/1.6 Inter,
+    Arial,
+    sans-serif!important;
+
+  letter-spacing:1px!important;
+
+  text-align:center!important;
+}
+
+/* =========================================================
+   LOCATION
+========================================================= */
+
+.footer-location{
+  display:inline-flex!important;
+
+  align-items:center!important;
+  justify-content:center!important;
+
+  gap:7px!important;
+
+  color:rgba(251,247,239,.40)!important;
+
+  font:
+    500 7.5px/1.4 Inter,
+    Arial,
+    sans-serif!important;
+
+  letter-spacing:1.1px!important;
+
+  text-transform:uppercase!important;
+
+  text-align:center!important;
+}
+
+.footer-location i{
+  color:rgba(212,175,55,.68)!important;
+  font-size:9px!important;
+}
+
+/* =========================================================
+   COPYRIGHT
+========================================================= */
+
+.footer-bottom-line{
+  display:flex!important;
+
+  justify-content:center!important;
+  align-items:center!important;
+
+  gap:18px!important;
+
+  width:min(700px,90%)!important;
+
+  margin:22px auto 0!important;
+  padding-top:16px!important;
+
+  border-top:1px solid rgba(255,255,255,.05)!important;
+
+  color:rgba(251,247,239,.22)!important;
+
+  font:
+    500 7px/1.4 Inter,
+    Arial,
+    sans-serif!important;
+
+  letter-spacing:1.25px!important;
+
+  text-align:center!important;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
 @media(max-width:760px){
-  .header .logo > img{
-    width:48px!important;
-    height:48px!important;
-  }
+
   .footer{
-    padding-top:48px!important;
+    padding:48px 0 21px!important;
   }
+
+  .footer-logo-wrap{
+    margin-bottom:13px!important;
+  }
+
   .footer-logo{
-    width:68px!important;
-    height:68px!important;
+    width:70px!important;
+    height:70px!important;
+  }
+
+  .footer-brand{
+    font-size:16px!important;
+    letter-spacing:2.7px!important;
+  }
+
+  .footer-tagline{
+    font-size:6.5px!important;
+    letter-spacing:1.9px!important;
+  }
+
+  .footer-service-row{
+    gap:8px!important;
+    margin-top:20px!important;
+
+    font-size:6.5px!important;
+    letter-spacing:1.15px!important;
+  }
+
+  .footer-years{
+    margin-top:17px!important;
+  }
+
+  .footer-description{
+    font-size:7.5px!important;
+    padding:0 14px!important;
+  }
+
+  .footer-location{
+    font-size:7px!important;
+  }
+
+  .footer-bottom-line{
+    flex-direction:column!important;
+    gap:7px!important;
+
+    width:90%!important;
   }
 }
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media(max-width:390px){
+
+  .footer-logo{
+    width:64px!important;
+    height:64px!important;
+  }
+
+  .footer-brand{
+    font-size:15px!important;
+    letter-spacing:2.4px!important;
+  }
+
+  .footer-service-row{
+    gap:7px!important;
+    font-size:6px!important;
+  }
+
+}
+
 </style>
 
 </head>
