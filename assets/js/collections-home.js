@@ -515,28 +515,17 @@ function renderCollections(
                     collection.products
                 );
 
+            /* --------------------------------------
+   OPEN FULL COLLECTION
+   --------------------------------------
+   Collection card must open the complete
+   collection, NOT the first product.
+-------------------------------------- */
 
-            /*
-             * Open the first actual product
-             * from this collection.
-             */
-
-            const firstProduct =
-                collection.products.find(
-                    product =>
-                        product &&
-                        product.id != null
-                );
-
-
-            const href =
-                firstProduct
-                    ?
-                    `product.html?id=${encodeURIComponent(
-                        firstProduct.id
-                    )}`
-                    :
-                    "collections.html";
+const href =
+    `collections.html?category=${encodeURIComponent(
+        category
+    )}`;
 
 
             const card =
