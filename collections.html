@@ -946,38 +946,104 @@ a.contact-card:hover{
 </style>
 
 
-<style id="collection-card-gap-fix">
-/* Refined card rhythm: remove the dead gap between product name and CTA */
+<style id="collection-card-final-polish">
+
+/* =========================================================
+   COLLECTION CARD — FINAL PREMIUM ALIGNMENT
+========================================================= */
+
 .collection-info{
-  min-height:138px!important;
-  padding:20px 21px 18px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  text-align:center!important;
+  min-height:142px!important;
+  padding:21px 18px 18px!important;
 }
+
+.collection-info:before{
+  left:50%!important;
+  transform:translateX(-50%)!important;
+  width:34px!important;
+}
+
+.collection-info .category{
+  justify-content:center!important;
+  text-align:center!important;
+  margin-bottom:9px!important;
+}
+
+.collection-info .category:before{
+  display:none!important;
+}
+
 .collection-info h3{
+  width:100%!important;
+  max-width:100%!important;
   margin:0!important;
-  line-height:1.25!important;
+  text-align:center!important;
+  line-height:1.28!important;
 }
+
 .collection-info .view{
-  margin-top:10px!important;
-  line-height:1.2!important;
+  justify-content:center!important;
+  margin-top:12px!important;
+  padding-top:0!important;
+  text-align:center!important;
 }
+
+.collection-info .view:after{
+  margin-left:9px!important;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
 @media(max-width:760px){
+
   .collection-info{
-    min-height:124px!important;
-    padding:16px 15px 15px!important;
+    min-height:128px!important;
+    padding:17px 12px 15px!important;
   }
+
+  .collection-info .category{
+    justify-content:center!important;
+    margin-bottom:7px!important;
+  }
+
   .collection-info h3{
-    line-height:1.25!important;
+    font-size:14px!important;
+    line-height:1.27!important;
   }
+
   .collection-info .view{
-    margin-top:9px!important;
+    margin-top:10px!important;
+    font-size:7px!important;
   }
+
 }
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
 @media(max-width:390px){
+
   .collection-info{
-    min-height:116px!important;
-    padding:14px 13px 14px!important;
+    min-height:120px!important;
+    padding:15px 10px 14px!important;
   }
+
+  .collection-info h3{
+    font-size:13px!important;
+  }
+
 }
+
 </style>
 
 
