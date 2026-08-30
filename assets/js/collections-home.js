@@ -158,15 +158,15 @@ async function initCollectionsHome(){
         allProducts =
             products.filter(Boolean);
 
-
-        /* --------------------------------------
-           RENDER
+                /* --------------------------------------
+           SHOW ALL PRODUCTS
+           Same product cards as Search
         -------------------------------------- */
 
-        renderCollections(
+        renderSearchProducts(
+                renderSearchProducts(
             allProducts
         );
-
 
         initSearch();
 
@@ -188,7 +188,6 @@ async function initCollectionsHome(){
     }
 
 }
-
 
 /* ==========================================
    GROUP PRODUCTS BY CATEGORY
