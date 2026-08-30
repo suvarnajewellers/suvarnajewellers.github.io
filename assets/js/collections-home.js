@@ -1,22 +1,17 @@
 /* ==========================================
    SUVARNA JEWELLERS V9
    COLLECTIONS-HOME.JS
-   FINAL PREMIUM + STABLE VERSION
-
-   PURPOSE
+   FINAL — ALL PRODUCTS CATALOG
    ------------------------------------------
-   • Homepage initially shows COLLECTION cards
-   • Search shows ALL matching PRODUCTS
-   • "Gold" => all Gold products
-   • "Silver" => all Silver products
-   • Product count shows ALL loaded products
-   • No .slice()
+   • Initial page = ALL PRODUCTS
+   • No 6 product limit
    • No fixed product limit
+   • Search filters ALL products
+   • Gold / Silver search works
    • Existing getProducts() system
    • Existing getImage() system
-   • Existing product.html?id= system
-   • Exact product image paths preserved
-   • Premium ivory luxury presentation
+   • Product cards use real product images
+   • No category-card rendering in product grid
 ========================================== */
 
 document.addEventListener(
@@ -33,90 +28,17 @@ let allProducts = [];
 
 
 /* ==========================================
-   COLLECTION ORDER
+   INITIALIZE
 ========================================== */
 
-const COLLECTION_ORDER = [
-
-    "Gold Jewellery",
-    "Silver Jewellery",
-    "Rudraksha Mala",
-    "Rudraksha Bracelet",
-    "Pendant",
-    "Tulsi Mala"
-
-];
-
-
-/* ==========================================
-   COLLECTION META
-========================================== */
-
-const COLLECTION_META = {
-
-    "Gold Jewellery": {
-
-        title: "Gold Jewellery",
-        subtitle: "Premium Gold Collection",
-        button: "Explore Gold"
-
-    },
-
-    "Silver Jewellery": {
-
-        title: "Silver Jewellery",
-        subtitle: "Refined Silver Collection",
-        button: "Explore Silver"
-
-    },
-
-    "Rudraksha Mala": {
-
-        title: "Rudraksha Mala",
-        subtitle: "Premium Rudraksha Collection",
-        button: "Explore Collection"
-
-    },
-
-    "Rudraksha Bracelet": {
-
-        title: "Rudraksha Bracelet",
-        subtitle: "Premium Bracelet Collection",
-        button: "Explore Collection"
-
-    },
-
-    "Pendant": {
-
-        title: "Pendants",
-        subtitle: "Elegant Pendant Collection",
-        button: "Explore Collection"
-
-    },
-
-    "Tulsi Mala": {
-
-        title: "Tulsi Mala",
-        subtitle: "Traditional Tulsi Collection",
-        button: "Explore Collection"
-
-    }
-
-};
-
-
-/* ==========================================
-   INITIALIZE COLLECTION HOME
-========================================== */
-
-async function initCollectionsHome(){
+async function initCollectionsHome() {
 
     const grid =
         document.getElementById(
             "collectionsGrid"
         );
 
-    if(!grid){
+    if (!grid) {
 
         console.warn(
             "Collections grid not found."
@@ -128,33 +50,26 @@ async function initCollectionsHome(){
 
 
     /* ======================================
-       LOADING
+       LOADING STATE
     ====================================== */
 
     grid.innerHTML = `
-
         <div class="collections-loading">
-
             <span class="collections-loading-line"></span>
-
-            <span>
-                Curating Collections
-            </span>
-
+            <span>Curating Jewellery</span>
         </div>
-
     `;
 
 
-    try{
+    try {
 
         /* ==================================
            EXISTING API ONLY
         ================================== */
 
-        if(
+        if (
             typeof getProducts !== "function"
-        ){
+        ) {
 
             console.error(
                 "getProducts() is not available."
@@ -163,8 +78,6 @@ async function initCollectionsHome(){
             allProducts = [];
 
             renderGracefulFallback();
-
-            initSearch();
 
             return;
 
@@ -179,7 +92,9 @@ async function initCollectionsHome(){
             await getProducts();
 
 
-        if(!Array.isArray(products)){
+        if (
+            !Array.isArray(products)
+        ) {
 
             console.error(
                 "Invalid products response."
@@ -189,17 +104,19 @@ async function initCollectionsHome(){
 
             renderGracefulFallback();
 
-            initSearch();
-
             return;
 
         }
 
 
-        /* ==================================
-           STORE ALL PRODUCTS
-           NO LIMIT
-        ================================== */
+        /*
+         * IMPORTANT
+         * Keep every valid product.
+         *
+         * NO slice()
+         * NO limit
+         * NO category grouping
+         */
 
         allProducts =
             products.filter(
@@ -208,14 +125,13 @@ async function initCollectionsHome(){
 
 
         console.log(
-            "Suvarna Collections:",
-            allProducts.length,
-            "products loaded."
+            "SUVARNA COLLECTIONS — Total Products:",
+            allProducts.length
         );
 
 
         /* ==================================
-           UPDATE PRODUCT COUNT
+           PRODUCT COUNT
         ================================== */
 
         updateProductCount(
@@ -224,24 +140,27 @@ async function initCollectionsHome(){
 
 
         /* ==================================
-           INITIAL VIEW
-           SHOW COLLECTION CARDS
+           INITIAL PAGE
+           
+           SHOW EVERY PRODUCT
+           
+           NOT COLLECTION CATEGORY CARDS
         ================================== */
 
-        renderCollections(
+        renderSearchProducts(
             allProducts
         );
 
 
         /* ==================================
-           INITIALIZE SEARCH
+           SEARCH
         ================================== */
 
         initSearch();
 
     }
 
-    catch(error){
+    catch (error) {
 
         console.error(
             "Collections Loading Error:",
@@ -265,7 +184,9 @@ async function initCollectionsHome(){
    PRODUCT COUNT
 ========================================== */
 
-function updateProductCount(count){
+function updateProductCount(
+    count
+) {
 
     const countElement =
         document.getElementById(
@@ -273,698 +194,158 @@ function updateProductCount(count){
         );
 
 
-    if(!countElement) return;
+    if (!countElement) return;
 
 
     countElement.textContent =
-        Number.isFinite(count)
-            ? count
-            : 0;
-
-}
-
-
-/* ==========================================
-   GROUP PRODUCTS BY CATEGORY
-========================================== */
-
-function buildCollections(products){
-
-    if(
-        !Array.isArray(products) ||
-        !products.length
-    ){
-
-        return [];
-
-    }
-
-
-    const grouped = {};
-
-
-    products.forEach(
-        product => {
-
-            if(!product) return;
-
-
-            const category =
-                String(
-                    product.category || ""
-                ).trim();
-
-
-            if(!category) return;
-
-
-            if(!grouped[category]){
-
-                grouped[category] = [];
-
-            }
-
-
-            grouped[category].push(
-                product
-            );
-
-        }
-    );
-
-
-    const collections = [];
-
-
-    /* ======================================
-       PREFERRED ORDER
-    ====================================== */
-
-    COLLECTION_ORDER.forEach(
-        category => {
-
-            if(
-                grouped[category]
-            ){
-
-                collections.push({
-
-                    category:
-                        category,
-
-                    products:
-                        grouped[category]
-
-                });
-
-            }
-
-        }
-    );
-
-
-    /* ======================================
-       FUTURE / OTHER CATEGORIES
-       AUTOMATICALLY INCLUDED
-    ====================================== */
-
-    Object.keys(grouped).forEach(
-        category => {
-
-            if(
-                !COLLECTION_ORDER.includes(
-                    category
-                )
-            ){
-
-                collections.push({
-
-                    category:
-                        category,
-
-                    products:
-                        grouped[category]
-
-                });
-
-            }
-
-        }
-    );
-
-
-    return collections;
+        Number(count) || 0;
 
 }
 
 
 /* ==========================================
    GET PRODUCT IMAGE
+   ------------------------------------------
+   Existing image system only.
 ========================================== */
 
 function getRealProductImage(
-    products
-){
+    product
+) {
 
-    if(
-        !Array.isArray(products) ||
-        !products.length
-    ){
+    if (!product) {
 
         return "";
 
     }
 
 
-    for(
-        const product of products
-    ){
-
-        if(!product) continue;
+    let rawImage = "";
 
 
-        let rawImage = "";
+    /* --------------------------------------
+       Standard image field
+    -------------------------------------- */
+
+    if (
+        product.image
+    ) {
+
+        rawImage =
+            product.image;
+
+    }
 
 
-        /* ----------------------------------
-           Standard image
-        ---------------------------------- */
+    /* --------------------------------------
+       Images array fallback
+    -------------------------------------- */
 
-        if(product.image){
+    else if (
+        Array.isArray(
+            product.images
+        ) &&
+        product.images.length
+    ) {
 
-            rawImage =
-                product.image;
+        rawImage =
+            product.images[0];
 
-        }
-
-
-        /* ----------------------------------
-           Images array fallback
-        ---------------------------------- */
-
-        else if(
-            Array.isArray(product.images) &&
-            product.images.length
-        ){
-
-            rawImage =
-                product.images[0];
-
-        }
+    }
 
 
-        if(!rawImage) continue;
+    if (!rawImage) {
+
+        return "";
+
+    }
 
 
-        /* ----------------------------------
-           Existing getImage()
-        ---------------------------------- */
+    /* --------------------------------------
+       Existing getImage() system
+    -------------------------------------- */
 
-        try{
+    try {
 
-            if(
-                typeof getImage === "function"
-            ){
+        if (
+            typeof getImage === "function"
+        ) {
 
-                const resolved =
-                    getImage(rawImage);
+            const resolved =
+                getImage(rawImage);
 
-                if(resolved){
 
-                    return resolved;
+            if (resolved) {
 
-                }
+                return resolved;
 
             }
 
         }
 
-        catch(error){
-
-            console.warn(
-                "getImage() failed:",
-                error
-            );
-
-        }
-
-
-        /* ----------------------------------
-           Existing path fallback
-        ---------------------------------- */
-
-        return rawImage;
-
     }
 
-
-    return "";
-
-}
-
-
-/* ==========================================
-   RENDER COLLECTION CARDS
-   ------------------------------------------
-   INITIAL HOMEPAGE VIEW
-
-   This shows the collection categories,
-   NOT individual products.
-========================================== */
-
-function renderCollections(
-    products
-){
-
-    const grid =
-        document.getElementById(
-            "collectionsGrid"
-        );
-
-
-    if(!grid) return;
-
-
-    const collections =
-        buildCollections(
-            products
-        );
-
-
-    grid.innerHTML = "";
-
-
-    /* ======================================
-       EMPTY
-    ====================================== */
-
-    if(!collections.length){
-
-        renderGracefulFallback();
-
-        return;
-
-    }
-
-
-    /* ======================================
-       CREATE COLLECTION CARDS
-    ====================================== */
-
-    collections.forEach(
-        (
-            collection,
-            index
-        ) => {
-
-            const category =
-                collection.category;
-
-
-            const meta =
-                COLLECTION_META[
-                    category
-                ] ||
-                {
-
-                    title:
-                        category,
-
-                    subtitle:
-                        "Premium Jewellery Collection",
-
-                    button:
-                        "Explore Collection"
-
-                };
-
-
-            const image =
-                getRealProductImage(
-                    collection.products
-                );
-
-
-            /* ==================================
-               COLLECTION URL
-            ================================== */
-
-            const href =
-                `collections.html?category=${encodeURIComponent(
-                    category
-                )}`;
-
-
-            const card =
-                document.createElement(
-                    "a"
-                );
-
-
-            card.href =
-                href;
-
-
-            card.className =
-                "collection-link premium-collection-link";
-
-
-            card.innerHTML = `
-
-                <article
-                    class="card premium-collection-card"
-                >
-
-                    <div
-                        class="card-image premium-collection-image"
-                    >
-
-                        ${
-                            image
-                            ?
-                            `
-                            <img
-                                src="${escapeHtml(image)}"
-                                alt="${escapeHtml(meta.title)}"
-                                loading="lazy"
-                                decoding="async"
-                            >
-                            `
-                            :
-                            `
-                            <div
-                                class="collection-image-fallback"
-                            >
-
-                                <span>
-                                    SUVARNA JEWELLERS
-                                </span>
-
-                                <strong>
-                                    ${escapeHtml(
-                                        meta.title
-                                    )}
-                                </strong>
-
-                            </div>
-                            `
-                        }
-
-
-                        <div
-                            class="collection-image-overlay"
-                        ></div>
-
-
-                        <span
-                            class="collection-category-label"
-                        >
-                            ${escapeHtml(
-                                meta.title
-                            )}
-                        </span>
-
-                    </div>
-
-
-                    <div
-                        class="card-content premium-collection-content"
-                    >
-
-                        <span
-                            class="collection-number"
-                        >
-                            ${String(
-                                index + 1
-                            ).padStart(2,"0")}
-                        </span>
-
-
-                        <h3>
-                            ${escapeHtml(
-                                meta.title
-                            )}
-                        </h3>
-
-
-                        <p>
-                            ${escapeHtml(
-                                meta.subtitle
-                            )}
-                        </p>
-
-
-                        <span
-                            class="card-btn premium-collection-btn"
-                        >
-
-                            ${escapeHtml(
-                                meta.button
-                            )}
-
-                            <span
-                                aria-hidden="true"
-                            >
-                                →
-                            </span>
-
-                        </span>
-
-                    </div>
-
-                </article>
-
-            `;
-
-
-            attachImageFallback(
-                card,
-                meta.title
-            );
-
-
-            grid.appendChild(
-                card
-            );
-
-        }
-    );
-
-
-    injectPremiumStyles();
-
-}
-
-
-/* ==========================================
-   SEARCH
-   ------------------------------------------
-   IMPORTANT:
-
-   Empty search:
-   → Collection cards
-
-   Search keyword:
-   → ALL matching PRODUCT cards
-
-   Example:
-   Gold
-   → every product whose category,
-     name, metal or description matches Gold
-========================================== */
-
-function initSearch(){
-
-    /*
-     * Support both possible IDs so the
-     * existing HTML does not break.
-     */
-
-    const search =
-        document.getElementById(
-            "collectionSearch"
-        ) ||
-        document.getElementById(
-            "searchInput"
-        );
-
-
-    if(!search){
+    catch (error) {
 
         console.warn(
-            "Collection search input not found."
+            "getImage() failed:",
+            error
         );
 
-        return;
-
     }
 
 
-    /* Prevent duplicate listener */
+    /* --------------------------------------
+       Final fallback
+    -------------------------------------- */
 
-    if(
-        search.dataset.initialized ===
-        "true"
-    ){
-
-        return;
-
-    }
-
-
-    search.dataset.initialized =
-        "true";
-
-
-    search.addEventListener(
-        "input",
-        function(){
-
-            const keyword =
-                String(
-                    this.value || ""
-                )
-                .trim()
-                .toLowerCase();
-
-
-            /* ==================================
-               EMPTY SEARCH
-            ================================== */
-
-            if(!keyword){
-
-                updateProductCount(
-                    allProducts.length
-                );
-
-
-                renderCollections(
-                    allProducts
-                );
-
-
-                return;
-
-            }
-
-
-            /* ==================================
-               SEARCH ALL PRODUCTS
-            ================================== */
-
-            const filtered =
-                allProducts.filter(
-                    product => {
-
-                        if(!product){
-
-                            return false;
-
-                        }
-
-
-                        const name =
-                            normalizeSearchValue(
-                                product.name
-                            );
-
-
-                        const category =
-                            normalizeSearchValue(
-                                product.category
-                            );
-
-
-                        const metal =
-                            normalizeSearchValue(
-                                product.metal
-                            );
-
-
-                        const description =
-                            normalizeSearchValue(
-                                product.description
-                            );
-
-
-                        /*
-                         * SEARCH ACROSS ALL
-                         * IMPORTANT PRODUCT FIELDS
-                         */
-
-                        return (
-
-                            name.includes(
-                                keyword
-                            )
-
-                            ||
-
-                            category.includes(
-                                keyword
-                            )
-
-                            ||
-
-                            metal.includes(
-                                keyword
-                            )
-
-                            ||
-
-                            description.includes(
-                                keyword
-                            )
-
-                        );
-
-                    }
-                );
-
-
-            /* ==================================
-               COUNT MATCHING PRODUCTS
-            ================================== */
-
-            updateProductCount(
-                filtered.length
-            );
-
-
-            /* ==================================
-               SHOW ALL MATCHING PRODUCTS
-               NO SLICE
-               NO LIMIT
-            ================================== */
-
-            renderSearchProducts(
-                filtered
-            );
-
-        }
-    );
+    return rawImage;
 
 }
 
 
 /* ==========================================
-   NORMALIZE SEARCH VALUE
+   ESCAPE HTML
 ========================================== */
 
-function normalizeSearchValue(
+function escapeHtml(
     value
-){
+) {
 
     return String(
         value ?? ""
     )
-    .trim()
-    .toLowerCase();
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
 
 }
 
 
 /* ==========================================
-   RENDER SEARCH PRODUCTS
-   ------------------------------------------
-   THIS IS THE IMPORTANT PART
-
-   Search results are INDIVIDUAL PRODUCTS.
-
-   If 110 products match:
-   → 110 cards are created.
-
-   If 47 Gold products match:
-   → 47 cards are created.
-
-   NO .slice()
-   NO LIMIT
+   RENDER ALL PRODUCT CARDS
 ========================================== */
 
 function renderSearchProducts(
     products
-){
+) {
 
     const grid =
         document.getElementById(
@@ -972,20 +353,23 @@ function renderSearchProducts(
         );
 
 
-    if(!grid) return;
+    if (!grid) return;
 
 
     grid.innerHTML = "";
 
 
     /* ======================================
-       NO RESULTS
+       EMPTY RESULT
     ====================================== */
 
-    if(
+    if (
         !Array.isArray(products) ||
         !products.length
-    ){
+    ) {
+
+        updateProductCount(0);
+
 
         grid.innerHTML = `
 
@@ -997,16 +381,14 @@ function renderSearchProducts(
                     SUVARNA JEWELLERS
                 </span>
 
-
                 <h3>
                     No Jewellery Found
                 </h3>
 
-
                 <p>
                     No products match your
-                    search. Try another
-                    product, category or metal.
+                    current search.
+                    Please try another keyword.
                 </p>
 
             </div>
@@ -1022,7 +404,20 @@ function renderSearchProducts(
 
 
     /* ======================================
-       CREATE EVERY PRODUCT
+       IMPORTANT
+       COUNT MUST MATCH WHAT IS DISPLAYED
+    ====================================== */
+
+    updateProductCount(
+        products.length
+    );
+
+
+    /* ======================================
+       RENDER EVERY PRODUCT
+       
+       NO .slice()
+       NO LIMIT
     ====================================== */
 
     products.forEach(
@@ -1031,16 +426,16 @@ function renderSearchProducts(
             index
         ) => {
 
-            if(!product) return;
+            if (!product) return;
 
 
             const image =
-                getRealProductImage([
+                getRealProductImage(
                     product
-                ]);
+                );
 
 
-            const productName =
+            const name =
                 product.name ||
                 "Premium Jewellery";
 
@@ -1064,10 +459,14 @@ function renderSearchProducts(
                     ?
                     `product.html?id=${encodeURIComponent(
                         product.id
-                    )}`
+                    )}&source=collections`
                     :
                     "#";
 
+
+            /* ==================================
+               CARD
+            ================================== */
 
             const card =
                 document.createElement(
@@ -1080,17 +479,21 @@ function renderSearchProducts(
 
 
             card.className =
-                "collection-link premium-collection-link";
+                "collection-link premium-product-link";
 
 
             card.innerHTML = `
 
                 <article
-                    class="card premium-collection-card"
+                    class="card premium-product-card"
                 >
 
+                    <!-- =========================
+                         PRODUCT IMAGE
+                    ========================== -->
+
                     <div
-                        class="card-image premium-collection-image"
+                        class="card-image premium-product-image"
                     >
 
                         ${
@@ -1098,26 +501,33 @@ function renderSearchProducts(
                             ?
                             `
                             <img
-                                src="${escapeHtml(image)}"
-                                alt="${escapeHtml(productName)}"
-                                loading="lazy"
+                                src="${escapeHtml(
+                                    image
+                                )}"
+                                alt="${escapeHtml(
+                                    name
+                                )}"
+                                loading="${
+                                    index < 8
+                                        ? "eager"
+                                        : "lazy"
+                                }"
                                 decoding="async"
                             >
                             `
                             :
                             `
                             <div
-                                class="collection-image-fallback"
+                                class="product-image-fallback"
                             >
 
                                 <span>
                                     SUVARNA JEWELLERS
                                 </span>
 
-
                                 <strong>
                                     ${escapeHtml(
-                                        productName
+                                        name
                                     )}
                                 </strong>
 
@@ -1127,12 +537,12 @@ function renderSearchProducts(
 
 
                         <div
-                            class="collection-image-overlay"
+                            class="product-image-light"
                         ></div>
 
 
                         <span
-                            class="collection-category-label"
+                            class="product-category-pill"
                         >
                             ${escapeHtml(
                                 category
@@ -1145,7 +555,7 @@ function renderSearchProducts(
                             ?
                             `
                             <span
-                                class="collection-metal-badge"
+                                class="product-metal-pill"
                             >
                                 ${escapeHtml(
                                     metal
@@ -1159,23 +569,29 @@ function renderSearchProducts(
                     </div>
 
 
+                    <!-- =========================
+                         PRODUCT CONTENT
+                    ========================== -->
+
                     <div
-                        class="card-content premium-collection-content"
+                        class="card-content premium-product-content"
                     >
 
                         <span
-                            class="collection-number"
+                            class="product-index"
                         >
                             ${String(
                                 index + 1
-                            ).padStart(2,"0")}
-
+                            ).padStart(
+                                2,
+                                "0"
+                            )}
                         </span>
 
 
                         <h3>
                             ${escapeHtml(
-                                productName
+                                name
                             )}
                         </h3>
 
@@ -1188,7 +604,7 @@ function renderSearchProducts(
 
 
                         <span
-                            class="card-btn premium-collection-btn"
+                            class="premium-product-button"
                         >
 
                             View Product
@@ -1208,10 +624,80 @@ function renderSearchProducts(
             `;
 
 
-            attachImageFallback(
-                card,
-                productName
-            );
+            /* ==================================
+               IMAGE ERROR FALLBACK
+            ================================== */
+
+            const imageElement =
+                card.querySelector(
+                    "img"
+                );
+
+
+            if (imageElement) {
+
+                imageElement.addEventListener(
+                    "error",
+                    function () {
+
+                        this.style.display =
+                            "none";
+
+
+                        const parent =
+                            this.parentElement;
+
+
+                        if (!parent) return;
+
+
+                        if (
+                            parent.querySelector(
+                                ".product-image-fallback"
+                            )
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        const fallback =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        fallback.className =
+                            "product-image-fallback";
+
+
+                        fallback.innerHTML = `
+
+                            <span>
+                                SUVARNA JEWELLERS
+                            </span>
+
+                            <strong>
+                                ${escapeHtml(
+                                    name
+                                )}
+                            </strong>
+
+                        `;
+
+
+                        parent.prepend(
+                            fallback
+                        );
+
+                    },
+                    {
+                        once: true
+                    }
+                );
+
+            }
 
 
             grid.appendChild(
@@ -1222,88 +708,159 @@ function renderSearchProducts(
     );
 
 
+    /* ======================================
+       PREMIUM CSS
+    ====================================== */
+
     injectPremiumStyles();
 
 }
 
 
 /* ==========================================
-   IMAGE ERROR FALLBACK
+   SEARCH SYSTEM
 ========================================== */
 
-function attachImageFallback(
-    card,
-    title
-){
+function initSearch() {
 
-    const imageElement =
-        card.querySelector(
-            "img"
+    const search =
+        document.getElementById(
+            "collectionSearch"
         );
 
 
-    if(!imageElement) return;
+    if (!search) {
+
+        console.warn(
+            "collectionSearch input not found."
+        );
+
+        return;
+
+    }
 
 
-    imageElement.addEventListener(
-        "error",
-        function(){
+    /* Prevent duplicate listener */
 
-            this.style.display =
-                "none";
+    if (
+        search.dataset.initialized ===
+        "true"
+    ) {
 
+        return;
 
-            const parent =
-                this.parentElement;
-
-
-            if(!parent) return;
+    }
 
 
-            if(
-                parent.querySelector(
-                    ".collection-image-fallback"
-                )
-            ){
+    search.dataset.initialized =
+        "true";
+
+
+    search.addEventListener(
+        "input",
+        function () {
+
+            const keyword =
+                this.value
+                    .trim()
+                    .toLowerCase();
+
+
+            /* ==================================
+               EMPTY SEARCH
+               SHOW ALL PRODUCTS AGAIN
+            ================================== */
+
+            if (!keyword) {
+
+                renderSearchProducts(
+                    allProducts
+                );
 
                 return;
 
             }
 
 
-            const fallback =
-                document.createElement(
-                    "div"
+            /* ==================================
+               SEARCH ALL PRODUCTS
+               
+               NAME
+               CATEGORY
+               METAL
+               DESCRIPTION
+            ================================== */
+
+            const filtered =
+                allProducts.filter(
+                    product => {
+
+                        if (!product) {
+
+                            return false;
+
+                        }
+
+
+                        const name =
+                            String(
+                                product.name ||
+                                ""
+                            )
+                            .toLowerCase();
+
+
+                        const category =
+                            String(
+                                product.category ||
+                                ""
+                            )
+                            .toLowerCase();
+
+
+                        const metal =
+                            String(
+                                product.metal ||
+                                ""
+                            )
+                            .toLowerCase();
+
+
+                        const description =
+                            String(
+                                product.description ||
+                                ""
+                            )
+                            .toLowerCase();
+
+
+                        return (
+                            name.includes(
+                                keyword
+                            ) ||
+                            category.includes(
+                                keyword
+                            ) ||
+                            metal.includes(
+                                keyword
+                            ) ||
+                            description.includes(
+                                keyword
+                            )
+                        );
+
+                    }
                 );
 
 
-            fallback.className =
-                "collection-image-fallback";
+            /* ==================================
+               SHOW ALL MATCHING PRODUCTS
+            ================================== */
 
-
-            fallback.innerHTML = `
-
-                <span>
-                    SUVARNA JEWELLERS
-                </span>
-
-
-                <strong>
-                    ${escapeHtml(
-                        title
-                    )}
-                </strong>
-
-            `;
-
-
-            parent.prepend(
-                fallback
+            renderSearchProducts(
+                filtered
             );
 
-        },
-        {
-            once:true
         }
     );
 
@@ -1314,7 +871,7 @@ function attachImageFallback(
    GRACEFUL FALLBACK
 ========================================== */
 
-function renderGracefulFallback(){
+function renderGracefulFallback() {
 
     const grid =
         document.getElementById(
@@ -1322,7 +879,7 @@ function renderGracefulFallback(){
         );
 
 
-    if(!grid) return;
+    if (!grid) return;
 
 
     grid.innerHTML = `
@@ -1335,24 +892,23 @@ function renderGracefulFallback(){
                 SUVARNA JEWELLERS
             </span>
 
-
             <h3>
                 Premium Collections
             </h3>
 
-
             <p>
-                Explore our Gold, Silver and
-                premium jewellery collections.
+                Our jewellery collection is
+                temporarily unavailable.
+                Please try again.
             </p>
 
-
-            <a
-                href="collections.html"
-                class="card-btn premium-collection-btn"
+            <button
+                type="button"
+                class="premium-retry-button"
+                onclick="retryCollections()"
             >
-                Explore Collections
-            </a>
+                Retry
+            </button>
 
         </div>
 
@@ -1365,22 +921,28 @@ function renderGracefulFallback(){
 
 
 /* ==========================================
-   PREMIUM STYLES
-   ------------------------------------------
-   ONE CLEAN CSS SYSTEM
-
-   IMPORTANT:
-   Product image gets larger visual area.
-   object-fit: contain preserves jewellery.
+   RETRY
 ========================================== */
 
-function injectPremiumStyles(){
+window.retryCollections =
+    function () {
 
-    if(
+        initCollectionsHome();
+
+    };
+
+
+/* ==========================================
+   PREMIUM PRODUCT CARD STYLES
+========================================== */
+
+function injectPremiumStyles() {
+
+    if (
         document.getElementById(
             "suvarna-collections-final-css"
         )
-    ){
+    ) {
 
         return;
 
@@ -1400,13 +962,14 @@ function injectPremiumStyles(){
     style.textContent = `
 
         /* ======================================
-           LINK
+           PRODUCT LINK
         ====================================== */
 
-        .premium-collection-link{
+        .premium-product-link {
 
             display:block;
 
+            width:100%;
             height:100%;
 
             color:inherit;
@@ -1417,10 +980,10 @@ function injectPremiumStyles(){
 
 
         /* ======================================
-           CARD
+           PRODUCT CARD
         ====================================== */
 
-        .premium-collection-card{
+        .premium-product-card {
 
             position:relative;
 
@@ -1428,6 +991,7 @@ function injectPremiumStyles(){
 
             flex-direction:column;
 
+            width:100%;
             height:100%;
 
             overflow:hidden;
@@ -1450,25 +1014,25 @@ function injectPremiumStyles(){
                 rgba(43,0,21,.075);
 
             transition:
-                transform .35s ease,
-                box-shadow .35s ease,
-                border-color .35s ease;
+                transform .4s ease,
+                box-shadow .4s ease,
+                border-color .4s ease;
 
         }
 
 
-        .premium-collection-link:hover
-        .premium-collection-card{
+        .premium-product-link:hover
+        .premium-product-card {
 
             transform:
-                translateY(-5px);
+                translateY(-6px);
 
             border-color:
-                rgba(180,145,75,.35);
+                rgba(180,145,75,.38);
 
             box-shadow:
-                0 19px 42px
-                rgba(43,0,21,.13);
+                0 20px 45px
+                rgba(43,0,21,.14);
 
         }
 
@@ -1476,25 +1040,34 @@ function injectPremiumStyles(){
         /* ======================================
            IMAGE AREA
 
-           Larger image area so jewellery does
-           NOT look tiny.
+           LARGE + CONSISTENT
         ====================================== */
 
-        .premium-collection-image{
+        .premium-product-image {
 
             position:relative;
 
             width:100%;
 
-            aspect-ratio:
-                1 / 1.04;
+            /*
+             * Square image stage.
+             * Every product gets the same visual area.
+             */
+
+            aspect-ratio:1 / 1;
+
+            min-height:0;
 
             overflow:hidden;
 
             padding:8px;
 
             background:
-                #eee3d2;
+                linear-gradient(
+                    145deg,
+                    #eee3d2,
+                    #faf5ec
+                );
 
         }
 
@@ -1503,28 +1076,30 @@ function injectPremiumStyles(){
            INNER IVORY STAGE
         ====================================== */
 
-        .premium-collection-image::before{
+        .premium-product-image::before {
 
             content:"";
 
             position:absolute;
 
+            z-index:0;
+
             inset:10px;
 
             border-radius:
-                20px 20px 34px 34px;
+                20px 20px 32px 32px;
 
             background:
                 linear-gradient(
                     145deg,
                     #fffefa 0%,
-                    #eee2d1 100%
+                    #eee2d0 100%
                 );
 
             box-shadow:
                 inset
                 0 0 0 1px
-                rgba(180,145,75,.11);
+                rgba(180,145,75,.12);
 
             pointer-events:none;
 
@@ -1533,9 +1108,12 @@ function injectPremiumStyles(){
 
         /* ======================================
            PRODUCT IMAGE
+
+           IMPORTANT:
+           DO NOT CROP
         ====================================== */
 
-        .premium-collection-image img{
+        .premium-product-image img {
 
             position:relative;
 
@@ -1544,22 +1122,27 @@ function injectPremiumStyles(){
             display:block;
 
             width:100%;
-
             height:100%;
+
+            /*
+             * More usable image space.
+             */
+
+            padding:3px 4px;
 
             object-fit:contain;
 
             object-position:center;
 
+            border-radius:
+                20px 20px 32px 32px;
+
             /*
-             * Reduced padding = jewellery
-             * appears larger.
+             * Slightly larger visual jewellery.
              */
 
-            padding:5px;
-
-            border-radius:
-                20px 20px 34px 34px;
+            transform:
+                scale(1.02);
 
             transition:
                 transform .55s ease;
@@ -1567,20 +1150,20 @@ function injectPremiumStyles(){
         }
 
 
-        .premium-collection-link:hover
-        .premium-collection-image img{
+        .premium-product-link:hover
+        .premium-product-image img {
 
             transform:
-                scale(1.035);
+                scale(1.075);
 
         }
 
 
         /* ======================================
-           IMAGE OVERLAY
+           IMAGE LIGHT
         ====================================== */
 
-        .collection-image-overlay{
+        .product-image-light {
 
             position:absolute;
 
@@ -1589,15 +1172,15 @@ function injectPremiumStyles(){
             inset:10px;
 
             border-radius:
-                20px 20px 34px 34px;
+                20px 20px 32px 32px;
 
             pointer-events:none;
 
             background:
                 linear-gradient(
                     180deg,
-                    rgba(255,255,255,.04),
-                    transparent 55%,
+                    rgba(255,255,255,.10),
+                    rgba(255,255,255,0) 48%,
                     rgba(43,0,21,.035)
                 );
 
@@ -1608,15 +1191,24 @@ function injectPremiumStyles(){
            CATEGORY
         ====================================== */
 
-        .collection-category-label{
+        .product-category-pill {
 
             position:absolute;
 
-            z-index:3;
+            z-index:4;
 
-            left:20px;
+            left:18px;
 
-            bottom:20px;
+            bottom:18px;
+
+            max-width:
+                calc(100% - 36px);
+
+            overflow:hidden;
+
+            white-space:nowrap;
+
+            text-overflow:ellipsis;
 
             padding:
                 6px 10px;
@@ -1626,17 +1218,17 @@ function injectPremiumStyles(){
             color:#fff;
 
             background:
-                rgba(43,0,21,.70);
+                rgba(43,0,21,.68);
 
             border:
                 1px solid
                 rgba(255,255,255,.28);
 
             backdrop-filter:
-                blur(8px);
+                blur(9px);
 
             -webkit-backdrop-filter:
-                blur(8px);
+                blur(9px);
 
             font-family:
                 Inter,
@@ -1645,10 +1237,10 @@ function injectPremiumStyles(){
 
             font-size:7px;
 
-            font-weight:600;
+            font-weight:500;
 
             letter-spacing:
-                1.45px;
+                1.35px;
 
             text-transform:
                 uppercase;
@@ -1657,32 +1249,40 @@ function injectPremiumStyles(){
 
 
         /* ======================================
-           METAL BADGE
+           METAL
         ====================================== */
 
-        .collection-metal-badge{
+        .product-metal-pill {
 
             position:absolute;
 
             z-index:4;
 
-            top:18px;
+            top:17px;
 
-            right:18px;
+            right:17px;
+
+            max-width:45%;
+
+            overflow:hidden;
+
+            white-space:nowrap;
+
+            text-overflow:ellipsis;
 
             padding:
                 6px 9px;
 
             border-radius:999px;
 
-            color:#e1c46d;
+            color:#e6c969;
 
             background:
-                rgba(43,0,21,.76);
+                rgba(43,0,21,.72);
 
             border:
                 1px solid
-                rgba(212,175,55,.30);
+                rgba(212,175,55,.35);
 
             backdrop-filter:
                 blur(8px);
@@ -1710,25 +1310,33 @@ function injectPremiumStyles(){
            CONTENT
         ====================================== */
 
-        .premium-collection-content{
+        .premium-product-content {
 
             position:relative;
+
+            display:flex;
+
+            flex-direction:column;
 
             flex:1;
 
             padding:
+                15px
                 16px
-                17px
-                18px;
+                17px;
 
         }
 
 
-        .collection-number{
+        /* ======================================
+           PRODUCT NUMBER
+        ====================================== */
+
+        .product-index {
 
             display:block;
 
-            margin-bottom:6px;
+            margin-bottom:5px;
 
             color:#a27b2c;
 
@@ -1742,10 +1350,17 @@ function injectPremiumStyles(){
             letter-spacing:
                 1.8px;
 
+            text-transform:
+                uppercase;
+
         }
 
 
-        .premium-collection-content h3{
+        /* ======================================
+           PRODUCT NAME
+        ====================================== */
+
+        .premium-product-content h3 {
 
             margin:
                 0 0 5px;
@@ -1757,21 +1372,34 @@ function injectPremiumStyles(){
                 Georgia,
                 serif;
 
-            font-size:17px;
+            font-size:16px;
 
             font-weight:600;
 
-            line-height:1.3;
+            line-height:1.35;
+
+            display:
+                -webkit-box;
+
+            -webkit-line-clamp:2;
+
+            -webkit-box-orient:vertical;
+
+            overflow:hidden;
 
         }
 
 
-        .premium-collection-content p{
+        /* ======================================
+           CATEGORY TEXT
+        ====================================== */
+
+        .premium-product-content p {
 
             margin:
-                0 0 12px;
+                0 0 13px;
 
-            color:#75686c;
+            color:#786b6e;
 
             font-family:
                 Inter,
@@ -1780,22 +1408,24 @@ function injectPremiumStyles(){
 
             font-size:10px;
 
-            line-height:1.5;
+            line-height:1.45;
 
         }
 
 
         /* ======================================
-           BUTTON
+           VIEW PRODUCT
         ====================================== */
 
-        .premium-collection-btn{
+        .premium-product-button {
 
             display:inline-flex;
 
             align-items:center;
 
             justify-content:center;
+
+            align-self:flex-start;
 
             gap:9px;
 
@@ -1813,7 +1443,7 @@ function injectPremiumStyles(){
             color:#76551d;
 
             background:
-                rgba(255,255,255,.55);
+                rgba(255,255,255,.52);
 
             font-family:
                 Inter,
@@ -1836,7 +1466,7 @@ function injectPremiumStyles(){
         }
 
 
-        .premium-collection-btn span{
+        .premium-product-button span {
 
             display:inline-flex;
 
@@ -1845,7 +1475,6 @@ function injectPremiumStyles(){
             justify-content:center;
 
             width:19px;
-
             height:19px;
 
             border-radius:50%;
@@ -1856,17 +1485,16 @@ function injectPremiumStyles(){
 
             font-size:12px;
 
-            line-height:1;
-
             transition:
                 transform .3s ease,
-                background .3s ease;
+                background .3s ease,
+                color .3s ease;
 
         }
 
 
-        .premium-collection-link:hover
-        .premium-collection-btn{
+        .premium-product-link:hover
+        .premium-product-button {
 
             color:#fff;
 
@@ -1877,8 +1505,8 @@ function injectPremiumStyles(){
         }
 
 
-        .premium-collection-link:hover
-        .premium-collection-btn span{
+        .premium-product-link:hover
+        .premium-product-button span {
 
             color:#2b0015;
 
@@ -1891,17 +1519,16 @@ function injectPremiumStyles(){
 
 
         /* ======================================
-           FALLBACK IMAGE
+           IMAGE FALLBACK
         ====================================== */
 
-        .collection-image-fallback{
+        .product-image-fallback {
 
             position:relative;
 
             z-index:1;
 
             width:100%;
-
             height:100%;
 
             display:flex;
@@ -1917,14 +1544,14 @@ function injectPremiumStyles(){
             padding:25px;
 
             border-radius:
-                20px 20px 34px 34px;
+                20px 20px 32px 32px;
 
             color:#fff;
 
             background:
                 radial-gradient(
                     circle at center,
-                    rgba(212,175,55,.22),
+                    rgba(212,175,55,.20),
                     transparent 58%
                 ),
                 linear-gradient(
@@ -1936,7 +1563,7 @@ function injectPremiumStyles(){
         }
 
 
-        .collection-image-fallback span{
+        .product-image-fallback span {
 
             margin-bottom:10px;
 
@@ -1954,7 +1581,7 @@ function injectPremiumStyles(){
         }
 
 
-        .collection-image-fallback strong{
+        .product-image-fallback strong {
 
             color:#fff;
 
@@ -1974,7 +1601,7 @@ function injectPremiumStyles(){
            LOADING
         ====================================== */
 
-        .collections-loading{
+        .collections-loading {
 
             grid-column:
                 1 / -1;
@@ -1998,7 +1625,7 @@ function injectPremiumStyles(){
                 Arial,
                 sans-serif;
 
-            font-size:9px;
+            font-size:10px;
 
             letter-spacing:2px;
 
@@ -2007,7 +1634,7 @@ function injectPremiumStyles(){
         }
 
 
-        .collections-loading-line{
+        .collections-loading-line {
 
             display:block;
 
@@ -2026,10 +1653,10 @@ function injectPremiumStyles(){
         }
 
 
-        @keyframes suvarnaCollectionLoading{
+        @keyframes suvarnaCollectionLoading {
 
             0%,
-            100%{
+            100% {
 
                 transform:
                     scaleX(.35);
@@ -2038,7 +1665,7 @@ function injectPremiumStyles(){
 
             }
 
-            50%{
+            50% {
 
                 transform:
                     scaleX(1);
@@ -2051,10 +1678,10 @@ function injectPremiumStyles(){
 
 
         /* ======================================
-           EMPTY STATE
+           EMPTY / ERROR
         ====================================== */
 
-        .collections-graceful-state{
+        .collections-graceful-state {
 
             grid-column:
                 1 / -1;
@@ -2094,7 +1721,7 @@ function injectPremiumStyles(){
         }
 
 
-        .collections-graceful-state span{
+        .collections-graceful-state span {
 
             margin-bottom:10px;
 
@@ -2112,7 +1739,7 @@ function injectPremiumStyles(){
         }
 
 
-        .collections-graceful-state h3{
+        .collections-graceful-state h3 {
 
             margin:
                 0 0 8px;
@@ -2129,12 +1756,12 @@ function injectPremiumStyles(){
         }
 
 
-        .collections-graceful-state p{
+        .collections-graceful-state p {
 
             max-width:500px;
 
             margin:
-                0 0 18px;
+                0 0 19px;
 
             color:#675b60;
 
@@ -2151,63 +1778,114 @@ function injectPremiumStyles(){
 
 
         /* ======================================
+           RETRY
+        ====================================== */
+
+        .premium-retry-button {
+
+            min-height:38px;
+
+            padding:
+                0 18px;
+
+            border:
+                1px solid
+                #d4af37;
+
+            border-radius:999px;
+
+            color:#fff;
+
+            background:#2b0015;
+
+            font-family:
+                Inter,
+                Arial,
+                sans-serif;
+
+            font-size:9px;
+
+            font-weight:600;
+
+            letter-spacing:
+                1.3px;
+
+            text-transform:uppercase;
+
+            cursor:pointer;
+
+        }
+
+
+        /* ======================================
            MOBILE
         ====================================== */
 
-        @media(max-width:700px){
+        @media(max-width:700px) {
 
-            .premium-collection-card{
+            .premium-product-card {
 
                 border-radius:18px;
 
             }
 
 
-            .premium-collection-image{
+            .premium-product-image {
 
-                aspect-ratio:
-                    1 / 1.02;
+                aspect-ratio:1 / 1;
 
                 padding:7px;
 
             }
 
 
-            .premium-collection-image::before{
+            .premium-product-image::before {
 
                 inset:9px;
 
                 border-radius:
-                    17px 17px 28px 28px;
+                    17px 17px 27px 27px;
 
             }
 
 
-            .premium-collection-image img{
+            .premium-product-image img {
 
-                padding:3px;
+                padding:2px;
 
                 border-radius:
-                    17px 17px 28px 28px;
+                    17px 17px 27px 27px;
+
+                transform:
+                    scale(1.015);
 
             }
 
 
-            .collection-image-overlay{
+            .premium-product-link:hover
+            .premium-product-image img {
+
+                transform:
+                    scale(1.055);
+
+            }
+
+
+            .product-image-light {
 
                 inset:9px;
 
                 border-radius:
-                    17px 17px 28px 28px;
+                    17px 17px 27px 27px;
 
             }
 
 
-            .collection-category-label{
+            .product-category-pill {
 
-                left:17px;
+                left:15px;
 
-                bottom:17px;
+                bottom:15px;
 
                 padding:
                     5px 8px;
@@ -2217,21 +1895,21 @@ function injectPremiumStyles(){
             }
 
 
-            .collection-metal-badge{
+            .product-metal-pill {
 
                 top:14px;
 
                 right:14px;
 
                 padding:
-                    5px 7px;
+                    5px 8px;
 
                 font-size:6.5px;
 
             }
 
 
-            .premium-collection-content{
+            .premium-product-content {
 
                 padding:
                     13px
@@ -2241,21 +1919,23 @@ function injectPremiumStyles(){
             }
 
 
-            .premium-collection-content h3{
+            .premium-product-content h3 {
 
                 font-size:14px;
 
             }
 
 
-            .premium-collection-content p{
+            .premium-product-content p {
 
                 font-size:9px;
+
+                margin-bottom:10px;
 
             }
 
 
-            .premium-collection-btn{
+            .premium-product-button {
 
                 min-height:30px;
 
@@ -2267,10 +1947,9 @@ function injectPremiumStyles(){
             }
 
 
-            .premium-collection-btn span{
+            .premium-product-button span {
 
                 width:18px;
-
                 height:18px;
 
                 font-size:11px;
@@ -2281,24 +1960,46 @@ function injectPremiumStyles(){
 
 
         /* ======================================
-           REDUCED MOTION
+           SMALL MOBILE
         ====================================== */
 
-        @media(prefers-reduced-motion:reduce){
+        @media(max-width:380px) {
 
-            .premium-collection-card,
-            .premium-collection-image img,
-            .premium-collection-btn,
-            .premium-collection-btn span{
+            .premium-product-content h3 {
 
-                transition:none !important;
+                font-size:13px;
 
             }
 
 
-            .collections-loading-line{
+            .premium-product-content p {
 
-                animation:none !important;
+                font-size:8.5px;
+
+            }
+
+
+            .premium-product-button {
+
+                font-size:6.5px;
+
+            }
+
+        }
+
+
+        /* ======================================
+           REDUCED MOTION
+        ====================================== */
+
+        @media(prefers-reduced-motion:reduce) {
+
+            .premium-product-card,
+            .premium-product-image img,
+            .premium-product-button,
+            .premium-product-button span {
+
+                transition:none !important;
 
             }
 
@@ -2312,71 +2013,3 @@ function injectPremiumStyles(){
     );
 
 }
-
-
-/* ==========================================
-   SAFE HTML ESCAPE
-========================================== */
-
-function escapeHtml(
-    value
-){
-
-    return String(
-        value ?? ""
-    )
-    .replace(
-        /&/g,
-        "&amp;"
-    )
-    .replace(
-        /</g,
-        "&lt;"
-    )
-    .replace(
-        />/g,
-        "&gt;"
-    )
-    .replace(
-        /"/g,
-        "&quot;"
-    )
-    .replace(
-        /'/g,
-        "&#039;"
-    );
-
-}
-
-
-/* ==========================================
-   RETRY
-========================================== */
-
-window.retryCollections =
-    function(){
-
-        /*
-         * Reset search state so retry
-         * never gets blocked.
-         */
-
-        const search =
-            document.getElementById(
-                "collectionSearch"
-            ) ||
-            document.getElementById(
-                "searchInput"
-            );
-
-
-        if(search){
-
-            delete search.dataset.initialized;
-
-        }
-
-
-        initCollectionsHome();
-
-    };
