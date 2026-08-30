@@ -1672,10 +1672,9 @@ function injectPremiumStyles(){
 
     aspect-ratio:1 / 1;
 
-    padding:12px;
+    padding:7px;
 
-    background:
-        #f1e7d8;
+    background:#f1e7d8;
 
 }
 
@@ -1703,15 +1702,21 @@ function injectPremiumStyles(){
 
 #collectionsGrid .premium-collection-image img{
 
-    padding:18px;
+    display:block;
+
+    width:100%;
+    height:100%;
+
+    padding:6px;
 
     border-radius:
         20px 20px 32px 32px;
 
     object-fit:contain;
 
-}
+    object-position:center;
 
+}
 
 /* Keep overlay extremely subtle */
 
