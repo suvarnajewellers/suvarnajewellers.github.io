@@ -1142,10 +1142,12 @@ function injectPremiumStyles() {
              */
 
             transform:
-                scale(1.02);
+                scale(1.18);
 
-            transition:
-                transform .55s ease;
+            transform-origin:center;
+
+    transition:
+        transform .6s ease;
 
         }
 
@@ -1154,7 +1156,7 @@ function injectPremiumStyles() {
         .premium-product-image img {
 
             transform:
-                scale(1.075);
+                scale(1.22);
 
         }
 
@@ -1851,13 +1853,13 @@ function injectPremiumStyles() {
 
             .premium-product-image img {
 
-                padding:2px;
+                padding:0;
 
                 border-radius:
                     17px 17px 27px 27px;
 
                 transform:
-                    scale(1.015);
+                    scale(1.14);
 
             }
 
@@ -1866,7 +1868,7 @@ function injectPremiumStyles() {
             .premium-product-image img {
 
                 transform:
-                    scale(1.055);
+                    scale(1.18);
 
             }
 
