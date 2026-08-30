@@ -785,36 +785,66 @@ function injectPremiumCollectionStyles() {
 
         .premium-collection-image {
 
-            position:relative;
+    position:relative;
 
-            overflow:hidden;
+    overflow:hidden;
 
-            min-height:285px;
+    min-height:285px;
 
-            background:
-                linear-gradient(
-                    145deg,
-                    #eee0ca,
-                    #fffaf1
-                );
+    padding:12px;
 
-        }
+    background:#f1e7d8;
+
+}
 
 
-        .premium-collection-image img {
+.premium-collection-image::before {
 
-            display:block;
+    content:"";
 
-            width:100%;
-            height:285px;
+    position:absolute;
 
-            object-fit:cover;
-            object-position:center;
+    inset:12px;
 
-            transition:
-                transform .7s ease;
+    border-radius:20px 20px 32px 32px;
 
-        }
+    background:
+        linear-gradient(
+            145deg,
+            #fffefa 0%,
+            #eee1cf 100%
+        );
+
+    box-shadow:
+        inset 0 0 0 1px
+        rgba(180,145,75,.12);
+
+    pointer-events:none;
+
+}
+
+
+.premium-collection-image img {
+
+    position:relative;
+    z-index:1;
+
+    display:block;
+
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+    object-position:center;
+
+    padding:18px;
+
+    border-radius:20px 20px 32px 32px;
+
+    transition:
+        transform .7s ease;
+
+}
 
 
         .premium-collection-link:hover
