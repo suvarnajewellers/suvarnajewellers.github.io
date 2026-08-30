@@ -1,15 +1,16 @@
 /* ==========================================
    SUVARNA JEWELLERS
-   COLLECTIONS.JS — PREMIUM COLLECTION SYSTEM
-   FINAL V2
+   COLLECTIONS.JS
+   FINAL PREMIUM PRODUCT COLLECTION SYSTEM
    ------------------------------------------
-   • All products shown — NO fixed limit
-   • Future products automatically included
-   • Existing getProducts() system
-   • Existing getImage() system
-   • Premium cards matching collection search
-   • Search across ALL products
-   • Product click opens correct product page
+   • Same product card language as Search
+   • All products included
+   • Category filtering
+   • Search across all products
+   • Existing getProducts()
+   • Existing getImage()
+   • No duplicate API
+   • No fixed product limit
 ========================================== */
 
 document.addEventListener(
@@ -18,37 +19,57 @@ document.addEventListener(
 );
 
 
-async function initCollectionPage() {
+/* ==========================================
+   MAIN
+========================================== */
+
+async function initCollectionPage(){
 
     const grid =
-        document.getElementById("productsGrid");
+        document.getElementById(
+            "collectionsGrid"
+        );
 
-    if (!grid) return;
+    const searchInput =
+        document.getElementById(
+            "collectionSearch"
+        );
+
+    const count =
+        document.getElementById(
+            "productCount"
+        );
 
 
-    const category =
-        String(
-            grid.dataset.category || ""
-        ).trim();
+    if(!grid){
 
+        console.warn(
+            "collectionsGrid not found."
+        );
 
-    /* ==========================================
-       LOAD ALL PRODUCTS
-    ========================================== */
+        return;
+
+    }
+
 
     let allProducts = [];
 
-    try {
 
-        if (
+    /* ======================================
+       LOAD PRODUCTS
+    ====================================== */
+
+    try{
+
+        if(
             typeof getProducts !== "function"
-        ) {
+        ){
 
             console.error(
                 "getProducts() is not available."
             );
 
-            renderProducts([]);
+            renderEmpty();
 
             return;
 
@@ -67,46 +88,69 @@ async function initCollectionPage() {
 
     }
 
-    catch (error) {
+    catch(error){
 
         console.error(
-            "Collections loading error:",
+            "Collection products loading error:",
             error
         );
 
-        renderProducts([]);
+        renderEmpty();
 
         return;
 
     }
 
 
-    /* ==========================================
-       CURRENT COLLECTION
-    ========================================== */
+    /* ======================================
+       URL CATEGORY
+       --------------------------------------
+       Supports:
+       collections.html?category=Gold%20Jewellery
+    ====================================== */
 
-    function getCollectionProducts() {
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
 
-        if (!category) {
+
+    const requestedCategory =
+        String(
+            params.get("category") || ""
+        )
+        .trim()
+        .toLowerCase();
+
+
+    /* ======================================
+       CATEGORY FILTER
+    ====================================== */
+
+    function getCategoryProducts(){
+
+        if(!requestedCategory){
 
             return allProducts;
 
         }
 
 
-        const wantedCategory =
-            category.toLowerCase();
-
-
         return allProducts.filter(
             product => {
 
-                return String(
-                    product.category || ""
-                )
-                .trim()
-                .toLowerCase()
-                === wantedCategory;
+                const category =
+                    String(
+                        product.category || ""
+                    )
+                    .trim()
+                    .toLowerCase();
+
+
+                return (
+                    category ===
+                    requestedCategory
+                );
 
             }
         );
@@ -114,11 +158,53 @@ async function initCollectionPage() {
     }
 
 
-    /* ==========================================
-       SAFE HTML ESCAPE
-    ========================================== */
+    /* ======================================
+       SEARCH TEXT
+       --------------------------------------
+       Same philosophy as Search
+    ====================================== */
 
-    function escapeHtml(value) {
+    function searchableText(product){
+
+        return [
+
+            product.name,
+
+            product.category,
+
+            product.metal,
+
+            product.description,
+
+            product.size,
+
+            product.netWeight,
+
+            product.grossWeight,
+
+            product.id
+
+        ]
+        .filter(
+            value =>
+                value !== null &&
+                value !== undefined
+        )
+        .map(
+            value =>
+                String(value)
+        )
+        .join(" ")
+        .toLowerCase();
+
+    }
+
+
+    /* ======================================
+       SAFE ESCAPE
+    ====================================== */
+
+    function escapeHtml(value){
 
         return String(
             value ?? ""
@@ -147,13 +233,13 @@ async function initCollectionPage() {
     }
 
 
-    /* ==========================================
+    /* ======================================
        PRODUCT IMAGE
-    ========================================== */
+    ====================================== */
 
-    function getProductImage(product) {
+    function getProductImage(product){
 
-        if (!product) {
+        if(!product){
 
             return "";
 
@@ -163,22 +249,17 @@ async function initCollectionPage() {
         let rawImage = "";
 
 
-        /* Standard image */
-
-        if (product.image) {
+        if(product.image){
 
             rawImage =
                 product.image;
 
         }
 
-
-        /* Images array fallback */
-
-        else if (
+        else if(
             Array.isArray(product.images) &&
             product.images.length
-        ) {
+        ){
 
             rawImage =
                 product.images[0];
@@ -186,23 +267,24 @@ async function initCollectionPage() {
         }
 
 
-        if (!rawImage) {
+        if(!rawImage){
 
             return "";
 
         }
 
 
-        try {
+        try{
 
-            if (
-                typeof getImage === "function"
-            ) {
+            if(
+                typeof getImage ===
+                "function"
+            ){
 
                 const resolved =
                     getImage(rawImage);
 
-                if (resolved) {
+                if(resolved){
 
                     return resolved;
 
@@ -212,7 +294,7 @@ async function initCollectionPage() {
 
         }
 
-        catch (error) {
+        catch(error){
 
             console.warn(
                 "getImage() failed:",
@@ -227,83 +309,61 @@ async function initCollectionPage() {
     }
 
 
-    /* ==========================================
-       RENDER PRODUCTS
-       ------------------------------------------
-       IMPORTANT:
-       NO slice()
-       NO 110 PRODUCT LIMIT
-       NO fixed number
-       
-       Every product in products.json
-       will automatically appear.
-    ========================================== */
+    /* ======================================
+       RENDER
+       --------------------------------------
+       THIS IS THE IMPORTANT PART
 
-    function renderProducts(products) {
+       Collection cards now use the same
+       premium visual structure as the
+       Search product cards.
+    ====================================== */
+
+    function renderProducts(products){
 
         grid.innerHTML = "";
 
 
-        /* --------------------------------------
-           EMPTY STATE
-        -------------------------------------- */
+        if(count){
 
-        if (
+            count.textContent =
+                Array.isArray(products)
+                    ? products.length
+                    : 0;
+
+        }
+
+
+        if(
             !Array.isArray(products) ||
             !products.length
-        ) {
+        ){
 
-            grid.innerHTML = `
-
-                <div
-                    class="collections-graceful-state"
-                >
-
-                    <span>
-                        SUVARNA JEWELLERS
-                    </span>
-
-                    <h3>
-                        No Jewellery Found
-                    </h3>
-
-                    <p>
-                        No products match your
-                        current collection or search.
-                    </p>
-
-                </div>
-
-            `;
-
-
-            injectPremiumCollectionStyles();
+            renderEmpty();
 
             return;
 
         }
 
 
-        /* ======================================
-           CREATE EVERY PRODUCT CARD
-        ====================================== */
-
         products.forEach(
-            (product, index) => {
+            (product,index) => {
 
-                if (!product) return;
+                if(!product) return;
 
 
                 const image =
-                    getProductImage(product);
+                    getProductImage(
+                        product
+                    );
 
 
-                const productName =
+                const name =
                     product.name ||
                     "Premium Jewellery";
 
 
-                const productCategory =
+                const category =
                     product.category ||
                     "Jewellery";
 
@@ -313,26 +373,28 @@ async function initCollectionPage() {
                     "";
 
 
-                /* --------------------------------
-                   PRODUCT URL
-                -------------------------------- */
+                const id =
+                    product.id != null
+                        ?
+                        encodeURIComponent(
+                            product.id
+                        )
+                        :
+                        "";
+
 
                 const href =
-    product.id != null
-        ?
-        `product.html?id=${encodeURIComponent(
-            product.id
-        )}&source=collections`
-        :
-        "#";
+                    id
+                        ?
+                        `product.html?id=${id}&from=collection`
+                        :
+                        "#";
 
-
-                /* --------------------------------
-                   CARD
-                -------------------------------- */
 
                 const card =
-                    document.createElement("a");
+                    document.createElement(
+                        "a"
+                    );
 
 
                 card.href =
@@ -341,6 +403,12 @@ async function initCollectionPage() {
 
                 card.className =
                     "collection-link premium-collection-link";
+
+
+                card.setAttribute(
+                    "aria-label",
+                    `View ${name}`
+                );
 
 
                 card.innerHTML = `
@@ -359,9 +427,10 @@ async function initCollectionPage() {
                                 `
                                 <img
                                     src="${escapeHtml(image)}"
-                                    alt="${escapeHtml(productName)}"
+                                    alt="${escapeHtml(name)}"
                                     loading="lazy"
                                     decoding="async"
+                                    draggable="false"
                                 >
                                 `
                                 :
@@ -369,17 +438,13 @@ async function initCollectionPage() {
                                 <div
                                     class="collection-image-fallback"
                                 >
-
                                     <span>
                                         SUVARNA JEWELLERS
                                     </span>
 
                                     <strong>
-                                        ${escapeHtml(
-                                            productName
-                                        )}
+                                        ${escapeHtml(name)}
                                     </strong>
-
                                 </div>
                                 `
                             }
@@ -393,9 +458,7 @@ async function initCollectionPage() {
                             <span
                                 class="collection-category-label"
                             >
-                                ${escapeHtml(
-                                    productCategory
-                                )}
+                                ${escapeHtml(category)}
                             </span>
 
 
@@ -425,28 +488,23 @@ async function initCollectionPage() {
                             >
                                 ${String(
                                     index + 1
-                                ).padStart(2, "0")}
+                                ).padStart(2,"0")}
                             </span>
 
 
                             <h3>
-                                ${escapeHtml(
-                                    productName
-                                )}
+                                ${escapeHtml(name)}
                             </h3>
 
 
                             <p>
-                                ${escapeHtml(
-                                    productCategory
-                                )}
+                                ${escapeHtml(category)}
                             </p>
 
 
                             <span
                                 class="card-btn premium-collection-btn"
                             >
-
                                 View Product
 
                                 <span
@@ -454,7 +512,6 @@ async function initCollectionPage() {
                                 >
                                     →
                                 </span>
-
                             </span>
 
                         </div>
@@ -465,18 +522,20 @@ async function initCollectionPage() {
 
 
                 /* =================================
-                   IMAGE ERROR FALLBACK
+                   IMAGE ERROR
                 ================================= */
 
                 const imageElement =
-                    card.querySelector("img");
+                    card.querySelector(
+                        "img"
+                    );
 
 
-                if (imageElement) {
+                if(imageElement){
 
                     imageElement.addEventListener(
                         "error",
-                        function () {
+                        function(){
 
                             this.style.display =
                                 "none";
@@ -486,14 +545,18 @@ async function initCollectionPage() {
                                 this.parentElement;
 
 
-                            if (!parent) return;
+                            if(!parent){
+
+                                return;
+
+                            }
 
 
-                            if (
+                            if(
                                 parent.querySelector(
                                     ".collection-image-fallback"
                                 )
-                            ) {
+                            ){
 
                                 return;
 
@@ -517,9 +580,7 @@ async function initCollectionPage() {
                                 </span>
 
                                 <strong>
-                                    ${escapeHtml(
-                                        productName
-                                    )}
+                                    ${escapeHtml(name)}
                                 </strong>
 
                             `;
@@ -531,174 +592,215 @@ async function initCollectionPage() {
 
                         },
                         {
-                            once: true
+                            once:true
                         }
                     );
 
                 }
 
 
-                grid.appendChild(card);
+                grid.appendChild(
+                    card
+                );
 
             }
         );
 
 
-        injectPremiumCollectionStyles();
+        injectPremiumStyles();
 
     }
 
 
-    /* ==========================================
-       INITIAL COLLECTION
-    ========================================== */
-
-    renderProducts(
-        getCollectionProducts()
-    );
-
-
-    /* ==========================================
+    /* ======================================
        SEARCH
-       ------------------------------------------
-       Searches ALL PRODUCTS.
-       This is intentional.
-    ========================================== */
+       --------------------------------------
+       IMPORTANT:
 
-    const searchInput =
-        document.getElementById(
-            "searchInput"
-        );
+       Empty search =
+       Current Collection
 
+       Search text =
+       ALL PRODUCTS
+    ====================================== */
 
-    if (!searchInput) {
+    function applySearch(){
 
-        return;
+        if(!searchInput){
 
-    }
+            renderProducts(
+                getCategoryProducts()
+            );
 
-
-    /* Prevent duplicate listeners */
-
-    if (
-        searchInput.dataset.initialized ===
-        "true"
-    ) {
-
-        return;
-
-    }
-
-
-    searchInput.dataset.initialized =
-        "true";
-
-
-    searchInput.addEventListener(
-        "input",
-        function () {
-
-            const keyword =
-                this.value
-                    .trim()
-                    .toLowerCase();
-
-
-            /* ================================
-               EMPTY SEARCH
-            ================================= */
-
-            if (!keyword) {
-
-                renderProducts(
-                    getCollectionProducts()
-                );
-
-                return;
-
-            }
-
-
-            /* ================================
-               SEARCH ALL PRODUCTS
-               
-               NAME
-               CATEGORY
-               METAL
-               DESCRIPTION
-            ================================= */
-
-            const filtered =
-                allProducts.filter(
-                    product => {
-
-                        if (!product) {
-
-                            return false;
-
-                        }
-
-
-                        const name =
-                            String(
-                                product.name || ""
-                            )
-                            .toLowerCase();
-
-
-                        const productCategory =
-                            String(
-                                product.category || ""
-                            )
-                            .toLowerCase();
-
-
-                        const metal =
-                            String(
-                                product.metal || ""
-                            )
-                            .toLowerCase();
-
-
-                        const description =
-                            String(
-                                product.description || ""
-                            )
-                            .toLowerCase();
-
-
-                        return (
-                            name.includes(keyword) ||
-                            productCategory.includes(keyword) ||
-                            metal.includes(keyword) ||
-                            description.includes(keyword)
-                        );
-
-                    }
-                );
-
-
-            renderProducts(filtered);
+            return;
 
         }
+
+
+        const keyword =
+            searchInput.value
+                .trim()
+                .toLowerCase();
+
+
+        /* -------------------------------
+           EMPTY SEARCH
+        -------------------------------- */
+
+        if(!keyword){
+
+            renderProducts(
+                getCategoryProducts()
+            );
+
+            return;
+
+        }
+
+
+        /* -------------------------------
+           SEARCH ALL PRODUCTS
+        -------------------------------- */
+
+        const filtered =
+            allProducts.filter(
+                product => {
+
+                    if(!product){
+
+                        return false;
+
+                    }
+
+
+                    return searchableText(
+                        product
+                    ).includes(
+                        keyword
+                    );
+
+                }
+            );
+
+
+        renderProducts(
+            filtered
+        );
+
+    }
+
+
+    /* ======================================
+       FIRST RENDER
+    ====================================== */
+
+    renderProducts(
+        getCategoryProducts()
     );
+
+
+    /* ======================================
+       SEARCH LISTENER
+    ====================================== */
+
+    if(searchInput){
+
+        if(
+            searchInput.dataset.initialized
+            ===
+            "true"
+        ){
+
+            return;
+
+        }
+
+
+        searchInput.dataset.initialized =
+            "true";
+
+
+        searchInput.addEventListener(
+            "input",
+            applySearch
+        );
+
+    }
 
 }
 
 
 /* ==========================================
-   PREMIUM COLLECTION CARD CSS
-   ------------------------------------------
-   Scoped to collections page only.
+   EMPTY STATE
 ========================================== */
 
-function injectPremiumCollectionStyles() {
+function renderEmpty(){
 
-    if (
+    const grid =
         document.getElementById(
-            "suvarna-collections-product-card-css"
+            "collectionsGrid"
+        );
+
+
+    const count =
+        document.getElementById(
+            "productCount"
+        );
+
+
+    if(count){
+
+        count.textContent =
+            "0";
+
+    }
+
+
+    if(!grid) return;
+
+
+    grid.innerHTML = `
+
+        <div
+            class="collections-graceful-state"
+        >
+
+            <span>
+                SUVARNA JEWELLERS
+            </span>
+
+            <h3>
+                No Jewellery Found
+            </h3>
+
+            <p>
+                No products match your
+                current collection or search.
+            </p>
+
+        </div>
+
+    `;
+
+
+    injectPremiumStyles();
+
+}
+
+
+/* ==========================================
+   PREMIUM CARD SYSTEM
+   ------------------------------------------
+   SEARCH-STYLE IVORY / CREAM LUXURY
+========================================== */
+
+function injectPremiumStyles(){
+
+    if(
+        document.getElementById(
+            "suvarna-final-collection-card-css"
         )
-    ) {
+    ){
 
         return;
 
@@ -706,213 +808,341 @@ function injectPremiumCollectionStyles() {
 
 
     const style =
-        document.createElement("style");
+        document.createElement(
+            "style"
+        );
 
 
     style.id =
-        "suvarna-collections-product-card-css";
+        "suvarna-final-collection-card-css";
 
 
     style.textContent = `
 
-        /* ======================================
-           PREMIUM PRODUCT CARD
-        ====================================== */
+        /* =====================================
+           GRID
+        ===================================== */
 
-        .premium-collection-link {
+        #collectionsGrid{
+
+            display:grid;
+
+            grid-template-columns:
+                repeat(
+                    4,
+                    minmax(0,1fr)
+                );
+
+            gap:24px;
+
+            align-items:stretch;
+
+        }
+
+
+        /* =====================================
+           CARD LINK
+        ===================================== */
+
+        #collectionsGrid
+        .premium-collection-link{
 
             display:block;
+
             height:100%;
 
             color:inherit;
+
             text-decoration:none;
 
         }
 
 
-        .premium-collection-card {
+        /* =====================================
+           PREMIUM CARD
+        ===================================== */
+
+        #collectionsGrid
+        .premium-collection-card{
 
             position:relative;
+
+            display:flex;
+
+            flex-direction:column;
 
             height:100%;
 
             overflow:hidden;
 
-            border-radius:18px;
+            border-radius:22px;
 
             background:
                 linear-gradient(
                     145deg,
-                    #fffdf8 0%,
-                    #f4ecdf 100%
+                    #fffdf9 0%,
+                    #f7efe4 100%
                 );
 
             border:
                 1px solid
-                rgba(180,145,75,.22);
+                rgba(
+                    180,
+                    145,
+                    75,
+                    .18
+                );
 
             box-shadow:
-                0 12px 35px
-                rgba(43,0,21,.10);
+                0 9px 28px
+                rgba(
+                    43,
+                    0,
+                    21,
+                    .075
+                );
 
             transition:
-                transform .45s ease,
-                box-shadow .45s ease,
-                border-color .45s ease;
+                transform .42s ease,
+                box-shadow .42s ease,
+                border-color .42s ease;
 
         }
 
 
+        #collectionsGrid
         .premium-collection-link:hover
-        .premium-collection-card {
+        .premium-collection-card{
 
             transform:
-                translateY(-7px);
+                translateY(-6px);
 
             border-color:
-                rgba(180,145,75,.38);
+                rgba(
+                    180,
+                    145,
+                    75,
+                    .34
+                );
 
             box-shadow:
-                0 24px 55px
-                rgba(43,0,21,.17);
+                0 20px 44px
+                rgba(
+                    43,
+                    0,
+                    21,
+                    .14
+                );
 
         }
 
 
-        /* ======================================
-           IMAGE
-        ====================================== */
+        /* =====================================
+           IMAGE STAGE
+        ===================================== */
 
-        .premium-collection-image {
+        #collectionsGrid
+        .premium-collection-image{
 
-    position:relative;
+            position:relative;
 
-    overflow:hidden;
+            width:100%;
 
-    min-height:285px;
+            aspect-ratio:1 / 1;
 
-    padding:12px;
+            overflow:hidden;
 
-    background:#f1e7d8;
+            padding:12px;
 
-}
-
-
-.premium-collection-image::before {
-
-    content:"";
-
-    position:absolute;
-
-    inset:12px;
-
-    border-radius:20px 20px 32px 32px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #fffefa 0%,
-            #eee1cf 100%
-        );
-
-    box-shadow:
-        inset 0 0 0 1px
-        rgba(180,145,75,.12);
-
-    pointer-events:none;
-
-}
-
-
-.premium-collection-image img {
-
-    position:relative;
-    z-index:1;
-
-    display:block;
-
-    width:100%;
-    height:100%;
-
-    object-fit:contain;
-    object-position:center;
-
-    padding:18px;
-
-    border-radius:20px 20px 32px 32px;
-
-    transition:
-        transform .7s ease;
-
-}
-
-
-        .premium-collection-link:hover
-        .premium-collection-image img {
-
-            transform:
-                scale(1.045);
+            background:
+                #f0e5d5;
 
         }
 
 
-        /* ======================================
-           IMAGE OVERLAY
-        ====================================== */
+        #collectionsGrid
+        .premium-collection-image::before{
 
-        .collection-image-overlay {
+            content:"";
 
             position:absolute;
 
-            inset:0;
+            inset:12px;
+
+            border-radius:
+                20px
+                20px
+                34px
+                34px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #fffefa 0%,
+                    #eee1cf 100%
+                );
+
+            box-shadow:
+                inset 0 0 0 1px
+                rgba(
+                    180,
+                    145,
+                    75,
+                    .13
+                );
+
+            pointer-events:none;
+
+        }
+
+
+        /* =====================================
+           PRODUCT IMAGE
+
+           NO CROPPING
+        ===================================== */
+
+        #collectionsGrid
+        .premium-collection-image img{
+
+            position:relative;
+
+            z-index:1;
+
+            display:block;
+
+            width:100%;
+
+            height:100%;
+
+            object-fit:contain;
+
+            object-position:center;
+
+            padding:18px;
+
+            border-radius:
+                20px
+                20px
+                34px
+                34px;
+
+            transition:
+                transform .65s ease;
+
+        }
+
+
+        #collectionsGrid
+        .premium-collection-link:hover
+        .premium-collection-image img{
+
+            transform:
+                scale(1.035);
+
+        }
+
+
+        /* =====================================
+           IMAGE OVERLAY
+        ===================================== */
+
+        #collectionsGrid
+        .collection-image-overlay{
+
+            position:absolute;
+
+            z-index:2;
+
+            inset:12px;
+
+            border-radius:
+                20px
+                20px
+                34px
+                34px;
 
             pointer-events:none;
 
             background:
                 linear-gradient(
                     180deg,
-                    rgba(43,0,21,0) 40%,
-                    rgba(43,0,21,.34) 100%
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        .055
+                    ) 0%,
+
+                    transparent 52%,
+
+                    rgba(
+                        43,
+                        0,
+                        21,
+                        .035
+                    ) 100%
                 );
 
         }
 
 
-        /* ======================================
-           CATEGORY LABEL
-        ====================================== */
+        /* =====================================
+           CATEGORY
+        ===================================== */
 
-        .collection-category-label {
+        #collectionsGrid
+        .collection-category-label{
 
             position:absolute;
 
-            left:17px;
-            bottom:16px;
+            z-index:3;
+
+            left:22px;
+
+            bottom:22px;
 
             padding:
-                7px 12px;
+                6px 10px;
+
+            border-radius:999px;
 
             color:#fff;
 
             background:
-                rgba(43,0,21,.68);
+                rgba(
+                    43,
+                    0,
+                    21,
+                    .67
+                );
 
             border:
                 1px solid
-                rgba(255,255,255,.35);
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .28
+                );
 
             backdrop-filter:
-                blur(8px);
+                blur(9px);
+
+            -webkit-backdrop-filter:
+                blur(9px);
 
             font-family:
                 Inter,
                 Arial,
                 sans-serif;
 
-            font-size:9px;
+            font-size:7px;
+
+            font-weight:500;
 
             letter-spacing:
-                1.8px;
+                1.45px;
 
             text-transform:
                 uppercase;
@@ -920,28 +1150,44 @@ function injectPremiumCollectionStyles() {
         }
 
 
-        /* ======================================
+        /* =====================================
            METAL BADGE
-        ====================================== */
+        ===================================== */
 
-        .collection-metal-badge {
+        #collectionsGrid
+        .collection-metal-badge{
 
             position:absolute;
 
-            top:14px;
-            right:14px;
+            z-index:3;
+
+            top:16px;
+
+            right:16px;
 
             padding:
                 6px 9px;
 
-            color:#f5df9b;
+            border-radius:999px;
+
+            color:#76551d;
 
             background:
-                rgba(43,0,21,.70);
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .82
+                );
 
             border:
                 1px solid
-                rgba(212,175,55,.32);
+                rgba(
+                    180,
+                    145,
+                    75,
+                    .25
+                );
 
             backdrop-filter:
                 blur(8px);
@@ -951,10 +1197,12 @@ function injectPremiumCollectionStyles() {
                 Arial,
                 sans-serif;
 
-            font-size:8px;
+            font-size:7px;
+
+            font-weight:600;
 
             letter-spacing:
-                1.3px;
+                1.1px;
 
             text-transform:
                 uppercase;
@@ -962,46 +1210,55 @@ function injectPremiumCollectionStyles() {
         }
 
 
-        /* ======================================
+        /* =====================================
            CONTENT
-        ====================================== */
+        ===================================== */
 
-        .premium-collection-content {
+        #collectionsGrid
+        .premium-collection-content{
 
             position:relative;
 
+            flex:1;
+
             padding:
-                21px
-                21px
-                23px;
+                16px
+                17px
+                18px;
 
         }
 
 
-        .collection-number {
+        #collectionsGrid
+        .collection-number{
 
             display:block;
 
-            margin-bottom:8px;
+            margin-bottom:6px;
 
-            color:#b18a38;
+            color:#a27b2c;
 
             font-family:
                 Cinzel,
                 Georgia,
                 serif;
 
-            font-size:10px;
+            font-size:8px;
 
-            letter-spacing:2px;
+            letter-spacing:
+                1.7px;
+
+            text-transform:
+                uppercase;
 
         }
 
 
-        .premium-collection-content h3 {
+        #collectionsGrid
+        .premium-collection-content h3{
 
             margin:
-                0 0 7px;
+                0 0 5px;
 
             color:#2b0015;
 
@@ -1010,47 +1267,32 @@ function injectPremiumCollectionStyles() {
                 Georgia,
                 serif;
 
-            font-size:20px;
+            font-size:16px;
 
             font-weight:600;
 
-            line-height:1.3;
+            line-height:1.32;
+
+            display:
+                -webkit-box;
+
+            -webkit-line-clamp:2;
+
+            -webkit-box-orient:
+                vertical;
+
+            overflow:hidden;
 
         }
 
 
-        .premium-collection-content p {
+        #collectionsGrid
+        .premium-collection-content p{
 
             margin:
-                0 0 17px;
+                0 0 12px;
 
-            color:#675b60;
-
-            font-family:
-                Inter,
-                Arial,
-                sans-serif;
-
-            font-size:12px;
-
-            line-height:1.6;
-
-        }
-
-
-        /* ======================================
-           VIEW PRODUCT
-        ====================================== */
-
-        .premium-collection-btn {
-
-            display:inline-flex;
-
-            align-items:center;
-
-            gap:9px;
-
-            color:#8d6824;
+            color:#786b6e;
 
             font-family:
                 Inter,
@@ -1059,20 +1301,93 @@ function injectPremiumCollectionStyles() {
 
             font-size:10px;
 
-            font-weight:600;
-
-            letter-spacing:
-                1.25px;
-
-            text-transform:
-                uppercase;
+            line-height:1.45;
 
         }
 
 
-        .premium-collection-btn span {
+        /* =====================================
+           BUTTON
+        ===================================== */
 
-            font-size:17px;
+        #collectionsGrid
+        .premium-collection-btn{
+
+            display:inline-flex;
+
+            align-items:center;
+
+            justify-content:center;
+
+            gap:9px;
+
+            min-height:32px;
+
+            padding:
+                0 12px;
+
+            border:
+                1px solid
+                rgba(
+                    180,
+                    145,
+                    75,
+                    .42
+                );
+
+            border-radius:999px;
+
+            color:#76551d;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .48
+                );
+
+            font-family:
+                Inter,
+                Arial,
+                sans-serif;
+
+            font-size:7.5px;
+
+            font-weight:600;
+
+            letter-spacing:
+                1.15px;
+
+            text-transform:
+                uppercase;
+
+            transition:
+                all .32s ease;
+
+        }
+
+
+        #collectionsGrid
+        .premium-collection-btn span{
+
+            display:inline-flex;
+
+            align-items:center;
+
+            justify-content:center;
+
+            width:20px;
+
+            height:20px;
+
+            border-radius:50%;
+
+            color:#fff;
+
+            background:#2b0015;
+
+            font-size:12px;
 
             transition:
                 transform .3s ease;
@@ -1080,41 +1395,77 @@ function injectPremiumCollectionStyles() {
         }
 
 
+        #collectionsGrid
         .premium-collection-link:hover
-        .premium-collection-btn span {
+        .premium-collection-btn{
 
-            transform:
-                translateX(4px);
+            color:#fff;
+
+            background:#2b0015;
+
+            border-color:#2b0015;
 
         }
 
 
-        /* ======================================
-           IMAGE FALLBACK
-        ====================================== */
+        #collectionsGrid
+        .premium-collection-link:hover
+        .premium-collection-btn span{
 
-        .collection-image-fallback {
+            color:#2b0015;
+
+            background:#d4af37;
+
+            transform:
+                translateX(3px);
+
+        }
+
+
+        /* =====================================
+           FALLBACK
+        ===================================== */
+
+        #collectionsGrid
+        .collection-image-fallback{
+
+            position:relative;
+
+            z-index:1;
 
             width:100%;
-            height:285px;
+
+            height:100%;
 
             display:flex;
 
             flex-direction:column;
 
             align-items:center;
+
             justify-content:center;
 
             text-align:center;
 
             padding:25px;
 
+            border-radius:
+                20px
+                20px
+                34px
+                34px;
+
             color:#fff;
 
             background:
                 radial-gradient(
                     circle at center,
-                    rgba(212,175,55,.22),
+                    rgba(
+                        212,
+                        175,
+                        55,
+                        .22
+                    ),
                     transparent 58%
                 ),
                 linear-gradient(
@@ -1126,9 +1477,10 @@ function injectPremiumCollectionStyles() {
         }
 
 
-        .collection-image-fallback span {
+        #collectionsGrid
+        .collection-image-fallback span{
 
-            margin-bottom:11px;
+            margin-bottom:9px;
 
             color:#d4af37;
 
@@ -1137,14 +1489,15 @@ function injectPremiumCollectionStyles() {
                 Arial,
                 sans-serif;
 
-            font-size:8px;
+            font-size:7px;
 
-            letter-spacing:3px;
+            letter-spacing:2.5px;
 
         }
 
 
-        .collection-image-fallback strong {
+        #collectionsGrid
+        .collection-image-fallback strong{
 
             color:#fff;
 
@@ -1153,218 +1506,224 @@ function injectPremiumCollectionStyles() {
                 Georgia,
                 serif;
 
-            font-size:23px;
+            font-size:20px;
 
             font-weight:500;
 
         }
 
 
-        /* ======================================
-           EMPTY STATE
-        ====================================== */
+        /* =====================================
+           RESPONSIVE
+        ===================================== */
 
-        .collections-graceful-state {
+        @media(max-width:1000px){
 
-            grid-column:
-                1 / -1;
+            #collectionsGrid{
 
-            min-height:225px;
+                grid-template-columns:
+                    repeat(
+                        3,
+                        minmax(0,1fr)
+                    );
 
-            display:flex;
-
-            flex-direction:column;
-
-            align-items:center;
-            justify-content:center;
-
-            text-align:center;
-
-            padding:30px 20px;
-
-            border-radius:18px;
-
-            border:
-                1px solid
-                rgba(180,145,75,.20);
-
-            background:
-                linear-gradient(
-                    145deg,
-                    #fffdf8,
-                    #f5eee2
-                );
-
-            box-shadow:
-                0 12px 35px
-                rgba(43,0,21,.08);
+            }
 
         }
 
 
-        .collections-graceful-state span {
+        @media(max-width:700px){
 
-            margin-bottom:10px;
+            #collectionsGrid{
 
-            color:#b18a38;
+                grid-template-columns:
+                    repeat(
+                        2,
+                        minmax(0,1fr)
+                    );
 
-            font-family:
-                Inter,
-                Arial,
-                sans-serif;
-
-            font-size:8px;
-
-            letter-spacing:3px;
-
-        }
-
-
-        .collections-graceful-state h3 {
-
-            margin:
-                0 0 8px;
-
-            color:#2b0015;
-
-            font-family:
-                Cinzel,
-                Georgia,
-                serif;
-
-            font-size:24px;
-
-        }
-
-
-        .collections-graceful-state p {
-
-            max-width:500px;
-
-            margin:
-                0;
-
-            color:#675b60;
-
-            font-family:
-                Inter,
-                Arial,
-                sans-serif;
-
-            font-size:13px;
-
-            line-height:1.7;
-
-        }
-
-
-        /* ======================================
-           MOBILE
-        ====================================== */
-
-        @media(max-width:700px) {
-
-            .premium-collection-image {
-
-                min-height:240px;
+                gap:14px;
 
             }
 
 
-            .premium-collection-image img {
+            #collectionsGrid
+            .premium-collection-card{
 
-                height:240px;
-
-            }
-
-
-            .collection-image-fallback {
-
-                height:240px;
+                border-radius:18px;
 
             }
 
 
-            .premium-collection-content {
+            #collectionsGrid
+            .premium-collection-image{
+
+                padding:9px;
+
+            }
+
+
+            #collectionsGrid
+            .premium-collection-image::before{
+
+                inset:9px;
+
+                border-radius:
+                    17px
+                    17px
+                    27px
+                    27px;
+
+            }
+
+
+            #collectionsGrid
+            .premium-collection-image img{
+
+                padding:13px;
+
+                border-radius:
+                    17px
+                    17px
+                    27px
+                    27px;
+
+            }
+
+
+            #collectionsGrid
+            .collection-image-overlay{
+
+                inset:9px;
+
+                border-radius:
+                    17px
+                    17px
+                    27px
+                    27px;
+
+            }
+
+
+            #collectionsGrid
+            .collection-category-label{
+
+                left:16px;
+
+                bottom:16px;
 
                 padding:
-                    18px
-                    18px
-                    20px;
+                    5px 7px;
+
+                font-size:6px;
 
             }
 
 
-            .premium-collection-content h3 {
+            #collectionsGrid
+            .collection-metal-badge{
 
-                font-size:18px;
+                top:12px;
 
-            }
-
-
-            .collection-category-label {
-
-                left:12px;
-                bottom:12px;
+                right:12px;
 
                 padding:
-                    6px 9px;
+                    5px 7px;
 
-                font-size:8px;
+                font-size:6px;
 
             }
 
 
-            .collection-metal-badge {
+            #collectionsGrid
+            .premium-collection-content{
 
-                top:11px;
-                right:11px;
+                padding:
+                    12px
+                    12px
+                    14px;
 
-                font-size:7px;
+            }
+
+
+            #collectionsGrid
+            .premium-collection-content h3{
+
+                font-size:14px;
+
+            }
+
+
+            #collectionsGrid
+            .premium-collection-content p{
+
+                font-size:9px;
+
+                margin-bottom:10px;
+
+            }
+
+
+            #collectionsGrid
+            .premium-collection-btn{
+
+                min-height:29px;
+
+                padding:
+                    0 9px;
+
+                font-size:6.5px;
+
+            }
+
+
+            #collectionsGrid
+            .premium-collection-btn span{
+
+                width:18px;
+
+                height:18px;
+
+                font-size:11px;
 
             }
 
         }
 
 
-        /* ======================================
-           VERY SMALL MOBILE
-        ====================================== */
+        @media(max-width:380px){
 
-        @media(max-width:380px) {
+            #collectionsGrid{
 
-            .premium-collection-content h3 {
-
-                font-size:16px;
+                gap:10px;
 
             }
 
 
-            .premium-collection-content p {
+            #collectionsGrid
+            .premium-collection-content h3{
 
-                font-size:10px;
-
-            }
-
-
-            .premium-collection-btn {
-
-                font-size:8px;
+                font-size:13px;
 
             }
 
         }
 
 
-        /* ======================================
+        /* =====================================
            REDUCED MOTION
-        ====================================== */
+        ===================================== */
 
-        @media(prefers-reduced-motion:reduce) {
+        @media(prefers-reduced-motion:reduce){
 
+            #collectionsGrid
             .premium-collection-card,
+
+            #collectionsGrid
             .premium-collection-image img,
-            .premium-collection-btn span {
+
+            #collectionsGrid
+            .premium-collection-btn span{
 
                 transition:none !important;
 
@@ -1375,6 +1734,8 @@ function injectPremiumCollectionStyles() {
     `;
 
 
-    document.head.appendChild(style);
+    document.head.appendChild(
+        style
+    );
 
 }
