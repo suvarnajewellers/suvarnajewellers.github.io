@@ -318,13 +318,13 @@ async function initCollectionPage() {
                 -------------------------------- */
 
                 const href =
-                    product.id != null
-                        ?
-                        `../product.html?id=${encodeURIComponent(
-                            product.id
-                        )}&source=collections`
-                        :
-                        "#";
+    product.id != null
+        ?
+        `product.html?id=${encodeURIComponent(
+            product.id
+        )}&source=collections`
+        :
+        "#";
 
 
                 /* --------------------------------
