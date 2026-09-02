@@ -153,7 +153,7 @@
     "size": "24 Inch",
     "description": "Premium Gold Rudraksha Mala.",
     "image": "gold/RMG0008.jpg",
-    "readyStock": false 
+    "readyStock": true
   }, 
   {
     "id": "RMG0010",
@@ -213,7 +213,7 @@
     "size": "24 Inch",
     "description": "Premium Gold Rudraksha Mala.",
     "image": "gold/RMG0015.jpg",
-    "readyStock": false 
+    "readyStock": true
   },  
   {
     "id": "RMG0017",
@@ -261,7 +261,7 @@
     "size": "24 Inch",
     "description": "Premium Gold Rudraksha Mala.",
     "image": "gold/RMG0046.jpg",
-    "readyStock": false 
+    "readyStock": true
   },  
   {
     "id": "RMG0048",
@@ -369,7 +369,7 @@
     "size": "24 Inch",
     "description": "Premium Gold Rudraksha Mala.",
     "image": "gold/RMG0057.jpg",
-    "readyStock": false 
+    "readyStock": true
   }, 
   {
     "id": "RMG0058",
@@ -1281,7 +1281,7 @@
     "size": "24 Inch",
     "description": "Premium Tulsi Mala.",
     "image": "gold/RMG0047.jpg",
-    "readyStock": false 
+    "readyStock": true
   },
   {
     "id": "T001",
