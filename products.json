@@ -48,6 +48,18 @@
     "readyStock": true
   },
   {
+    "id": "CHG0521",
+    "category": "Gold Jewellery",
+    "name": "Rose Gold Chain",
+    "metal": "18CT Gold",
+    "grossWeight": "6.000 Gram",
+    "netWeight": "6.000 Gram",
+    "size": "18 Inch",
+    "description": "Premium Rose Gold Chain manufactured by Suvarna Jewellers.",
+    "image": "gold/CHG0521.jpg",
+    "readyStock": true
+  },
+  {
     "id": "CHG0522",
     "category": "Gold Jewellery",
     "name": "Rose Gold Chain",
@@ -105,6 +117,18 @@
     "size": "18 Inch",
     "description": "Premium Rose Gold Chain Pandent manufactured by Suvarna Jewellers.",
     "image": "gold/CHG0623.jpg",
+    "readyStock": true
+  },
+  {
+    "id": "CHG0664",
+    "category": "Gold Jewellery",
+    "name": "Rose Gold Chain",
+    "metal": "18CT Gold",
+    "grossWeight": "6.700 Gram",
+    "netWeight": "6.700 Gram",
+    "size": "18 Inch",
+    "description": "Premium Rose Gold Chain manufactured by Suvarna Jewellers.",
+    "image": "gold/CHG0664.jpg",
     "readyStock": true
   },
   {
