@@ -24,6 +24,30 @@
     "readyStock": false 
   },  
   {
+    "id": "CHG0508",
+    "category": "Gold Jewellery",
+    "name": "Rose Gold Chain",
+    "metal": "18CT Gold",
+    "grossWeight": "2.740 Gram",
+    "netWeight": "2.740 Gram",
+    "size": "16 Inch",
+    "description": "Premium Rose Gold Chain Pandent manufactured by Suvarna Jewellers.",
+    "image": "gold/CHG0508.jpg",
+    "readyStock": true
+  },
+  {
+    "id": "CHG0575",
+    "category": "Gold Jewellery",
+    "name": "Rose Gold Chain",
+    "metal": "18CT Gold",
+    "grossWeight": "2.880 Gram",
+    "netWeight": "2.880 Gram",
+    "size": "17 Inch",
+    "description": "Premium Rose Gold Chain Pandent manufactured by Suvarna Jewellers.",
+    "image": "gold/CHG0575.jpg",
+    "readyStock": true
+  },
+  {
     "id": "CHG0623",
     "category": "Gold Jewellery",
     "name": "Rose Gold Chain",
