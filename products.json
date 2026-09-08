@@ -24,6 +24,18 @@
     "readyStock": false 
   },  
   {
+    "id": "CHG0279",
+    "category": "Gold Jewellery",
+    "name": "Rose Gold Chain",
+    "metal": "18CT Gold",
+    "grossWeight": "10.500 Gram",
+    "netWeight": "10.500 Gram",
+    "size": "18 Inch",
+    "description": "Premium Rose Gold Chain manufactured by Suvarna Jewellers.",
+    "image": "gold/CHG0279.jpg",
+    "readyStock": true
+  },
+  {
     "id": "CHG0508",
     "category": "Gold Jewellery",
     "name": "Rose Gold Chain",
@@ -141,6 +153,42 @@
     "size": "20 Inch",
     "description": "Premium Rose Gold Chain manufactured by Suvarna Jewellers.",
     "image": "gold/CHG0655.jpg",
+    "readyStock": true
+  },
+  {
+    "id": "CHG0656",
+    "category": "Gold Jewellery",
+    "name": "Rose Gold Chain",
+    "metal": "18CT Gold",
+    "grossWeight": "7.680 Gram",
+    "netWeight": "7.680 Gram",
+    "size": "20 Inch",
+    "description": "Premium Rose Gold Chain manufactured by Suvarna Jewellers.",
+    "image": "gold/CHG0656.jpg",
+    "readyStock": true
+  },
+  {
+    "id": "CHG0658",
+    "category": "Gold Jewellery",
+    "name": "Rose Gold Chain",
+    "metal": "18CT Gold",
+    "grossWeight": "12.030 Gram",
+    "netWeight": "12.030 Gram",
+    "size": "20 Inch",
+    "description": "Premium Rose Gold Chain manufactured by Suvarna Jewellers.",
+    "image": "gold/CHG0658.jpg",
+    "readyStock": true
+  },
+  {
+    "id": "CHG0659",
+    "category": "Gold Jewellery",
+    "name": "Gold Chain",
+    "metal": "18CT Gold",
+    "grossWeight": "1.660 Gram",
+    "netWeight": "1.660 Gram",
+    "size": "18 Inch",
+    "description": "Premium Gold Chain manufactured by Suvarna Jewellers.",
+    "image": "gold/CHG0659.jpg",
     "readyStock": true
   },
   {
