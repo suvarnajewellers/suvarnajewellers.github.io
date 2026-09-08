@@ -22,6 +22,18 @@
     "description": "Premium Gold Chain manufactured by Suvarna Jewellers.",
     "image": "gold/gold-jewellery-2.jpg",
     "readyStock": false 
+  }, 
+  {
+    "id": "CHG0666",
+    "category": "Gold Jewellery",
+    "name": "Rose Gold Chain",
+    "metal": "18CT Gold",
+    "grossWeight": "11.270 Gram",
+    "netWeight": "11.270 Gram",
+    "size": "16+ Inch",
+    "description": "Premium Rose Gold Chain manufactured by Suvarna Jewellers.",
+    "image": "gold/CHG0666.jpg",
+    "readyStock": true
   },
   {
     "id": "S001",
