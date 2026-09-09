@@ -348,6 +348,30 @@
     "readyStock": false 
   },
   {
+    "id": "S012",
+    "category": "Silver Jewellery",
+    "name": "Silver Krishna Pendant",
+    "metal": "Silver 925",
+    "grossWeight": "8.260 Gram",
+    "netWeight": "8.260 Gram",
+    "size": "1.25 Inch",
+    "description": "Premium Silver Krishna Pendant manufactured by Suvarna Jewellers.",
+    "image": "silver/silver-12.jpg",
+    "readyStock": false 
+  },
+  {
+    "id": "S013",
+    "category": "Silver Jewellery",
+    "name": "Silver Shreenathji Pendant",
+    "metal": "Silver 925",
+    "grossWeight": "37.120 Gram",
+    "netWeight": "37.120 Gram",
+    "size": "24 Inch",
+    "description": "Premium Silver Shreenathji Pendant manufactured by Suvarna Jewellers.",
+    "image": "silver/silver-13.jpg",
+    "readyStock": false 
+  },
+  {
     "id": "RMG0003",
     "category": "Rudraksha Mala",
     "name": "Gold Rudraksha Mala",
