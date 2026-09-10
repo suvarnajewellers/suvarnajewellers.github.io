@@ -1,0 +1,1848 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+  <title>Ready Stock | SUVARNA JEWELLERS</title>
+
+  <meta
+    name="description"
+    content="Premium ready stock jewellery available for immediate dispatch across India by Suvarna Jewellers."
+  >
+
+  <meta name="theme-color" content="#120008">
+
+  <link rel="icon" href="Logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+  >
+
+  <style>
+:root{
+  --sj-burgundy:#2B0015;
+  --sj-burgundy-2:#160009;
+  --sj-gold:#D4AF37;
+  --sj-gold-light:#F4DF98;
+  --sj-ivory:#F8F3E9;
+  --sj-muted:rgba(248,243,233,.68);
+  --sj-line:rgba(212,175,55,.20);
+  --sj-green:#25D366;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--sj-ivory);
+  font-family:Inter,Arial,sans-serif;
+  background:
+    radial-gradient(circle at 50% 0,#36001c 0, #19000d 34%, #090004 100%);
+  overflow-x:hidden;
+}
+img{max-width:100%}
+button,input{font:inherit}
+a{-webkit-tap-highlight-color:transparent}
+
+.container{
+  width:min(1180px,calc(100% - 32px));
+  margin:0 auto;
+}
+
+/* LOADER */
+#page-loader{
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  display:grid;
+  place-items:center;
+  background:#160009;
+  transition:opacity .5s,visibility .5s;
+}
+#page-loader.hide{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+.loader-inner{text-align:center}
+.loader-inner img{
+  width:min(190px,55vw);
+  height:auto;
+}
+
+/* HEADER — same premium language as Product Page */
+.header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(43,0,21,.90);
+  border-bottom:1px solid var(--sj-line);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+}
+.header-container{
+  min-height:76px;
+  display:flex;
+  align-items:center;
+  gap:22px;
+}
+.logo{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  text-decoration:none;
+  color:var(--sj-ivory);
+  min-width:0;
+}
+.logo img{
+  width:47px;
+  height:47px;
+  object-fit:contain;
+}
+.logo-text h1{
+  margin:0;
+  color:var(--sj-gold);
+  font:600 17px Cinzel,serif;
+  letter-spacing:1.5px;
+}
+.logo-text span{
+  display:block;
+  margin-top:3px;
+  color:rgba(255,255,255,.52);
+  font-size:8px;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+}
+.navbar{
+  margin-left:auto;
+  display:flex;
+  gap:27px;
+  align-items:center;
+}
+.navbar a{
+  position:relative;
+  padding:29px 0;
+  color:rgba(255,255,255,.75);
+  text-decoration:none;
+  font-size:10px;
+  letter-spacing:1.1px;
+  transition:color .2s;
+}
+.navbar a:hover,.navbar a.active{color:var(--sj-gold)}
+.navbar a.active::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:18px;
+  width:22px;
+  height:1px;
+  transform:translateX(-50%);
+  background:var(--sj-gold);
+}
+.header-right{display:flex;align-items:center;gap:10px}
+.header-whatsapp{
+  border:1px solid rgba(212,175,55,.42);
+  color:var(--sj-gold);
+  text-decoration:none;
+  padding:10px 14px;
+  font-size:9px;
+  letter-spacing:1.1px;
+  text-transform:uppercase;
+  transition:.2s;
+}
+.header-whatsapp:hover{background:var(--sj-gold);color:#170008}
+.menu-toggle{
+  display:none;
+  width:42px;
+  height:42px;
+  background:none;
+  border:1px solid var(--sj-line);
+  color:var(--sj-gold);
+  font-size:20px;
+  cursor:pointer;
+}
+
+/* HERO — cleaner and closer to Product Page */
+.hero{
+  position:relative;
+  min-height:390px;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding:72px 0 58px;
+  overflow:hidden;
+  border-bottom:1px solid rgba(212,175,55,.12);
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 50% 32%,rgba(212,175,55,.15),transparent 25%),
+    linear-gradient(180deg,rgba(38,0,18,.08),rgba(7,0,4,.70));
+}
+.hero-inner{position:relative;z-index:1;max-width:800px}
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  color:var(--sj-gold-light);
+  font-size:9px;
+  font-weight:600;
+  letter-spacing:3.2px;
+  text-transform:uppercase;
+}
+.eyebrow::before,.eyebrow::after{
+  content:"";
+  width:34px;
+  height:1px;
+  background:var(--sj-gold);
+}
+.hero h1{
+  margin:18px 0 14px;
+  font:600 clamp(36px,5.5vw,62px)/1.06 Cinzel,serif;
+}
+.hero h1 span{color:var(--sj-gold-light)}
+.hero p{
+  max-width:650px;
+  margin:0 auto;
+  color:var(--sj-muted);
+  font-size:13px;
+  line-height:1.85;
+}
+.hero-actions{
+  display:flex;
+  justify-content:center;
+  gap:11px;
+  margin-top:24px;
+}
+
+/* BUTTONS */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:44px;
+  padding:0 20px;
+  border:1px solid var(--sj-gold);
+  text-decoration:none;
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+  transition:.25s;
+}
+.btn-primary{
+  background:linear-gradient(135deg,#f1d77c,#c79d20);
+  color:#1b0009;
+  box-shadow:0 12px 32px rgba(212,175,55,.13);
+}
+.btn-outline{
+  color:var(--sj-gold-light);
+  background:rgba(255,255,255,.025);
+}
+.btn:hover{transform:translateY(-2px)}
+
+/* SECTION */
+.section{padding:62px 0 76px}
+.section-head{
+  max-width:760px;
+  margin:0 auto 27px;
+  text-align:center;
+}
+.section-head h2{
+  margin:10px 0 9px;
+  font:600 30px Cinzel,serif;
+}
+.section-head p{
+  margin:0;
+  color:var(--sj-muted);
+  font-size:12px;
+  line-height:1.8;
+}
+.stock-note{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  margin:0 auto 22px;
+  color:rgba(255,255,255,.50);
+  font-size:8px;
+  letter-spacing:1.25px;
+  text-transform:uppercase;
+}
+.stock-note i{color:var(--sj-gold)}
+
+/* SEARCH */
+.catalogue-bar{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  max-width:980px;
+  margin:0 auto 13px;
+}
+.search-wrap{
+  position:relative;
+  flex:1;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-height:56px;
+  padding:0 14px 0 16px;
+  border:1px solid rgba(212,175,55,.24);
+  border-radius:18px;
+  background:rgba(255,255,255,.035);
+  box-shadow:0 16px 40px rgba(0,0,0,.18);
+  transition:.25s;
+}
+.search-wrap:focus-within{
+  border-color:rgba(244,223,152,.78);
+  box-shadow:0 0 0 3px rgba(212,175,55,.07),0 18px 44px rgba(0,0,0,.25);
+}
+.search-icon{
+  width:30px;height:30px;
+  display:grid;place-items:center;
+  flex:0 0 auto;
+  border:1px solid rgba(212,175,55,.20);
+  border-radius:50%;
+  color:var(--sj-gold-light);
+  background:rgba(212,175,55,.06);
+}
+.search-icon i{font-size:11px}
+.search{
+  width:100%;
+  border:0;outline:0;
+  background:transparent;
+  color:var(--sj-ivory);
+  font-size:12px;
+}
+.search::placeholder{color:rgba(255,255,255,.34)}
+.search-shortcut{
+  flex:0 0 auto;
+  border:1px solid rgba(255,255,255,.10);
+  border-bottom-color:rgba(255,255,255,.18);
+  border-radius:5px;
+  padding:5px 7px;
+  color:rgba(255,255,255,.38);
+  font-size:8px;
+  letter-spacing:.8px;
+}
+.search-clear{
+  display:none;
+  width:28px;height:28px;
+  place-items:center;
+  border:0;background:transparent;
+  color:rgba(255,255,255,.48);
+  cursor:pointer;padding:0;
+}
+.search-clear:hover{color:var(--sj-gold-light)}
+.search-wrap.has-value .search-clear{display:grid}
+.search-wrap.has-value .search-shortcut{display:none}
+
+.count-box{
+  min-width:118px;
+  min-height:56px;
+  display:grid;
+  place-items:center;
+  align-content:center;
+  gap:2px;
+  border:1px solid rgba(212,175,55,.20);
+  border-radius:18px;
+  background:rgba(212,175,55,.045);
+}
+.count-box strong{
+  color:var(--sj-gold-light);
+  font:600 20px Cinzel,serif;
+}
+.count-box span{
+  color:var(--sj-muted);
+  font-size:8px;
+  letter-spacing:1.3px;
+  text-transform:uppercase;
+}
+.catalogue-meta{
+  max-width:980px;
+  margin:0 auto 18px;
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  color:rgba(255,255,255,.38);
+  font-size:8px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+.catalogue-meta i{color:var(--sj-gold);margin-right:5px}
+
+/* Keep existing filter logic but remove visual chips from the final UI.
+   Search remains the primary catalogue control. */
+.chips{display:none!important}
+
+/* PRODUCT GRID — same visual discipline as Product Page */
+#readyStockPageGrid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:18px;
+  width:100%;
+  align-items:stretch;
+}
+
+/* CARD */
+.card{
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  background:rgba(255,255,255,.025);
+  border:1px solid rgba(212,175,55,.16);
+  border-radius:26px;
+  box-shadow:0 16px 42px rgba(0,0,0,.20);
+  transition:transform .30s,border-color .30s,box-shadow .30s;
+}
+.card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(212,175,55,.46);
+  box-shadow:0 24px 55px rgba(0,0,0,.28);
+}
+
+/* SQUARE IMAGE — product fully visible */
+.card-image{
+  position:relative;
+  width:100%;
+  aspect-ratio:1/1;
+  overflow:hidden;
+  flex:0 0 auto;
+  display:grid;
+  place-items:center;
+  background:
+    radial-gradient(circle at 50% 42%,rgba(212,175,55,.10),transparent 45%),
+    linear-gradient(145deg,#fffdf8,#f4ede0);
+  isolation:isolate;
+}
+.card-image::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,transparent 72%,rgba(43,0,21,.07));
+  pointer-events:none;
+  z-index:1;
+}
+.card-image img{
+  display:block;
+  width:100%;
+  height:100%;
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  object-position:center;
+  padding:12px;
+  pointer-events:none;
+  user-select:none;
+  -webkit-user-select:none;
+  -webkit-user-drag:none;
+  transition:transform .55s ease;
+  z-index:0;
+}
+.card:hover .card-image img{transform:scale(1.025)}
+
+.ready-badge{
+  position:absolute;
+  z-index:3;
+  top:11px;
+  left:11px;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:7px 9px;
+  border:1px solid rgba(212,175,55,.42);
+  border-radius:999px;
+  background:rgba(43,0,21,.90);
+  color:var(--sj-gold-light);
+  font:700 7px Inter,sans-serif;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  backdrop-filter:blur(8px);
+}
+.ready-badge i{font-size:6px}
+
+.image-watermark{
+  position:absolute;
+  z-index:3;
+  left:50%;
+  bottom:12px;
+  transform:translateX(-50%) rotate(-4deg);
+  white-space:nowrap;
+  color:rgba(43,0,21,.18);
+  font:600 7px Cinzel,serif;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  pointer-events:none;
+}
+
+/* INFO — centered like Product Page */
+.card-info{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  padding:17px 14px 16px;
+  background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.012));
+}
+.category{
+  color:var(--sj-gold-light);
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:1.65px;
+  text-transform:uppercase;
+}
+.card h3{
+  margin:7px 0 8px;
+  max-width:100%;
+  color:var(--sj-ivory);
+  font:500 14px/1.35 Cinzel,serif;
+}
+.meta{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
+  color:rgba(255,255,255,.52);
+  font-size:8px;
+  letter-spacing:.45px;
+}
+.actions{
+  display:flex;
+  width:100%;
+  gap:8px;
+  margin-top:15px;
+}
+.actions a{
+  flex:1;
+  min-height:38px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(212,175,55,.34);
+  border-radius:12px;
+  color:var(--sj-gold-light);
+  background:rgba(255,255,255,.025);
+  text-decoration:none;
+  font-size:7px;
+  font-weight:700;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  transition:.22s;
+}
+.actions a:hover{
+  border-color:var(--sj-gold);
+  transform:translateY(-1px);
+}
+.actions a.primary{
+  background:linear-gradient(135deg,#f1d77c,#c79d20);
+  border-color:var(--sj-gold);
+  color:#170008;
+}
+
+/* EMPTY */
+.empty{
+  grid-column:1/-1;
+  padding:60px 20px;
+  text-align:center;
+  border:1px solid var(--sj-line);
+  border-radius:24px;
+  background:rgba(255,255,255,.025);
+  color:var(--sj-muted);
+}
+.empty h3{
+  margin:0 0 8px;
+  color:var(--sj-ivory);
+  font:500 22px Cinzel,serif;
+}
+.empty p{margin:0;font-size:12px;line-height:1.7}
+
+/* CTA */
+.cta{
+  position:relative;
+  overflow:hidden;
+  max-width:980px;
+  margin:0 auto 72px;
+  padding:45px 25px;
+  text-align:center;
+  border:1px solid var(--sj-line);
+  border-radius:28px;
+  background:linear-gradient(120deg,rgba(212,175,55,.07),rgba(255,255,255,.025));
+}
+.cta::before{
+  content:"";
+  position:absolute;
+  inset:8px;
+  border:1px solid rgba(212,175,55,.07);
+  border-radius:21px;
+  pointer-events:none;
+}
+.cta h2{
+  position:relative;
+  margin:0 0 8px;
+  font:500 27px Cinzel,serif;
+}
+.cta p{
+  position:relative;
+  max-width:620px;
+  margin:0 auto 21px;
+  color:var(--sj-muted);
+  font-size:12px;
+  line-height:1.8;
+}
+.cta .btn{position:relative;z-index:1}
+
+/* FOOTER */
+.footer{
+  padding:34px 0 21px;
+  text-align:center;
+  border-top:1px solid var(--sj-line);
+  background:rgba(5,0,3,.52);
+}
+.footer img{width:54px}
+.footer h3{
+  margin:8px 0;
+  color:var(--sj-gold);
+  font:500 14px Cinzel,serif;
+  letter-spacing:1.7px;
+}
+.footer p{color:var(--sj-muted);font-size:9px}
+.footer-copy{
+  margin-top:21px!important;
+  padding-top:15px;
+  border-top:1px solid rgba(255,255,255,.06);
+}
+
+/* FLOATING BUTTONS */
+.floating-whatsapp{
+  position:fixed;
+  right:16px;
+  bottom:16px;
+  z-index:1200;
+  width:56px;height:56px;
+  display:grid;place-items:center;
+  border-radius:50%;
+  background:var(--sj-green);
+  color:#fff;
+  text-decoration:none;
+  box-shadow:0 12px 32px rgba(0,0,0,.35);
+  font-size:25px;
+  transition:.2s;
+}
+.floating-whatsapp:hover{transform:translateY(-2px) scale(1.04)}
+.back-to-top{
+  position:fixed;
+  right:16px;
+  bottom:84px;
+  z-index:1199;
+  width:48px;height:48px;
+  display:grid;place-items:center;
+  border-radius:50%;
+  background:rgba(43,0,21,.92);
+  border:1px solid rgba(212,175,55,.48);
+  color:var(--sj-gold-light);
+  text-decoration:none;
+  box-shadow:0 12px 30px rgba(0,0,0,.32);
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(8px);
+  transition:.25s;
+  backdrop-filter:blur(10px);
+}
+.back-to-top.show{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+.back-to-top:hover{background:var(--sj-gold);color:#170008}
+
+/* TABLET */
+@media(max-width:1000px){
+  #readyStockPageGrid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .navbar{gap:18px}
+}
+
+/* MOBILE */
+@media(max-width:760px){
+  .container{width:min(100% - 28px,560px)}
+  .header-container{min-height:68px}
+  .navbar{
+    position:absolute;
+    left:50%;
+    right:auto;
+    top:calc(100% + 10px);
+    width:min(340px,calc(100% - 28px));
+    transform:translateX(-50%);
+    display:none;
+    flex-direction:column;
+    align-items:center;
+    gap:0;
+    padding:8px;
+    border:1px solid rgba(212,175,55,.28);
+    border-radius:18px;
+    background:linear-gradient(145deg,rgba(38,0,18,.98),rgba(12,0,6,.99));
+    box-shadow:0 20px 55px rgba(0,0,0,.45);
+    backdrop-filter:blur(18px);
+  }
+  .navbar.open{display:flex}
+  .navbar a{
+    width:100%;
+    padding:15px 12px;
+    text-align:center;
+    border-bottom:1px solid rgba(255,255,255,.055);
+    font-size:10px;
+  }
+  .navbar a:last-child{border-bottom:0}
+  .navbar a.active::after{display:none}
+  .header-whatsapp{display:none}
+  .menu-toggle{display:block}
+  .logo img{width:43px;height:43px}
+  .logo-text h1{font-size:14px}
+  .hero{min-height:350px;padding:58px 0 50px}
+  .hero h1{font-size:37px}
+  .hero p{font-size:12px}
+  .hero-actions{
+    flex-direction:column;
+    max-width:270px;
+    margin:22px auto 0;
+  }
+  .section{padding:48px 0 60px}
+  .section-head h2{font-size:27px}
+  .catalogue-bar{display:block}
+  .search-wrap{min-height:56px;border-radius:16px}
+  .count-box{min-height:50px;margin-top:9px;border-radius:16px}
+  .catalogue-meta{font-size:7px}
+  #readyStockPageGrid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px;
+  }
+  .card{border-radius:20px}
+  .card-image{aspect-ratio:1/1}
+  .card-image img{padding:8px}
+  .card-info{padding:12px 9px 12px}
+  .card h3{font-size:12px}
+  .actions{gap:6px;margin-top:12px}
+  .actions a{min-height:36px;font-size:6.3px;border-radius:10px}
+  .ready-badge{top:8px;left:8px;padding:6px 7px;font-size:6px}
+  .image-watermark{font-size:6px;letter-spacing:1.4px}
+  .cta{margin-bottom:54px;padding:38px 18px;border-radius:22px}
+  .cta h2{font-size:24px}
+  .floating-whatsapp{width:52px;height:52px;right:13px;bottom:13px;font-size:22px}
+  .back-to-top{right:13px;bottom:77px}
+}
+
+/* VERY SMALL MOBILE */
+@media(max-width:390px){
+  .hero h1{font-size:33px}
+  #readyStockPageGrid{gap:10px}
+  .card h3{font-size:11px}
+  .card-info{padding:10px 8px}
+  .actions a{font-size:6px}
+}
+
+/* REDUCED MOTION */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important;
+  }
+}
+  </style>
+</head>
+
+<body id="top">
+
+  <!-- =======================================================
+       PAGE LOADER
+  ======================================================== -->
+
+  <div id="page-loader" aria-hidden="true">
+    <div class="loader-inner">
+      <img src="Logo.png" alt="Suvarna Jewellers">
+      
+    </div>
+  </div>
+
+  <!-- =======================================================
+       HEADER
+  ======================================================== -->
+
+  <header class="header">
+    <div class="container header-container">
+
+      <a class="logo" href="index.html">
+        <img src="logo-1.png" alt="Suvarna Jewellers Logo">
+
+        <div class="logo-text">
+          <h1>SUVARNA JEWELLERS</h1>
+          <span>Gold &amp; Silver Jewellery</span>
+        </div>
+      </a>
+
+      <nav
+        class="navbar"
+        id="navbar"
+        aria-label="Primary Navigation"
+      >
+        <a href="index.html">Home</a>
+        <a href="collections.html">Collections</a>
+        <a
+          href="ready-stock.html"
+          class="active"
+          aria-current="page"
+        >
+          Ready Stock
+        </a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="header-right">
+        <a
+          class="header-whatsapp"
+          href="https://wa.me/917777991118"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          WhatsApp
+        </a>
+
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          type="button"
+          aria-label="Open Menu"
+          aria-expanded="false"
+          aria-controls="navbar"
+        >
+          ☰
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- =======================================================
+       MAIN
+  ======================================================== -->
+
+  <main>
+
+    <!-- HERO -->
+
+    <section class="hero">
+      <div class="hero-inner">
+
+        <div class="eyebrow">
+          AVAILABLE TODAY
+        </div>
+
+        <h1>
+          Ready Stock.<br>
+          <span>Ready To Dispatch.</span>
+        </h1>
+
+        <p>
+          Premium jewellery available for immediate business
+          fulfilment, fast enquiry and dependable Pan India supply.
+        </p>
+
+        <div class="hero-actions">
+
+          <a
+            class="btn btn-primary"
+            href="#ready-stock-section"
+          >
+            View Ready Stock
+          </a>
+
+          <a
+            class="btn btn-outline"
+            href="https://wa.me/917777991118"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            WhatsApp Enquiry
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- READY STOCK SECTION -->
+
+    <section
+      class="section"
+      id="ready-stock-section"
+    >
+      <div class="container">
+
+        <div class="section-head">
+
+          <div class="eyebrow">
+            READY STOCK
+          </div>
+
+          <h2>
+            Available For Immediate Dispatch
+          </h2>
+
+          <p>
+            Only designs currently marked as ready stock appear here.
+            Search by product, category or metal.
+          </p>
+
+        </div>
+
+        <div class="stock-note">
+          <i class="fa-solid fa-circle-check"></i>
+          <span>
+            Ready Stock · Fast Dispatch · Wholesale Enquiries
+          </span>
+        </div>
+
+        <!-- SEARCH -->
+
+        <div class="catalogue-bar">
+
+          <label
+            class="search-wrap"
+            for="ready-search"
+          >
+
+            <span class="search-icon">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </span>
+
+            <input
+              id="ready-search"
+              class="search"
+              type="search"
+              placeholder="Search ready stock by product, category or metal..."
+              autocomplete="off"
+              spellcheck="false"
+              aria-label="Search ready stock"
+            >
+
+            <span
+              class="search-shortcut"
+              aria-hidden="true"
+            >
+              CTRL K
+            </span>
+
+            <button
+              class="search-clear"
+              id="readySearchClear"
+              type="button"
+              aria-label="Clear search"
+            >
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+
+          </label>
+
+          <div
+            class="count-box"
+            aria-live="polite"
+          >
+            <strong id="ready-count">0</strong>
+            <span>Ready Stock</span>
+          </div>
+
+        </div>
+        <!-- META -->
+
+        <div class="catalogue-meta">
+
+          <span>
+            <i class="fa-solid fa-sliders"></i>
+            Refine your selection
+          </span>
+
+          <span id="resultsMeta">
+            Showing all designs
+          </span>
+
+        </div>
+
+        <!-- PRODUCT GRID -->
+
+        <div
+          id="readyStockPageGrid"
+          aria-live="polite"
+        ></div>
+
+        <!-- EMPTY STATE -->
+
+        <div
+          id="empty-state"
+          class="empty"
+          style="display:none"
+        >
+          <h3>No Ready Stock Found</h3>
+
+          <p>
+            Try another keyword or collection filter.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+
+    <section class="cta">
+
+      <h2>
+        Need A Specific Design?
+      </h2>
+
+      <p>
+        Send the product name or catalogue requirement directly
+        to our team for availability and wholesale pricing.
+      </p>
+
+      <a
+        class="btn btn-primary"
+        href="https://wa.me/917777991118?text=Hello%20Suvarna%20Jewellers%2C%20I%20am%20looking%20for%20a%20specific%20ready%20stock%20design."
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Talk To Suvarna
+      </a>
+
+    </section>
+
+  </main>
+
+  <!-- =======================================================
+       FOOTER
+  ======================================================== -->
+
+  <footer class="footer">
+
+    <div class="container">
+
+      <img
+        src="logo-1.png"
+        alt="Suvarna Jewellers"
+      >
+
+      <h3>
+        SUVARNA JEWELLERS
+      </h3>
+
+      <p>
+        Gold &amp; Silver Jewellery Manufacturer ·
+        Trusted Since 2003 · Pan India Supply
+      </p>
+
+      <p class="footer-copy">
+        © 2003–2026 SUVARNA JEWELLERS.
+        All Rights Reserved.
+      </p>
+
+    </div>
+
+  </footer>
+
+  <!-- FLOATING WHATSAPP -->
+
+  <a
+    class="floating-whatsapp"
+    href="https://wa.me/917777991118"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Contact Suvarna Jewellers on WhatsApp"
+  >
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <!-- BACK TO TOP -->
+
+  <a
+    class="back-to-top"
+    id="backToTop"
+    href="#top"
+    aria-label="Back to top"
+  >
+    <i class="fa-solid fa-chevron-up"></i>
+  </a>
+
+  <!-- =======================================================
+       EXISTING PROJECT JS
+       Keep these files in their existing locations.
+  ======================================================== -->
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/utilities.js"></script>
+  <script src="assets/js/api.js"></script>
+
+  <!-- =======================================================
+       PAGE SCRIPT
+  ======================================================== -->
+
+  <script>
+    (function () {
+      "use strict";
+
+      /* -------------------------------------------------------
+         PAGE LOADER
+      ------------------------------------------------------- */
+
+      const loader = document.getElementById("page-loader");
+      const toggle = document.getElementById("menuToggle");
+      const nav = document.getElementById("navbar");
+
+      const startTime = Date.now();
+      const minimumLoaderTime = 2200;
+
+      function hideLoader() {
+        if (!loader) return;
+
+        const elapsed = Date.now() - startTime;
+        const wait = Math.max(
+          0,
+          minimumLoaderTime - elapsed
+        );
+
+        window.setTimeout(function () {
+          loader.classList.add("hide");
+        }, wait);
+      }
+
+      if (document.readyState === "complete") {
+        hideLoader();
+      } else {
+        window.addEventListener(
+          "load",
+          hideLoader,
+          { once: true }
+        );
+      }
+
+      window.setTimeout(function () {
+        if (loader) {
+          loader.classList.add("hide");
+        }
+      }, 6000);
+
+      /* -------------------------------------------------------
+         MOBILE MENU
+      ------------------------------------------------------- */
+
+      if (toggle && nav) {
+        toggle.addEventListener("click", function () {
+          const isOpen =
+            nav.classList.toggle("open");
+
+          toggle.setAttribute(
+            "aria-expanded",
+            isOpen ? "true" : "false"
+          );
+
+          toggle.setAttribute(
+            "aria-label",
+            isOpen ? "Close Menu" : "Open Menu"
+          );
+
+          toggle.innerHTML =
+            isOpen ? "&times;" : "☰";
+        });
+
+        nav.querySelectorAll("a").forEach(function (link) {
+          link.addEventListener("click", function () {
+            nav.classList.remove("open");
+
+            toggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            toggle.setAttribute(
+              "aria-label",
+              "Open Menu"
+            );
+
+            toggle.innerHTML = "☰";
+          });
+        });
+      }
+    })();
+
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      function () {
+        "use strict";
+
+        const grid =
+          document.getElementById(
+            "readyStockPageGrid"
+          );
+
+        const search =
+          document.getElementById(
+            "ready-search"
+          );
+
+        const count =
+          document.getElementById(
+            "ready-count"
+          );
+
+        const empty =
+          document.getElementById(
+            "empty-state"
+          );
+
+        const chips =
+          document.getElementById(
+            "chips"
+          );
+
+        const clearBtn =
+          document.getElementById(
+            "readySearchClear"
+          );
+
+        const meta =
+          document.getElementById(
+            "resultsMeta"
+          );
+
+        const searchWrap =
+          search
+            ? search.closest(".search-wrap")
+            : null;
+
+        let products = [];
+        let activeFilter = "all";
+
+
+        /* -----------------------------------------------------
+           HTML ESCAPE
+        ----------------------------------------------------- */
+
+        function escapeHtml(value) {
+          return String(value ?? "")
+            .replace(
+              /[&<>"']/g,
+              function (match) {
+                const map = {
+                  "&": "&amp;",
+                  "<": "&lt;",
+                  ">": "&gt;",
+                  '"': "&quot;",
+                  "'": "&#39;"
+                };
+
+                return map[match];
+              }
+            );
+        }
+
+
+        /* -----------------------------------------------------
+           PRODUCT SEARCH TEXT
+        ----------------------------------------------------- */
+
+        function productText(product) {
+          return (
+            (product.name || "") +
+            " " +
+            (product.category || "") +
+            " " +
+            (product.metal || "")
+          ).toLowerCase();
+        }
+
+
+        /* -----------------------------------------------------
+           RESPONSIVE GRID
+        ----------------------------------------------------- */
+
+        function lockReadyGridLayout() {
+          if (!grid) return;
+
+          const width =
+            window.innerWidth;
+
+          let columns = 4;
+
+          if (width <= 760) {
+            columns = 2;
+          } else if (width <= 1000) {
+            columns = 3;
+          }
+
+          grid.style.display = "grid";
+
+          grid.style.gridTemplateColumns =
+            "repeat(" +
+            columns +
+            ", minmax(0, 1fr))";
+
+          grid.style.gridAutoFlow = "row";
+
+          grid.style.alignItems = "stretch";
+
+          grid.style.width = "100%";
+
+          grid.style.gap =
+            width <= 760
+              ? "12px"
+              : "18px";
+        }
+
+
+        /* -----------------------------------------------------
+           RENDER PRODUCTS
+        ----------------------------------------------------- */
+
+        function render(list) {
+          if (!grid) return;
+
+          lockReadyGridLayout();
+
+          count.textContent =
+            String(list.length);
+
+          const hasSearch =
+            search &&
+            search.value.trim();
+
+          if (meta) {
+            meta.textContent =
+              hasSearch ||
+              activeFilter !== "all"
+                ? "Showing " +
+                  list.length +
+                  " matching ready designs"
+                : "Showing all " +
+                  products.length +
+                  " ready designs";
+          }
+
+          if (empty) {
+            empty.style.display =
+              list.length
+                ? "none"
+                : "block";
+          }
+
+          if (!list.length) {
+            grid.innerHTML = "";
+            return;
+          }
+
+          grid.innerHTML = list
+            .map(function (product) {
+
+              const productName =
+                product.name ||
+                "Ready Stock Product";
+
+              const message =
+                encodeURIComponent(
+                  "Hello Suvarna Jewellers, " +
+                  "I am interested in " +
+                  productName
+                );
+
+              const productId =
+                encodeURIComponent(
+                  product.id ?? ""
+                );
+
+              const image =
+                product.image ||
+                "Logo.png";
+
+              const category =
+                product.category ||
+                "SUVARNA JEWELLERS";
+
+              const metal =
+                product.metal || "";
+
+              const netWeight =
+                product.netWeight || "-";
+
+              return `
+                <article class="card">
+
+                  <div class="card-image">
+
+                    <span class="image-watermark">
+                      SUVARNA JEWELLERS · 2003
+                    </span>
+
+                    <span class="ready-badge">
+                      <i class="fa-solid fa-circle"></i>
+                      Ready Stock
+                    </span>
+
+                    <img
+                      src="${escapeHtml(image)}"
+                      alt="${escapeHtml(productName)}"
+                      loading="lazy"
+                      decoding="async"
+                      onerror="this.onerror=null;this.src='Logo.png';"
+                    >
+
+                  </div>
+
+                  <div class="card-info">
+
+                    <div class="category">
+                      ${escapeHtml(category)}
+                    </div>
+
+                    <h3>
+                      ${escapeHtml(productName)}
+                    </h3>
+
+                    <div class="meta">
+
+                      <span>
+                        Net Weight:
+                        ${escapeHtml(netWeight)}
+                      </span>
+
+                      ${
+                        metal
+                          ? `
+                            <span>
+                              · ${escapeHtml(metal)}
+                            </span>
+                          `
+                          : ""
+                      }
+
+                    </div>
+
+                    <div class="actions">
+
+                      <a
+                        class="primary"
+                        href="product.html?id=${productId}&from=ready-stock"
+                      >
+                        View Product
+                      </a>
+
+                      <a
+                        href="https://wa.me/917777991118?text=${message}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Enquire
+                      </a>
+
+                    </div>
+
+                  </div>
+
+                </article>
+              `;
+            })
+            .join("");
+        }
+
+
+        /* -----------------------------------------------------
+           FILTER + SEARCH
+        ----------------------------------------------------- */
+
+        function applyFilters() {
+          if (!search) return;
+
+          const query =
+            search.value
+              .trim()
+              .toLowerCase();
+
+          const filtered =
+            products.filter(function (product) {
+
+              const matchesFilter =
+                activeFilter === "all" ||
+                productText(product).includes(
+                  activeFilter
+                );
+
+              const matchesSearch =
+                !query ||
+                productText(product).includes(
+                  query
+                );
+
+              return (
+                matchesFilter &&
+                matchesSearch
+              );
+            });
+
+          render(filtered);
+        }
+
+
+        /* -----------------------------------------------------
+           LOAD READY STOCK
+        ----------------------------------------------------- */
+
+        async function loadReadyStock() {
+          try {
+
+            if (
+              typeof getProducts !==
+              "function"
+            ) {
+              throw new Error(
+                "getProducts() is not available. Check assets/js/api.js."
+              );
+            }
+
+            const allProducts =
+              await getProducts();
+
+            if (!Array.isArray(allProducts)) {
+              throw new Error(
+                "Product API did not return an array."
+              );
+            }
+
+            products =
+              allProducts.filter(
+                function (product) {
+                  return (
+                    product &&
+                    product.readyStock === true
+                  );
+                }
+              );
+
+            applyFilters();
+
+          } catch (error) {
+
+            console.error(
+              "Ready Stock loading error:",
+              error
+            );
+
+            products = [];
+
+            if (grid) {
+              grid.innerHTML = "";
+            }
+
+            if (count) {
+              count.textContent = "0";
+            }
+
+            if (meta) {
+              meta.textContent =
+                "Unable to load ready stock";
+            }
+
+            if (empty) {
+              empty.style.display = "block";
+
+              empty.innerHTML = `
+                <h3>
+                  Unable to Load Ready Stock
+                </h3>
+
+                <p>
+                  Please refresh the page or
+                  contact Suvarna Jewellers.
+                </p>
+              `;
+            }
+          }
+        }
+
+
+        /* -----------------------------------------------------
+           SEARCH INPUT
+        ----------------------------------------------------- */
+
+        if (search) {
+          search.addEventListener(
+            "input",
+            function () {
+
+              if (searchWrap) {
+                searchWrap.classList.toggle(
+                  "has-value",
+                  Boolean(
+                    search.value
+                  )
+                );
+              }
+
+              applyFilters();
+            }
+          );
+        }
+
+
+        /* -----------------------------------------------------
+           CLEAR SEARCH
+        ----------------------------------------------------- */
+
+        if (clearBtn) {
+          clearBtn.addEventListener(
+            "click",
+            function () {
+
+              if (!search) return;
+
+              search.value = "";
+
+              if (searchWrap) {
+                searchWrap.classList.remove(
+                  "has-value"
+                );
+              }
+
+              search.focus();
+
+              applyFilters();
+            }
+          );
+        }
+
+
+        /* -----------------------------------------------------
+           CTRL / CMD + K SEARCH
+        ----------------------------------------------------- */
+
+        document.addEventListener(
+          "keydown",
+          function (event) {
+
+            if (
+              (event.ctrlKey ||
+                event.metaKey) &&
+              event.key.toLowerCase() === "k"
+            ) {
+              event.preventDefault();
+
+              if (search) {
+                search.focus();
+                search.select();
+              }
+            }
+          }
+        );
+
+
+        /* -----------------------------------------------------
+           FILTER CHIPS
+        ----------------------------------------------------- */
+
+        if (chips) {
+          chips.addEventListener(
+            "click",
+            function (event) {
+
+              const button =
+                event.target.closest(
+                  ".chip"
+                );
+
+              if (!button) return;
+
+              chips
+                .querySelectorAll(".chip")
+                .forEach(function (chip) {
+                  chip.classList.remove(
+                    "active"
+                  );
+                });
+
+              button.classList.add(
+                "active"
+              );
+
+              activeFilter =
+                button.dataset.filter ||
+                "all";
+
+              applyFilters();
+            }
+          );
+        }
+
+
+        /* -----------------------------------------------------
+           RESIZE
+        ----------------------------------------------------- */
+
+        window.addEventListener(
+          "resize",
+          lockReadyGridLayout,
+          { passive: true }
+        );
+
+
+        /* -----------------------------------------------------
+           INITIALIZE
+        ----------------------------------------------------- */
+
+        lockReadyGridLayout();
+
+        loadReadyStock();
+      }
+    );
+
+
+    /* =========================================================
+       BACK TO TOP
+    ========================================================= */
+
+    (function () {
+      "use strict";
+
+      const button =
+        document.getElementById(
+          "backToTop"
+        );
+
+      if (!button) return;
+
+      function syncBackToTop() {
+        button.classList.toggle(
+          "show",
+          window.scrollY > 520
+        );
+      }
+
+      window.addEventListener(
+        "scroll",
+        syncBackToTop,
+        { passive: true }
+      );
+
+      syncBackToTop();
+
+      button.addEventListener(
+        "click",
+        function (event) {
+
+          event.preventDefault();
+
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+          });
+        }
+      );
+    })();
+
+
+    /* =========================================================
+       IMAGE PROTECTION
+    ========================================================= */
+
+    (function () {
+      "use strict";
+
+      document.addEventListener(
+        "contextmenu",
+        function (event) {
+
+          if (
+            event.target.closest(
+              ".card-image img"
+            )
+          ) {
+            event.preventDefault();
+          }
+        }
+      );
+
+      document.addEventListener(
+        "dragstart",
+        function (event) {
+
+          if (
+            event.target.closest(
+              ".card-image img"
+            )
+          ) {
+            event.preventDefault();
+          }
+        }
+      );
+
+      document.addEventListener(
+        "selectstart",
+        function (event) {
+
+          if (
+            event.target.closest(
+              ".card-image"
+            )
+          ) {
+            event.preventDefault();
+          }
+        }
+      );
+
+      document.addEventListener(
+        "keydown",
+        function (event) {
+
+          const key =
+            event.key.toLowerCase();
+
+          if (
+            (event.ctrlKey ||
+              event.metaKey) &&
+            ["s", "u"].includes(key)
+          ) {
+            event.preventDefault();
+          }
+        }
+      );
+    })();
+  </script>
+
+  <noscript>
+    <div
+      style="
+        padding:20px;
+        text-align:center;
+        background:#21000f;
+        color:#f8f3e9;
+        border-top:1px solid #d4af37;
+      "
+    >
+      Please enable JavaScript to view Ready Stock products.
+    </div>
+  </noscript>
+
+</body>
+</html>
