@@ -81,7 +81,7 @@
     "size": "18 Inch",
     "description": "Premium Rose Gold Chain manufactured by Suvarna Jewellers.",
     "image": "gold/CHG0522.jpg",
-    "readyStock": true
+    "readyStock": false 
   },
   {
     "id": "CHG0523",
