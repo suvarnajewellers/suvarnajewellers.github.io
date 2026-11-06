@@ -751,8 +751,32 @@
     "grossWeight": "19.460 Gram",
     "netWeight": "13.040 Gram",
     "size": "24 Inch",
-    "description": "Premium Gold Rudraksha Mala.",
+    "description": "Premium 9CT Gold Rudraksha Mala.",
     "image": "gold/RMG0082.jpg",
+    "readyStock": true 
+  },
+  {
+    "id": "RMG0086",
+    "category": "Rudraksha Mala",
+    "name": "Gold Rudraksha Mala",
+    "metal": "9CT Gold",
+    "grossWeight": "19.560 Gram",
+    "netWeight": "13.070 Gram",
+    "size": "24 Inch",
+    "description": "Premium 9CT Gold Rudraksha Mala.",
+    "image": "gold/RMG0086.jpg",
+    "readyStock": true 
+  },
+  {
+    "id": "RMG0088",
+    "category": "Rudraksha Mala",
+    "name": "Gold Rudraksha Mala",
+    "metal": "9CT Gold",
+    "grossWeight": "12.920 Gram",
+    "netWeight": "8.570 Gram",
+    "size": "24 Inch",
+    "description": "Premium 9CT Gold Rudraksha Mala.",
+    "image": "gold/RMG0088.jpg",
     "readyStock": true 
   },
   {
