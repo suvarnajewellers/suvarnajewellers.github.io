@@ -153,7 +153,7 @@
     "size": "20 Inch",
     "description": "Premium Rose Gold Chain manufactured by Suvarna Jewellers.",
     "image": "gold/CHG0655.jpg",
-    "readyStock": true
+    "readyStock": false 
   },
   {
     "id": "CHG0656",
