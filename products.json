@@ -132,6 +132,42 @@
     "readyStock": true
   },
   {
+    "id": "CHG0578",
+    "category": "Gold Jewellery",
+    "name": "Rose Gold Stiff Chain",
+    "metal": "18CT Gold",
+    "grossWeight": "11.450 Gram",
+    "netWeight": "11.450 Gram",
+    "size": "18 Inch",
+    "description": "Premium Rose Gold Italian Stiff Chain by Suvarna Jewellers.",
+    "image": "gold/CHG0578.jpg",
+    "readyStock": true
+  },
+  {
+    "id": "CHG0580",
+    "category": "Gold Jewellery",
+    "name": "Rose Gold Stiff Chain",
+    "metal": "18CT Gold",
+    "grossWeight": "4.150 Gram",
+    "netWeight": "4.150 Gram",
+    "size": "18 Inch",
+    "description": "Premium Rose Gold Italian Stiff Chain by Suvarna Jewellers.",
+    "image": "gold/CHG0580.jpg",
+    "readyStock": true
+  },
+  {
+    "id": "CHG0581",
+    "category": "Gold Jewellery",
+    "name": "Rose Gold Stiff Chain",
+    "metal": "18CT Gold",
+    "grossWeight": "7.580 Gram",
+    "netWeight": "7.580 Gram",
+    "size": "18 Inch",
+    "description": "Premium Rose Gold Italian Stiff Chain by Suvarna Jewellers.",
+    "image": "gold/CHG0581.jpg",
+    "readyStock": true
+  },
+  {
     "id": "CHG0623",
     "category": "Gold Jewellery",
     "name": "Rose Gold Chain",
