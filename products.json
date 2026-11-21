@@ -24,6 +24,18 @@
     "readyStock": false 
   },  
   {
+    "id": "G003",
+    "category": "Gold Jewellery",
+    "name": "Gold Bangles",
+    "metal": "22CT Gold",
+    "grossWeight": "99.630 Gram",
+    "netWeight": "99.630 Gram",
+    "size": "2'6 Aani",
+    "description": "Premium Gold Bangles manufactured by Suvarna Jewellers.",
+    "image": "gold/BANGLES.jpg",
+    "readyStock": false 
+  },  
+  {
     "id": "CHG0279",
     "category": "Gold Jewellery",
     "name": "Rose Gold Chain",
